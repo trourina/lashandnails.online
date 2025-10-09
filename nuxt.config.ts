@@ -1,10 +1,41 @@
 import tailwindcss from "@tailwindcss/vite";
 
+// Business data - single source of truth
+const BUSINESS = {
+  name: "Lash & Nails Santa Pola",
+  description: "Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments",
+  url: "https://lashandnails.online",
+  phone: "+34604316778",
+  telegram: "Irina_STS",
+  address: {
+    street: "Carrer Major, 8",
+    city: "Santa Pola",
+    region: "Alicante",
+    postalCode: "03130",
+    country: "ES",
+  },
+  geo: {
+    latitude: 38.1956992,
+    longitude: -0.5579955,
+  },
+  hours: {
+    weekdays: { opens: "09:30", closes: "20:00" },
+    saturday: { opens: "10:00", closes: "14:00" },
+  },
+  priceRange: "$$",
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
+
+  runtimeConfig: {
+    public: {
+      business: BUSINESS,
+    },
+  },
 
   app: {
     head: {
@@ -54,44 +85,42 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: "https://lashandnails.online",
-    name: "Lash & Nails Santa Pola",
-    description:
-      "Beauty salon in Santa Pola - Lash extensions, nail design, and beauty treatments",
+    url: BUSINESS.url,
+    name: BUSINESS.name,
+    description: BUSINESS.description,
     defaultLocale: "en",
   },
 
   schemaOrg: {
     identity: {
       type: "LocalBusiness",
-      name: "Lash & Nails Santa Pola",
-      url: "https://lashandnails.online",
-      logo: "https://lashandnails.online/logo.png",
-      description:
-        "Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments",
+      name: BUSINESS.name,
+      url: BUSINESS.url,
+      logo: `${BUSINESS.url}/logo.png`,
+      description: BUSINESS.description,
       address: {
-        streetAddress: "Carrer Major, 8",
-        addressLocality: "Santa Pola",
-        addressRegion: "Alicante",
-        postalCode: "03130",
-        addressCountry: "ES",
+        streetAddress: BUSINESS.address.street,
+        addressLocality: BUSINESS.address.city,
+        addressRegion: BUSINESS.address.region,
+        postalCode: BUSINESS.address.postalCode,
+        addressCountry: BUSINESS.address.country,
       },
       geo: {
-        latitude: 38.1956992,
-        longitude: -0.5579955,
+        latitude: BUSINESS.geo.latitude,
+        longitude: BUSINESS.geo.longitude,
       },
-      telephone: "+34604316778",
-      priceRange: "$$",
+      telephone: BUSINESS.phone,
+      priceRange: BUSINESS.priceRange,
       openingHoursSpecification: [
         {
           dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: "09:30",
-          closes: "20:00",
+          opens: BUSINESS.hours.weekdays.opens,
+          closes: BUSINESS.hours.weekdays.closes,
         },
         {
           dayOfWeek: ["Saturday"],
-          opens: "10:00",
-          closes: "14:00",
+          opens: BUSINESS.hours.saturday.opens,
+          closes: BUSINESS.hours.saturday.closes,
         },
       ],
     },
