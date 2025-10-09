@@ -24,6 +24,8 @@
         <dd>{{ t('closed') }}</dd>
       </div>
     </dl>
+
+    <p>{{ t('holidayNote') }}</p>
   </section>
 </template>
 
@@ -40,21 +42,24 @@ const business = config.public.business
     "weekdays": "Lunes a Viernes",
     "saturday": "Sábado",
     "sunday": "Domingo",
-    "closed": "Cerrado"
+    "closed": "Cerrado",
+    "holidayNote": "Puede estar cerrado debido a días festivos locales."
   },
   "en": {
     "heading": "Opening hours",
     "weekdays": "Monday to Friday",
     "saturday": "Saturday",
     "sunday": "Sunday",
-    "closed": "Closed"
+    "closed": "Closed",
+    "holidayNote": "It might be closed due to local holidays."
   },
   "ru": {
     "heading": "Часы работы",
     "weekdays": "Понедельник - Пятница",
     "saturday": "Суббота",
     "sunday": "Воскресенье",
-    "closed": "Закрыто"
+    "closed": "Закрыто",
+    "holidayNote": "Может быть закрыто в связи с местными праздниками."
   }
 }
 </i18n>

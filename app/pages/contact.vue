@@ -40,6 +40,16 @@ useSchemaOrg([
     url: business.url,
     telephone: business.phone,
     priceRange: business.priceRange,
+    sameAs: [
+      business.social.facebook,
+      business.social.instagram,
+    ],
+    areaServed: [
+      { '@type': 'City', name: 'Santa Pola' },
+      { '@type': 'City', name: 'Elche' },
+      { '@type': 'City', name: 'Guardamar del Segura' },
+      { '@type': 'City', name: 'Alicante' },
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: business.address.street,
