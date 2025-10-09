@@ -144,11 +144,6 @@ section {
   margin-bottom: 3rem;
 }
 
-h1,
-h2 {
-  font-family: 'Prata', serif;
-}
-
 h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
