@@ -1,12 +1,12 @@
 <template>
   <main>
     <header>
-      <h1>{{ t('title') }}</h1>
-      <p>{{ t('subtitle') }}</p>
+      <h1>{{ t("title") }}</h1>
+      <p>{{ t("subtitle") }}</p>
     </header>
 
     <section aria-labelledby="lash-gallery">
-      <h2 id="lash-gallery">{{ t('categories.lashes') }}</h2>
+      <h2 id="lash-gallery">{{ t("categories.lashes") }}</h2>
       <div class="gallery-grid" role="list">
         <!-- Images will be added here -->
         <div class="gallery-placeholder"></div>
@@ -17,7 +17,7 @@
     </section>
 
     <section aria-labelledby="nails-gallery">
-      <h2 id="nails-gallery">{{ t('categories.nails') }}</h2>
+      <h2 id="nails-gallery">{{ t("categories.nails") }}</h2>
       <div class="gallery-grid" role="list">
         <!-- Images will be added here -->
         <div class="gallery-placeholder"></div>
@@ -28,7 +28,7 @@
     </section>
 
     <section aria-labelledby="brows-gallery">
-      <h2 id="brows-gallery">{{ t('categories.brows') }}</h2>
+      <h2 id="brows-gallery">{{ t("categories.brows") }}</h2>
       <div class="gallery-grid" role="list">
         <!-- Images will be added here -->
         <div class="gallery-placeholder"></div>
@@ -39,7 +39,7 @@
     </section>
 
     <section aria-labelledby="treatments-gallery">
-      <h2 id="treatments-gallery">{{ t('categories.treatments') }}</h2>
+      <h2 id="treatments-gallery">{{ t("categories.treatments") }}</h2>
       <div class="gallery-grid" role="list">
         <!-- Images will be added here -->
         <div class="gallery-placeholder"></div>
@@ -52,57 +52,58 @@
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n({ useScope: 'local' })
-const config = useRuntimeConfig()
-const business = config.public.business
+const { t, locale } = useI18n({ useScope: "local" });
+const config = useRuntimeConfig();
+const business = config.public.business;
 
 useSeoMeta({
-  title: () => t('seoTitle'),
-  description: () => t('seoDescription'),
-  ogTitle: () => t('seoTitle'),
-  ogDescription: () => t('seoDescription'),
-  ogType: 'website',
-  ogLocale: () => locale.value === 'es' ? 'es_ES' : locale.value === 'ru' ? 'ru_RU' : 'en_US',
-})
+  title: () => t("seoTitle"),
+  description: () => t("seoDescription"),
+  ogTitle: () => t("seoTitle"),
+  ogDescription: () => t("seoDescription"),
+  ogType: "website",
+  ogLocale: () =>
+    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+});
 
 useSchemaOrg([
   {
-    '@type': 'BreadcrumbList',
+    "@type": "BreadcrumbList",
     itemListElement: [
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 1,
-        name: 'Home',
+        name: "Home",
         item: business.url,
       },
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 2,
-        name: () => t('title'),
+        name: () => t("title"),
       },
     ],
   },
   {
-    '@type': 'CollectionPage',
-    name: () => t('seoTitle'),
-    description: () => t('seoDescription'),
+    "@type": "CollectionPage",
+    name: () => t("seoTitle"),
+    description: () => t("seoDescription"),
   },
   {
-    '@type': 'ImageGallery',
-    name: () => t('seoTitle'),
-    description: () => t('seoDescription'),
+    "@type": "ImageGallery",
+    name: () => t("seoTitle"),
+    description: () => t("seoDescription"),
     about: {
-      '@type': 'LocalBusiness',
+      "@type": "LocalBusiness",
       name: business.name,
     },
   },
-])
+]);
 </script>
 
 <style scoped>
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
 }
@@ -116,7 +117,7 @@ useSchemaOrg([
 }
 
 .gallery-placeholder::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -129,15 +130,6 @@ useSchemaOrg([
     transparent
   );
   animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
 }
 
 section {
