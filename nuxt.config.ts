@@ -16,14 +16,18 @@ const BUSINESS = {
     country: "ES",
   },
   geo: {
-    latitude: 38.1956992,
-    longitude: -0.5579955,
+    latitude: 38.1942263,
+    longitude: -0.5558291,
+  },
+  googleMaps: {
+    placeId: "ChIJwT2_BgbQZA0RKfMGo6vuCpk",
   },
   hours: {
     weekdays: { opens: "09:30", closes: "20:00" },
     saturday: { opens: "10:00", closes: "14:00" },
   },
   priceRange: "$$",
+  paymentAccepted: ["Cash", "Bizum"],
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61576877656154",
     instagram: "https://www.instagram.com/lash_nails.santapola",
@@ -122,6 +126,7 @@ export default defineNuxtConfig({
       },
       telephone: BUSINESS.phone,
       priceRange: BUSINESS.priceRange,
+      paymentAccepted: BUSINESS.paymentAccepted,
       sameAs: [BUSINESS.social.facebook, BUSINESS.social.instagram],
       areaServed: [
         { "@type": "City", name: "Santa Pola" },
