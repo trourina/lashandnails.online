@@ -44,7 +44,7 @@
           <dt>{{ t('telegram.label') }}</dt>
           <dd>
             <a
-              href="https://t.me/+34604316778"
+              href="https://t.me/Irina_STS"
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
