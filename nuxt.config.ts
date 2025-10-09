@@ -3,7 +3,8 @@ import tailwindcss from "@tailwindcss/vite";
 // Business data - single source of truth
 const BUSINESS = {
   name: "Lash & Nails Santa Pola",
-  description: "Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments",
+  description:
+    "Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments",
   url: "https://lashandnails.online",
   phone: "+34604316778",
   telegram: "Irina_STS",
@@ -23,7 +24,11 @@ const BUSINESS = {
     saturday: { opens: "10:00", closes: "14:00" },
   },
   priceRange: "$$",
-}
+  social: {
+    facebook: "https://www.facebook.com/profile.php?id=61576877656154",
+    instagram: "https://www.instagram.com/lash_nails.santapola",
+  },
+};
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -40,15 +45,22 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [
-        { rel: "icon", type: "image/png", href: "/favicon-96x96.png", sizes: "96x96" },
+        {
+          rel: "icon",
+          type: "image/png",
+          href: "/favicon-96x96.png",
+          sizes: "96x96",
+        },
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
         { rel: "shortcut icon", href: "/favicon.ico" },
-        { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+        {
+          rel: "apple-touch-icon",
+          sizes: "180x180",
+          href: "/apple-touch-icon.png",
+        },
         { rel: "manifest", href: "/site.webmanifest" },
       ],
-      meta: [
-        { name: "apple-mobile-web-app-title", content: "Lash&Nails" },
-      ],
+      meta: [{ name: "apple-mobile-web-app-title", content: "Lash&Nails" }],
     },
   },
   vite: {
@@ -63,16 +75,15 @@ export default defineNuxtConfig({
   ],
 
   fonts: {
-    families: [
-      { name: 'Prata', provider: 'google' }
-    ]
+    families: [{ name: "Prata", provider: "google" }],
   },
 
   i18n: {
+    baseUrl: BUSINESS.url,
     locales: [
-      { code: "en", name: "English" },
-      { code: "es", name: "Español" },
-      { code: "ru", name: "Русский" },
+      { code: "en", language: "en", name: "English" },
+      { code: "es", language: "es", name: "Español" },
+      { code: "ru", language: "ru", name: "Русский" },
     ],
     defaultLocale: "en",
     strategy: "prefix",
@@ -111,6 +122,13 @@ export default defineNuxtConfig({
       },
       telephone: BUSINESS.phone,
       priceRange: BUSINESS.priceRange,
+      sameAs: [BUSINESS.social.facebook, BUSINESS.social.instagram],
+      areaServed: [
+        { "@type": "City", name: "Santa Pola" },
+        { "@type": "City", name: "Elche" },
+        { "@type": "City", name: "Guardamar del Segura" },
+        { "@type": "City", name: "Alicante" },
+      ],
       openingHoursSpecification: [
         {
           dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
