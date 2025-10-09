@@ -1,7 +1,99 @@
 <template>
-  <div>
-    <Typo is="h1" variant="h1">{{ t('title') }}</Typo>
-  </div>
+  <main>
+    <header>
+      <h1>{{ t('title') }}</h1>
+      <p>{{ t('subtitle') }}</p>
+    </header>
+
+    <section aria-labelledby="contact-methods">
+      <h2 id="contact-methods">{{ t('contactMethodsHeading') }}</h2>
+
+      <dl>
+        <div>
+          <dt>{{ t('address.label') }}</dt>
+          <dd>
+            <address>
+              Carrer Major, 8<br>
+              03130 Santa Pola<br>
+              Alicante, {{ t('address.country') }}
+            </address>
+          </dd>
+        </div>
+
+        <div>
+          <dt>{{ t('phone.label') }}</dt>
+          <dd>
+            <a href="tel:+34604316778" rel="nofollow">+34 604 31 67 78</a>
+          </dd>
+        </div>
+
+        <div>
+          <dt>{{ t('whatsapp.label') }}</dt>
+          <dd>
+            <a
+              href="https://wa.me/34604316778"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              {{ t('whatsapp.action') }}
+            </a>
+          </dd>
+        </div>
+
+        <div>
+          <dt>{{ t('telegram.label') }}</dt>
+          <dd>
+            <a
+              href="https://t.me/+34604316778"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              {{ t('telegram.action') }}
+            </a>
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="opening-hours">
+      <h2 id="opening-hours">{{ t('hours.heading') }}</h2>
+
+      <dl>
+        <div>
+          <dt>{{ t('hours.weekdays') }}</dt>
+          <dd>
+            <time datetime="10:00">10:00</time> - <time datetime="20:00">20:00</time>
+          </dd>
+        </div>
+
+        <div>
+          <dt>{{ t('hours.saturday') }}</dt>
+          <dd>
+            <time datetime="10:00">10:00</time> - <time datetime="18:00">18:00</time>
+          </dd>
+        </div>
+
+        <div>
+          <dt>{{ t('hours.sunday') }}</dt>
+          <dd>{{ t('hours.closed') }}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="location-map">
+      <h2 id="location-map">{{ t('map.heading') }}</h2>
+
+      <div>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=38.1956992,-0.5579955"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {{ t('map.viewOnGoogleMaps') }}
+        </a>
+      </div>
+    </section>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -19,18 +111,102 @@ useSeoMeta({
 {
   "es": {
     "title": "Contacto",
+    "subtitle": "Visítanos o contáctanos por teléfono, WhatsApp o Telegram",
     "seoTitle": "Contacto | Lash & Nails Santa Pola",
-    "seoDescription": "Contáctanos - Carrer Major, 8, Santa Pola - Teléfono, horario y ubicación de nuestro salón de belleza"
+    "seoDescription": "Contáctanos - Carrer Major, 8, Santa Pola - Teléfono, horario y ubicación de nuestro salón de belleza",
+    "contactMethodsHeading": "Cómo contactarnos",
+    "address": {
+      "label": "Dirección",
+      "country": "España"
+    },
+    "phone": {
+      "label": "Teléfono"
+    },
+    "whatsapp": {
+      "label": "WhatsApp",
+      "action": "Enviar mensaje por WhatsApp"
+    },
+    "telegram": {
+      "label": "Telegram",
+      "action": "Enviar mensaje por Telegram"
+    },
+    "hours": {
+      "heading": "Horario de atención",
+      "weekdays": "Lunes a Viernes",
+      "saturday": "Sábado",
+      "sunday": "Domingo",
+      "closed": "Cerrado"
+    },
+    "map": {
+      "heading": "Ubicación",
+      "viewOnGoogleMaps": "Ver en Google Maps"
+    }
   },
   "en": {
     "title": "Contact",
+    "subtitle": "Visit us or contact us by phone, WhatsApp or Telegram",
     "seoTitle": "Contact | Lash & Nails Santa Pola",
-    "seoDescription": "Contact us - Carrer Major, 8, Santa Pola - Phone, hours and location of our beauty salon"
+    "seoDescription": "Contact us - Carrer Major, 8, Santa Pola - Phone, hours and location of our beauty salon",
+    "contactMethodsHeading": "How to contact us",
+    "address": {
+      "label": "Address",
+      "country": "Spain"
+    },
+    "phone": {
+      "label": "Phone"
+    },
+    "whatsapp": {
+      "label": "WhatsApp",
+      "action": "Send WhatsApp message"
+    },
+    "telegram": {
+      "label": "Telegram",
+      "action": "Send Telegram message"
+    },
+    "hours": {
+      "heading": "Opening hours",
+      "weekdays": "Monday to Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "closed": "Closed"
+    },
+    "map": {
+      "heading": "Location",
+      "viewOnGoogleMaps": "View on Google Maps"
+    }
   },
   "ru": {
     "title": "Контакты",
+    "subtitle": "Посетите нас или свяжитесь по телефону, WhatsApp или Telegram",
     "seoTitle": "Контакты | Lash & Nails Santa Pola",
-    "seoDescription": "Свяжитесь с нами - Carrer Major, 8, Santa Pola - Телефон, часы работы и расположение нашего салона красоты"
+    "seoDescription": "Свяжитесь с нами - Carrer Major, 8, Santa Pola - Телефон, часы работы и расположение нашего салона красоты",
+    "contactMethodsHeading": "Как с нами связаться",
+    "address": {
+      "label": "Адрес",
+      "country": "Испания"
+    },
+    "phone": {
+      "label": "Телефон"
+    },
+    "whatsapp": {
+      "label": "WhatsApp",
+      "action": "Отправить сообщение в WhatsApp"
+    },
+    "telegram": {
+      "label": "Telegram",
+      "action": "Отправить сообщение в Telegram"
+    },
+    "hours": {
+      "heading": "Часы работы",
+      "weekdays": "Понедельник - Пятница",
+      "saturday": "Суббота",
+      "sunday": "Воскресенье",
+      "closed": "Закрыто"
+    },
+    "map": {
+      "heading": "Расположение",
+      "viewOnGoogleMaps": "Посмотреть в Google Maps"
+    }
   }
 }
 </i18n>
