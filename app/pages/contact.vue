@@ -85,11 +85,11 @@
 
       <div>
         <a
-          href="https://www.google.com/maps/search/?api=1&query=38.1956992,-0.5579955"
+          :href="googleMapsDirectionsUrl"
           target="_blank"
           rel="noopener noreferrer"
         >
-          {{ t('map.viewOnGoogleMaps') }}
+          {{ t('map.getDirections') }}
         </a>
       </div>
     </section>
@@ -97,13 +97,19 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n({ useScope: 'local' })
+const { t, locale } = useI18n({ useScope: 'local' })
 
 useSeoMeta({
   title: () => t('seoTitle'),
   description: () => t('seoDescription'),
   ogTitle: () => t('seoTitle'),
   ogDescription: () => t('seoDescription'),
+})
+
+const googleMapsDirectionsUrl = computed(() => {
+  const address = 'Carrer+Major,+8,+03130+Santa+Pola,+Alicante'
+  const lang = locale.value
+  return `https://www.google.com/maps/dir//${address}/@38.1942263,-0.5558291,17z?hl=${lang}`
 })
 </script>
 
@@ -141,7 +147,7 @@ useSeoMeta({
     },
     "map": {
       "heading": "Ubicación",
-      "viewOnGoogleMaps": "Ver en Google Maps"
+      "getDirections": "Cómo llegar"
     }
   },
   "en": {
@@ -176,7 +182,7 @@ useSeoMeta({
     },
     "map": {
       "heading": "Location",
-      "viewOnGoogleMaps": "View on Google Maps"
+      "getDirections": "Get directions"
     }
   },
   "ru": {
@@ -211,7 +217,7 @@ useSeoMeta({
     },
     "map": {
       "heading": "Расположение",
-      "viewOnGoogleMaps": "Посмотреть в Google Maps"
+      "getDirections": "Как добраться"
     }
   }
 }
