@@ -9,9 +9,10 @@
       <h2 id="lash-gallery">{{ t('categories.lashes') }}</h2>
       <div class="gallery-grid" role="list">
         <!-- Images will be added here -->
-        <div class="gallery-placeholder">
-          <p>{{ t('placeholder') }}</p>
-        </div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
       </div>
     </section>
 
@@ -19,9 +20,10 @@
       <h2 id="nails-gallery">{{ t('categories.nails') }}</h2>
       <div class="gallery-grid" role="list">
         <!-- Images will be added here -->
-        <div class="gallery-placeholder">
-          <p>{{ t('placeholder') }}</p>
-        </div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
       </div>
     </section>
 
@@ -29,9 +31,10 @@
       <h2 id="brows-gallery">{{ t('categories.brows') }}</h2>
       <div class="gallery-grid" role="list">
         <!-- Images will be added here -->
-        <div class="gallery-placeholder">
-          <p>{{ t('placeholder') }}</p>
-        </div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
       </div>
     </section>
 
@@ -39,9 +42,10 @@
       <h2 id="treatments-gallery">{{ t('categories.treatments') }}</h2>
       <div class="gallery-grid" role="list">
         <!-- Images will be added here -->
-        <div class="gallery-placeholder">
-          <p>{{ t('placeholder') }}</p>
-        </div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
+        <div class="gallery-placeholder"></div>
       </div>
     </section>
   </main>
@@ -94,6 +98,57 @@ useSchemaOrg([
   },
 ])
 </script>
+
+<style scoped>
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-placeholder {
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+</style>
 
 <i18n lang="json">
 {
