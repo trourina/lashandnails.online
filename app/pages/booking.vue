@@ -14,7 +14,6 @@
           <p>{{ t('methods.whatsapp.description') }}</p>
           <Button
             :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('methods.whatsapp.message'))}`"
-            variant="whatsapp"
           >
             {{ t('methods.whatsapp.cta') }}
           </Button>
@@ -23,7 +22,7 @@
         <article class="booking-method">
           <h3>{{ t('methods.phone.title') }}</h3>
           <p>{{ t('methods.phone.description') }}</p>
-          <Button :href="`tel:${business.phone}`" variant="primary">
+          <Button :href="`tel:${business.phone}`">
             {{ t('methods.phone.cta') }}
           </Button>
         </article>
