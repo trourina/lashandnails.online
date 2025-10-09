@@ -1,8 +1,8 @@
 # Contact Page TODO
 
-Current SEO Score: **88/100**
+Current SEO Score: **94/100** ✅
 
-## ✅ Completed
+## ✅ Completed (2025-01-09)
 
 - [x] Semantic HTML structure (`<main>`, `<section>`, `<dl>`, `<address>`, `<time>`)
 - [x] Complete schema.org markup (ContactPage + LocalBusiness)
@@ -15,54 +15,25 @@ Current SEO Score: **88/100**
 - [x] Social media profiles (sameAs: Facebook, Instagram)
 - [x] Geographic targeting (areaServed: Santa Pola, Elche, Guardamar, Alicante)
 - [x] Hreflang tags via useLocaleHead()
-- [x] Google Maps iframe with verified business location
+- [x] Google Maps iframe with verified business location (Place ID)
 - [x] FAQ schema (4 questions in ES/EN/RU)
+- [x] Visible FAQ section component
 - [x] Aggregate rating (5.0 stars, 12 reviews)
 - [x] Holiday closure notice
+- [x] Breadcrumb schema (Home → Contact)
+- [x] Payment methods (Cash, Bizum)
+- [x] Correct geo coordinates (38.1942263, -0.5558291)
 
-## 🚀 Critical SEO Improvements (Quick Wins to 95+)
+## 🚀 Critical SEO Improvements (To Reach 98+)
 
-### 1. Add Breadcrumb Schema
-**Priority: HIGH | Impact: HIGH**
-- Add BreadcrumbList schema to contact page
-- Shows navigation path in Google search results
-- Improves click-through rate from SERPs
-
-```typescript
-{
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: business.url },
-    { '@type': 'ListItem', position: 2, name: 'Contact' }
-  ]
-}
-```
-
-### 2. Make FAQ Section Visible
-**Priority: HIGH | Impact: HIGH**
-- Currently FAQ only exists in schema.org markup
-- Create `<FAQSection />` component
-- Display 4 FAQ questions with semantic HTML (`<details>`, `<summary>`)
-- Improves user experience and time on page
-
-### 3. Add Payment Methods
-**Priority: MEDIUM | Impact: MEDIUM**
-- Add `paymentAccepted` to LocalBusiness schema
-- Options: Cash, Credit Card, Debit Card, etc.
-- Add to runtimeConfig in nuxt.config.ts
-
-```typescript
-paymentAccepted: ['Cash', 'Credit Card', 'Debit Card']
-```
-
-### 4. Add Real Logo/Images
+### 1. Add Real Logo/Images
 **Priority: HIGH | Impact: HIGH**
 - Replace `/logo.png` placeholder with actual logo
 - Add to `public/` directory
 - Update schema.org image/logo properties
 - Recommended size: 800x800px (1:1 ratio)
 
-### 5. Add Open Graph Images
+### 2. Add Open Graph Images
 **Priority: MEDIUM | Impact: MEDIUM**
 - Create/add OG image for social sharing (1200x630px)
 - Add to useSeoMeta:
@@ -73,7 +44,7 @@ paymentAccepted: ['Cash', 'Credit Card', 'Debit Card']
 
 ## 🎨 UX & Design Improvements
 
-### 6. Style the Contact Page
+### 3. Style the Contact Page
 **Priority: HIGH | Impact: HIGH**
 - Currently inherits black background from layout
 - Add proper spacing, colors, typography
@@ -81,21 +52,21 @@ paymentAccepted: ['Cash', 'Credit Card', 'Debit Card']
 - Make WhatsApp/Telegram buttons prominent (green/blue)
 - Add hover states and transitions
 
-### 7. Mobile Optimization
+### 4. Mobile Optimization
 **Priority: HIGH | Impact: HIGH**
 - Make phone/WhatsApp/Telegram tap-friendly
 - Larger touch targets (min 44x44px)
 - Stack components vertically on mobile
 - Test iframe responsiveness
 
-### 8. Business Hours "Open Now" Indicator
+### 5. Business Hours "Open Now" Indicator
 **Priority: MEDIUM | Impact: MEDIUM**
 - Add computed property to check if currently open
 - Display green "Open Now" or red "Closed" badge
 - Show next opening time if closed
 - Update dynamically (no page refresh needed)
 
-### 9. Call-to-Action Hierarchy
+### 6. Call-to-Action Hierarchy
 **Priority: MEDIUM | Impact: MEDIUM**
 - Primary CTA: WhatsApp (most conversions)
 - Secondary: Phone call
@@ -104,26 +75,26 @@ paymentAccepted: ['Cash', 'Credit Card', 'Debit Card']
 
 ## 📄 Content Enhancements
 
-### 10. Services Preview
+### 7. Services Preview
 **Priority: LOW | Impact: MEDIUM**
 - Add "Our Services" section
 - Link to /pricing or /services
 - 3-4 featured services with icons
 
-### 11. Show Real Reviews
+### 8. Show Real Reviews
 **Priority: MEDIUM | Impact: HIGH**
 - Display 2-3 actual Google reviews
 - Use Review schema markup
 - Adds social proof and trust
 - Can pull from Google My Business API
 
-### 12. Photo Gallery Teaser
+### 9. Photo Gallery Teaser
 **Priority: LOW | Impact: MEDIUM**
 - Show 3-6 work examples
 - Link to /gallery page
 - Visual proof of quality
 
-### 13. Expand FAQ
+### 10. Expand FAQ
 **Priority: LOW | Impact: LOW**
 - Add more questions:
   - "Do you accept walk-ins?"
@@ -133,24 +104,24 @@ paymentAccepted: ['Cash', 'Credit Card', 'Debit Card']
 
 ## 🔧 Technical Improvements
 
-### 14. Loading States
+### 11. Loading States
 **Priority: LOW | Impact: LOW**
 - Add skeleton loader for Google Maps iframe
 - Prevent layout shift during load
 
-### 15. Error Handling
+### 12. Error Handling
 **Priority: LOW | Impact: LOW**
 - Fallback if Google Maps fails to load
 - Show static map image as backup
 
-### 16. Accessibility Audit
+### 13. Accessibility Audit
 **Priority: MEDIUM | Impact: MEDIUM**
 - Test with screen reader
 - Ensure all interactive elements are keyboard accessible
 - Add ARIA labels where needed
 - Check color contrast ratios
 
-### 17. Performance
+### 14. Performance
 **Priority: MEDIUM | Impact: MEDIUM**
 - Optimize images (WebP format)
 - Add proper width/height to prevent CLS
@@ -159,7 +130,7 @@ paymentAccepted: ['Cash', 'Credit Card', 'Debit Card']
 
 ## 🌐 Site-Wide Improvements
 
-### 18. Apply Contact Page SEO to All Pages
+### 15. Apply Contact Page SEO to All Pages
 **Priority: HIGH | Impact: VERY HIGH**
 - Index page (/)
 - Services page (/services)
@@ -174,14 +145,14 @@ Each needs:
 - Proper h1 hierarchy
 - Schema.org markup
 
-### 19. Create Footer Component
+### 16. Create Footer Component
 **Priority: MEDIUM | Impact: MEDIUM**
 - Add to default.vue layout
 - Include contact info, hours, social links
 - Add "Organization" schema markup
 - Link to privacy policy, terms of service
 
-### 20. Add Structured Data Testing
+### 17. Add Structured Data Testing
 **Priority: MEDIUM | Impact: MEDIUM**
 - Test with Google Rich Results Test
 - Validate all schema.org markup
@@ -189,13 +160,13 @@ Each needs:
 
 ## 📊 Tracking & Analytics
 
-### 21. Add Google Analytics / Tag Manager
+### 18. Add Google Analytics / Tag Manager
 **Priority: MEDIUM | Impact: MEDIUM**
 - Track user behavior
 - Monitor conversion events (WhatsApp clicks, calls)
 - Set up goals
 
-### 22. Add Google Search Console
+### 19. Add Google Search Console
 **Priority: HIGH | Impact: HIGH**
 - Submit sitemap
 - Monitor indexing status
@@ -204,13 +175,13 @@ Each needs:
 
 ## 🎯 Conversion Optimization
 
-### 23. A/B Test CTA Placement
+### 20. A/B Test CTA Placement
 **Priority: LOW | Impact: MEDIUM**
 - Test different button colors
 - Test CTA text variations
 - Monitor which contact method gets most clicks
 
-### 24. Add WhatsApp Chat Widget
+### 21. Add WhatsApp Chat Widget
 **Priority: LOW | Impact: MEDIUM**
 - Floating WhatsApp button
 - Sticky on scroll
@@ -218,19 +189,19 @@ Each needs:
 
 ## 🔮 Future Enhancements
 
-### 25. Online Booking Integration
+### 22. Online Booking Integration
 **Priority: MEDIUM | Impact: VERY HIGH**
 - Integrate booking system (Calendly, Acuity, custom)
 - Reduce friction for appointments
 - 24/7 booking availability
 
-### 26. Multi-language Content Strategy
+### 23. Multi-language Content Strategy
 **Priority: LOW | Impact: MEDIUM**
 - Currently i18n infrastructure is ready
 - Ensure all new content is translated
 - Consider adding Polish (PL) for expat community
 
-### 27. Blog/News Section
+### 24. Blog/News Section
 **Priority: LOW | Impact: MEDIUM**
 - Beauty tips, trends, care instructions
 - SEO content marketing
@@ -240,20 +211,26 @@ Each needs:
 
 ## Priority Matrix
 
-| Task | Priority | Impact | Effort | Do Next? |
-|------|----------|--------|--------|----------|
-| Breadcrumb schema | HIGH | HIGH | LOW | ✅ YES |
-| Visible FAQ section | HIGH | HIGH | MEDIUM | ✅ YES |
-| Real logo/images | HIGH | HIGH | LOW | ✅ YES |
-| Payment methods | MEDIUM | MEDIUM | LOW | ✅ YES |
-| Style contact page | HIGH | HIGH | MEDIUM | 🔄 SOON |
-| OG images | MEDIUM | MEDIUM | LOW | 🔄 SOON |
-| Apply SEO to all pages | HIGH | VERY HIGH | HIGH | 🔄 AFTER |
+| Task | Priority | Impact | Effort | Status |
+|------|----------|--------|--------|--------|
+| Breadcrumb schema | HIGH | HIGH | LOW | ✅ DONE |
+| Visible FAQ section | HIGH | HIGH | MEDIUM | ✅ DONE |
+| Real logo/images | HIGH | HIGH | LOW | 📋 TODO |
+| Payment methods | MEDIUM | MEDIUM | LOW | ✅ DONE |
+| Google Maps with Place ID | HIGH | HIGH | MEDIUM | ✅ DONE |
+| Style contact page | HIGH | HIGH | MEDIUM | 📋 TODO |
+| OG images | MEDIUM | MEDIUM | LOW | 📋 TODO |
+| Apply SEO to all pages | HIGH | VERY HIGH | HIGH | 🔄 IN PROGRESS |
 
-**Recommended Next Steps:**
-1. Add breadcrumb schema (5 min)
-2. Add payment methods to config (2 min)
-3. Create visible FAQ component (15 min)
-4. Add real logo (5 min - once you have the file)
+**Latest Updates (2025-01-09):**
+- ✅ Added breadcrumb schema (Home → Contact)
+- ✅ Added visible FAQ section with 4 Q&As
+- ✅ Added payment methods (Cash, Bizum)
+- ✅ Fixed Google Maps with verified Place ID
+- ✅ Updated geo coordinates to exact location
+- ✅ Pricing page SEO completed
 
-**Expected SEO Score after quick wins: 95/100** 🎯
+**Current SEO Score: 94/100** 🎯
+
+**Next Priority:**
+- Homepage improvements (biggest impact)
