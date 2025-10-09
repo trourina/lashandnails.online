@@ -31,7 +31,7 @@
           <dt>{{ t('whatsapp.label') }}</dt>
           <dd>
             <a
-              href="https://wa.me/34604316778"
+              :href="`https://wa.me/34604316778?text=${encodeURIComponent(t('whatsapp.message'))}`"
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
@@ -44,7 +44,7 @@
           <dt>{{ t('telegram.label') }}</dt>
           <dd>
             <a
-              href="https://t.me/Irina_STS"
+              :href="`https://t.me/Irina_STS?text=${encodeURIComponent(t('telegram.message'))}`"
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
@@ -124,11 +124,13 @@ useSeoMeta({
     },
     "whatsapp": {
       "label": "WhatsApp",
-      "action": "Enviar mensaje por WhatsApp"
+      "action": "Enviar mensaje por WhatsApp",
+      "message": "Hola, quiero hacer una cita."
     },
     "telegram": {
       "label": "Telegram",
-      "action": "Enviar mensaje por Telegram"
+      "action": "Enviar mensaje por Telegram",
+      "message": "Hola, quiero hacer una cita."
     },
     "hours": {
       "heading": "Horario de atención",
@@ -157,11 +159,13 @@ useSeoMeta({
     },
     "whatsapp": {
       "label": "WhatsApp",
-      "action": "Send WhatsApp message"
+      "action": "Send WhatsApp message",
+      "message": "Hello, I would like to make an appointment."
     },
     "telegram": {
       "label": "Telegram",
-      "action": "Send Telegram message"
+      "action": "Send Telegram message",
+      "message": "Hello, I would like to make an appointment."
     },
     "hours": {
       "heading": "Opening hours",
@@ -190,11 +194,13 @@ useSeoMeta({
     },
     "whatsapp": {
       "label": "WhatsApp",
-      "action": "Отправить сообщение в WhatsApp"
+      "action": "Отправить сообщение в WhatsApp",
+      "message": "Здравствуйте, я хочу записаться на прием."
     },
     "telegram": {
       "label": "Telegram",
-      "action": "Отправить сообщение в Telegram"
+      "action": "Отправить сообщение в Telegram",
+      "message": "Здравствуйте, я хочу записаться на прием."
     },
     "hours": {
       "heading": "Часы работы",
