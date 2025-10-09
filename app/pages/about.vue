@@ -5,14 +5,42 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n({ useScope: 'local' })
+const { t, locale } = useI18n({ useScope: 'local' })
+const config = useRuntimeConfig()
+const business = config.public.business
 
 useSeoMeta({
   title: () => t('seoTitle'),
   description: () => t('seoDescription'),
   ogTitle: () => t('seoTitle'),
   ogDescription: () => t('seoDescription'),
+  ogType: 'website',
+  ogLocale: () => locale.value === 'es' ? 'es_ES' : locale.value === 'ru' ? 'ru_RU' : 'en_US',
 })
+
+useSchemaOrg([
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: business.url,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: () => t('title'),
+      },
+    ],
+  },
+  {
+    '@type': 'AboutPage',
+    name: () => t('seoTitle'),
+    description: () => t('seoDescription'),
+  },
+])
 </script>
 
 <i18n lang="json">
