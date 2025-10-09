@@ -4,21 +4,15 @@
       <h2>{{ t('heading') }}</h2>
       <p>{{ t('subtitle') }}</p>
       <div class="cta-buttons">
-        <a
+        <Button
           :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('message'))}`"
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-          class="cta-button primary"
+          variant="primary"
         >
           {{ t('cta') }}
-        </a>
-        <a
-          :href="`tel:${business.phone}`"
-          rel="nofollow"
-          class="cta-button secondary"
-        >
+        </Button>
+        <Button :href="`tel:${business.phone}`" variant="secondary">
           {{ t('phone') }}
-        </a>
+        </Button>
       </div>
     </div>
   </section>
@@ -61,32 +55,6 @@ p {
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 1rem 2.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  font-size: 1.125rem;
-}
-
-.cta-button.primary {
-  background: white;
-  color: #667eea;
-}
-
-.cta-button.secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 </style>
 
