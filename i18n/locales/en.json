@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "gallery": "Gallery",
+    "about": "About",
+    "contact": "Contact",
+    "booking": "Book Now"
+  },
+  "home": {
+    "title": "Beauty Salon in Santa Pola",
+    "subtitle": "Lash extensions, nail design, and beauty treatments",
+    "cta": "Book Appointment"
+  },
+  "services": {
+    "lashes": "Lash Extensions",
+    "nails": "Nail Design",
+    "beauty": "Beauty Treatments"
+  },
+  "contact": {
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Hours"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous"
+  }
+}
