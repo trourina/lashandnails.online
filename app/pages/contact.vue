@@ -109,11 +109,13 @@ useSeoMeta({
 })
 
 useSchemaOrg([
-  defineContactPage({
+  {
+    '@type': 'ContactPage',
     name: () => t('seoTitle'),
     description: () => t('seoDescription'),
-  }),
-  defineLocalBusiness({
+  },
+  {
+    '@type': 'LocalBusiness',
     name: 'Lash & Nails Santa Pola',
     description: 'Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments',
     image: 'https://lashandnails.online/logo.png',
@@ -148,7 +150,7 @@ useSchemaOrg([
         closes: '14:00',
       },
     ],
-  }),
+  },
 ])
 
 const googleMapsDirectionsUrl = computed(() => {
