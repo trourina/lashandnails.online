@@ -13,9 +13,9 @@
           <dt>{{ t('address.label') }}</dt>
           <dd>
             <address>
-              Carrer Major, 8<br>
-              03130 Santa Pola<br>
-              Alicante, {{ t('address.country') }}
+              {{ business.address.street }}<br>
+              {{ business.address.postalCode }} {{ business.address.city }}<br>
+              {{ business.address.region }}, {{ t('address.country') }}
             </address>
           </dd>
         </div>
@@ -23,7 +23,7 @@
         <div>
           <dt>{{ t('phone.label') }}</dt>
           <dd>
-            <a href="tel:+34604316778" rel="nofollow">+34 604 31 67 78</a>
+            <a :href="`tel:${business.phone}`" rel="nofollow">{{ business.phone }}</a>
           </dd>
         </div>
 
@@ -31,7 +31,7 @@
           <dt>{{ t('whatsapp.label') }}</dt>
           <dd>
             <a
-              :href="`https://wa.me/34604316778?text=${encodeURIComponent(t('whatsapp.message'))}`"
+              :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('whatsapp.message'))}`"
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
@@ -44,7 +44,7 @@
           <dt>{{ t('telegram.label') }}</dt>
           <dd>
             <a
-              :href="`https://t.me/Irina_STS?text=${encodeURIComponent(t('telegram.message'))}`"
+              :href="`https://t.me/${business.telegram}?text=${encodeURIComponent(t('telegram.message'))}`"
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
@@ -62,14 +62,16 @@
         <div>
           <dt>{{ t('hours.weekdays') }}</dt>
           <dd>
-            <time datetime="09:30">09:30</time> - <time datetime="20:00">20:00</time>
+            <time :datetime="business.hours.weekdays.opens">{{ business.hours.weekdays.opens }}</time> -
+            <time :datetime="business.hours.weekdays.closes">{{ business.hours.weekdays.closes }}</time>
           </dd>
         </div>
 
         <div>
           <dt>{{ t('hours.saturday') }}</dt>
           <dd>
-            <time datetime="10:00">10:00</time> - <time datetime="14:00">14:00</time>
+            <time :datetime="business.hours.saturday.opens">{{ business.hours.saturday.opens }}</time> -
+            <time :datetime="business.hours.saturday.closes">{{ business.hours.saturday.closes }}</time>
           </dd>
         </div>
 
@@ -98,6 +100,8 @@
 
 <script setup lang="ts">
 const { t, locale } = useI18n({ useScope: 'local' })
+const config = useRuntimeConfig()
+const business = config.public.business
 
 useSeoMeta({
   title: () => t('seoTitle'),
@@ -116,47 +120,46 @@ useSchemaOrg([
   },
   {
     '@type': 'LocalBusiness',
-    name: 'Lash & Nails Santa Pola',
-    description: 'Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments',
-    image: 'https://lashandnails.online/logo.png',
-    logo: 'https://lashandnails.online/logo.png',
-    url: 'https://lashandnails.online',
-    telephone: '+34604316778',
-    priceRange: '$$',
+    name: business.name,
+    description: business.description,
+    image: `${business.url}/logo.png`,
+    logo: `${business.url}/logo.png`,
+    url: business.url,
+    telephone: business.phone,
+    priceRange: business.priceRange,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Carrer Major, 8',
-      addressLocality: 'Santa Pola',
-      addressRegion: 'Alicante',
-      postalCode: '03130',
-      addressCountry: 'ES',
+      streetAddress: business.address.street,
+      addressLocality: business.address.city,
+      addressRegion: business.address.region,
+      postalCode: business.address.postalCode,
+      addressCountry: business.address.country,
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 38.1956992,
-      longitude: -0.5579955,
+      latitude: business.geo.latitude,
+      longitude: business.geo.longitude,
     },
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '09:30',
-        closes: '20:00',
+        opens: business.hours.weekdays.opens,
+        closes: business.hours.weekdays.closes,
       },
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Saturday'],
-        opens: '10:00',
-        closes: '14:00',
+        opens: business.hours.saturday.opens,
+        closes: business.hours.saturday.closes,
       },
     ],
   },
 ])
 
 const googleMapsDirectionsUrl = computed(() => {
-  const address = 'Carrer+Major,+8,+03130+Santa+Pola,+Alicante'
-  const lang = locale.value
-  return `https://www.google.com/maps/dir//${address}/@38.1942263,-0.5558291,17z?hl=${lang}`
+  const address = `${business.address.street.replace(/ /g, '+')},+${business.address.postalCode}+${business.address.city},+${business.address.region}`
+  return `https://www.google.com/maps/dir//${address}/@${business.geo.latitude},${business.geo.longitude},17z?hl=${locale.value}`
 })
 </script>
 
