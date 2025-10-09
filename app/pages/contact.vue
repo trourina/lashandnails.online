@@ -104,7 +104,52 @@ useSeoMeta({
   description: () => t('seoDescription'),
   ogTitle: () => t('seoTitle'),
   ogDescription: () => t('seoDescription'),
+  ogType: 'website',
+  ogLocale: () => locale.value === 'es' ? 'es_ES' : locale.value === 'ru' ? 'ru_RU' : 'en_US',
 })
+
+useSchemaOrg([
+  defineContactPage({
+    name: () => t('seoTitle'),
+    description: () => t('seoDescription'),
+  }),
+  defineLocalBusiness({
+    name: 'Lash & Nails Santa Pola',
+    description: 'Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments',
+    image: 'https://lashandnails.online/logo.png',
+    logo: 'https://lashandnails.online/logo.png',
+    url: 'https://lashandnails.online',
+    telephone: '+34604316778',
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Carrer Major, 8',
+      addressLocality: 'Santa Pola',
+      addressRegion: 'Alicante',
+      postalCode: '03130',
+      addressCountry: 'ES',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 38.1956992,
+      longitude: -0.5579955,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:30',
+        closes: '20:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday'],
+        opens: '10:00',
+        closes: '14:00',
+      },
+    ],
+  }),
+])
 
 const googleMapsDirectionsUrl = computed(() => {
   const address = 'Carrer+Major,+8,+03130+Santa+Pola,+Alicante'
