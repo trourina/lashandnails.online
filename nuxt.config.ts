@@ -85,13 +85,13 @@ export default defineNuxtConfig({
       openingHoursSpecification: [
         {
           dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: "10:00",
+          opens: "09:30",
           closes: "20:00",
         },
         {
           dayOfWeek: ["Saturday"],
           opens: "10:00",
-          closes: "18:00",
+          closes: "14:00",
         },
       ],
     },
