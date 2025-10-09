@@ -12,26 +12,20 @@
         <article class="booking-method">
           <h3>{{ t('methods.whatsapp.title') }}</h3>
           <p>{{ t('methods.whatsapp.description') }}</p>
-          <a
+          <Button
             :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('methods.whatsapp.message'))}`"
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            class="booking-cta whatsapp"
+            variant="whatsapp"
           >
             {{ t('methods.whatsapp.cta') }}
-          </a>
+          </Button>
         </article>
 
         <article class="booking-method">
           <h3>{{ t('methods.phone.title') }}</h3>
           <p>{{ t('methods.phone.description') }}</p>
-          <a
-            :href="`tel:${business.phone}`"
-            rel="nofollow"
-            class="booking-cta phone"
-          >
+          <Button :href="`tel:${business.phone}`" variant="primary">
             {{ t('methods.phone.cta') }}
-          </a>
+          </Button>
         </article>
       </div>
     </section>
@@ -145,29 +139,6 @@ h3 {
   color: #999;
 }
 
-.booking-cta {
-  display: inline-block;
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.booking-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.booking-cta.whatsapp {
-  background: #25D366;
-  color: white;
-}
-
-.booking-cta.phone {
-  background: #667eea;
-  color: white;
-}
 
 section {
   margin-bottom: 4rem;

@@ -3,24 +3,21 @@
     <h1>{{ t('heading') }}</h1>
     <p class="hero-subtitle">{{ t('subtitle') }}</p>
     <div class="hero-cta">
-      <a
+      <Button
         :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('ctaMessage'))}`"
-        target="_blank"
-        rel="noopener noreferrer nofollow"
-        class="cta-primary"
+        variant="whatsapp"
       >
         {{ t('ctaPrimary') }}
-      </a>
-      <NuxtLink :to="localePath('/pricing')" class="cta-secondary">
+      </Button>
+      <Button to="/pricing" variant="secondary">
         {{ t('ctaSecondary') }}
-      </NuxtLink>
+      </Button>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 const { t } = useI18n({ useScope: 'local' })
-const localePath = useLocalePath()
 const config = useRuntimeConfig()
 const business = config.public.business
 </script>
@@ -52,38 +49,6 @@ h1 {
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-.cta-primary,
-.cta-secondary {
-  display: inline-block;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  font-size: 1.125rem;
-}
-
-.cta-primary {
-  background: #25D366;
-  color: white;
-}
-
-.cta-secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid #667eea;
-}
-
-.cta-primary:hover,
-.cta-secondary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.cta-secondary:hover {
-  background: #667eea;
 }
 </style>
 
