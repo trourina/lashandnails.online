@@ -29,11 +29,10 @@
       <div class="cta-buttons">
         <Button
           :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('cta.message'))}`"
-          variant="primary"
         >
           {{ t('cta.button') }}
         </Button>
-        <Button to="/pricing" variant="secondary">
+        <Button to="/pricing">
           {{ t('cta.pricing') }}
         </Button>
       </div>

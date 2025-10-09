@@ -5,7 +5,7 @@
     :href="href"
     :target="href ? '_blank' : undefined"
     :rel="href ? 'noopener noreferrer nofollow' : undefined"
-    :class="['button', `button-${variant}`]"
+    class="button"
   >
     <slot />
   </component>
@@ -13,14 +13,11 @@
 
 <script setup lang="ts">
 interface Props {
-  variant?: 'primary' | 'secondary' | 'whatsapp'
   to?: string
   href?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  variant: 'primary',
-})
+const props = defineProps<Props>()
 
 const localePath = useLocalePath()
 
@@ -48,22 +45,8 @@ const to = computed(() => {
   border: none;
   cursor: pointer;
   font-family: inherit;
-}
-
-.button-primary {
   background: white;
   color: #667eea;
-}
-
-.button-secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-}
-
-.button-whatsapp {
-  background: #25D366;
-  color: white;
 }
 
 .button:hover {

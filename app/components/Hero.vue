@@ -1,25 +1,27 @@
 <template>
   <section class="hero">
-    <h1>{{ t('heading') }}</h1>
-    <p class="hero-subtitle">{{ t('subtitle') }}</p>
+    <h1>{{ t("heading") }}</h1>
+    <p class="hero-subtitle">{{ t("subtitle") }}</p>
     <div class="hero-cta">
       <Button
-        :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('ctaMessage'))}`"
-        variant="whatsapp"
+        :href="`https://wa.me/${business.phone.replace(
+          /\+/g,
+          ''
+        )}?text=${encodeURIComponent(t('ctaMessage'))}`"
       >
-        {{ t('ctaPrimary') }}
+        {{ t("ctaPrimary") }}
       </Button>
-      <Button to="/pricing" variant="secondary">
-        {{ t('ctaSecondary') }}
+      <Button to="/pricing">
+        {{ t("ctaSecondary") }}
       </Button>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n({ useScope: 'local' })
-const config = useRuntimeConfig()
-const business = config.public.business
+const { t } = useI18n({ useScope: "local" });
+const config = useRuntimeConfig();
+const business = config.public.business;
 </script>
 
 <style scoped>
@@ -31,7 +33,7 @@ const business = config.public.business
 }
 
 h1 {
-  font-family: 'Prata', serif;
+  font-family: "Prata", serif;
   font-size: clamp(2rem, 5vw, 3.5rem);
   margin-bottom: 1.5rem;
   line-height: 1.2;
