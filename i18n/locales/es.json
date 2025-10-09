@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "gallery": "Galería",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "booking": "Reservar"
+  },
+  "home": {
+    "title": "Salón de Belleza en Santa Pola",
+    "subtitle": "Extensiones de pestañas, diseño de uñas y tratamientos de belleza",
+    "cta": "Reservar Cita"
+  },
+  "services": {
+    "lashes": "Extensiones de Pestañas",
+    "nails": "Diseño de Uñas",
+    "beauty": "Tratamientos de Belleza"
+  },
+  "contact": {
+    "whatsapp": "WhatsApp",
+    "call": "Llamar",
+    "email": "Email",
+    "address": "Dirección",
+    "hours": "Horario"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "close": "Cerrar",
+    "next": "Siguiente",
+    "previous": "Anterior"
+  }
+}
