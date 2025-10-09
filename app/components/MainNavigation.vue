@@ -2,6 +2,7 @@
   <nav>
     <NuxtLink :to="localePath('/')">{{ t('home') }}</NuxtLink>
     <NuxtLink :to="localePath('/services')">{{ t('services') }}</NuxtLink>
+    <NuxtLink :to="localePath('/pricing')">{{ t('pricing') }}</NuxtLink>
     <NuxtLink :to="localePath('/gallery')">{{ t('gallery') }}</NuxtLink>
     <NuxtLink :to="localePath('/about')">{{ t('about') }}</NuxtLink>
     <NuxtLink :to="localePath('/contact')">{{ t('contact') }}</NuxtLink>
@@ -19,6 +20,7 @@ const { t } = useI18n({ useScope: 'local' })
   "es": {
     "home": "Inicio",
     "services": "Servicios",
+    "pricing": "Precios",
     "gallery": "Galería",
     "about": "Nosotros",
     "contact": "Contacto",
@@ -27,6 +29,7 @@ const { t } = useI18n({ useScope: 'local' })
   "en": {
     "home": "Home",
     "services": "Services",
+    "pricing": "Pricing",
     "gallery": "Gallery",
     "about": "About",
     "contact": "Contact",
@@ -35,6 +38,7 @@ const { t } = useI18n({ useScope: 'local' })
   "ru": {
     "home": "Главная",
     "services": "Услуги",
+    "pricing": "Цены",
     "gallery": "Галерея",
     "about": "О нас",
     "contact": "Контакты",
