@@ -1,150 +1,171 @@
 <template>
   <div class="pricing-page">
-    <Typo is="h1" variant="h1" class="text-center mb-12 font-display">
-      {{ t('title') }}
-    </Typo>
+    <header>
+      <Typo is="h1" variant="h1">
+        {{ t("title") }}
+      </Typo>
+    </header>
 
     <PricingTable :title="t('pricingTitle')" :categories="pricingData" />
   </div>
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n({ useScope: 'local' })
-const config = useRuntimeConfig()
-const business = config.public.business
+const { t, locale } = useI18n({ useScope: "local" });
+const config = useRuntimeConfig();
+const business = config.public.business;
 
 useSeoMeta({
-  title: () => t('seoTitle'),
-  description: () => t('seoDescription'),
-  ogTitle: () => t('seoTitle'),
-  ogDescription: () => t('seoDescription'),
-  ogType: 'website',
-  ogLocale: () => locale.value === 'es' ? 'es_ES' : locale.value === 'ru' ? 'ru_RU' : 'en_US',
-})
+  title: () => t("seoTitle"),
+  description: () => t("seoDescription"),
+  ogTitle: () => t("seoTitle"),
+  ogDescription: () => t("seoDescription"),
+  ogType: "website",
+  ogLocale: () =>
+    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+});
 
 useSchemaOrg([
   {
-    '@type': 'BreadcrumbList',
+    "@type": "BreadcrumbList",
     itemListElement: [
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 1,
-        name: 'Home',
+        name: "Home",
         item: business.url,
       },
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 2,
-        name: () => t('title'),
+        name: () => t("title"),
       },
     ],
   },
   {
-    '@type': 'WebPage',
-    name: () => t('seoTitle'),
-    description: () => t('seoDescription'),
+    "@type": "WebPage",
+    name: () => t("seoTitle"),
+    description: () => t("seoDescription"),
   },
-])
+]);
 
 const pricingData = computed(() => [
   {
-    name: t('categories.lashes.name'),
+    name: t("categories.lashes.name"),
     services: [
-      { name: t('categories.lashes.services.tinting'), price: '10€' },
+      { name: t("categories.lashes.services.tinting"), price: "10€" },
       {
-        name: t('categories.lashes.services.lamination'),
-        note: t('categories.lashes.services.laminationNote'),
-        price: '35€'
+        name: t("categories.lashes.services.lamination"),
+        note: t("categories.lashes.services.laminationNote"),
+        price: "35€",
       },
       {
-        name: t('categories.lashes.services.combo'),
-        note: t('categories.lashes.services.comboNote'),
-        price: '60€'
-      },
-    ],
-  },
-  {
-    name: t('categories.extensions.name'),
-    services: [
-      {
-        name: t('categories.extensions.services.classic'),
-        note: t('categories.extensions.services.classicNote'),
-        price: '35€'
-      },
-      { name: t('categories.extensions.services.2d'), price: '40€' },
-      { name: t('categories.extensions.services.3d'), price: '45€' },
-      {
-        name: t('categories.extensions.services.effects'),
-        note: t('categories.extensions.services.effectsNote'),
-        price: '+5€'
-      },
-      {
-        name: t('categories.extensions.services.removal'),
-        note: t('categories.extensions.services.removalNote'),
-        price: '+5€'
+        name: t("categories.lashes.services.combo"),
+        note: t("categories.lashes.services.comboNote"),
+        price: "60€",
       },
     ],
   },
   {
-    name: t('categories.brows.name'),
+    name: t("categories.extensions.name"),
     services: [
-      { name: t('categories.brows.services.tinting'), price: '10€' },
       {
-        name: t('categories.brows.services.tintingCorrection'),
-        note: t('categories.brows.services.tintingCorrectionNote'),
-        price: '15€'
+        name: t("categories.extensions.services.classic"),
+        note: t("categories.extensions.services.classicNote"),
+        price: "35€",
+      },
+      { name: t("categories.extensions.services.2d"), price: "40€" },
+      { name: t("categories.extensions.services.3d"), price: "45€" },
+      {
+        name: t("categories.extensions.services.effects"),
+        note: t("categories.extensions.services.effectsNote"),
+        price: "+5€",
       },
       {
-        name: t('categories.brows.services.lamination'),
-        note: t('categories.brows.services.laminationNote'),
-        price: '35€'
+        name: t("categories.extensions.services.removal"),
+        note: t("categories.extensions.services.removalNote"),
+        price: "+5€",
       },
     ],
   },
   {
-    name: t('categories.micropigmentation.name'),
+    name: t("categories.brows.name"),
     services: [
-      { name: t('categories.micropigmentation.services.brows'), price: '120€' },
-      { name: t('categories.micropigmentation.services.lips'), price: '120€' },
-      { name: t('categories.micropigmentation.services.interlash'), price: '100€' },
+      { name: t("categories.brows.services.tinting"), price: "10€" },
+      {
+        name: t("categories.brows.services.tintingCorrection"),
+        note: t("categories.brows.services.tintingCorrectionNote"),
+        price: "15€",
+      },
+      {
+        name: t("categories.brows.services.lamination"),
+        note: t("categories.brows.services.laminationNote"),
+        price: "35€",
+      },
     ],
   },
   {
-    name: t('categories.manicure.name'),
+    name: t("categories.micropigmentation.name"),
     services: [
-      { name: t('categories.manicure.services.hygienicWomen'), price: '20€' },
-      { name: t('categories.manicure.services.men'), price: '25€' },
-      { name: t('categories.manicure.services.withCoating'), price: '35€' },
-      { name: t('categories.manicure.services.french'), price: '45€' },
-      { name: t('categories.manicure.services.brokenNailRepair'), price: '2€' },
-      { name: t('categories.manicure.services.gelExtension'), price: '60€' },
-      { name: t('categories.manicure.services.acrylicRemoval'), price: '5€' },
-      { name: t('categories.manicure.services.spaHandCare'), price: '15€' },
+      { name: t("categories.micropigmentation.services.brows"), price: "120€" },
+      { name: t("categories.micropigmentation.services.lips"), price: "120€" },
+      {
+        name: t("categories.micropigmentation.services.interlash"),
+        price: "100€",
+      },
     ],
   },
   {
-    name: t('categories.pedicure.name'),
+    name: t("categories.manicure.name"),
     services: [
-      { name: t('categories.pedicure.services.hygienicWomen'), price: '45€' },
-      { name: t('categories.pedicure.services.withCoating'), price: '55€' },
-      { name: t('categories.pedicure.services.men'), price: '50€' },
-      { name: t('categories.pedicure.services.spaFootCare'), price: '20€' },
+      { name: t("categories.manicure.services.hygienicWomen"), price: "20€" },
+      { name: t("categories.manicure.services.men"), price: "25€" },
+      { name: t("categories.manicure.services.withCoating"), price: "35€" },
+      { name: t("categories.manicure.services.french"), price: "45€" },
+      { name: t("categories.manicure.services.brokenNailRepair"), price: "2€" },
+      { name: t("categories.manicure.services.gelExtension"), price: "60€" },
+      { name: t("categories.manicure.services.acrylicRemoval"), price: "5€" },
+      { name: t("categories.manicure.services.spaHandCare"), price: "15€" },
     ],
   },
   {
-    name: t('categories.podology.name'),
+    name: t("categories.pedicure.name"),
     services: [
-      { name: t('categories.podology.services.ingrownNail'), price: t('priceFrom', { price: '10€' }) },
-      { name: t('categories.podology.services.hyperkeratosis'), price: t('priceFrom', { price: '10€' }) },
-      { name: t('categories.podology.services.onychomycosis'), price: t('priceFrom', { price: '10€' }) },
-      { name: t('categories.podology.services.calluses'), price: t('priceFrom', { price: '5€' }) },
-      { name: t('categories.podology.services.callus'), price: '10€' },
-      { name: t('categories.podology.services.nailProtection'), price: t('priceFrom', { price: '5€' }) },
-      { name: t('categories.podology.services.crackTreatment'), price: '10€' },
-      { name: t('categories.podology.services.titaniumThread'), price: '35€' },
+      { name: t("categories.pedicure.services.hygienicWomen"), price: "45€" },
+      { name: t("categories.pedicure.services.withCoating"), price: "55€" },
+      { name: t("categories.pedicure.services.men"), price: "50€" },
+      { name: t("categories.pedicure.services.spaFootCare"), price: "20€" },
     ],
   },
-])
+  {
+    name: t("categories.podology.name"),
+    services: [
+      {
+        name: t("categories.podology.services.ingrownNail"),
+        price: t("priceFrom", { price: "10€" }),
+      },
+      {
+        name: t("categories.podology.services.hyperkeratosis"),
+        price: t("priceFrom", { price: "10€" }),
+      },
+      {
+        name: t("categories.podology.services.onychomycosis"),
+        price: t("priceFrom", { price: "10€" }),
+      },
+      {
+        name: t("categories.podology.services.calluses"),
+        price: t("priceFrom", { price: "5€" }),
+      },
+      { name: t("categories.podology.services.callus"), price: "10€" },
+      {
+        name: t("categories.podology.services.nailProtection"),
+        price: t("priceFrom", { price: "5€" }),
+      },
+      { name: t("categories.podology.services.crackTreatment"), price: "10€" },
+      { name: t("categories.podology.services.titaniumThread"), price: "35€" },
+    ],
+  },
+]);
 </script>
 
 <i18n lang="json">

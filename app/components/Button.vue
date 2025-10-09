@@ -1,7 +1,7 @@
 <template>
   <component
     :is="component"
-    :to="to"
+    :to="props.to"
     :href="href"
     :target="href ? '_blank' : undefined"
     :rel="href ? 'noopener noreferrer nofollow' : undefined"
@@ -13,24 +13,17 @@
 
 <script setup lang="ts">
 interface Props {
-  to?: string
-  href?: string
+  to?: string;
+  href?: string;
 }
 
-const props = defineProps<Props>()
-
-const localePath = useLocalePath()
+const props = defineProps<Props>();
 
 const component = computed(() => {
-  if (props.to) return resolveComponent('NuxtLink')
-  if (props.href) return 'a'
-  return 'button'
-})
-
-const to = computed(() => {
-  if (!props.to) return undefined
-  return localePath(props.to)
-})
+  if (props.to) return resolveComponent("NuxtLink");
+  if (props.href) return "a";
+  return "button";
+});
 </script>
 
 <style scoped>
@@ -45,8 +38,8 @@ const to = computed(() => {
   border: none;
   cursor: pointer;
   font-family: inherit;
-  background: white;
-  color: #667eea;
+  background: black;
+  color: white;
 }
 
 .button:hover {
