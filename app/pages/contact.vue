@@ -62,14 +62,14 @@
         <div>
           <dt>{{ t('hours.weekdays') }}</dt>
           <dd>
-            <time datetime="10:00">10:00</time> - <time datetime="20:00">20:00</time>
+            <time datetime="09:30">09:30</time> - <time datetime="20:00">20:00</time>
           </dd>
         </div>
 
         <div>
           <dt>{{ t('hours.saturday') }}</dt>
           <dd>
-            <time datetime="10:00">10:00</time> - <time datetime="18:00">18:00</time>
+            <time datetime="10:00">10:00</time> - <time datetime="14:00">14:00</time>
           </dd>
         </div>
 
