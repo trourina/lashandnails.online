@@ -31,6 +31,12 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
   ],
 
+  fonts: {
+    families: [
+      { name: 'Prata', provider: 'google' }
+    ]
+  },
+
   i18n: {
     locales: [
       { code: "en", name: "English" },
