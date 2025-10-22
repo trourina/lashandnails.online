@@ -1,64 +1,86 @@
 <template>
-  <section>
-    <header>
-      <Typo is="h1" variant="h1">{{ t("title") }}</Typo>
-      <p class="page-subtitle">{{ t("subtitle") }}</p>
-    </header>
+  <div>
+    <Hero :title="t('title')" :subtitle="t('subtitle')" />
 
-    <section aria-labelledby="story">
-      <h2 id="story">{{ t("story.heading") }}</h2>
-      <div class="story-content">
-        <p v-for="(paragraph, index) in storyParagraphs" :key="index">
-          {{ paragraph }}
-        </p>
+    <!-- Our Story Section -->
+    <section class="container mx-auto px-4 py-16">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
+          {{ t("story.heading") }}
+        </h2>
+        <div class="space-y-6 text-gray-600 leading-relaxed text-lg">
+          <p v-for="(paragraph, index) in storyParagraphs" :key="index">
+            {{ paragraph }}
+          </p>
+        </div>
       </div>
     </section>
 
-    <section aria-labelledby="philosophy">
-      <h2 id="philosophy">{{ t("philosophy.heading") }}</h2>
-      <p class="philosophy-text">{{ t("philosophy.description") }}</p>
+    <!-- Philosophy Section -->
+    <section class="bg-gray-50 py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            {{ t("philosophy.heading") }}
+          </h2>
+          <p class="text-xl text-gray-600 leading-relaxed italic">
+            {{ t("philosophy.description") }}
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section aria-labelledby="expertise">
-      <h2 id="expertise">{{ t("expertise.heading") }}</h2>
-      <div class="expertise-grid">
+    <!-- Expertise Section -->
+    <section class="container mx-auto px-4 py-16">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+        {{ t("expertise.heading") }}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
         <article
           v-for="(item, index) in expertiseItems"
           :key="index"
-          class="expertise-card"
+          class="bg-white border border-gray-200 rounded-3xl p-8 text-center hover:shadow-lg transition-shadow"
         >
-          <div class="expertise-icon">{{ item.icon }}</div>
-          <h3>{{ item.title }}</h3>
-          <p>{{ item.description }}</p>
+          <div class="text-5xl mb-4">{{ item.icon }}</div>
+          <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">
+            {{ item.title }}
+          </h3>
+          <p class="text-gray-600 leading-relaxed">{{ item.description }}</p>
         </article>
       </div>
     </section>
 
-    <section aria-labelledby="values">
-      <h2 id="values">{{ t("values.heading") }}</h2>
-      <ul class="values-list">
-        <li v-for="(value, index) in values" :key="index">
-          <strong>{{ value.title }}</strong>
-          <p>{{ value.description }}</p>
-        </li>
-      </ul>
-    </section>
-
-    <section class="cta-section">
-      <h2>{{ t("cta.heading") }}</h2>
-      <p>{{ t("cta.subtitle") }}</p>
-      <div class="cta-buttons">
-        <Button
-          :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('cta.message'))}`"
-        >
-          {{ t("cta.button") }}
-        </Button>
-        <Button to="/services">
-          {{ t("cta.services") }}
-        </Button>
+    <!-- Values Section -->
+    <section class="bg-gray-50 py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+          {{ t("values.heading") }}
+        </h2>
+        <div class="max-w-4xl mx-auto space-y-6">
+          <div
+            v-for="(value, index) in values"
+            :key="index"
+            class="bg-white rounded-3xl p-8 border border-gray-200"
+          >
+            <h3 class="font-display text-xl font-semibold text-[#6B5B52] mb-3">
+              {{ value.title }}
+            </h3>
+            <p class="text-gray-600 leading-relaxed">{{ value.description }}</p>
+          </div>
+        </div>
       </div>
     </section>
-  </section>
+
+    <!-- CTA Section -->
+    <CTASection
+      :heading="t('cta.heading')"
+      :subtitle="t('cta.subtitle')"
+      :message="t('cta.message')"
+      :primary-button="t('cta.button')"
+      :secondary-button="t('cta.services')"
+      secondary-button-link="/services"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -143,140 +165,6 @@ useSchemaOrg([
   },
 ]);
 </script>
-
-<style scoped>
-h1,
-h2,
-h3 {
-  font-family: "Prata", serif;
-}
-
-.page-subtitle {
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
-  color: #999;
-  margin-bottom: 3rem;
-  max-width: 800px;
-}
-
-section {
-  margin-bottom: 4rem;
-}
-
-h2 {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-bottom: 1.5rem;
-}
-
-h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-}
-
-.story-content p {
-  color: #ccc;
-  line-height: 1.8;
-  font-size: 1.125rem;
-  max-width: 800px;
-  margin-bottom: 1.5rem;
-}
-
-.philosophy-text {
-  color: #ccc;
-  line-height: 1.8;
-  font-size: 1.125rem;
-  max-width: 800px;
-  font-style: italic;
-}
-
-.expertise-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.expertise-card {
-  padding: 2rem;
-  border: 1px solid #333;
-  border-radius: 12px;
-  transition: transform 0.2s, border-color 0.2s;
-  text-align: center;
-}
-
-.expertise-card:hover {
-  transform: translateY(-4px);
-  border-color: #667eea;
-}
-
-.expertise-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.expertise-card p {
-  color: #999;
-  line-height: 1.6;
-}
-
-.values-list {
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0 0 0;
-  max-width: 800px;
-}
-
-.values-list li {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid #333;
-}
-
-.values-list li:last-child {
-  border-bottom: none;
-}
-
-.values-list strong {
-  display: block;
-  color: #667eea;
-  margin-bottom: 0.5rem;
-  font-size: 1.125rem;
-}
-
-.values-list p {
-  color: #999;
-  margin: 0;
-  line-height: 1.6;
-}
-
-.cta-section {
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  text-align: center;
-  margin-top: 4rem;
-}
-
-.cta-section h2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  margin-bottom: 1rem;
-  color: white;
-}
-
-.cta-section p {
-  font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-</style>
 
 <i18n lang="json">
 {
