@@ -1,6 +1,6 @@
 <template>
   <section>
-    <Hero show-cta />
+    <HeroGrid />
     <FeaturedServices />
     <ReviewsSection />
     <FAQSection />
