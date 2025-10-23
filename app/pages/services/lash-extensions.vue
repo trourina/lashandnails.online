@@ -237,16 +237,20 @@ useServicePageSchema(
           "description": "Extensiones de pestañas de aspecto natural para elegancia diaria"
         },
         "1": {
-          "name": "Extensiones de Pestañas Volumen",
-          "description": "Pestañas más llenas y dramáticas con técnica de volumen"
+          "name": "Extensiones 2D",
+          "description": "Extensiones de volumen para un look más lleno"
         },
         "2": {
-          "name": "Extensiones de Pestañas Híbridas",
-          "description": "Equilibrio perfecto entre clásico y volumen"
+          "name": "Extensiones 3D",
+          "description": "Máximo volumen y efecto dramático"
         },
         "3": {
-          "name": "Relleno de Pestañas (2-3 semanas)",
-          "description": "Relleno de mantenimiento para extensiones existentes"
+          "name": "Tinte de Pestañas",
+          "description": "Realza tus pestañas naturales con tinte"
+        },
+        "4": {
+          "name": "Laminación de Pestañas",
+          "description": "Laminación con tinte para pestañas levantadas"
         }
       }
     },
@@ -334,20 +338,24 @@ useServicePageSchema(
       "heading": "Pricing & Services",
       "offers": {
         "0": {
-          "name": "Classic Lash Extensions",
+          "name": "Classic Extensions",
           "description": "Natural-looking lash extensions for everyday elegance"
         },
         "1": {
-          "name": "Volume Lash Extensions",
-          "description": "Fuller, dramatic lashes with volume technique"
+          "name": "2D Extensions",
+          "description": "Volume lash extensions for fuller look"
         },
         "2": {
-          "name": "Hybrid Lash Extensions",
-          "description": "Perfect balance between classic and volume"
+          "name": "3D Extensions",
+          "description": "Maximum volume and dramatic effect"
         },
         "3": {
-          "name": "Lash Fill (2-3 weeks)",
-          "description": "Maintenance fill for existing lash extensions"
+          "name": "Lash Tinting",
+          "description": "Enhance your natural lashes with tinting"
+        },
+        "4": {
+          "name": "Lash Lamination",
+          "description": "Lamination with tinting for lifted lashes"
         }
       }
     },
@@ -435,20 +443,24 @@ useServicePageSchema(
       "heading": "Цены и услуги",
       "offers": {
         "0": {
-          "name": "Классическое наращивание ресниц",
+          "name": "Классическое наращивание",
           "description": "Естественные ресницы для повседневной элегантности"
         },
         "1": {
-          "name": "Объемное наращивание ресниц",
-          "description": "Более полные, драматичные ресницы с объемной техникой"
+          "name": "2D наращивание",
+          "description": "Объемное наращивание ресниц для более полного вида"
         },
         "2": {
-          "name": "Гибридное наращивание ресниц",
-          "description": "Идеальный баланс между классикой и объемом"
+          "name": "3D наращивание",
+          "description": "Максимальный объем и драматический эффект"
         },
         "3": {
-          "name": "Коррекция ресниц (2-3 недели)",
-          "description": "Поддерживающая коррекция существующих наращенных ресниц"
+          "name": "Окрашивание ресниц",
+          "description": "Подчеркните свои натуральные ресницы окрашиванием"
+        },
+        "4": {
+          "name": "Ламинирование ресниц",
+          "description": "Ламинирование с окрашиванием для поднятых ресниц"
         }
       }
     },

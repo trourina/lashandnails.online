@@ -5,7 +5,7 @@
     <!-- Services Grid -->
     <section aria-labelledby="services-list" class="py-16 px-4">
       <div class="container mx-auto max-w-6xl">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <article
             v-for="service in services"
             :key="service.slug"
@@ -124,25 +124,36 @@ const services = computed(() => [
     ],
   },
   {
-    slug: "nail-design",
-    title: t("services.nails.title"),
-    description: t("services.nails.description"),
+    slug: "manicure",
+    title: t("services.manicure.title"),
+    description: t("services.manicure.description"),
     features: [
-      t("services.nails.features.0"),
-      t("services.nails.features.1"),
-      t("services.nails.features.2"),
-      t("services.nails.features.3"),
+      t("services.manicure.features.0"),
+      t("services.manicure.features.1"),
+      t("services.manicure.features.2"),
+      t("services.manicure.features.3"),
     ],
   },
   {
-    slug: "beauty-treatments",
-    title: t("services.treatments.title"),
-    description: t("services.treatments.description"),
+    slug: "pedicure",
+    title: t("services.pedicure.title"),
+    description: t("services.pedicure.description"),
     features: [
-      t("services.treatments.features.0"),
-      t("services.treatments.features.1"),
-      t("services.treatments.features.2"),
-      t("services.treatments.features.3"),
+      t("services.pedicure.features.0"),
+      t("services.pedicure.features.1"),
+      t("services.pedicure.features.2"),
+      t("services.pedicure.features.3"),
+    ],
+  },
+  {
+    slug: "brows",
+    title: t("services.brows.title"),
+    description: t("services.brows.description"),
+    features: [
+      t("services.brows.features.0"),
+      t("services.brows.features.1"),
+      t("services.brows.features.2"),
+      t("services.brows.features.3"),
     ],
   },
 ]);
@@ -209,24 +220,34 @@ useSchemaOrg([
           "Duración 3-4 semanas"
         ]
       },
-      "nails": {
-        "title": "Diseño de Uñas",
-        "description": "Manicura y pedicura profesional con diseños personalizados. Tus uñas perfectas para cualquier ocasión.",
+      "manicure": {
+        "title": "Manicura",
+        "description": "Servicios profesionales de manicura con productos premium para uñas bellas y saludables.",
         "features": [
-          "Manicura y pedicura",
-          "Nail art personalizado",
-          "Gel y acrílico",
-          "Cuidado completo de uñas"
+          "Manicura higiénica y con gel",
+          "Diseño único personalizado - flores, geometría, brillos y más",
+          "Fortalecimiento y extensión de uñas con gel",
+          "Cosméticos alemanes Baehr e instrumentos esterilizados"
         ]
       },
-      "treatments": {
-        "title": "Tratamientos de Belleza",
-        "description": "Cuidados faciales y corporales profesionales para realzar tu belleza natural.",
+      "pedicure": {
+        "title": "Pedicura",
+        "description": "Servicios profesionales de pedicura para pies saludables y hermosos.",
         "features": [
-          "Diseño y cuidado de cejas",
-          "Micropigmentación",
-          "Tratamientos faciales",
-          "Depilación profesional"
+          "Tratamiento completo de dedos y planta del pie",
+          "Pedicura con esmaltado gel",
+          "Cosméticos alemanes Pedibaehr",
+          "Todos los instrumentos esterilizados"
+        ]
+      },
+      "brows": {
+        "title": "Cejas",
+        "description": "Diseño profesional de cejas, tinte y laminación para cejas perfectas.",
+        "features": [
+          "Tinte de cejas",
+          "Tinte + corrección",
+          "Laminación de cejas",
+          "Micropigmentación"
         ]
       }
     },
@@ -259,24 +280,34 @@ useSchemaOrg([
           "Lasts 3-4 weeks"
         ]
       },
-      "nails": {
-        "title": "Nail Design",
-        "description": "Professional manicure and pedicure with custom designs. Perfect nails for any occasion.",
+      "manicure": {
+        "title": "Manicure",
+        "description": "Professional manicure services with premium products for beautiful, healthy nails.",
         "features": [
-          "Manicure and pedicure",
-          "Custom nail art",
-          "Gel and acrylic",
-          "Complete nail care"
+          "Hygienic and gel manicure",
+          "Unique custom design - flowers, geometry, glitter and more",
+          "Gel nail strengthening and extension",
+          "German Baehr cosmetics and sterilized instruments"
         ]
       },
-      "treatments": {
-        "title": "Beauty Treatments",
-        "description": "Professional facial and body care to enhance your natural beauty.",
+      "pedicure": {
+        "title": "Pedicure",
+        "description": "Professional pedicure services for healthy, beautiful feet.",
         "features": [
-          "Brow design and care",
-          "Micropigmentation",
-          "Facial treatments",
-          "Professional waxing"
+          "Complete toe and foot sole treatment",
+          "Pedicure with gel polish",
+          "German Pedibaehr cosmetics",
+          "All instruments sterilized"
+        ]
+      },
+      "brows": {
+        "title": "Brows",
+        "description": "Professional brow design, tinting and lamination for perfect brows.",
+        "features": [
+          "Brow tinting",
+          "Tinting + correction",
+          "Brow lamination",
+          "Micropigmentation"
         ]
       }
     },
@@ -309,24 +340,34 @@ useSchemaOrg([
           "Держится 3-4 недели"
         ]
       },
-      "nails": {
-        "title": "Дизайн ногтей",
-        "description": "Профессиональный маникюр и педикюр с индивидуальным дизайном. Идеальные ногти для любого случая.",
+      "manicure": {
+        "title": "Маникюр",
+        "description": "Профессиональные услуги маникюра с премиальными продуктами для красивых и здоровых ногтей.",
         "features": [
-          "Маникюр и педикюр",
-          "Индивидуальный нейл-арт",
-          "Гель и акрил",
-          "Полный уход за ногтями"
+          "Гигиенический и гель-маникюр",
+          "Уникальный персональный дизайн - цветы, геометрия, блестки и многое другое",
+          "Укрепление и наращивание ногтей гелем",
+          "Немецкая косметика Baehr и стерилизованные инструменты"
         ]
       },
-      "treatments": {
-        "title": "Косметические процедуры",
-        "description": "Профессиональный уход за лицом и телом для подчеркивания вашей естественной красоты.",
+      "pedicure": {
+        "title": "Педикюр",
+        "description": "Профессиональные услуги педикюра для здоровых и красивых ног.",
         "features": [
-          "Дизайн и уход за бровями",
-          "Микропигментация",
-          "Процедуры для лица",
-          "Профессиональная депиляция"
+          "Полная обработка пальцев и стопы",
+          "Педикюр с гель-лаком",
+          "Немецкая косметика Pedibaehr",
+          "Все инструменты стерилизованы"
+        ]
+      },
+      "brows": {
+        "title": "Брови",
+        "description": "Профессиональный дизайн бровей, окрашивание и ламинирование для идеальных бровей.",
+        "features": [
+          "Окрашивание бровей",
+          "Окрашивание + коррекция",
+          "Ламинирование бровей",
+          "Микропигментирование"
         ]
       }
     },

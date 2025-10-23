@@ -19,20 +19,20 @@ const gridImages = [
   {
     id: 2,
     image: "/images/placeholder-service.jpg",
-    alt: "Nail Design",
-    category: "nails",
+    alt: "Manicure",
+    category: "manicure",
   },
   {
     id: 3,
     image: "/images/placeholder-service.jpg",
-    alt: "Brow Treatments",
-    category: "brows",
+    alt: "Pedicure",
+    category: "pedicure",
   },
   {
     id: 4,
     image: "/images/placeholder-service.jpg",
-    alt: "Beauty Treatments",
-    category: "treatments",
+    alt: "Brows",
+    category: "brows",
   },
 ];
 
@@ -303,9 +303,9 @@ onMounted(() => {
     "ctaMessage": "Hola, me gustaría reservar una cita.",
     "categories": {
       "lashes": "Pestañas",
-      "nails": "Uñas",
-      "brows": "Cejas",
-      "treatments": "Tratamientos"
+      "manicure": "Manicura",
+      "pedicure": "Pedicura",
+      "brows": "Cejas"
     }
   },
   "en": {
@@ -316,9 +316,9 @@ onMounted(() => {
     "ctaMessage": "Hello, I would like to book an appointment.",
     "categories": {
       "lashes": "Lashes",
-      "nails": "Nails",
-      "brows": "Brows",
-      "treatments": "Treatments"
+      "manicure": "Manicure",
+      "pedicure": "Pedicure",
+      "brows": "Brows"
     }
   },
   "ru": {
@@ -329,9 +329,9 @@ onMounted(() => {
     "ctaMessage": "Здравствуйте, я хочу записаться на прием.",
     "categories": {
       "lashes": "Ресницы",
-      "nails": "Ногти",
-      "brows": "Брови",
-      "treatments": "Процедуры"
+      "manicure": "Маникюр",
+      "pedicure": "Педикюр",
+      "brows": "Брови"
     }
   }
 }
