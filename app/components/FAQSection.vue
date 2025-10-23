@@ -1,13 +1,44 @@
 <template>
-  <section aria-labelledby="faq-heading">
-    <h2 id="faq-heading">{{ t('heading') }}</h2>
+  <section aria-labelledby="faq-heading" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+        <!-- Left Side - Heading and Description -->
+        <div class="lg:pr-8">
+          <h2 id="faq-heading" class="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            {{ t('heading') }}
+          </h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            {{ t('description') }}
+          </p>
+        </div>
 
-    <dl class="space-y-4">
-      <div v-for="(faq, index) in faqs" :key="index" class="border-b border-gray-700 pb-4">
-        <dt class="font-semibold text-lg mb-2">{{ faq.question }}</dt>
-        <dd class="text-gray-300">{{ faq.answer }}</dd>
+        <!-- Right Side - FAQ Items -->
+        <div class="space-y-4">
+          <details
+            v-for="(faq, index) in faqs"
+            :key="index"
+            class="group bg-[#F5F1EC] rounded-3xl overflow-hidden transition-all"
+          >
+            <summary class="flex items-center gap-4 cursor-pointer px-6 py-5 font-display text-gray-800 text-lg list-none">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#6B5B52] flex items-center justify-center">
+                <svg
+                  class="w-4 h-4 text-white transition-transform group-open:rotate-45"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+              </div>
+              <span class="flex-1">{{ faq.question }}</span>
+            </summary>
+            <div class="px-6 pb-6 pl-[4.5rem] text-gray-600 leading-relaxed">
+              {{ faq.answer }}
+            </div>
+          </details>
+        </div>
       </div>
-    </dl>
+    </div>
   </section>
 </template>
 
@@ -37,7 +68,8 @@ const faqs = computed(() => [
 <i18n lang="json">
 {
   "es": {
-    "heading": "Preguntas frecuentes",
+    "heading": "Preguntas Frecuentes",
+    "description": "¿Tienes dudas? Aquí encontrarás respuestas a las preguntas más comunes sobre nuestros servicios, ubicación y cómo reservar tu cita.",
     "q1": {
       "question": "¿Dónde está ubicado Lash & Nails Santa Pola?",
       "answer": "Estamos ubicados en Carrer Major, 8, 03130 Santa Pola, Alicante, España."
@@ -57,6 +89,7 @@ const faqs = computed(() => [
   },
   "en": {
     "heading": "Frequently Asked Questions",
+    "description": "Have questions? Here you'll find answers to the most common questions about our services, location, and how to book your appointment.",
     "q1": {
       "question": "Where is Lash & Nails Santa Pola located?",
       "answer": "We are located at Carrer Major, 8, 03130 Santa Pola, Alicante, Spain."
@@ -75,7 +108,8 @@ const faqs = computed(() => [
     }
   },
   "ru": {
-    "heading": "Часто задаваемые вопросы",
+    "heading": "Часто Задаваемые Вопросы",
+    "description": "Есть вопросы? Здесь вы найдете ответы на самые распространенные вопросы о наших услугах, местоположении и как записаться на прием.",
     "q1": {
       "question": "Где находится Lash & Nails Santa Pola?",
       "answer": "Мы находимся по адресу Carrer Major, 8, 03130 Santa Pola, Alicante, Испания."

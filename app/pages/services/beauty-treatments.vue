@@ -1,184 +1,226 @@
 <template>
-  <main>
-    <header>
-      <h1>{{ t('title') }}</h1>
-      <p class="page-subtitle">{{ t('subtitle') }}</p>
-    </header>
+  <div class="min-h-screen bg-gray-50">
+    <Hero :title="t('title')" :subtitle="t('subtitle')" />
 
-    <section aria-labelledby="overview">
-      <h2 id="overview">{{ t('overview.heading') }}</h2>
-      <p class="section-description">{{ t('overview.description') }}</p>
-    </section>
+    <div class="container mx-auto max-w-5xl px-4 py-12 space-y-16">
+      <Breadcrumb :items="breadcrumbs" />
+      <!-- Overview -->
+      <section aria-labelledby="overview" class="bg-white rounded-2xl p-8 shadow-sm">
+        <h2 id="overview" class="font-display text-3xl font-bold text-gray-900 mb-4">
+          {{ t("overview.heading") }}
+        </h2>
+        <p class="text-gray-700 text-lg leading-relaxed">
+          {{ t("overview.description") }}
+        </p>
+      </section>
 
-    <section aria-labelledby="treatments">
-      <h2 id="treatments">{{ t('treatments.heading') }}</h2>
-      <div class="treatment-grid">
-        <article v-for="(treatment, index) in treatmentList" :key="index" class="treatment-card">
-          <h3>{{ treatment.name }}</h3>
-          <p>{{ treatment.description }}</p>
-        </article>
-      </div>
-    </section>
+      <!-- Pricing Section -->
+      <section aria-labelledby="pricing" class="bg-white rounded-2xl p-8 shadow-sm">
+        <h2 id="pricing" class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
+          {{ t("pricing.heading") }}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            v-for="(offer, index) in translatedOffers"
+            :key="index"
+            class="border-2 border-gray-200 rounded-xl p-6 hover:border-[#6B5B52] hover:shadow-md transition-all"
+          >
+            <h3 class="font-display text-xl font-semibold text-gray-900 mb-2">
+              {{ offer.name }}
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              {{ offer.description }}
+            </p>
+            <div class="flex items-baseline">
+              <span class="text-3xl font-bold text-[#6B5B52]">€{{ offer.price }}</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <section aria-labelledby="benefits">
-      <h2 id="benefits">{{ t('benefits.heading') }}</h2>
-      <ul class="benefits-list">
-        <li v-for="(benefit, index) in benefits" :key="index">
-          {{ benefit }}
-        </li>
-      </ul>
-    </section>
+      <!-- Treatments -->
+      <section aria-labelledby="treatments">
+        <h2 id="treatments" class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
+          {{ t("treatments.heading") }}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <article
+            v-for="(treatment, index) in treatmentList"
+            :key="index"
+            class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">
+              {{ treatment.name }}
+            </h3>
+            <p class="text-gray-600">
+              {{ treatment.description }}
+            </p>
+          </article>
+        </div>
+      </section>
 
-    <section aria-labelledby="process">
-      <h2 id="process">{{ t('process.heading') }}</h2>
-      <ol class="process-list">
-        <li v-for="(step, index) in processSteps" :key="index">
-          <strong>{{ step.title }}</strong>
-          <p>{{ step.description }}</p>
-        </li>
-      </ol>
-    </section>
+      <!-- Benefits -->
+      <section aria-labelledby="benefits" class="bg-white rounded-2xl p-8 shadow-sm">
+        <h2 id="benefits" class="font-display text-3xl font-bold text-gray-900 mb-6">
+          {{ t("benefits.heading") }}
+        </h2>
+        <ul class="space-y-3">
+          <li v-for="(benefit, index) in benefits" :key="index" class="flex items-start">
+            <svg class="w-6 h-6 text-[#6B5B52] flex-shrink-0 mr-3 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-gray-700 text-lg">{{ benefit }}</span>
+          </li>
+        </ul>
+      </section>
 
-    <section aria-labelledby="aftercare">
-      <h2 id="aftercare">{{ t('aftercare.heading') }}</h2>
-      <ul class="aftercare-list">
-        <li v-for="(tip, index) in aftercareTips" :key="index">
-          {{ tip }}
-        </li>
-      </ul>
-    </section>
+      <!-- Process -->
+      <section aria-labelledby="process">
+        <h2 id="process" class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
+          {{ t("process.heading") }}
+        </h2>
+        <ol class="space-y-6">
+          <li v-for="(step, index) in processSteps" :key="index" class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 bg-[#6B5B52] text-white rounded-full flex items-center justify-center font-bold">
+              {{ index + 1 }}
+            </div>
+            <div class="flex-1 bg-white rounded-xl p-6 shadow-sm">
+              <strong class="font-display text-xl text-gray-900 block mb-2">{{ step.title }}</strong>
+              <p class="text-gray-600">{{ step.description }}</p>
+            </div>
+          </li>
+        </ol>
+      </section>
 
-    <section class="cta-section">
-      <h2>{{ t('cta.heading') }}</h2>
-      <p>{{ t('cta.subtitle') }}</p>
-      <div class="cta-buttons">
-        <Button
-          :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('cta.message'))}`"
-        >
-          {{ t('cta.button') }}
-        </Button>
-        <Button to="/pricing">
-          {{ t('cta.pricing') }}
-        </Button>
-      </div>
-    </section>
-  </main>
+      <!-- Aftercare -->
+      <section aria-labelledby="aftercare" class="bg-white rounded-2xl p-8 shadow-sm">
+        <h2 id="aftercare" class="font-display text-3xl font-bold text-gray-900 mb-6">
+          {{ t("aftercare.heading") }}
+        </h2>
+        <ul class="space-y-3">
+          <li v-for="(tip, index) in aftercareTips" :key="index" class="flex items-start">
+            <svg class="w-6 h-6 text-[#6B5B52] flex-shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-gray-700">{{ tip }}</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <CTASection
+      :heading="t('cta.heading')"
+      :subtitle="t('cta.subtitle')"
+      :message="t('cta.message')"
+      :primary-button="t('cta.button')"
+      :secondary-button="t('cta.pricing')"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n({ useScope: 'local' })
-const config = useRuntimeConfig()
-const business = config.public.business
+import { getServiceBySlug } from "../../../config/services.config";
+
+const { t, locale } = useI18n({ useScope: "local" });
+const config = useRuntimeConfig();
+const business = config.public.business;
+
+// Get service data from centralized config
+const serviceData = getServiceBySlug("/services/beauty-treatments")!;
+
+// Create translated offers based on current locale
+const translatedOffers = computed(() => {
+  return serviceData.offers.map((offer, index) => ({
+    name: t(`pricing.offers.${index}.name`),
+    description: t(`pricing.offers.${index}.description`),
+    price: offer.price,
+  }));
+});
+
+// Breadcrumb items
+const breadcrumbs = computed(() => [
+  { label: t("breadcrumb.home"), to: "/" },
+  { label: t("breadcrumb.services"), to: "/services" },
+  { label: t("breadcrumb.current") },
+]);
 
 const treatmentList = computed(() => [
   {
-    name: t('treatments.items.brows.name'),
-    description: t('treatments.items.brows.description'),
+    name: t("treatments.items.brows.name"),
+    description: t("treatments.items.brows.description"),
   },
   {
-    name: t('treatments.items.microblading.name'),
-    description: t('treatments.items.microblading.description'),
+    name: t("treatments.items.microblading.name"),
+    description: t("treatments.items.microblading.description"),
   },
   {
-    name: t('treatments.items.facial.name'),
-    description: t('treatments.items.facial.description'),
+    name: t("treatments.items.facial.name"),
+    description: t("treatments.items.facial.description"),
   },
   {
-    name: t('treatments.items.waxing.name'),
-    description: t('treatments.items.waxing.description'),
+    name: t("treatments.items.waxing.name"),
+    description: t("treatments.items.waxing.description"),
   },
-])
+]);
 
 const benefits = computed(() => [
-  t('benefits.items.0'),
-  t('benefits.items.1'),
-  t('benefits.items.2'),
-  t('benefits.items.3'),
-  t('benefits.items.4'),
-])
+  t("benefits.items.0"),
+  t("benefits.items.1"),
+  t("benefits.items.2"),
+  t("benefits.items.3"),
+  t("benefits.items.4"),
+]);
 
 const processSteps = computed(() => [
   {
-    title: t('process.steps.0.title'),
-    description: t('process.steps.0.description'),
+    title: t("process.steps.0.title"),
+    description: t("process.steps.0.description"),
   },
   {
-    title: t('process.steps.1.title'),
-    description: t('process.steps.1.description'),
+    title: t("process.steps.1.title"),
+    description: t("process.steps.1.description"),
   },
   {
-    title: t('process.steps.2.title'),
-    description: t('process.steps.2.description'),
+    title: t("process.steps.2.title"),
+    description: t("process.steps.2.description"),
   },
   {
-    title: t('process.steps.3.title'),
-    description: t('process.steps.3.description'),
+    title: t("process.steps.3.title"),
+    description: t("process.steps.3.description"),
   },
-])
+]);
 
 const aftercareTips = computed(() => [
-  t('aftercare.tips.0'),
-  t('aftercare.tips.1'),
-  t('aftercare.tips.2'),
-  t('aftercare.tips.3'),
-  t('aftercare.tips.4'),
-])
+  t("aftercare.tips.0"),
+  t("aftercare.tips.1"),
+  t("aftercare.tips.2"),
+  t("aftercare.tips.3"),
+  t("aftercare.tips.4"),
+]);
 
 useSeoMeta({
-  title: () => t('seoTitle'),
-  description: () => t('seoDescription'),
-  ogTitle: () => t('seoTitle'),
-  ogDescription: () => t('seoDescription'),
-  ogType: 'website',
-  ogLocale: () => locale.value === 'es' ? 'es_ES' : locale.value === 'ru' ? 'ru_RU' : 'en_US',
-})
+  title: () => t("seoTitle"),
+  description: () => t("seoDescription"),
+  ogTitle: () => t("seoTitle"),
+  ogDescription: () => t("seoDescription"),
+  ogType: "website",
+  ogLocale: () =>
+    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+});
 
-useSchemaOrg([
-  {
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: business.url,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Services',
-        item: `${business.url}/services`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: () => t('title'),
-      },
-    ],
-  },
-  {
-    '@type': 'Service',
-    serviceType: () => t('title'),
-    provider: {
-      '@type': 'LocalBusiness',
-      name: business.name,
-    },
-    areaServed: [
-      { '@type': 'City', name: 'Santa Pola' },
-      { '@type': 'City', name: 'Elche' },
-      { '@type': 'City', name: 'Guardamar del Segura' },
-      { '@type': 'City', name: 'Alicante' },
-    ],
-    description: () => t('overview.description'),
-  },
-])
+// Add service page schema using composable
+useServicePageSchema(
+  "/services/beauty-treatments",
+  () => t("seoTitle"),
+  () => t("seoDescription")
+);
 </script>
 
 <style scoped>
 h1,
 h2,
 h3 {
-  font-family: 'Prata', serif;
+  font-family: "Prata", serif;
 }
 
 h1 {
@@ -260,7 +302,7 @@ section {
 }
 
 .benefits-list li::before {
-  content: '✓';
+  content: "✓";
   position: absolute;
   left: 0;
   color: #667eea;
@@ -269,7 +311,7 @@ section {
 }
 
 .aftercare-list li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0.5rem;
   color: #667eea;
@@ -362,9 +404,35 @@ section {
     "subtitle": "Cuidados faciales y corporales profesionales para realzar tu belleza natural",
     "seoTitle": "Tratamientos de Belleza | Lash & Nails Santa Pola",
     "seoDescription": "Tratamientos de belleza profesionales en Santa Pola - Cuidado facial, depilación y más",
+    "breadcrumb": {
+      "home": "Inicio",
+      "services": "Servicios",
+      "current": "Tratamientos de Belleza"
+    },
     "overview": {
       "heading": "Descripción General",
       "description": "Nuestros tratamientos de belleza están diseñados para realzar tu belleza natural con técnicas profesionales y productos de primera calidad. Desde el cuidado de cejas hasta tratamientos faciales especializados, cada servicio está personalizado para tus necesidades."
+    },
+    "pricing": {
+      "heading": "Precios y Servicios",
+      "offers": {
+        "0": {
+          "name": "Diseño y Tinte de Cejas",
+          "description": "Diseño y tintado profesional de cejas"
+        },
+        "1": {
+          "name": "Depilación Facial",
+          "description": "Depilación suave de vello facial"
+        },
+        "2": {
+          "name": "Microdermoabrasión",
+          "description": "Tratamiento de resurfacing cutáneo para piel suave y radiante"
+        },
+        "3": {
+          "name": "Tratamiento Facial",
+          "description": "Limpieza profunda e hidratación facial"
+        }
+      }
     },
     "treatments": {
       "heading": "Tratamientos Disponibles",
@@ -441,9 +509,35 @@ section {
     "subtitle": "Professional facial and body care to enhance your natural beauty",
     "seoTitle": "Beauty Treatments | Lash & Nails Santa Pola",
     "seoDescription": "Professional beauty treatments in Santa Pola - Facial care, waxing and more",
+    "breadcrumb": {
+      "home": "Home",
+      "services": "Services",
+      "current": "Beauty Treatments"
+    },
     "overview": {
       "heading": "Overview",
       "description": "Our beauty treatments are designed to enhance your natural beauty with professional techniques and premium products. From brow care to specialized facial treatments, each service is personalized to your needs."
+    },
+    "pricing": {
+      "heading": "Pricing & Services",
+      "offers": {
+        "0": {
+          "name": "Eyebrow Design & Tinting",
+          "description": "Professional eyebrow shaping and tinting"
+        },
+        "1": {
+          "name": "Facial Waxing",
+          "description": "Gentle facial hair removal"
+        },
+        "2": {
+          "name": "Microdermabrasion",
+          "description": "Skin resurfacing treatment for smooth, radiant skin"
+        },
+        "3": {
+          "name": "Facial Treatment",
+          "description": "Deep cleansing and hydrating facial"
+        }
+      }
     },
     "treatments": {
       "heading": "Available Treatments",
@@ -520,9 +614,35 @@ section {
     "subtitle": "Профессиональный уход за лицом и телом для подчеркивания вашей естественной красоты",
     "seoTitle": "Косметические процедуры | Lash & Nails Santa Pola",
     "seoDescription": "Профессиональные косметические процедуры в Санта-Пола - Уход за лицом, депиляция и многое другое",
+    "breadcrumb": {
+      "home": "Главная",
+      "services": "Услуги",
+      "current": "Косметические процедуры"
+    },
     "overview": {
       "heading": "Обзор",
       "description": "Наши косметические процедуры разработаны для подчеркивания вашей естественной красоты с помощью профессиональных техник и премиальных продуктов. От ухода за бровями до специализированных процедур для лица, каждая услуга персонализирована под ваши потребности."
+    },
+    "pricing": {
+      "heading": "Цены и услуги",
+      "offers": {
+        "0": {
+          "name": "Дизайн и окрашивание бровей",
+          "description": "Профессиональное оформление и окрашивание бровей"
+        },
+        "1": {
+          "name": "Депиляция лица",
+          "description": "Бережное удаление волос на лице"
+        },
+        "2": {
+          "name": "Микродермабразия",
+          "description": "Процедура шлифовки кожи для гладкой, сияющей кожи"
+        },
+        "3": {
+          "name": "Процедура для лица",
+          "description": "Глубокая чистка и увлажнение лица"
+        }
+      }
     },
     "treatments": {
       "heading": "Доступные процедуры",

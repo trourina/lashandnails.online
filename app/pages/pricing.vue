@@ -1,12 +1,10 @@
 <template>
-  <div class="pricing-page">
-    <header>
-      <Typo is="h1" variant="h1">
-        {{ t("title") }}
-      </Typo>
-    </header>
+  <div>
+    <Hero :title="t('title')" :subtitle="t('subtitle')" />
 
-    <PricingTable :title="t('pricingTitle')" :categories="pricingData" />
+    <section class="container mx-auto px-4 py-12">
+      <PricingTable :title="t('pricingTitle')" :categories="pricingData" />
+    </section>
   </div>
 </template>
 
@@ -172,6 +170,7 @@ const pricingData = computed(() => [
 {
   "es": {
     "title": "Precios",
+    "subtitle": "Descubre nuestros servicios de belleza y precios competitivos",
     "seoTitle": "Precios | Lash & Nails Santa Pola",
     "seoDescription": "Precios de servicios de belleza en Santa Pola - Extensiones de pestañas, manicura, pedicura, micropigmentación y más",
     "pricingTitle": "Nuestros Servicios y Precios",
@@ -257,6 +256,7 @@ const pricingData = computed(() => [
   },
   "en": {
     "title": "Pricing",
+    "subtitle": "Discover our beauty services and competitive pricing",
     "seoTitle": "Pricing | Lash & Nails Santa Pola",
     "seoDescription": "Beauty services pricing in Santa Pola - Lash extensions, manicure, pedicure, micropigmentation and more",
     "pricingTitle": "Our Services and Pricing",
@@ -342,6 +342,7 @@ const pricingData = computed(() => [
   },
   "ru": {
     "title": "Цены",
+    "subtitle": "Откройте для себя наши услуги красоты и конкурентные цены",
     "seoTitle": "Цены | Lash & Nails Santa Pola",
     "seoDescription": "Цены на услуги салона красоты в Санта-Пола - Наращивание ресниц, маникюр, педикюр, микропигментация и многое другое",
     "pricingTitle": "Наши услуги и цены",

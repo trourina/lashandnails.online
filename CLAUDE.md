@@ -212,13 +212,21 @@ These are configured in `nuxt.config.ts` under `app.head.link`. All icon files s
 
 ## Business Information
 
-When updating business details, make sure to update in multiple places:
-1. `nuxt.config.ts` - LocalBusiness schema (address, phone, geo coordinates, opening hours)
-2. Contact page content
-3. Footer (if applicable)
+Business data is centralized in `config/business.config.ts` for reusability across the app.
+
+When updating business details, make sure to update in these places:
+1. **`config/business.config.ts`** - Primary source of truth (address, phone, geo coordinates, opening hours, social links)
+2. Contact page translations (for display text)
+3. Footer translations (for display text)
 4. `site.webmanifest` - PWA app name
 
-Current business hours in schema:
-- Mon-Fri: 10:00-20:00
-- Sat: 10:00-18:00
+The `BUSINESS` constant is exported from `config/business.config.ts` and used in:
+- `nuxt.config.ts` - Runtime config and Schema.org LocalBusiness
+- Components via `useRuntimeConfig().public.business`
+
+The `OPENING_HOURS_SPECIFICATION` is exported for Schema.org structured data.
+
+Current business hours:
+- Mon-Fri: 09:30-20:00
+- Sat: 10:00-14:00
 - Sun: Closed (not listed)

@@ -1,117 +1,133 @@
 <template>
-  <main>
-    <header>
-      <h1>{{ t('title') }}</h1>
-      <p>{{ t('subtitle') }}</p>
-    </header>
+  <div>
+    <Hero :title="t('title')" :subtitle="t('subtitle')" />
+
+    <section class="container mx-auto px-4 py-12">
 
     <section aria-labelledby="booking-methods">
-      <h2 id="booking-methods">{{ t('methods.heading') }}</h2>
+      <h2 id="booking-methods">{{ t("methods.heading") }}</h2>
 
       <div class="booking-methods-grid">
         <article class="booking-method">
-          <h3>{{ t('methods.whatsapp.title') }}</h3>
-          <p>{{ t('methods.whatsapp.description') }}</p>
+          <h3>{{ t("methods.whatsapp.title") }}</h3>
+          <p>{{ t("methods.whatsapp.description") }}</p>
           <Button
-            :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('methods.whatsapp.message'))}`"
+            :href="`https://wa.me/${business.phone.replace(
+              /\+/g,
+              ''
+            )}?text=${encodeURIComponent(t('methods.whatsapp.message'))}`"
           >
-            {{ t('methods.whatsapp.cta') }}
+            {{ t("methods.whatsapp.cta") }}
           </Button>
         </article>
 
         <article class="booking-method">
-          <h3>{{ t('methods.phone.title') }}</h3>
-          <p>{{ t('methods.phone.description') }}</p>
+          <h3>{{ t("methods.phone.title") }}</h3>
+          <p>{{ t("methods.phone.description") }}</p>
           <Button :href="`tel:${business.phone}`">
-            {{ t('methods.phone.cta') }}
+            {{ t("methods.phone.cta") }}
           </Button>
         </article>
       </div>
     </section>
 
     <section aria-labelledby="booking-info">
-      <h2 id="booking-info">{{ t('info.heading') }}</h2>
+      <h2 id="booking-info">{{ t("info.heading") }}</h2>
 
       <dl class="info-list">
         <div>
-          <dt>{{ t('info.hours.label') }}</dt>
+          <dt>{{ t("info.hours.label") }}</dt>
           <dd>
-            {{ t('info.hours.weekdays') }}:
-            <time :datetime="business.hours.weekdays.opens">{{ business.hours.weekdays.opens }}</time> -
-            <time :datetime="business.hours.weekdays.closes">{{ business.hours.weekdays.closes }}</time>
-            <br>
-            {{ t('info.hours.saturday') }}:
-            <time :datetime="business.hours.saturday.opens">{{ business.hours.saturday.opens }}</time> -
-            <time :datetime="business.hours.saturday.closes">{{ business.hours.saturday.closes }}</time>
+            {{ t("info.hours.weekdays") }}:
+            <time :datetime="business.hours.weekdays.opens">{{
+              business.hours.weekdays.opens
+            }}</time>
+            -
+            <time :datetime="business.hours.weekdays.closes">{{
+              business.hours.weekdays.closes
+            }}</time>
+            <br />
+            {{ t("info.hours.saturday") }}:
+            <time :datetime="business.hours.saturday.opens">{{
+              business.hours.saturday.opens
+            }}</time>
+            -
+            <time :datetime="business.hours.saturday.closes">{{
+              business.hours.saturday.closes
+            }}</time>
           </dd>
         </div>
 
         <div>
-          <dt>{{ t('info.services.label') }}</dt>
+          <dt>{{ t("info.services.label") }}</dt>
           <dd>
-            <NuxtLink :to="localePath('/pricing')">{{ t('info.services.link') }}</NuxtLink>
+            <NuxtLink :to="localePath('/pricing')">{{
+              t("info.services.link")
+            }}</NuxtLink>
           </dd>
         </div>
 
         <div>
-          <dt>{{ t('info.location.label') }}</dt>
+          <dt>{{ t("info.location.label") }}</dt>
           <dd>
             <address>
-              {{ business.address.street }}<br>
+              {{ business.address.street }}<br />
               {{ business.address.postalCode }} {{ business.address.city }}
             </address>
           </dd>
         </div>
       </dl>
     </section>
-  </main>
+    </section>
+  </div>
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n({ useScope: 'local' })
-const localePath = useLocalePath()
-const config = useRuntimeConfig()
-const business = config.public.business
+const { t, locale } = useI18n({ useScope: "local" });
+const localePath = useLocalePath();
+const config = useRuntimeConfig();
+const business = config.public.business;
 
 useSeoMeta({
-  title: () => t('seoTitle'),
-  description: () => t('seoDescription'),
-  ogTitle: () => t('seoTitle'),
-  ogDescription: () => t('seoDescription'),
-  ogType: 'website',
-  ogLocale: () => locale.value === 'es' ? 'es_ES' : locale.value === 'ru' ? 'ru_RU' : 'en_US',
-})
+  title: () => t("seoTitle"),
+  description: () => t("seoDescription"),
+  ogTitle: () => t("seoTitle"),
+  ogDescription: () => t("seoDescription"),
+  ogType: "website",
+  ogLocale: () =>
+    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+});
 
 useSchemaOrg([
   {
-    '@type': 'BreadcrumbList',
+    "@type": "BreadcrumbList",
     itemListElement: [
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 1,
-        name: 'Home',
+        name: "Home",
         item: business.url,
       },
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 2,
-        name: () => t('title'),
+        name: () => t("title"),
       },
     ],
   },
   {
-    '@type': 'WebPage',
-    name: () => t('seoTitle'),
-    description: () => t('seoDescription'),
+    "@type": "WebPage",
+    name: () => t("seoTitle"),
+    description: () => t("seoDescription"),
   },
-])
+]);
 </script>
 
 <style scoped>
 h1,
 h2,
 h3 {
-  font-family: 'Prata', serif;
+  font-family: "Prata", serif;
 }
 
 .booking-methods-grid {
@@ -137,7 +153,6 @@ h3 {
   margin-bottom: 1.5rem;
   color: #999;
 }
-
 
 section {
   margin-bottom: 4rem;

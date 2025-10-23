@@ -1,312 +1,219 @@
 <template>
-  <main>
-    <header>
-      <h1>{{ t('title') }}</h1>
-      <p class="page-subtitle">{{ t('subtitle') }}</p>
-    </header>
+  <div class="min-h-screen bg-gray-50">
+    <Hero :title="t('title')" :subtitle="t('subtitle')" />
 
-    <section aria-labelledby="overview">
-      <h2 id="overview">{{ t('overview.heading') }}</h2>
-      <p class="section-description">{{ t('overview.description') }}</p>
-    </section>
+    <div class="container mx-auto max-w-5xl px-4 py-12 space-y-16">
+      <Breadcrumb :items="breadcrumbs" />
+      <!-- Overview -->
+      <section aria-labelledby="overview" class="bg-white rounded-2xl p-8 shadow-sm">
+        <h2 id="overview" class="font-display text-3xl font-bold text-gray-900 mb-4">
+          {{ t("overview.heading") }}
+        </h2>
+        <p class="text-gray-700 text-lg leading-relaxed">
+          {{ t("overview.description") }}
+        </p>
+      </section>
 
-    <section aria-labelledby="services">
-      <h2 id="services">{{ t('services.heading') }}</h2>
-      <div class="service-grid">
-        <article v-for="(service, index) in nailServices" :key="index" class="service-card">
-          <h3>{{ service.name }}</h3>
-          <p>{{ service.description }}</p>
-        </article>
-      </div>
-    </section>
+      <!-- Pricing Section -->
+      <section aria-labelledby="pricing" class="bg-white rounded-2xl p-8 shadow-sm">
+        <h2 id="pricing" class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
+          {{ t("pricing.heading") }}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            v-for="(offer, index) in translatedOffers"
+            :key="index"
+            class="border-2 border-gray-200 rounded-xl p-6 hover:border-[#6B5B52] hover:shadow-md transition-all"
+          >
+            <h3 class="font-display text-xl font-semibold text-gray-900 mb-2">
+              {{ offer.name }}
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              {{ offer.description }}
+            </p>
+            <div class="flex items-baseline">
+              <span class="text-3xl font-bold text-[#6B5B52]">€{{ offer.price }}</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <section aria-labelledby="designs">
-      <h2 id="designs">{{ t('designs.heading') }}</h2>
-      <div class="design-grid">
-        <article v-for="(design, index) in designOptions" :key="index" class="design-card">
-          <h3>{{ design.name }}</h3>
-          <p>{{ design.description }}</p>
-        </article>
-      </div>
-    </section>
+      <!-- Nail Services -->
+      <section aria-labelledby="services">
+        <h2 id="services" class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
+          {{ t("services.heading") }}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <article
+            v-for="(service, index) in nailServices"
+            :key="index"
+            class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">
+              {{ service.name }}
+            </h3>
+            <p class="text-gray-600">
+              {{ service.description }}
+            </p>
+          </article>
+        </div>
+      </section>
 
-    <section aria-labelledby="benefits">
-      <h2 id="benefits">{{ t('benefits.heading') }}</h2>
-      <ul class="benefits-list">
-        <li v-for="(benefit, index) in benefits" :key="index">
-          {{ benefit }}
-        </li>
-      </ul>
-    </section>
+      <!-- Design Options -->
+      <section aria-labelledby="designs">
+        <h2 id="designs" class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
+          {{ t("designs.heading") }}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article
+            v-for="(design, index) in designOptions"
+            :key="index"
+            class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">
+              {{ design.name }}
+            </h3>
+            <p class="text-gray-600">
+              {{ design.description }}
+            </p>
+          </article>
+        </div>
+      </section>
 
-    <section aria-labelledby="aftercare">
-      <h2 id="aftercare">{{ t('aftercare.heading') }}</h2>
-      <ul class="aftercare-list">
-        <li v-for="(tip, index) in aftercareTips" :key="index">
-          {{ tip }}
-        </li>
-      </ul>
-    </section>
+      <!-- Benefits -->
+      <section aria-labelledby="benefits" class="bg-white rounded-2xl p-8 shadow-sm">
+        <h2 id="benefits" class="font-display text-3xl font-bold text-gray-900 mb-6">
+          {{ t("benefits.heading") }}
+        </h2>
+        <ul class="space-y-3">
+          <li v-for="(benefit, index) in benefits" :key="index" class="flex items-start">
+            <svg class="w-6 h-6 text-[#6B5B52] flex-shrink-0 mr-3 mt-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-gray-700 text-lg">{{ benefit }}</span>
+          </li>
+        </ul>
+      </section>
 
-    <section class="cta-section">
-      <h2>{{ t('cta.heading') }}</h2>
-      <p>{{ t('cta.subtitle') }}</p>
-      <div class="cta-buttons">
-        <Button
-          :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('cta.message'))}`"
-        >
-          {{ t('cta.button') }}
-        </Button>
-        <Button to="/pricing">
-          {{ t('cta.pricing') }}
-        </Button>
-      </div>
-    </section>
-  </main>
+      <!-- Aftercare -->
+      <section aria-labelledby="aftercare" class="bg-white rounded-2xl p-8 shadow-sm">
+        <h2 id="aftercare" class="font-display text-3xl font-bold text-gray-900 mb-6">
+          {{ t("aftercare.heading") }}
+        </h2>
+        <ul class="space-y-3">
+          <li v-for="(tip, index) in aftercareTips" :key="index" class="flex items-start">
+            <svg class="w-6 h-6 text-[#6B5B52] flex-shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-gray-700">{{ tip }}</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <CTASection
+      :heading="t('cta.heading')"
+      :subtitle="t('cta.subtitle')"
+      :message="t('cta.message')"
+      :primary-button="t('cta.button')"
+      :secondary-button="t('cta.pricing')"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n({ useScope: 'local' })
-const config = useRuntimeConfig()
-const business = config.public.business
+import { getServiceBySlug } from "../../../config/services.config";
+
+const { t, locale } = useI18n({ useScope: "local" });
+const config = useRuntimeConfig();
+const business = config.public.business;
+
+// Get service data from centralized config
+const serviceData = getServiceBySlug("/services/nail-design")!;
+
+// Create translated offers based on current locale
+const translatedOffers = computed(() => {
+  return serviceData.offers.map((offer, index) => ({
+    name: t(`pricing.offers.${index}.name`),
+    description: t(`pricing.offers.${index}.description`),
+    price: offer.price,
+  }));
+});
+
+// Breadcrumb items
+const breadcrumbs = computed(() => [
+  { label: t("breadcrumb.home"), to: "/" },
+  { label: t("breadcrumb.services"), to: "/services" },
+  { label: t("breadcrumb.current") },
+]);
 
 const nailServices = computed(() => [
   {
-    name: t('services.items.manicure.name'),
-    description: t('services.items.manicure.description'),
+    name: t("services.items.manicure.name"),
+    description: t("services.items.manicure.description"),
   },
   {
-    name: t('services.items.pedicure.name'),
-    description: t('services.items.pedicure.description'),
+    name: t("services.items.pedicure.name"),
+    description: t("services.items.pedicure.description"),
   },
   {
-    name: t('services.items.gel.name'),
-    description: t('services.items.gel.description'),
+    name: t("services.items.gel.name"),
+    description: t("services.items.gel.description"),
   },
   {
-    name: t('services.items.acrylic.name'),
-    description: t('services.items.acrylic.description'),
+    name: t("services.items.acrylic.name"),
+    description: t("services.items.acrylic.description"),
   },
-])
+]);
 
 const designOptions = computed(() => [
   {
-    name: t('designs.items.french.name'),
-    description: t('designs.items.french.description'),
+    name: t("designs.items.french.name"),
+    description: t("designs.items.french.description"),
   },
   {
-    name: t('designs.items.ombre.name'),
-    description: t('designs.items.ombre.description'),
+    name: t("designs.items.ombre.name"),
+    description: t("designs.items.ombre.description"),
   },
   {
-    name: t('designs.items.custom.name'),
-    description: t('designs.items.custom.description'),
+    name: t("designs.items.custom.name"),
+    description: t("designs.items.custom.description"),
   },
-])
+]);
 
 const benefits = computed(() => [
-  t('benefits.items.0'),
-  t('benefits.items.1'),
-  t('benefits.items.2'),
-  t('benefits.items.3'),
-  t('benefits.items.4'),
-])
+  t("benefits.items.0"),
+  t("benefits.items.1"),
+  t("benefits.items.2"),
+  t("benefits.items.3"),
+  t("benefits.items.4"),
+]);
 
 const aftercareTips = computed(() => [
-  t('aftercare.tips.0'),
-  t('aftercare.tips.1'),
-  t('aftercare.tips.2'),
-  t('aftercare.tips.3'),
-  t('aftercare.tips.4'),
-])
+  t("aftercare.tips.0"),
+  t("aftercare.tips.1"),
+  t("aftercare.tips.2"),
+  t("aftercare.tips.3"),
+  t("aftercare.tips.4"),
+]);
 
 useSeoMeta({
-  title: () => t('seoTitle'),
-  description: () => t('seoDescription'),
-  ogTitle: () => t('seoTitle'),
-  ogDescription: () => t('seoDescription'),
-  ogType: 'website',
-  ogLocale: () => locale.value === 'es' ? 'es_ES' : locale.value === 'ru' ? 'ru_RU' : 'en_US',
-})
+  title: () => t("seoTitle"),
+  description: () => t("seoDescription"),
+  ogTitle: () => t("seoTitle"),
+  ogDescription: () => t("seoDescription"),
+  ogType: "website",
+  ogLocale: () =>
+    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+});
 
-useSchemaOrg([
-  {
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: business.url,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Services',
-        item: `${business.url}/services`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: () => t('title'),
-      },
-    ],
-  },
-  {
-    '@type': 'Service',
-    serviceType: () => t('title'),
-    provider: {
-      '@type': 'LocalBusiness',
-      name: business.name,
-    },
-    areaServed: [
-      { '@type': 'City', name: 'Santa Pola' },
-      { '@type': 'City', name: 'Elche' },
-      { '@type': 'City', name: 'Guardamar del Segura' },
-      { '@type': 'City', name: 'Alicante' },
-    ],
-    description: () => t('overview.description'),
-  },
-])
+// Add service page schema using composable
+useServicePageSchema(
+  "/services/nail-design",
+  () => t("seoTitle"),
+  () => t("seoDescription")
+);
 </script>
-
-<style scoped>
-h1,
-h2,
-h3 {
-  font-family: 'Prata', serif;
-}
-
-h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1rem;
-}
-
-h2 {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  margin-bottom: 1.5rem;
-}
-
-h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-}
-
-.page-subtitle {
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
-  color: #999;
-  margin-bottom: 3rem;
-  max-width: 800px;
-}
-
-section {
-  margin-bottom: 4rem;
-}
-
-.section-description {
-  color: #ccc;
-  line-height: 1.8;
-  font-size: 1.125rem;
-  max-width: 800px;
-}
-
-.service-grid,
-.design-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.service-card,
-.design-card {
-  padding: 2rem;
-  border: 1px solid #333;
-  border-radius: 12px;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.service-card:hover,
-.design-card:hover {
-  transform: translateY(-4px);
-  border-color: #667eea;
-}
-
-.service-card p,
-.design-card p {
-  color: #999;
-  line-height: 1.6;
-}
-
-.benefits-list,
-.aftercare-list {
-  list-style: none;
-  padding: 0;
-  margin: 2rem 0 0 0;
-  max-width: 800px;
-}
-
-.benefits-list li,
-.aftercare-list li {
-  padding: 1rem 0 1rem 2.5rem;
-  position: relative;
-  color: #ccc;
-  border-bottom: 1px solid #333;
-}
-
-.benefits-list li:last-child,
-.aftercare-list li:last-child {
-  border-bottom: none;
-}
-
-.benefits-list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #667eea;
-  font-weight: 600;
-  font-size: 1.5rem;
-}
-
-.aftercare-list li::before {
-  content: '•';
-  position: absolute;
-  left: 0.5rem;
-  color: #667eea;
-  font-weight: 600;
-  font-size: 1.5rem;
-}
-
-.cta-section {
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  text-align: center;
-  margin-top: 4rem;
-}
-
-.cta-section h2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  margin-bottom: 1rem;
-  color: white;
-}
-
-.cta-section p {
-  font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-</style>
 
 <i18n lang="json">
 {
@@ -315,9 +222,35 @@ section {
     "subtitle": "Manicura, pedicura y nail art profesional para uñas perfectas",
     "seoTitle": "Diseño de Uñas | Lash & Nails Santa Pola",
     "seoDescription": "Diseño de uñas profesional en Santa Pola - Manicura, pedicura y nail art personalizado",
+    "breadcrumb": {
+      "home": "Inicio",
+      "services": "Servicios",
+      "current": "Diseño de Uñas"
+    },
     "overview": {
       "heading": "Descripción General",
       "description": "Nuestros servicios de diseño de uñas combinan técnica profesional con creatividad para ofrecerte uñas perfectas. Desde manicura clásica hasta diseños personalizados de nail art, trabajamos con productos de alta calidad para resultados duraderos y saludables."
+    },
+    "pricing": {
+      "heading": "Precios y Servicios",
+      "offers": {
+        "0": {
+          "name": "Manicura Clásica",
+          "description": "Manicura tradicional con esmalte"
+        },
+        "1": {
+          "name": "Manicura de Gel",
+          "description": "Manicura con esmalte de gel de larga duración"
+        },
+        "2": {
+          "name": "Diseño de Uñas",
+          "description": "Diseño de uñas creativo con diseños personalizados"
+        },
+        "3": {
+          "name": "Pedicura",
+          "description": "Tratamiento completo de pedicura"
+        }
+      }
     },
     "services": {
       "heading": "Servicios de Uñas",
@@ -390,9 +323,35 @@ section {
     "subtitle": "Professional manicure, pedicure and nail art for perfect nails",
     "seoTitle": "Nail Design | Lash & Nails Santa Pola",
     "seoDescription": "Professional nail design in Santa Pola - Manicure, pedicure and custom nail art",
+    "breadcrumb": {
+      "home": "Home",
+      "services": "Services",
+      "current": "Nail Design"
+    },
     "overview": {
       "heading": "Overview",
       "description": "Our nail design services combine professional technique with creativity to give you perfect nails. From classic manicure to custom nail art designs, we work with high-quality products for lasting and healthy results."
+    },
+    "pricing": {
+      "heading": "Pricing & Services",
+      "offers": {
+        "0": {
+          "name": "Classic Manicure",
+          "description": "Traditional manicure with polish"
+        },
+        "1": {
+          "name": "Gel Manicure",
+          "description": "Long-lasting gel polish manicure"
+        },
+        "2": {
+          "name": "Nail Art Design",
+          "description": "Creative nail art with custom designs"
+        },
+        "3": {
+          "name": "Pedicure",
+          "description": "Complete pedicure treatment"
+        }
+      }
     },
     "services": {
       "heading": "Nail Services",
@@ -465,9 +424,35 @@ section {
     "subtitle": "Профессиональный маникюр, педикюр и нейл-арт для идеальных ногтей",
     "seoTitle": "Дизайн ногтей | Lash & Nails Santa Pola",
     "seoDescription": "Профессиональный дизайн ногтей в Санта-Пола - Маникюр, педикюр и индивидуальный нейл-арт",
+    "breadcrumb": {
+      "home": "Главная",
+      "services": "Услуги",
+      "current": "Дизайн ногтей"
+    },
     "overview": {
       "heading": "Обзор",
       "description": "Наши услуги дизайна ногтей сочетают профессиональную технику с креативностью, чтобы подарить вам идеальные ногти. От классического маникюра до индивидуального нейл-арта, мы работаем с высококачественными продуктами для долговечных и здоровых результатов."
+    },
+    "pricing": {
+      "heading": "Цены и услуги",
+      "offers": {
+        "0": {
+          "name": "Классический маникюр",
+          "description": "Традиционный маникюр с лаком"
+        },
+        "1": {
+          "name": "Гель-лак маникюр",
+          "description": "Долговечный маникюр с гель-лаком"
+        },
+        "2": {
+          "name": "Дизайн ногтей",
+          "description": "Креативный нейл-арт с индивидуальным дизайном"
+        },
+        "3": {
+          "name": "Педикюр",
+          "description": "Полная процедура педикюра"
+        }
+      }
     },
     "services": {
       "heading": "Услуги для ногтей",

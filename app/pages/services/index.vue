@@ -1,266 +1,190 @@
 <template>
-  <main>
-    <header>
-      <h1>{{ t('title') }}</h1>
-      <p class="page-subtitle">{{ t('subtitle') }}</p>
-    </header>
+  <div>
+    <Hero :title="t('title')" :subtitle="t('subtitle')" />
 
-    <section aria-labelledby="services-list" class="services-section">
-      <div class="services-grid">
-        <article v-for="service in services" :key="service.slug" class="service-card">
-          <div class="service-icon">{{ service.icon }}</div>
-          <h2>{{ service.title }}</h2>
-          <p class="service-description">{{ service.description }}</p>
-          <ul class="service-features">
-            <li v-for="(feature, index) in service.features" :key="index">
-              {{ feature }}
-            </li>
-          </ul>
-          <NuxtLink :to="localePath(`/services/${service.slug}`)" class="service-cta">
-            {{ t('learnMore') }}
-          </NuxtLink>
-        </article>
+    <!-- Services Grid -->
+    <section aria-labelledby="services-list" class="py-16 px-4">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <article
+            v-for="service in services"
+            :key="service.slug"
+            class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group"
+          >
+            <!-- Image Placeholder -->
+            <div
+              class="relative aspect-[4/3] bg-gradient-to-br from-[#E8D5C4] to-[#D4C4B4] overflow-hidden"
+            >
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"
+              />
+              <div
+                class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"
+              />
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+              <h2 class="font-display text-2xl font-bold text-gray-900 mb-3">
+                {{ service.title }}
+              </h2>
+              <p class="text-gray-600 mb-4 leading-relaxed">
+                {{ service.description }}
+              </p>
+
+              <!-- Features List -->
+              <ul class="space-y-2 mb-6">
+                <li
+                  v-for="(feature, index) in service.features"
+                  :key="index"
+                  class="flex items-start text-sm text-gray-700"
+                >
+                  <svg
+                    class="w-5 h-5 text-[#6B5B52] flex-shrink-0 mr-2 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span>{{ feature }}</span>
+                </li>
+              </ul>
+
+              <!-- CTA Button -->
+              <NuxtLink
+                :to="localePath(`/services/${service.slug}`)"
+                class="inline-flex items-center justify-center w-full px-6 py-3 bg-[#6B5B52] text-white font-semibold rounded-full hover:bg-[#5A4A42] transition-colors group"
+              >
+                {{ t("learnMore") }}
+                <svg
+                  class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </NuxtLink>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="cta-section">
-      <h2>{{ t('cta.heading') }}</h2>
-      <p>{{ t('cta.subtitle') }}</p>
-      <div class="cta-buttons">
-        <Button
-          :href="`https://wa.me/${business.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('cta.message'))}`"
-        >
-          {{ t('cta.button') }}
-        </Button>
-        <Button to="/pricing">
-          {{ t('cta.pricing') }}
-        </Button>
-      </div>
-    </section>
-  </main>
+    <CTASection
+      :heading="t('cta.heading')"
+      :subtitle="t('cta.subtitle')"
+      :message="t('cta.message')"
+      :primary-button="t('cta.button')"
+      :secondary-button="t('cta.pricing')"
+    />
+  </div>
 </template>
 
+<style scoped>
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+</style>
+
 <script setup lang="ts">
-const { t, locale } = useI18n({ useScope: 'local' })
-const config = useRuntimeConfig()
-const business = config.public.business
+const { t, locale } = useI18n({ useScope: "local" });
+const config = useRuntimeConfig();
+const business = config.public.business;
+const localePath = useLocalePath();
 
 const services = computed(() => [
   {
-    slug: 'lash-extensions',
-    icon: '👁️',
-    title: t('services.lashes.title'),
-    description: t('services.lashes.description'),
+    slug: "lash-extensions",
+    title: t("services.lashes.title"),
+    description: t("services.lashes.description"),
     features: [
-      t('services.lashes.features.0'),
-      t('services.lashes.features.1'),
-      t('services.lashes.features.2'),
-      t('services.lashes.features.3'),
+      t("services.lashes.features.0"),
+      t("services.lashes.features.1"),
+      t("services.lashes.features.2"),
+      t("services.lashes.features.3"),
     ],
   },
   {
-    slug: 'nail-design',
-    icon: '💅',
-    title: t('services.nails.title'),
-    description: t('services.nails.description'),
+    slug: "nail-design",
+    title: t("services.nails.title"),
+    description: t("services.nails.description"),
     features: [
-      t('services.nails.features.0'),
-      t('services.nails.features.1'),
-      t('services.nails.features.2'),
-      t('services.nails.features.3'),
+      t("services.nails.features.0"),
+      t("services.nails.features.1"),
+      t("services.nails.features.2"),
+      t("services.nails.features.3"),
     ],
   },
   {
-    slug: 'beauty-treatments',
-    icon: '✨',
-    title: t('services.treatments.title'),
-    description: t('services.treatments.description'),
+    slug: "beauty-treatments",
+    title: t("services.treatments.title"),
+    description: t("services.treatments.description"),
     features: [
-      t('services.treatments.features.0'),
-      t('services.treatments.features.1'),
-      t('services.treatments.features.2'),
-      t('services.treatments.features.3'),
+      t("services.treatments.features.0"),
+      t("services.treatments.features.1"),
+      t("services.treatments.features.2"),
+      t("services.treatments.features.3"),
     ],
   },
-])
+]);
 
 useSeoMeta({
-  title: () => t('seoTitle'),
-  description: () => t('seoDescription'),
-  ogTitle: () => t('seoTitle'),
-  ogDescription: () => t('seoDescription'),
-  ogType: 'website',
-  ogLocale: () => locale.value === 'es' ? 'es_ES' : locale.value === 'ru' ? 'ru_RU' : 'en_US',
-})
+  title: () => t("seoTitle"),
+  description: () => t("seoDescription"),
+  ogTitle: () => t("seoTitle"),
+  ogDescription: () => t("seoDescription"),
+  ogType: "website",
+  ogLocale: () =>
+    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+});
 
 useSchemaOrg([
   {
-    '@type': 'BreadcrumbList',
+    "@type": "BreadcrumbList",
     itemListElement: [
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 1,
-        name: 'Home',
+        name: "Home",
         item: business.url,
       },
       {
-        '@type': 'ListItem',
+        "@type": "ListItem",
         position: 2,
-        name: () => t('title'),
+        name: () => t("title"),
       },
     ],
   },
   {
-    '@type': 'CollectionPage',
-    name: () => t('seoTitle'),
-    description: () => t('seoDescription'),
+    "@type": "CollectionPage",
+    name: () => t("seoTitle"),
+    description: () => t("seoDescription"),
     about: {
-      '@type': 'Thing',
-      name: () => t('title'),
+      "@type": "Thing",
+      name: () => t("title"),
     },
   },
-])
+]);
 </script>
-
-<style scoped>
-h1,
-h2 {
-  font-family: 'Prata', serif;
-}
-
-h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 1rem;
-}
-
-.page-subtitle {
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
-  color: #999;
-  margin-bottom: 3rem;
-  max-width: 800px;
-}
-
-.services-section {
-  margin-bottom: 4rem;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-}
-
-.service-card {
-  padding: 2.5rem 2rem;
-  border: 1px solid #333;
-  border-radius: 12px;
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-  display: flex;
-  flex-direction: column;
-}
-
-.service-card:hover {
-  transform: translateY(-4px);
-  border-color: #667eea;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
-}
-
-.service-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-}
-
-.service-card h2 {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-}
-
-.service-description {
-  color: #999;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.service-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem 0;
-  flex-grow: 1;
-}
-
-.service-features li {
-  padding: 0.5rem 0;
-  padding-left: 1.5rem;
-  position: relative;
-  color: #ccc;
-}
-
-.service-features li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #667eea;
-  font-weight: 600;
-}
-
-.service-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid #667eea;
-  border-radius: 8px;
-  transition: all 0.2s;
-  align-self: flex-start;
-}
-
-.service-cta::after {
-  content: '→';
-  transition: transform 0.2s;
-}
-
-.service-cta:hover {
-  background: #667eea;
-  transform: translateX(4px);
-}
-
-.service-cta:hover::after {
-  transform: translateX(4px);
-}
-
-.cta-section {
-  padding: 4rem 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  text-align: center;
-  margin-top: 4rem;
-}
-
-.cta-section h2 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  margin-bottom: 1rem;
-  color: white;
-}
-
-.cta-section p {
-  font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-</style>
 
 <i18n lang="json">
 {
@@ -269,6 +193,10 @@ h1 {
     "subtitle": "Servicios profesionales de belleza en Santa Pola - Calidad, experiencia y atención personalizada",
     "seoTitle": "Nuestros Servicios | Lash & Nails Santa Pola",
     "seoDescription": "Descubre nuestros servicios de belleza: extensiones de pestañas, diseño de uñas y tratamientos de belleza en Santa Pola",
+    "breadcrumb": {
+      "home": "Inicio",
+      "current": "Servicios"
+    },
     "learnMore": "Ver detalles",
     "services": {
       "lashes": {
@@ -315,6 +243,10 @@ h1 {
     "subtitle": "Professional beauty services in Santa Pola - Quality, experience and personalized attention",
     "seoTitle": "Our Services | Lash & Nails Santa Pola",
     "seoDescription": "Discover our beauty services: lash extensions, nail design and beauty treatments in Santa Pola",
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Services"
+    },
     "learnMore": "View details",
     "services": {
       "lashes": {
@@ -361,6 +293,10 @@ h1 {
     "subtitle": "Профессиональные услуги красоты в Санта-Пола - Качество, опыт и индивидуальный подход",
     "seoTitle": "Наши услуги | Lash & Nails Santa Pola",
     "seoDescription": "Откройте для себя наши услуги красоты: наращивание ресниц, дизайн ногтей и косметические процедуры в Санта-Пола",
+    "breadcrumb": {
+      "home": "Главная",
+      "current": "Услуги"
+    },
     "learnMore": "Подробнее",
     "services": {
       "lashes": {
