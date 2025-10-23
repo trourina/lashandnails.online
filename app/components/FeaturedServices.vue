@@ -28,53 +28,53 @@ const services = computed(() => [
   },
   {
     id: 2,
-    serviceId: 'nail-design',
+    serviceId: 'manicure',
     name: t("services.2.name"),
     description: t("services.2.description"),
-    price: `${t('from')} €${getMinPrice('nail-design')}`,
+    price: `${t('from')} €${getMinPrice('manicure')}`,
     rating: 5,
     image: "/images/placeholder-service.jpg",
-    link: "/services/nail-design",
+    link: "/services/manicure",
   },
   {
     id: 3,
-    serviceId: 'lash-extensions',
+    serviceId: 'pedicure',
     name: t("services.3.name"),
     description: t("services.3.description"),
+    price: `${t('from')} €${getMinPrice('pedicure')}`,
+    rating: 5,
+    image: "/images/placeholder-service.jpg",
+    link: "/services/pedicure",
+  },
+  {
+    id: 4,
+    serviceId: 'brows',
+    name: t("services.4.name"),
+    description: t("services.4.description"),
+    price: `${t('from')} €${getMinPrice('brows')}`,
+    rating: 5,
+    image: "/images/placeholder-service.jpg",
+    link: "/services/brows",
+  },
+  {
+    id: 5,
+    serviceId: 'lash-lamination',
+    name: t("services.5.name"),
+    description: t("services.5.description"),
     price: `${t('from')} €${getMinPrice('lash-extensions')}`,
     rating: 5,
     image: "/images/placeholder-service.jpg",
     link: "/services/lash-extensions",
   },
   {
-    id: 4,
-    serviceId: 'nail-design',
-    name: t("services.4.name"),
-    description: t("services.4.description"),
-    price: `${t('from')} €${getMinPrice('nail-design')}`,
-    rating: 5,
-    image: "/images/placeholder-service.jpg",
-    link: "/services/nail-design",
-  },
-  {
-    id: 5,
-    serviceId: 'beauty-treatments',
-    name: t("services.5.name"),
-    description: t("services.5.description"),
-    price: `${t('from')} €${getMinPrice('beauty-treatments')}`,
-    rating: 5,
-    image: "/images/placeholder-service.jpg",
-    link: "/services/beauty-treatments",
-  },
-  {
     id: 6,
-    serviceId: 'beauty-treatments',
+    serviceId: 'pedicure',
     name: t("services.6.name"),
     description: t("services.6.description"),
-    price: `${t('from')} €${getMinPrice('beauty-treatments')}`,
+    price: `${t('from')} €${getMinPrice('pedicure')}`,
     rating: 5,
     image: "/images/placeholder-service.jpg",
-    link: "/services/beauty-treatments",
+    link: "/services/pedicure",
   },
 ])
 </script>
@@ -203,19 +203,19 @@ const services = computed(() => [
         "description": "By Lash & Nails Santa Pola"
       },
       "3": {
-        "name": "Lash Lamination",
+        "name": "Hygienic Pedicure",
         "description": "By Lash & Nails Santa Pola"
       },
       "4": {
-        "name": "French Manicure",
+        "name": "Brow Lamination",
         "description": "By Lash & Nails Santa Pola"
       },
       "5": {
-        "name": "Brow Micropigmentation",
+        "name": "Lash Lamination",
         "description": "By Lash & Nails Santa Pola"
       },
       "6": {
-        "name": "Brow Lamination",
+        "name": "Pedicure with Coating",
         "description": "By Lash & Nails Santa Pola"
       }
     }
@@ -234,19 +234,19 @@ const services = computed(() => [
         "description": "Por Lash & Nails Santa Pola"
       },
       "3": {
-        "name": "Laminación de Pestañas",
+        "name": "Pedicura Higiénica",
         "description": "Por Lash & Nails Santa Pola"
       },
       "4": {
-        "name": "Manicura Francesa",
+        "name": "Laminación de Cejas",
         "description": "Por Lash & Nails Santa Pola"
       },
       "5": {
-        "name": "Micropigmentación de Cejas",
+        "name": "Laminación de Pestañas",
         "description": "Por Lash & Nails Santa Pola"
       },
       "6": {
-        "name": "Laminación de Cejas",
+        "name": "Pedicura con Esmaltado",
         "description": "Por Lash & Nails Santa Pola"
       }
     }
@@ -265,19 +265,19 @@ const services = computed(() => [
         "description": "От Lash & Nails Santa Pola"
       },
       "3": {
-        "name": "Ламинирование Ресниц",
+        "name": "Гигиенический Педикюр",
         "description": "От Lash & Nails Santa Pola"
       },
       "4": {
-        "name": "Французский Маникюр",
+        "name": "Ламинирование Бровей",
         "description": "От Lash & Nails Santa Pola"
       },
       "5": {
-        "name": "Микропигментация Бровей",
+        "name": "Ламинирование Ресниц",
         "description": "От Lash & Nails Santa Pola"
       },
       "6": {
-        "name": "Ламинирование Бровей",
+        "name": "Педикюр с Покрытием",
         "description": "От Lash & Nails Santa Pola"
       }
     }

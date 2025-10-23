@@ -38,15 +38,15 @@
           {{ t("categories.lashes") }}
         </button>
         <button
-          @click="handleFilterChange('nails')"
+          @click="handleFilterChange('manicure')"
           :class="[
             'px-6 py-2 rounded-full text-sm font-medium transition-all',
-            activeFilter === 'nails'
+            activeFilter === 'manicure'
               ? 'bg-[#6B5B52] text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           ]"
         >
-          {{ t("categories.nails") }}
+          {{ t("categories.manicure") }}
         </button>
         <button
           @click="handleFilterChange('brows')"
@@ -60,15 +60,15 @@
           {{ t("categories.brows") }}
         </button>
         <button
-          @click="handleFilterChange('treatments')"
+          @click="handleFilterChange('pedicure')"
           :class="[
             'px-6 py-2 rounded-full text-sm font-medium transition-all',
-            activeFilter === 'treatments'
+            activeFilter === 'pedicure'
               ? 'bg-[#6B5B52] text-white'
               : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
           ]"
         >
-          {{ t("categories.treatments") }}
+          {{ t("categories.pedicure") }}
         </button>
       </div>
 
@@ -134,7 +134,7 @@ interface GalleryImage {
   src: string
   alt: string
   caption?: string
-  category: 'lashes' | 'nails' | 'brows' | 'treatments'
+  category: 'lashes' | 'manicure' | 'pedicure' | 'brows'
   isPlaceholder?: boolean
 }
 
@@ -151,12 +151,12 @@ const galleryImages = ref<GalleryImage[]>([
   // Placeholder images - replace with real images
   { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'lashes', isPlaceholder: true },
   { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'lashes', isPlaceholder: true },
-  { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'nails', isPlaceholder: true },
-  { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'nails', isPlaceholder: true },
+  { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'manicure', isPlaceholder: true },
+  { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'manicure', isPlaceholder: true },
   { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'brows', isPlaceholder: true },
   { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'brows', isPlaceholder: true },
-  { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'treatments', isPlaceholder: true },
-  { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'nails', isPlaceholder: true },
+  { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'pedicure', isPlaceholder: true },
+  { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'manicure', isPlaceholder: true },
   { src: '/images/placeholder.jpg', alt: t('placeholder'), category: 'lashes', isPlaceholder: true },
 ])
 
@@ -268,9 +268,9 @@ useSchemaOrg([
     },
     "categories": {
       "lashes": "Pestañas",
-      "nails": "Uñas",
-      "brows": "Cejas",
-      "treatments": "Tratamientos"
+      "manicure": "Manicura",
+      "pedicure": "Pedicura",
+      "brows": "Cejas"
     },
     "placeholder": "Próximamente"
   },
@@ -286,9 +286,9 @@ useSchemaOrg([
     },
     "categories": {
       "lashes": "Lashes",
-      "nails": "Nails",
-      "brows": "Brows",
-      "treatments": "Treatments"
+      "manicure": "Manicure",
+      "pedicure": "Pedicure",
+      "brows": "Brows"
     },
     "placeholder": "Coming Soon"
   },
@@ -304,9 +304,9 @@ useSchemaOrg([
     },
     "categories": {
       "lashes": "Ресницы",
-      "nails": "Ногти",
-      "brows": "Брови",
-      "treatments": "Процедуры"
+      "manicure": "Маникюр",
+      "pedicure": "Педикюр",
+      "brows": "Брови"
     },
     "placeholder": "Скоро"
   }
