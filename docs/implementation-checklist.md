@@ -69,8 +69,8 @@ A systematic, step-by-step implementation plan for the beauty salon website.
 - **Phase 0 (Foundation):** ✅ 100%
 - **Phase 1 (Styling & Design System):** ✅ 100% (Tailwind v4 + Prata font configured)
 - **Phase 2 (Core Pages):** ✅ 95% (All 10 pages with content, ready for production)
-- **Phase 3 (Interactive):** 🔴 10% (WhatsApp links exist, need more)
-- **Phase 4 (Integrations):** 🔴 5% (GA4 configured, need Maps)
+- **Phase 3 (Interactive):** 🟡 30% (WhatsApp links + GA4 tracking, need form)
+- **Phase 4 (Integrations):** 🟡 60% (GA4 fully implemented with event tracking)
 - **Phase 5 (SEO):** ✅ 95% (Schema 9.5/10, just need images)
 - **Phase 6 (Content):** 🟡 40% (Translations done, need images/text)
 
@@ -172,9 +172,16 @@ A systematic, step-by-step implementation plan for the beauty salon website.
     - [x] Hover effects and transitions
     - [x] Clickable links to service detail pages
   - [x] "See More" button linking to `/pricing`
-  - [x] Current services: Classic Lash Extensions (€35), Manicure with Coating (€35), Lash Lamination (€35), French Manicure (€45), Brow Micropigmentation (€120), Brow Lamination (€35)
+  - [x] ✅ **Pricing synced with services config** - Single source of truth
+  - [x] Displays "from €X" using minimum price from each service
+  - [x] Current services with dynamic pricing:
+    - Classic Lash Extensions (from €40)
+    - Manicure with Coating (from €25)
+    - Lash Lamination (from €40)
+    - French Manicure (from €25)
+    - Brow Micropigmentation (from €15)
+    - Brow Lamination (from €15)
   - [ ] TO IMPROVE: Replace placeholder images with real service photos
-  - [ ] TO IMPROVE: Sync pricing with `config/services.config.ts` data
 - [x] **Reviews Section** (`components/ReviewsSection.vue`) ✅ PRODUCTION-READY
   - [x] Section header with title and description
   - [x] 3 review cards in responsive grid
@@ -504,17 +511,31 @@ The homepage has been fully implemented with professional, production-ready comp
 - [ ] Add business location marker
 - [ ] Test clickable directions
 
-### 4.2 Google Analytics 4
-- [ ] Create GA4 property
-- [ ] Get measurement ID
-- [ ] Add to `.env`
-- [ ] Configure @nuxt/scripts for GA4
-- [ ] Set up event tracking:
-  - [ ] Page views
-  - [ ] CTA button clicks (Book Now, Call, WhatsApp)
-  - [ ] Form submissions
-  - [ ] Service page visits
-  - [ ] Gallery interactions
+### 4.2 Google Analytics 4 ✅ **COMPLETE**
+- [x] Create GA4 property (G-0SKWWBRJC4)
+- [x] Get measurement ID
+- [x] Add to `.env.example` - NUXT_PUBLIC_GOOGLE_ANALYTICS_ID
+- [x] Configure @nuxt/scripts for GA4 in nuxt.config.ts
+- [x] Create reusable analytics composable (`app/composables/useAnalytics.ts`)
+- [x] Set up event tracking:
+  - [x] Page views (automatic via GA4)
+  - [x] WhatsApp button clicks (Hero + CTA sections)
+  - [x] Phone button clicks (CTA sections)
+  - [x] Navigation tracking (internal links)
+  - [x] Gallery interactions (filters + lightbox)
+  - [ ] Form submissions (pending contact form)
+  - [ ] Service page views (can be added)
+- [x] Documented in `/docs/ga4-setup.md` with testing guide
+- [x] Tracked events:
+  - `whatsapp_click` - conversion event
+  - `phone_click` - conversion event
+  - `navigation` - user flow tracking
+  - `gallery_interaction` - engagement tracking
+- [ ] **TODO (Production):**
+  - [ ] Test in production after deployment
+  - [ ] Set up conversion events in GA4
+  - [ ] Create custom reports
+  - [ ] Add cookie consent (Phase 7)
 
 ### 4.3 Instagram Feed (Optional)
 - [ ] Explore Instagram API options

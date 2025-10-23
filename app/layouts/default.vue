@@ -17,21 +17,14 @@ const head = useLocaleHead();
         <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
       </template>
     </Head>
-    <Body>
-      <div class="max-w-5xl p-4 mx-auto">
-        <header>
-          <MainNavigation />
-          <LanguageSwitcher />
-        </header>
+    <Body class="mx-auto max-w-[2048px]">
+      <Header />
 
-        <main>
-          <slot />
-        </main>
+      <main>
+        <slot />
+      </main>
 
-        <footer>
-          <!-- Footer will go here -->
-        </footer>
-      </div>
+      <Footer />
     </Body>
   </Html>
 </template>

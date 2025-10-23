@@ -1,86 +1,41 @@
 <template>
-  <main>
-    <Hero />
-    <ServicesPreview />
+  <section>
+    <Hero show-cta />
+    <FeaturedServices />
+    <ReviewsSection />
+    <FAQSection />
     <CTASection />
-  </main>
+  </section>
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n({ useScope: 'local' })
-const config = useRuntimeConfig()
-const business = config.public.business
+const { t, locale } = useI18n({ useScope: "local" });
+const config = useRuntimeConfig();
+const business = config.public.business;
 
 useSeoMeta({
-  title: () => t('seoTitle'),
-  description: () => t('seoDescription'),
-  ogTitle: () => t('seoTitle'),
-  ogDescription: () => t('seoDescription'),
-  ogType: 'website',
-  ogLocale: () => locale.value === 'es' ? 'es_ES' : locale.value === 'ru' ? 'ru_RU' : 'en_US',
-})
+  title: () => t("seoTitle"),
+  description: () => t("seoDescription"),
+  ogTitle: () => t("seoTitle"),
+  ogDescription: () => t("seoDescription"),
+  ogType: "website",
+  ogLocale: () =>
+    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+});
 
+// Home page schema - inherits from global identity, only adds WebPage specifics
+// inLanguage is automatically set by Nuxt I18n integration
 useSchemaOrg([
   {
-    '@type': 'WebSite',
-    name: business.name,
-    url: business.url,
-    description: () => t('seoDescription'),
+    "@type": "WebPage",
+    "@id": `${business.url}/#webpage`,
+    name: () => t("seoTitle"),
+    description: () => t("seoDescription"),
+    isPartOf: {
+      "@id": `${business.url}/#website`,
+    },
   },
-  {
-    '@type': 'LocalBusiness',
-    name: business.name,
-    description: business.description,
-    image: `${business.url}/logo.png`,
-    logo: `${business.url}/logo.png`,
-    url: business.url,
-    telephone: business.phone,
-    priceRange: business.priceRange,
-    paymentAccepted: business.paymentAccepted,
-    sameAs: [
-      business.social.facebook,
-      business.social.instagram,
-    ],
-    areaServed: [
-      { '@type': 'City', name: 'Santa Pola' },
-      { '@type': 'City', name: 'Elche' },
-      { '@type': 'City', name: 'Guardamar del Segura' },
-      { '@type': 'City', name: 'Alicante' },
-    ],
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: business.address.street,
-      addressLocality: business.address.city,
-      addressRegion: business.address.region,
-      postalCode: business.address.postalCode,
-      addressCountry: business.address.country,
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: business.geo.latitude,
-      longitude: business.geo.longitude,
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: '12',
-    },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: business.hours.weekdays.opens,
-        closes: business.hours.weekdays.closes,
-      },
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Saturday'],
-        opens: business.hours.saturday.opens,
-        closes: business.hours.saturday.closes,
-      },
-    ],
-  },
-])
+]);
 </script>
 
 <i18n lang="json">

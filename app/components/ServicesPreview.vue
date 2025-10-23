@@ -1,47 +1,54 @@
 <template>
   <section aria-labelledby="services-preview">
-    <h2 id="services-preview">{{ t('heading') }}</h2>
-    <p class="section-subtitle">{{ t('subtitle') }}</p>
+    <h2 id="services-preview">{{ t("heading") }}</h2>
+    <p class="section-subtitle">{{ t("subtitle") }}</p>
 
     <div class="services-grid">
-      <article v-for="service in services" :key="service.slug" class="service-card">
+      <article
+        v-for="service in services"
+        :key="service.slug"
+        class="service-card"
+      >
         <h3>{{ service.title }}</h3>
         <p>{{ service.description }}</p>
-        <NuxtLink :to="localePath(`/services/${service.slug}`)" class="service-link">
-          {{ t('learnMore') }}
+        <NuxtLink
+          :to="localePath(`/services/${service.slug}`)"
+          class="service-link"
+        >
+          {{ t("learnMore") }}
         </NuxtLink>
       </article>
     </div>
 
     <div class="services-cta">
-      <NuxtLink :to="localePath('/pricing')" class="view-all">
-        {{ t('viewAll') }}
+      <NuxtLink :to="localePath('/pricing')">
+        {{ t("viewAll") }}
       </NuxtLink>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n({ useScope: 'local' })
-const localePath = useLocalePath()
+const { t } = useI18n({ useScope: "local" });
+const localePath = useLocalePath();
 
 const services = computed(() => [
   {
-    slug: 'lash-extensions',
-    title: t('services.lashes.title'),
-    description: t('services.lashes.description'),
+    slug: "lash-extensions",
+    title: t("services.lashes.title"),
+    description: t("services.lashes.description"),
   },
   {
-    slug: 'nail-design',
-    title: t('services.nails.title'),
-    description: t('services.nails.description'),
+    slug: "nail-design",
+    title: t("services.nails.title"),
+    description: t("services.nails.description"),
   },
   {
-    slug: 'beauty-treatments',
-    title: t('services.treatments.title'),
-    description: t('services.treatments.description'),
+    slug: "beauty-treatments",
+    title: t("services.treatments.title"),
+    description: t("services.treatments.description"),
   },
-])
+]);
 </script>
 
 <style scoped>
@@ -52,7 +59,7 @@ section {
 }
 
 h2 {
-  font-family: 'Prata', serif;
+  font-family: "Prata", serif;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   text-align: center;
   margin-bottom: 1rem;
@@ -85,7 +92,7 @@ h2 {
 }
 
 .service-card h3 {
-  font-family: 'Prata', serif;
+  font-family: "Prata", serif;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -106,7 +113,7 @@ h2 {
 }
 
 .service-link::after {
-  content: '→';
+  content: "→";
   transition: transform 0.2s;
 }
 
@@ -116,23 +123,6 @@ h2 {
 
 .services-cta {
   text-align: center;
-}
-
-.view-all {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: transparent;
-  color: white;
-  border: 2px solid #667eea;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.view-all:hover {
-  background: #667eea;
-  transform: translateY(-2px);
 }
 </style>
 

@@ -16,7 +16,7 @@
       <!-- Filter Buttons -->
       <div class="flex flex-wrap gap-3 mb-8">
         <button
-          @click="activeFilter = 'all'"
+          @click="handleFilterChange('all')"
           :class="[
             'px-6 py-2 rounded-full text-sm font-medium transition-all',
             activeFilter === 'all'
@@ -27,7 +27,7 @@
           {{ t("filters.all") }}
         </button>
         <button
-          @click="activeFilter = 'lashes'"
+          @click="handleFilterChange('lashes')"
           :class="[
             'px-6 py-2 rounded-full text-sm font-medium transition-all',
             activeFilter === 'lashes'
@@ -38,7 +38,7 @@
           {{ t("categories.lashes") }}
         </button>
         <button
-          @click="activeFilter = 'nails'"
+          @click="handleFilterChange('nails')"
           :class="[
             'px-6 py-2 rounded-full text-sm font-medium transition-all',
             activeFilter === 'nails'
@@ -49,7 +49,7 @@
           {{ t("categories.nails") }}
         </button>
         <button
-          @click="activeFilter = 'brows'"
+          @click="handleFilterChange('brows')"
           :class="[
             'px-6 py-2 rounded-full text-sm font-medium transition-all',
             activeFilter === 'brows'
@@ -60,7 +60,7 @@
           {{ t("categories.brows") }}
         </button>
         <button
-          @click="activeFilter = 'treatments'"
+          @click="handleFilterChange('treatments')"
           :class="[
             'px-6 py-2 rounded-full text-sm font-medium transition-all',
             activeFilter === 'treatments'
@@ -141,6 +141,7 @@ interface GalleryImage {
 const { t, locale } = useI18n({ useScope: "local" });
 const config = useRuntimeConfig();
 const business = config.public.business;
+const { trackGalleryInteraction } = useAnalytics();
 
 const activeFilter = ref<string>("all");
 const lightboxRef = ref<InstanceType<typeof Lightbox> | null>(null);
@@ -177,12 +178,21 @@ const lightboxImages = computed(() => {
 })
 
 const openLightbox = (index: number) => {
+  // Track lightbox open
+  const image = filteredImages.value[index]
+  trackGalleryInteraction('open_lightbox', image?.category)
+
   // Open lightbox with the clicked image index
   lightboxRef.value?.open(index)
 }
 
 const onLightboxClose = () => {
   // Optional: handle lightbox close event
+}
+
+const handleFilterChange = (filter: string) => {
+  activeFilter.value = filter
+  trackGalleryInteraction('filter_change', filter)
 }
 
 useSeoMeta({

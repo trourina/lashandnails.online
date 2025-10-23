@@ -125,7 +125,6 @@ i18n: {
   locales: [
     { code: 'es', iso: 'es-ES', file: 'es.json', name: 'Español' },
     { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
-    { code: 'pl', iso: 'pl-PL', file: 'pl.json', name: 'Polski' },
     { code: 'ru', iso: 'ru-RU', file: 'ru.json', name: 'Русский' }
   ],
   defaultLocale: 'es',

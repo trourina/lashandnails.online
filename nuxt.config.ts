@@ -1,38 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
-
-// Business data - single source of truth
-const BUSINESS = {
-  name: "Lash & Nails Santa Pola",
-  description:
-    "Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments",
-  url: "https://lashandnails.online",
-  phone: "+34604316778",
-  telegram: "Irina_STS",
-  address: {
-    street: "Carrer Major, 8",
-    city: "Santa Pola",
-    region: "Alicante",
-    postalCode: "03130",
-    country: "ES",
-  },
-  geo: {
-    latitude: 38.1942263,
-    longitude: -0.5558291,
-  },
-  googleMaps: {
-    placeId: "ChIJwT2_BgbQZA0RKfMGo6vuCpk",
-  },
-  hours: {
-    weekdays: { opens: "09:30", closes: "20:00" },
-    saturday: { opens: "10:00", closes: "14:00" },
-  },
-  priceRange: "$$",
-  paymentAccepted: ["Cash", "Bizum"],
-  social: {
-    facebook: "https://www.facebook.com/profile.php?id=61576877656154",
-    instagram: "https://www.instagram.com/lash_nails.santapola",
-  },
-};
+import { BUSINESS, OPENING_HOURS_SPECIFICATION, POTENTIAL_ACTIONS } from "./config/business.config";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -78,6 +45,16 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
   ],
 
+  $production: {
+    scripts: {
+      registry: {
+        googleAnalytics: {
+          id: 'G-0SKWWBRJC4',
+        },
+      },
+    },
+  },
+
   fonts: {
     families: [{ name: "Prata", provider: "google" }],
   },
@@ -113,6 +90,8 @@ export default defineNuxtConfig({
       url: BUSINESS.url,
       logo: `${BUSINESS.url}/logo.png`,
       description: BUSINESS.description,
+      slogan: BUSINESS.slogan,
+      foundingDate: BUSINESS.foundingDate,
       address: {
         streetAddress: BUSINESS.address.street,
         addressLocality: BUSINESS.address.city,
@@ -124,28 +103,23 @@ export default defineNuxtConfig({
         latitude: BUSINESS.geo.latitude,
         longitude: BUSINESS.geo.longitude,
       },
+      hasMap: `https://www.google.com/maps/place/?q=place_id:${BUSINESS.googleMaps.placeId}`,
       telephone: BUSINESS.phone,
       priceRange: BUSINESS.priceRange,
       paymentAccepted: BUSINESS.paymentAccepted,
+      currenciesAccepted: BUSINESS.currenciesAccepted,
       sameAs: [BUSINESS.social.facebook, BUSINESS.social.instagram],
+      knowsLanguage: BUSINESS.knowsLanguage,
+      amenityFeature: BUSINESS.amenityFeature,
+      aggregateRating: BUSINESS.aggregateRating,
       areaServed: [
         { "@type": "City", name: "Santa Pola" },
         { "@type": "City", name: "Elche" },
         { "@type": "City", name: "Guardamar del Segura" },
         { "@type": "City", name: "Alicante" },
       ],
-      openingHoursSpecification: [
-        {
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: BUSINESS.hours.weekdays.opens,
-          closes: BUSINESS.hours.weekdays.closes,
-        },
-        {
-          dayOfWeek: ["Saturday"],
-          opens: BUSINESS.hours.saturday.opens,
-          closes: BUSINESS.hours.saturday.closes,
-        },
-      ],
+      openingHoursSpecification: OPENING_HOURS_SPECIFICATION,
+      potentialAction: POTENTIAL_ACTIONS,
     },
   },
 });
