@@ -10,7 +10,7 @@
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <Button
           :href="whatsappLink"
-          class="bg-white text-[#6B5B52] hover:bg-gray-100 px-8 py-3 rounded-full font-semibold shadow-lg transition-all"
+          class="bg-[#FFC107] text-[#4A3A32] hover:bg-[#FFB300] px-8 py-3 rounded-full font-semibold shadow-lg transition-all"
           @click="handleWhatsAppClick"
         >
           {{ displayPrimaryButton }}

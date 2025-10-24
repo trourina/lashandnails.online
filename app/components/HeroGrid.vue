@@ -77,7 +77,7 @@ onMounted(() => {
                 /\+/g,
                 ''
               )}?text=${encodeURIComponent(t('ctaMessage'))}`"
-              class="bg-white text-[#6B5B52] hover:bg-gray-100 px-8 py-4 rounded-full font-semibold shadow-lg transition-all inline-flex items-center gap-2"
+              class="bg-[#FFC107] text-[#4A3A32] hover:bg-[#FFB300] px-8 py-4 rounded-full font-semibold shadow-lg transition-all inline-flex items-center gap-2"
               @click="handleWhatsAppClick"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

@@ -17,11 +17,11 @@ const business = config.public.business;
 const { trackWhatsAppClick, trackNavigation } = useAnalytics();
 
 const handleWhatsAppClick = () => {
-  trackWhatsAppClick('hero');
+  trackWhatsAppClick("hero");
 };
 
 const handlePricingClick = () => {
-  trackNavigation('/pricing', 'hero');
+  trackNavigation("/pricing", "hero");
 };
 </script>
 
@@ -32,7 +32,7 @@ const handlePricingClick = () => {
     <div class="container mx-auto max-w-4xl">
       <div class="text-center">
         <h1
-          class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+          class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-pretty"
         >
           {{ title || t("title") }}
         </h1>
@@ -53,7 +53,7 @@ const handlePricingClick = () => {
               /\+/g,
               ''
             )}?text=${encodeURIComponent(t('ctaMessage'))}`"
-            class="bg-white text-[#6B5B52] hover:bg-gray-100 px-8 py-3 rounded-full font-semibold shadow-lg transition-all"
+            class="bg-[#FFC107] text-[#4A3A32] hover:bg-[#FFB300] px-8 py-3 rounded-full font-semibold shadow-lg transition-all"
             @click="handleWhatsAppClick"
           >
             {{ t("ctaPrimary") }}
