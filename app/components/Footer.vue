@@ -7,11 +7,11 @@ const localePath = useLocalePath();
   <footer class="bg-[#6B5B52] text-[#E8D5C4]">
     <div class="container mx-auto px-4 py-8">
       <!-- Main Footer Content -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
         <!-- Brand Section -->
         <div>
           <div class="flex items-center mb-4">
-            <Logo />
+            <Logo class="h-16" />
          
           </div>
           <p class="text-sm leading-relaxed opacity-90">
@@ -35,26 +35,26 @@ const localePath = useLocalePath();
             </li>
             <li>
               <NuxtLink
-                :to="localePath('/services/nail-design')"
+                :to="localePath('/services/manicure')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("services.nailDesign") }}
+                {{ t("services.manicure") }}
               </NuxtLink>
             </li>
             <li>
               <NuxtLink
-                :to="localePath('/services/beauty-treatments')"
+                :to="localePath('/services/pedicure')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("services.beautyTreatments") }}
+                {{ t("services.pedicure") }}
               </NuxtLink>
             </li>
             <li>
               <NuxtLink
-                :to="localePath('/pricing')"
+                :to="localePath('/services/brows')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("services.pricing") }}
+                {{ t("services.brows") }}
               </NuxtLink>
             </li>
           </ul>
@@ -96,6 +96,39 @@ const localePath = useLocalePath();
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
                 {{ t("help.booking") }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Legal Section -->
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-4">
+            {{ t("legal.title") }}
+          </h3>
+          <ul class="space-y-2">
+            <li>
+              <NuxtLink
+                :to="localePath('/legal-notice')"
+                class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
+              >
+                {{ t("legal.legalNotice") }}
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                :to="localePath('/privacy-policy')"
+                class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
+              >
+                {{ t("legal.privacyPolicy") }}
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink
+                :to="localePath('/cookie-policy')"
+                class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
+              >
+                {{ t("legal.cookiePolicy") }}
               </NuxtLink>
             </li>
           </ul>
@@ -180,9 +213,9 @@ const localePath = useLocalePath();
     "services": {
       "title": "Services",
       "lashExtensions": "Lash Extensions",
-      "nailDesign": "Nail Design",
-      "beautyTreatments": "Beauty Treatments",
-      "pricing": "Pricing"
+      "manicure": "Manicure",
+      "pedicure": "Pedicure",
+      "brows": "Brows"
     },
     "help": {
       "title": "Quick Links",
@@ -190,6 +223,12 @@ const localePath = useLocalePath();
       "gallery": "Gallery",
       "contact": "Contact Us",
       "booking": "Book Appointment"
+    },
+    "legal": {
+      "title": "Legal",
+      "legalNotice": "Legal Notice",
+      "privacyPolicy": "Privacy Policy",
+      "cookiePolicy": "Cookie Policy"
     },
     "hours": {
       "title": "Work Hours",
@@ -205,9 +244,9 @@ const localePath = useLocalePath();
     "services": {
       "title": "Servicios",
       "lashExtensions": "Extensiones de Pestañas",
-      "nailDesign": "Diseño de Uñas",
-      "beautyTreatments": "Tratamientos de Belleza",
-      "pricing": "Precios"
+      "manicure": "Manicura",
+      "pedicure": "Pedicura",
+      "brows": "Cejas"
     },
     "help": {
       "title": "Enlaces Rápidos",
@@ -215,6 +254,12 @@ const localePath = useLocalePath();
       "gallery": "Galería",
       "contact": "Contacto",
       "booking": "Reservar Cita"
+    },
+    "legal": {
+      "title": "Legal",
+      "legalNotice": "Aviso Legal",
+      "privacyPolicy": "Política de Privacidad",
+      "cookiePolicy": "Política de Cookies"
     },
     "hours": {
       "title": "Horario",
@@ -230,9 +275,9 @@ const localePath = useLocalePath();
     "services": {
       "title": "Услуги",
       "lashExtensions": "Наращивание Ресниц",
-      "nailDesign": "Дизайн Ногтей",
-      "beautyTreatments": "Косметические Процедуры",
-      "pricing": "Цены"
+      "manicure": "Маникюр",
+      "pedicure": "Педикюр",
+      "brows": "Брови"
     },
     "help": {
       "title": "Быстрые Ссылки",
@@ -240,6 +285,12 @@ const localePath = useLocalePath();
       "gallery": "Галерея",
       "contact": "Контакты",
       "booking": "Записаться"
+    },
+    "legal": {
+      "title": "Юридическая информация",
+      "legalNotice": "Правовая информация",
+      "privacyPolicy": "Политика конфиденциальности",
+      "cookiePolicy": "Политика использования файлов cookie"
     },
     "hours": {
       "title": "Часы Работы",
