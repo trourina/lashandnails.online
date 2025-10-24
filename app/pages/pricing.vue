@@ -47,6 +47,8 @@ useSchemaOrg([
   },
 ]);
 
+const localePath = useLocalePath();
+
 const pricingData = computed(() => [
   {
     name: t("categories.lashes.name"),
@@ -66,6 +68,9 @@ const pricingData = computed(() => [
   },
   {
     name: t("categories.extensions.name"),
+    link: localePath("/services/lash-extensions"),
+    linkText: t("learnMore"),
+    cta: t("categories.extensions.cta"),
     services: [
       {
         name: t("categories.extensions.services.classic"),
@@ -88,6 +93,9 @@ const pricingData = computed(() => [
   },
   {
     name: t("categories.brows.name"),
+    link: localePath("/services/brows"),
+    linkText: t("learnMore"),
+    cta: t("categories.brows.cta"),
     services: [
       { name: t("categories.brows.services.tinting"), price: "10€" },
       {
@@ -115,6 +123,9 @@ const pricingData = computed(() => [
   },
   {
     name: t("categories.manicure.name"),
+    link: localePath("/services/manicure"),
+    linkText: t("learnMore"),
+    cta: t("categories.manicure.cta"),
     services: [
       { name: t("categories.manicure.services.hygienicWomen"), price: "20€" },
       { name: t("categories.manicure.services.men"), price: "25€" },
@@ -128,6 +139,9 @@ const pricingData = computed(() => [
   },
   {
     name: t("categories.pedicure.name"),
+    link: localePath("/services/pedicure"),
+    linkText: t("learnMore"),
+    cta: t("categories.pedicure.cta"),
     services: [
       { name: t("categories.pedicure.services.hygienicWomen"), price: "45€" },
       { name: t("categories.pedicure.services.withCoating"), price: "55€" },
@@ -175,6 +189,7 @@ const pricingData = computed(() => [
     "seoDescription": "Precios de servicios de belleza en Santa Pola - Extensiones de pestañas, manicura, pedicura, micropigmentación y más",
     "pricingTitle": "Nuestros Servicios y Precios",
     "priceFrom": "desde {price}",
+    "learnMore": "Más información",
     "categories": {
       "lashes": {
         "name": "Pestañas",
@@ -188,6 +203,7 @@ const pricingData = computed(() => [
       },
       "extensions": {
         "name": "Extensiones",
+        "cta": "Extensiones profesionales de pestañas desde 35€. Descubre más sobre nuestros servicios de extensiones.",
         "services": {
           "classic": "Clásica",
           "classicNote": "(1.5-2 horas)",
@@ -201,6 +217,7 @@ const pricingData = computed(() => [
       },
       "brows": {
         "name": "Cejas",
+        "cta": "Diseño profesional de cejas desde 10€. Laminación, tinte y micropigmentación disponibles.",
         "services": {
           "tinting": "Tinte de cejas",
           "tintingCorrection": "Tinte + corrección de cejas",
@@ -219,6 +236,7 @@ const pricingData = computed(() => [
       },
       "manicure": {
         "name": "Manicura",
+        "cta": "Manicura profesional desde 20€. Gel, extensión y diseños personalizados con cosméticos alemanes Baehr.",
         "services": {
           "hygienicWomen": "Manicura higiénica mujer",
           "men": "Manicura masculina",
@@ -232,6 +250,7 @@ const pricingData = computed(() => [
       },
       "pedicure": {
         "name": "Pedicura",
+        "cta": "Pedicura profesional desde 45€. Tratamiento completo con cosméticos alemanes Pedibaehr.",
         "services": {
           "hygienicWomen": "Pedicura higiénica mujer",
           "withCoating": "Pedicura con esmaltado",
@@ -261,6 +280,7 @@ const pricingData = computed(() => [
     "seoDescription": "Beauty services pricing in Santa Pola - Lash extensions, manicure, pedicure, micropigmentation and more",
     "pricingTitle": "Our Services and Pricing",
     "priceFrom": "from {price}",
+    "learnMore": "Learn More",
     "categories": {
       "lashes": {
         "name": "Lashes",
@@ -274,6 +294,7 @@ const pricingData = computed(() => [
       },
       "extensions": {
         "name": "Extensions",
+        "cta": "Professional lash extensions from €35. Discover more about our extension services.",
         "services": {
           "classic": "Classic",
           "classicNote": "(1.5-2 hours)",
@@ -287,6 +308,7 @@ const pricingData = computed(() => [
       },
       "brows": {
         "name": "Brows",
+        "cta": "Professional brow design from €10. Lamination, tinting and micropigmentation available.",
         "services": {
           "tinting": "Brow tinting",
           "tintingCorrection": "Tinting + brow correction",
@@ -305,6 +327,7 @@ const pricingData = computed(() => [
       },
       "manicure": {
         "name": "Manicure",
+        "cta": "Professional manicure from €20. Gel, extension and custom designs with German Baehr cosmetics.",
         "services": {
           "hygienicWomen": "Hygienic manicure (women)",
           "men": "Men's manicure",
@@ -318,6 +341,7 @@ const pricingData = computed(() => [
       },
       "pedicure": {
         "name": "Pedicure",
+        "cta": "Professional pedicure from €45. Complete treatment with German Pedibaehr cosmetics.",
         "services": {
           "hygienicWomen": "Hygienic pedicure (women)",
           "withCoating": "Pedicure with coating",
@@ -347,6 +371,7 @@ const pricingData = computed(() => [
     "seoDescription": "Цены на услуги салона красоты в Санта-Пола - Наращивание ресниц, маникюр, педикюр, микропигментация и многое другое",
     "pricingTitle": "Наши услуги и цены",
     "priceFrom": "от {price}",
+    "learnMore": "Подробнее",
     "categories": {
       "lashes": {
         "name": "Ресницы",
@@ -360,6 +385,7 @@ const pricingData = computed(() => [
       },
       "extensions": {
         "name": "Наращивание",
+        "cta": "Профессиональное наращивание ресниц от 35€. Узнайте больше о наших услугах наращивания.",
         "services": {
           "classic": "Классика",
           "classicNote": "(1,5-2 часа)",
@@ -373,6 +399,7 @@ const pricingData = computed(() => [
       },
       "brows": {
         "name": "Брови",
+        "cta": "Профессиональный дизайн бровей от 10€. Доступны ламинирование, окрашивание и микропигментация.",
         "services": {
           "tinting": "Окрашивание бровей",
           "tintingCorrection": "Окрашивание + коррекция бровей",
@@ -391,6 +418,7 @@ const pricingData = computed(() => [
       },
       "manicure": {
         "name": "Маникюр",
+        "cta": "Профессиональный маникюр от 20€. Гель, наращивание и индивидуальные дизайны с немецкой косметикой Baehr.",
         "services": {
           "hygienicWomen": "Гигиенический маникюр женский",
           "men": "Мужской маникюр",
@@ -404,6 +432,7 @@ const pricingData = computed(() => [
       },
       "pedicure": {
         "name": "Педикюр",
+        "cta": "Профессиональный педикюр от 45€. Полный уход с немецкой косметикой Pedibaehr.",
         "services": {
           "hygienicWomen": "Гигиенический педикюр женский",
           "withCoating": "Педикюр с покрытием",

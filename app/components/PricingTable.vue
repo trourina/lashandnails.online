@@ -4,7 +4,7 @@
       {{ title }}
     </h2>
 
-    <div class="space-y-8">
+    <div class="space-y-12">
       <article
         v-for="category in categories"
         :key="category.name"
@@ -38,6 +38,22 @@
             </dd>
           </div>
         </dl>
+
+        <!-- CTA Section -->
+        <div v-if="category.link || category.cta" class="px-6 py-6 bg-gray-50 border-t border-gray-100">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p v-if="category.cta" class="text-gray-700 text-sm">
+              {{ category.cta }}
+            </p>
+            <NuxtLink
+              v-if="category.link"
+              :to="category.link"
+              class="px-6 py-3 bg-[#FFC107] text-[#4A3A32] rounded-full text-sm font-semibold hover:bg-[#FFB300] transition-all shadow-md hover:shadow-lg whitespace-nowrap"
+            >
+              {{ category.linkText || 'Learn More' }}
+            </NuxtLink>
+          </div>
+        </div>
       </article>
     </div>
   </section>
@@ -53,6 +69,9 @@ interface Service {
 interface Category {
   name: string;
   services: Service[];
+  link?: string;
+  linkText?: string;
+  cta?: string;
 }
 
 interface Props {
