@@ -196,9 +196,12 @@ const localePath = useLocalePath();
 
     <!-- Copyright Bar -->
     <div class="border-t border-[#8B7B72] bg-[#5A4A42] py-4">
-      <div class="container mx-auto px-4">
-        <p class="text-sm text-left opacity-75">
+      <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+        <p class="text-sm opacity-75">
           {{ t("copyright", { year: new Date().getFullYear() }) }}
+        </p>
+        <p class="text-sm opacity-75">
+          Made by <a href="https://dix.consulting/" target="_blank" rel="noopener noreferrer" class="hover:opacity-100 hover:underline transition-opacity">Dix Consulting</a>
         </p>
       </div>
     </div>
