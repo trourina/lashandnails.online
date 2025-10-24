@@ -144,7 +144,7 @@ const allLocales = computed(() => {
       <!-- Dropdown Menu -->
       <div
         v-show="isDropdownOpen"
-        class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg py-1 z-50"
+        class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg py-1 z-[100]"
       >
         <NuxtLink
           v-for="loc in availableLocales"
