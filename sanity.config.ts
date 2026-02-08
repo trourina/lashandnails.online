@@ -88,12 +88,12 @@ export default defineConfig({
     structureTool({ structure }),
     presentationTool({
       previewUrl: {
-        initial: "https://lashandnails.online/es",
+        initial: "https://www.lashandnails.online/es",
         previewMode: {
           enable: "/preview/enable",
         },
       },
-      allowOrigins: ["http://localhost:*"],
+      allowOrigins: ["http://localhost:*", "https://lashandnails.online"],
       resolve: {
         locations: {
           // Singleton pages
