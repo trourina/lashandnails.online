@@ -93,7 +93,7 @@ export default defineConfig({
           enable: "/preview/enable",
         },
       },
-      allowOrigins: ["http://localhost:*", "https://lashandnails.online"],
+      allowOrigins: ["http://localhost:*", "https://www.lashandnails.online"],
       resolve: {
         locations: {
           // Singleton pages

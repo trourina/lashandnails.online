@@ -55,10 +55,10 @@ defineProps<Props>();
 const { locale } = useI18n();
 
 // Fetch FAQs from Sanity
-const { data: sanityFAQs } = useFetchFAQs();
+const { data: sanityFAQs } = await useFetchFAQs();
 
 // Fetch homepage labels from Sanity (for heading/description defaults)
-const { data: homePage } = useFetchHomePage();
+const { data: homePage } = await useFetchHomePage();
 const s = (field: Parameters<typeof getLocalized>[0]) => getLocalized(field, locale.value);
 
 const faqs = computed(() => {

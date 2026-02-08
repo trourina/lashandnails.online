@@ -2,7 +2,7 @@
 const { locale } = useI18n();
 const localePath = useLocalePath();
 
-const { data: homePage, encodeDataAttribute } = useFetchHomePage();
+const { data: homePage, encodeDataAttribute } = await useFetchHomePage();
 const s = (field: Parameters<typeof getLocalized>[0]) => getLocalized(field, locale.value);
 
 const services = computed(() => {

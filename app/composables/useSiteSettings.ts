@@ -38,7 +38,7 @@ export function useSiteSettings() {
         instagram: c(s?.instagram) || business.social.instagram,
       },
       googleReviewUrl: c(s?.googleReviewUrl) || 'https://g.page/r/CSnzBqO8436ZEAE/review',
-      yelp: c(s?.yelp) || '',
+      yelp: c(s?.yelp) || 'https://yelp.es/biz/xnvJCVsuqRKFVajEYXZk-w',
     };
   });
 }

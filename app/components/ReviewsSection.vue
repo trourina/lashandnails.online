@@ -6,7 +6,7 @@ const settings = useSiteSettings();
 const { data: sanityTestimonials } = useFetchTestimonials();
 
 // Fetch homepage labels from Sanity
-const { data: homePage } = useFetchHomePage();
+const { data: homePage } = await useFetchHomePage();
 const s = (field: Parameters<typeof getLocalized>[0]) => getLocalized(field, locale.value);
 
 const reviews = computed(() => {
