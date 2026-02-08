@@ -1,80 +1,42 @@
 <template>
   <div>
-    <Hero :title="t('title')" :subtitle="t('subtitle')" />
+    <Hero :title="title" :subtitle="subtitle" />
 
     <section class="container mx-auto px-4 py-12">
 
     <section aria-labelledby="booking-methods">
-      <h2 id="booking-methods">{{ t("methods.heading") }}</h2>
+      <h2 id="booking-methods">{{ methodsHeading }}</h2>
 
       <div class="booking-methods-grid">
-        <article class="booking-method">
-          <h3>{{ t("methods.whatsapp.title") }}</h3>
-          <p>{{ t("methods.whatsapp.description") }}</p>
+        <article v-for="method in methods" :key="method.key" class="booking-method">
+          <h3>{{ method.title }}</h3>
+          <p>{{ method.description }}</p>
           <Button
-            :href="`https://wa.me/${business.phone.replace(
+            v-if="method.key === 'whatsapp'"
+            :href="`https://wa.me/${settings.phone.replace(
               /\+/g,
               ''
-            )}?text=${encodeURIComponent(t('methods.whatsapp.message'))}`"
+            )}?text=${encodeURIComponent(method.message || '')}`"
           >
-            {{ t("methods.whatsapp.cta") }}
+            {{ method.cta }}
           </Button>
-        </article>
-
-        <article class="booking-method">
-          <h3>{{ t("methods.phone.title") }}</h3>
-          <p>{{ t("methods.phone.description") }}</p>
-          <Button :href="`tel:${business.phone}`">
-            {{ t("methods.phone.cta") }}
+          <Button v-else-if="method.key === 'phone'" :href="`tel:${settings.phone}`">
+            {{ method.cta }}
           </Button>
         </article>
       </div>
     </section>
 
     <section aria-labelledby="booking-info">
-      <h2 id="booking-info">{{ t("info.heading") }}</h2>
+      <h2 id="booking-info">{{ infoHeading }}</h2>
 
       <dl class="info-list">
-        <div>
-          <dt>{{ t("info.hours.label") }}</dt>
-          <dd>
-            {{ t("info.hours.weekdays") }}:
-            <time :datetime="business.hours.weekdays.opens">{{
-              business.hours.weekdays.opens
-            }}</time>
-            -
-            <time :datetime="business.hours.weekdays.closes">{{
-              business.hours.weekdays.closes
-            }}</time>
-            <br />
-            {{ t("info.hours.saturday") }}:
-            <time :datetime="business.hours.saturday.opens">{{
-              business.hours.saturday.opens
-            }}</time>
-            -
-            <time :datetime="business.hours.saturday.closes">{{
-              business.hours.saturday.closes
-            }}</time>
+        <div v-for="item in infoItems" :key="item.key">
+          <dt>{{ item.label }}</dt>
+          <dd v-if="item.linkUrl">
+            <NuxtLink :to="localePath(item.linkUrl)">{{ item.linkText }}</NuxtLink>
           </dd>
-        </div>
-
-        <div>
-          <dt>{{ t("info.services.label") }}</dt>
-          <dd>
-            <NuxtLink :to="localePath('/pricing')">{{
-              t("info.services.link")
-            }}</NuxtLink>
-          </dd>
-        </div>
-
-        <div>
-          <dt>{{ t("info.location.label") }}</dt>
-          <dd>
-            <address>
-              {{ business.address.street }}<br />
-              {{ business.address.postalCode }} {{ business.address.city }}
-            </address>
-          </dd>
+          <dd v-else class="whitespace-pre-line">{{ item.value }}</dd>
         </div>
       </dl>
     </section>
@@ -83,16 +45,47 @@
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n({ useScope: "local" });
+const { locale } = useI18n();
 const localePath = useLocalePath();
 const config = useRuntimeConfig();
 const business = config.public.business;
 
+const { data: pageData } = useFetchBookingPage();
+const settings = useSiteSettings();
+const s = (field: any) => getLocalized(field, locale.value);
+
+const title = computed(() => s(pageData.value?.title));
+const subtitle = computed(() => s(pageData.value?.subtitle));
+const methodsHeading = computed(() => s(pageData.value?.methodsHeading));
+const infoHeading = computed(() => s(pageData.value?.infoHeading));
+
+const methods = computed(() => {
+  if (!pageData.value?.methods?.length) return [];
+  return pageData.value.methods.map((m) => ({
+    key: m.key,
+    title: s(m.title),
+    description: s(m.description),
+    cta: s(m.cta),
+    message: s(m.message) || "",
+  }));
+});
+
+const infoItems = computed(() => {
+  if (!pageData.value?.infoItems?.length) return [];
+  return pageData.value.infoItems.map((item) => ({
+    key: item.key,
+    label: s(item.label),
+    value: s(item.value),
+    linkText: s(item.linkText) || "",
+    linkUrl: item.linkUrl || "",
+  }));
+});
+
 useSeoMeta({
-  title: () => t("seoTitle"),
-  description: () => t("seoDescription"),
-  ogTitle: () => t("seoTitle"),
-  ogDescription: () => t("seoDescription"),
+  title: () => s(pageData.value?.seo?.title),
+  description: () => s(pageData.value?.seo?.description),
+  ogTitle: () => s(pageData.value?.seo?.title),
+  ogDescription: () => s(pageData.value?.seo?.description),
   ogType: "website",
   ogLocale: () =>
     locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
@@ -111,14 +104,14 @@ useSchemaOrg([
       {
         "@type": "ListItem",
         position: 2,
-        name: () => t("title"),
+        name: () => title.value,
       },
     ],
   },
   {
     "@type": "WebPage",
-    name: () => t("seoTitle"),
-    description: () => t("seoDescription"),
+    name: () => s(pageData.value?.seo?.title),
+    description: () => s(pageData.value?.seo?.description),
   },
 ]);
 </script>
@@ -203,113 +196,3 @@ address {
   font-style: normal;
 }
 </style>
-
-<i18n lang="json">
-{
-  "es": {
-    "title": "Reservar Cita",
-    "subtitle": "Reserva tu cita por WhatsApp o teléfono",
-    "seoTitle": "Reservar Cita | Lash & Nails Santa Pola",
-    "seoDescription": "Reserva tu cita en nuestro salón de belleza en Santa Pola - WhatsApp o llamada telefónica",
-    "methods": {
-      "heading": "Elige tu método preferido",
-      "whatsapp": {
-        "title": "WhatsApp",
-        "description": "Envíanos un mensaje y te responderemos lo antes posible",
-        "cta": "Reservar por WhatsApp",
-        "message": "Hola, me gustaría reservar una cita."
-      },
-      "phone": {
-        "title": "Teléfono",
-        "description": "Llámanos directamente para reservar tu cita",
-        "cta": "Llamar ahora"
-      }
-    },
-    "info": {
-      "heading": "Información útil",
-      "hours": {
-        "label": "Horario",
-        "weekdays": "Lunes a Viernes",
-        "saturday": "Sábado"
-      },
-      "services": {
-        "label": "Servicios y precios",
-        "link": "Ver todos los servicios"
-      },
-      "location": {
-        "label": "Ubicación"
-      }
-    }
-  },
-  "en": {
-    "title": "Book Appointment",
-    "subtitle": "Book your appointment via WhatsApp or phone",
-    "seoTitle": "Book Appointment | Lash & Nails Santa Pola",
-    "seoDescription": "Book your appointment at our beauty salon in Santa Pola - WhatsApp or phone call",
-    "methods": {
-      "heading": "Choose your preferred method",
-      "whatsapp": {
-        "title": "WhatsApp",
-        "description": "Send us a message and we'll get back to you as soon as possible",
-        "cta": "Book via WhatsApp",
-        "message": "Hello, I would like to book an appointment."
-      },
-      "phone": {
-        "title": "Phone",
-        "description": "Call us directly to book your appointment",
-        "cta": "Call now"
-      }
-    },
-    "info": {
-      "heading": "Useful information",
-      "hours": {
-        "label": "Opening hours",
-        "weekdays": "Monday to Friday",
-        "saturday": "Saturday"
-      },
-      "services": {
-        "label": "Services and pricing",
-        "link": "View all services"
-      },
-      "location": {
-        "label": "Location"
-      }
-    }
-  },
-  "ru": {
-    "title": "Записаться на прием",
-    "subtitle": "Запишитесь на прием через WhatsApp или по телефону",
-    "seoTitle": "Записаться на прием | Lash & Nails Santa Pola",
-    "seoDescription": "Запишитесь на прием в наш салон красоты в Санта-Пола - WhatsApp или звонок",
-    "methods": {
-      "heading": "Выберите удобный способ",
-      "whatsapp": {
-        "title": "WhatsApp",
-        "description": "Отправьте нам сообщение, и мы ответим как можно скорее",
-        "cta": "Записаться через WhatsApp",
-        "message": "Здравствуйте, я хочу записаться на прием."
-      },
-      "phone": {
-        "title": "Телефон",
-        "description": "Позвоните нам напрямую, чтобы записаться на прием",
-        "cta": "Позвонить сейчас"
-      }
-    },
-    "info": {
-      "heading": "Полезная информация",
-      "hours": {
-        "label": "Часы работы",
-        "weekdays": "Понедельник - Пятница",
-        "saturday": "Суббота"
-      },
-      "services": {
-        "label": "Услуги и цены",
-        "link": "Посмотреть все услуги"
-      },
-      "location": {
-        "label": "Расположение"
-      }
-    }
-  }
-}
-</i18n>

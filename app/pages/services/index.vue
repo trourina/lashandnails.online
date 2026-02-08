@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Hero :title="t('title')" :subtitle="t('subtitle')" />
+    <Hero :title="title" :subtitle="subtitle" />
 
     <!-- Services Grid -->
     <section aria-labelledby="services-list" class="py-16 px-4">
@@ -11,12 +11,19 @@
             :key="service.slug"
             class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group"
           >
-            <!-- Image Placeholder -->
+            <!-- Service Image -->
             <div
               class="relative aspect-[4/3] bg-gradient-to-br from-[#E8D5C4] to-[#D4C4B4] overflow-hidden"
             >
-              <div
-                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"
+              <NuxtImg
+                v-if="service.sanityImage"
+                provider="sanity"
+                :src="service.sanityImage"
+                :alt="service.title"
+                width="600"
+                height="450"
+                fit="crop"
+                class="absolute inset-0 object-cover h-full w-full"
               />
               <div
                 class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"
@@ -59,7 +66,7 @@
                 :to="localePath(`/services/${service.slug}`)"
                 class="inline-flex items-center justify-center w-full px-6 py-3 bg-[#6B5B52] text-white font-semibold rounded-full hover:bg-[#5A4A42] transition-colors group"
               >
-                {{ t("learnMore") }}
+                {{ t("common.viewDetails") }}
                 <svg
                   class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
                   fill="none"
@@ -81,88 +88,50 @@
     </section>
 
     <CTASection
-      :heading="t('cta.heading')"
-      :subtitle="t('cta.subtitle')"
-      :message="t('cta.message')"
-      :primary-button="t('cta.button')"
-      :secondary-button="t('cta.pricing')"
+      :heading="ctaHeading"
+      :subtitle="ctaSubtitle"
+      :message="ctaMessage"
+      :primary-button="ctaButton"
+      :secondary-button="ctaPricing"
     />
   </div>
 </template>
 
-<style scoped>
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.animate-shimmer {
-  animation: shimmer 2s infinite;
-}
-</style>
 
 <script setup lang="ts">
-const { t, locale } = useI18n({ useScope: "local" });
+const { t, locale } = useI18n();
 const config = useRuntimeConfig();
 const business = config.public.business;
 const localePath = useLocalePath();
 
-const services = computed(() => [
-  {
-    slug: "lash-extensions",
-    title: t("services.lashes.title"),
-    description: t("services.lashes.description"),
-    features: [
-      t("services.lashes.features.0"),
-      t("services.lashes.features.1"),
-      t("services.lashes.features.2"),
-      t("services.lashes.features.3"),
-    ],
-  },
-  {
-    slug: "manicure",
-    title: t("services.manicure.title"),
-    description: t("services.manicure.description"),
-    features: [
-      t("services.manicure.features.0"),
-      t("services.manicure.features.1"),
-      t("services.manicure.features.2"),
-      t("services.manicure.features.3"),
-    ],
-  },
-  {
-    slug: "pedicure",
-    title: t("services.pedicure.title"),
-    description: t("services.pedicure.description"),
-    features: [
-      t("services.pedicure.features.0"),
-      t("services.pedicure.features.1"),
-      t("services.pedicure.features.2"),
-      t("services.pedicure.features.3"),
-    ],
-  },
-  {
-    slug: "brows",
-    title: t("services.brows.title"),
-    description: t("services.brows.description"),
-    features: [
-      t("services.brows.features.0"),
-      t("services.brows.features.1"),
-      t("services.brows.features.2"),
-      t("services.brows.features.3"),
-    ],
-  },
-]);
+const { data: pageData } = useFetchServicesOverview();
+const s = (field: any) => getLocalized(field, locale.value);
+
+const title = computed(() => s(pageData.value?.title));
+const subtitle = computed(() => s(pageData.value?.subtitle));
+
+const services = computed(() => {
+  if (!pageData.value?.serviceCards?.length) return [];
+  return pageData.value.serviceCards.map((card) => ({
+    slug: card.slug,
+    title: s(card.title),
+    description: s(card.description),
+    sanityImage: card.image?.asset?._ref || "",
+    features: card.features?.map((f) => s(f.text)).filter(Boolean) || [],
+  }));
+});
+
+const ctaHeading = computed(() => s(pageData.value?.cta?.heading));
+const ctaSubtitle = computed(() => s(pageData.value?.cta?.subtitle));
+const ctaButton = computed(() => s(pageData.value?.cta?.button));
+const ctaPricing = computed(() => t("servicePage.viewPricing"));
+const ctaMessage = computed(() => s(pageData.value?.cta?.message));
 
 useSeoMeta({
-  title: () => t("seoTitle"),
-  description: () => t("seoDescription"),
-  ogTitle: () => t("seoTitle"),
-  ogDescription: () => t("seoDescription"),
+  title: () => s(pageData.value?.seo?.title),
+  description: () => s(pageData.value?.seo?.description),
+  ogTitle: () => s(pageData.value?.seo?.title),
+  ogDescription: () => s(pageData.value?.seo?.description),
   ogType: "website",
   ogLocale: () =>
     locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
@@ -181,203 +150,18 @@ useSchemaOrg([
       {
         "@type": "ListItem",
         position: 2,
-        name: () => t("title"),
+        name: () => title.value,
       },
     ],
   },
   {
     "@type": "CollectionPage",
-    name: () => t("seoTitle"),
-    description: () => t("seoDescription"),
+    name: () => s(pageData.value?.seo?.title),
+    description: () => s(pageData.value?.seo?.description),
     about: {
       "@type": "Thing",
-      name: () => t("title"),
+      name: () => title.value,
     },
   },
 ]);
 </script>
-
-<i18n lang="json">
-{
-  "es": {
-    "title": "Nuestros Servicios",
-    "subtitle": "Servicios profesionales de belleza en Santa Pola - Calidad, experiencia y atención personalizada",
-    "seoTitle": "Nuestros Servicios | Lash & Nails Santa Pola",
-    "seoDescription": "Descubre nuestros servicios de belleza: extensiones de pestañas, diseño de uñas y tratamientos de belleza en Santa Pola",
-    "breadcrumb": {
-      "home": "Inicio",
-      "current": "Servicios"
-    },
-    "learnMore": "Ver detalles",
-    "services": {
-      "lashes": {
-        "title": "Extensiones de Pestañas",
-        "description": "Realza tu mirada con extensiones de pestañas profesionales. Técnicas avanzadas para un look natural y duradero.",
-        "features": [
-          "Efecto volumen o natural",
-          "Pestañas de alta calidad",
-          "Aplicación personalizada",
-          "Duración 3-4 semanas"
-        ]
-      },
-      "manicure": {
-        "title": "Manicura",
-        "description": "Servicios profesionales de manicura con productos premium para uñas bellas y saludables.",
-        "features": [
-          "Manicura higiénica y con gel",
-          "Diseño único personalizado - flores, geometría, brillos y más",
-          "Fortalecimiento y extensión de uñas con gel",
-          "Cosméticos alemanes Baehr e instrumentos esterilizados"
-        ]
-      },
-      "pedicure": {
-        "title": "Pedicura",
-        "description": "Servicios profesionales de pedicura para pies saludables y hermosos.",
-        "features": [
-          "Tratamiento completo de dedos y planta del pie",
-          "Pedicura con esmaltado gel",
-          "Cosméticos alemanes Pedibaehr",
-          "Todos los instrumentos esterilizados"
-        ]
-      },
-      "brows": {
-        "title": "Cejas",
-        "description": "Diseño profesional de cejas, tinte y laminación para cejas perfectas.",
-        "features": [
-          "Tinte de cejas",
-          "Tinte + corrección",
-          "Laminación de cejas",
-          "Micropigmentación"
-        ]
-      }
-    },
-    "cta": {
-      "heading": "¿Lista para reservar?",
-      "subtitle": "Reserva tu cita hoy y déjanos cuidar de tu belleza",
-      "button": "Reservar por WhatsApp",
-      "pricing": "Ver Precios",
-      "message": "Hola, me gustaría reservar una cita para un servicio."
-    }
-  },
-  "en": {
-    "title": "Our Services",
-    "subtitle": "Professional beauty services in Santa Pola - Quality, experience and personalized attention",
-    "seoTitle": "Our Services | Lash & Nails Santa Pola",
-    "seoDescription": "Discover our beauty services: lash extensions, nail design and beauty treatments in Santa Pola",
-    "breadcrumb": {
-      "home": "Home",
-      "current": "Services"
-    },
-    "learnMore": "View details",
-    "services": {
-      "lashes": {
-        "title": "Lash Extensions",
-        "description": "Enhance your look with professional lash extensions. Advanced techniques for a natural and long-lasting look.",
-        "features": [
-          "Volume or natural effect",
-          "High-quality lashes",
-          "Personalized application",
-          "Lasts 3-4 weeks"
-        ]
-      },
-      "manicure": {
-        "title": "Manicure",
-        "description": "Professional manicure services with premium products for beautiful, healthy nails.",
-        "features": [
-          "Hygienic and gel manicure",
-          "Unique custom design - flowers, geometry, glitter and more",
-          "Gel nail strengthening and extension",
-          "German Baehr cosmetics and sterilized instruments"
-        ]
-      },
-      "pedicure": {
-        "title": "Pedicure",
-        "description": "Professional pedicure services for healthy, beautiful feet.",
-        "features": [
-          "Complete toe and foot sole treatment",
-          "Pedicure with gel polish",
-          "German Pedibaehr cosmetics",
-          "All instruments sterilized"
-        ]
-      },
-      "brows": {
-        "title": "Brows",
-        "description": "Professional brow design, tinting and lamination for perfect brows.",
-        "features": [
-          "Brow tinting",
-          "Tinting + correction",
-          "Brow lamination",
-          "Micropigmentation"
-        ]
-      }
-    },
-    "cta": {
-      "heading": "Ready to book?",
-      "subtitle": "Book your appointment today and let us take care of your beauty",
-      "button": "Book via WhatsApp",
-      "pricing": "View Pricing",
-      "message": "Hello, I would like to book an appointment for a service."
-    }
-  },
-  "ru": {
-    "title": "Наши услуги",
-    "subtitle": "Профессиональные услуги красоты в Санта-Пола - Качество, опыт и индивидуальный подход",
-    "seoTitle": "Наши услуги | Lash & Nails Santa Pola",
-    "seoDescription": "Откройте для себя наши услуги красоты: наращивание ресниц, дизайн ногтей и косметические процедуры в Санта-Пола",
-    "breadcrumb": {
-      "home": "Главная",
-      "current": "Услуги"
-    },
-    "learnMore": "Подробнее",
-    "services": {
-      "lashes": {
-        "title": "Наращивание ресниц",
-        "description": "Подчеркните свой взгляд профессиональным наращиванием ресниц. Передовые техники для естественного и долговечного результата.",
-        "features": [
-          "Объемный или натуральный эффект",
-          "Высококачественные ресницы",
-          "Индивидуальное нанесение",
-          "Держится 3-4 недели"
-        ]
-      },
-      "manicure": {
-        "title": "Маникюр",
-        "description": "Профессиональные услуги маникюра с премиальными продуктами для красивых и здоровых ногтей.",
-        "features": [
-          "Гигиенический и гель-маникюр",
-          "Уникальный персональный дизайн - цветы, геометрия, блестки и многое другое",
-          "Укрепление и наращивание ногтей гелем",
-          "Немецкая косметика Baehr и стерилизованные инструменты"
-        ]
-      },
-      "pedicure": {
-        "title": "Педикюр",
-        "description": "Профессиональные услуги педикюра для здоровых и красивых ног.",
-        "features": [
-          "Полная обработка пальцев и стопы",
-          "Педикюр с гель-лаком",
-          "Немецкая косметика Pedibaehr",
-          "Все инструменты стерилизованы"
-        ]
-      },
-      "brows": {
-        "title": "Брови",
-        "description": "Профессиональный дизайн бровей, окрашивание и ламинирование для идеальных бровей.",
-        "features": [
-          "Окрашивание бровей",
-          "Окрашивание + коррекция",
-          "Ламинирование бровей",
-          "Микропигментирование"
-        ]
-      }
-    },
-    "cta": {
-      "heading": "Готовы записаться?",
-      "subtitle": "Запишитесь сегодня и позвольте нам позаботиться о вашей красоте",
-      "button": "Записаться через WhatsApp",
-      "pricing": "Посмотреть цены",
-      "message": "Здравствуйте, я хочу записаться на процедуру."
-    }
-  }
-}
-</i18n>
