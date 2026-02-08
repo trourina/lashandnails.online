@@ -235,7 +235,9 @@ const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0] {
   saturdayOpen,
   saturdayClose,
   facebook,
-  instagram
+  instagram,
+  googleReviewUrl,
+  yelp
 }`;
 
 export interface SanitySiteSettings {
@@ -255,6 +257,8 @@ export interface SanitySiteSettings {
   saturdayClose: string;
   facebook: string;
   instagram: string;
+  googleReviewUrl: string;
+  yelp: string;
 }
 
 export function useFetchSiteSettings() {
@@ -285,6 +289,7 @@ const HOME_PAGE_QUERY = `*[_type == "homePage"][0] {
   reviewsTitle,
   reviewsDescription,
   reviewsClientLabel,
+  reviewsCtaButton,
   faqHeading,
   faqDescription,
   ctaHeading,
@@ -322,6 +327,7 @@ export interface SanityHomePage {
   reviewsTitle: LocalizedField;
   reviewsDescription: LocalizedField;
   reviewsClientLabel: LocalizedField;
+  reviewsCtaButton: LocalizedField;
   faqHeading: LocalizedField;
   faqDescription: LocalizedField;
   ctaHeading: LocalizedField;
@@ -341,6 +347,9 @@ export function useFetchHomePage() {
 const ABOUT_PAGE_QUERY = `*[_type == "aboutPage"][0] {
   title,
   subtitle,
+  ownerImage,
+  teamImage1,
+  teamImage2,
   storyHeading,
   storyParagraphs[] { text },
   philosophyHeading,
@@ -353,9 +362,14 @@ const ABOUT_PAGE_QUERY = `*[_type == "aboutPage"][0] {
   seo
 }`;
 
+type SanityImage = { asset: { _ref: string }; hotspot?: unknown } | null;
+
 export interface SanityAboutPage {
   title: LocalizedField;
   subtitle: LocalizedField;
+  ownerImage: SanityImage;
+  teamImage1: SanityImage;
+  teamImage2: SanityImage;
   storyHeading: LocalizedField;
   storyParagraphs: { text: LocalizedField }[] | null;
   philosophyHeading: LocalizedField;

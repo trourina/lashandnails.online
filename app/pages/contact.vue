@@ -4,7 +4,9 @@
 
     <!-- Contact Info Cards -->
     <section class="container mx-auto px-4 py-12">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <DecorCircle color="gold" size="xl" top="-1.5rem" left="-1.5rem" />
+        <DecorCircle color="cream" size="lg" bottom="-1rem" right="-1rem" />
         <!-- Phone -->
         <div class="bg-gray-50 rounded-3xl p-8 text-center">
           <div class="w-16 h-16 bg-[#6B5B52] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -56,7 +58,9 @@
       </div>
 
       <!-- Map -->
-      <div class="mb-16">
+      <div class="relative mb-16">
+        <DecorCircle color="brown" size="lg" top="-1rem" right="-1rem" />
+        <DecorCircle color="gold" size="md" bottom="-0.75rem" left="-0.75rem" />
         <LocationMap />
       </div>
 
@@ -71,7 +75,7 @@ const { locale } = useI18n();
 const config = useRuntimeConfig();
 const business = config.public.business;
 
-const { data: pageData } = useFetchContactPage();
+const { data: pageData } = await useFetchContactPage();
 const settings = useSiteSettings();
 const s = (field: any) => getLocalized(field, locale.value);
 
@@ -101,8 +105,7 @@ useSeoMeta({
   ogTitle: () => s(pageData.value?.seo?.title),
   ogDescription: () => s(pageData.value?.seo?.description),
   ogType: "website",
-  ogLocale: () =>
-    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+  ogLocale: useOgLocale(),
 });
 
 useSchemaOrg([
@@ -126,56 +129,6 @@ useSchemaOrg([
     "@type": "ContactPage",
     name: () => s(pageData.value?.seo?.title),
     description: () => s(pageData.value?.seo?.description),
-  },
-  {
-    "@type": "LocalBusiness",
-    name: business.name,
-    description: business.description,
-    image: `${business.url}/logo.png`,
-    logo: `${business.url}/logo.png`,
-    url: business.url,
-    telephone: () => settings.value.phone,
-    priceRange: business.priceRange,
-    paymentAccepted: business.paymentAccepted,
-    sameAs: () => [settings.value.social.facebook, settings.value.social.instagram],
-    areaServed: [
-      { "@type": "City", name: "Santa Pola" },
-      { "@type": "City", name: "Elche" },
-      { "@type": "City", name: "Guardamar del Segura" },
-      { "@type": "City", name: "Alicante" },
-    ],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: () => settings.value.address.street,
-      addressLocality: () => settings.value.address.city,
-      addressRegion: () => settings.value.address.region,
-      postalCode: () => settings.value.address.postalCode,
-      addressCountry: () => settings.value.address.country,
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: business.geo.latitude,
-      longitude: business.geo.longitude,
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: "12",
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: () => settings.value.hours.weekdays.opens,
-        closes: () => settings.value.hours.weekdays.closes,
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday"],
-        opens: () => settings.value.hours.saturday.opens,
-        closes: () => settings.value.hours.saturday.closes,
-      },
-    ],
   },
   {
     "@type": "FAQPage",

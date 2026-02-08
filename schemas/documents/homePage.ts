@@ -58,6 +58,7 @@ export default defineType({
     defineField({ name: "reviewsTitle", title: "Заголовок секции", type: "localizedString", group: "reviews" }),
     defineField({ name: "reviewsDescription", title: "Описание секции", type: "localizedText", group: "reviews" }),
     defineField({ name: "reviewsClientLabel", title: "Метка 'Наш клиент'", type: "localizedString", group: "reviews" }),
+    defineField({ name: "reviewsCtaButton", title: "Кнопка 'Оставить отзыв'", type: "localizedString", group: "reviews" }),
 
     // FAQ section
     defineField({ name: "faqHeading", title: "Заголовок секции", type: "localizedString", group: "faq" }),

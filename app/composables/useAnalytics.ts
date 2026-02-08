@@ -7,15 +7,14 @@
  */
 
 export const useAnalytics = () => {
+  const { proxy } = useScriptGoogleAnalytics()
+
   /**
    * Track custom event in GA4
-   * @param eventName - Name of the event (e.g., 'button_click', 'form_submit')
-   * @param eventParams - Additional parameters for the event
+   * Events are queued automatically if the script hasn't loaded yet.
    */
   const trackEvent = (eventName: string, eventParams?: Record<string, any>) => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', eventName, eventParams)
-    }
+    proxy.gtag('event', eventName, eventParams)
   }
 
   /**

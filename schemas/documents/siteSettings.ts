@@ -116,6 +116,19 @@ export default defineType({
       type: "url",
       group: "social",
     },
+    {
+      name: "googleReviewUrl",
+      title: "Ссылка на Google отзывы",
+      type: "url",
+      description: "Ссылка для оставления отзыва в Google (g.page/r/...)",
+      group: "social",
+    },
+    {
+      name: "yelp",
+      title: "Yelp URL",
+      type: "url",
+      group: "social",
+    },
   ],
   preview: {
     prepare() {

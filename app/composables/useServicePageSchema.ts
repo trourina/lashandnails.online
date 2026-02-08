@@ -15,6 +15,7 @@ export function useServicePageSchema(
 ) {
   const config = useRuntimeConfig();
   const business = config.public.business;
+  const { t } = useI18n();
 
   // Get service schema from centralized config
   const serviceSchema = getServiceSchemaBySlug(serviceSlug);
@@ -37,13 +38,13 @@ export function useServicePageSchema(
         {
           "@type": "ListItem",
           position: 1,
-          name: "Home",
+          name: () => t("breadcrumb.home"),
           item: business.url,
         },
         {
           "@type": "ListItem",
           position: 2,
-          name: "Services",
+          name: () => t("breadcrumb.services"),
           item: `${business.url}/services`,
         },
         {

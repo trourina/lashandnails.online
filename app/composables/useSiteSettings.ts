@@ -34,6 +34,8 @@ export function useSiteSettings() {
         facebook: s?.facebook || business.social.facebook,
         instagram: s?.instagram || business.social.instagram,
       },
+      googleReviewUrl: s?.googleReviewUrl || 'https://g.page/r/CSnzBqO8436ZEAE/review',
+      yelp: s?.yelp || '',
     };
   });
 }

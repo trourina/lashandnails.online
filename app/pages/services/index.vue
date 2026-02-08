@@ -4,7 +4,9 @@
 
     <!-- Services Grid -->
     <section aria-labelledby="services-list" class="py-16 px-4">
-      <div class="container mx-auto max-w-6xl">
+      <div class="container mx-auto max-w-6xl relative">
+        <DecorCircle color="gold" size="xl" top="-1.5rem" right="-2rem" />
+        <DecorCircle color="cream" size="lg" bottom="3rem" left="-1.5rem" />
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <article
             v-for="service in services"
@@ -104,7 +106,7 @@ const config = useRuntimeConfig();
 const business = config.public.business;
 const localePath = useLocalePath();
 
-const { data: pageData } = useFetchServicesOverview();
+const { data: pageData } = await useFetchServicesOverview();
 const s = (field: any) => getLocalized(field, locale.value);
 
 const title = computed(() => s(pageData.value?.title));
@@ -133,8 +135,7 @@ useSeoMeta({
   ogTitle: () => s(pageData.value?.seo?.title),
   ogDescription: () => s(pageData.value?.seo?.description),
   ogType: "website",
-  ogLocale: () =>
-    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+  ogLocale: useOgLocale(),
 });
 
 useSchemaOrg([

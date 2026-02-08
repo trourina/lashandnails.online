@@ -5,7 +5,8 @@
     <div class="container mx-auto max-w-5xl px-4 py-12 space-y-16">
       <Breadcrumb :items="breadcrumbs" />
       <!-- Overview -->
-      <section aria-labelledby="overview" class="bg-white rounded-2xl p-8 shadow-sm">
+      <section aria-labelledby="overview" class="relative bg-white rounded-2xl p-8 shadow-sm">
+        <DecorCircle color="cream" size="lg" top="-1rem" right="-1rem" />
         <h2 id="overview" class="font-display text-3xl font-bold text-gray-900 mb-4">
           {{ t("servicePage.overview") }}
         </h2>
@@ -15,7 +16,8 @@
       </section>
 
       <!-- Pricing Section -->
-      <section aria-labelledby="pricing" class="bg-white rounded-2xl p-8 shadow-sm">
+      <section aria-labelledby="pricing" class="relative bg-white rounded-2xl p-8 shadow-sm">
+        <DecorCircle color="gold" size="xl" bottom="-1.5rem" left="-1.5rem" />
         <h2 id="pricing" class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">
           {{ t("servicePage.pricing") }}
         </h2>
@@ -60,7 +62,8 @@
       </section>
 
       <!-- Benefits -->
-      <section aria-labelledby="benefits" class="bg-white rounded-2xl p-8 shadow-sm">
+      <section aria-labelledby="benefits" class="relative bg-white rounded-2xl p-8 shadow-sm">
+        <DecorCircle color="brown" size="md" top="-0.75rem" left="-0.75rem" />
         <h2 id="benefits" class="font-display text-3xl font-bold text-gray-900 mb-6">
           {{ t("servicePage.benefits") }}
         </h2>
@@ -93,7 +96,8 @@
       </section>
 
       <!-- Aftercare -->
-      <section aria-labelledby="aftercare" class="bg-white rounded-2xl p-8 shadow-sm">
+      <section aria-labelledby="aftercare" class="relative bg-white rounded-2xl p-8 shadow-sm">
+        <DecorCircle color="cream" size="lg" bottom="-1rem" right="-1rem" />
         <h2 id="aftercare" class="font-display text-3xl font-bold text-gray-900 mb-6">
           {{ t("servicePage.aftercare") }}
         </h2>
@@ -122,7 +126,7 @@
 const { t, locale } = useI18n();
 const s = (field: Parameters<typeof getLocalized>[0]) => getLocalized(field, locale.value);
 
-const { data: sanityService } = useFetchService("lash-extensions");
+const { data: sanityService } = await useFetchService("lash-extensions");
 
 const translatedOffers = computed(() =>
   sanityService.value?.offers?.map((o) => ({ name: s(o.name), description: s(o.description), price: o.price })) ?? []
@@ -151,7 +155,7 @@ useSeoMeta({
   ogTitle: () => seoTitle.value,
   ogDescription: () => seoDescription.value,
   ogType: "website",
-  ogLocale: () => locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+  ogLocale: useOgLocale(),
 });
 
 useServicePageSchema("/services/lash-extensions", () => seoTitle.value, () => seoDescription.value);

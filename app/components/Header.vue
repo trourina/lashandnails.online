@@ -3,6 +3,7 @@ const { t, locale, locales } = useI18n();
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 const route = useRoute();
+const settings = useSiteSettings();
 
 const isActive = (path: string) => {
   if (path === "/") {
@@ -13,6 +14,16 @@ const isActive = (path: string) => {
 
 const isDropdownOpen = ref(false);
 const isMobileMenuOpen = ref(false);
+const dropdownRef = ref<HTMLElement | null>(null);
+
+function onClickOutside(e: MouseEvent) {
+  if (dropdownRef.value && !dropdownRef.value.contains(e.target as Node)) {
+    isDropdownOpen.value = false;
+  }
+}
+
+onMounted(() => document.addEventListener('click', onClickOutside));
+onUnmounted(() => document.removeEventListener('click', onClickOutside));
 
 const localeNames: Record<string, string> = {
   en: "EN",
@@ -106,16 +117,18 @@ const allLocales = computed(() => {
         {{ t("nav.gallery") }}
       </NuxtLink>
 
-      <NuxtLink
-        :to="localePath('/contact')"
-        class="ml-1 px-6 py-2 bg-[#6B5B52] text-white rounded-full text-sm font-medium hover:bg-[#5A4A42] transition-all shadow-md"
+      <a
+        :href="`https://wa.me/${settings.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('nav.bookMessage'))}`"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ml-1 px-6 py-2 bg-[#FFC107] text-[#4A3A32] rounded-full text-sm font-semibold hover:bg-[#FFB300] transition-all shadow-md"
       >
-        {{ t("nav.contact") }}
-      </NuxtLink>
+        {{ t("nav.bookNow") }}
+      </a>
       </nav>
 
       <!-- Language Switcher Dropdown -->
-      <div class="relative">
+      <div ref="dropdownRef" class="relative">
       <button
         @click="isDropdownOpen = !isDropdownOpen"
         class="flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50 transition-all shadow-lg"
@@ -287,6 +300,16 @@ const allLocales = computed(() => {
         >
           {{ t("nav.contact") }}
         </NuxtLink>
+
+        <a
+          :href="`https://wa.me/${settings.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('nav.bookMessage'))}`"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mx-6 mt-2 py-3 bg-[#FFC107] text-[#4A3A32] rounded-full text-base font-semibold text-center hover:bg-[#FFB300] transition-all"
+          @click="isMobileMenuOpen = false"
+        >
+          {{ t("nav.bookNow") }}
+        </a>
 
         <!-- Language Switcher in Mobile Menu -->
         <div class="border-t border-gray-200 mt-4 pt-4 px-6">

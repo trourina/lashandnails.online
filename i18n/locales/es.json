@@ -6,6 +6,8 @@
     "about": "Nosotros",
     "contact": "Contacto",
     "booking": "Reservar",
+    "bookNow": "Reservar Cita",
+    "bookMessage": "Hola, me gustaría reservar una cita.",
     "pricing": "Precios",
     "language": "Idioma"
   },
@@ -66,8 +68,8 @@
   },
   "footer": {
     "brandDescription": "Salón de belleza premium en Santa Pola que ofrece extensiones de pestañas profesionales, diseño de uñas y tratamientos de belleza con atención personalizada.",
-    "servicesTitle": "Servicios",
-    "lashExtensions": "Extensiones de Pestañas",
+    "categoriesTitle": "Categorías",
+    "lashExtensions": "Pestañas",
     "manicure": "Manicura",
     "pedicure": "Pedicura",
     "brows": "Cejas",
@@ -81,9 +83,10 @@
     "privacyPolicy": "Política de Privacidad",
     "cookiePolicy": "Política de Cookies",
     "hoursTitle": "Horario",
-    "weekdays": "Lun - Vie: 09:30 - 20:00",
-    "saturday": "Sáb: 10:00 - 14:00",
-    "hoursDescription": "Visítanos durante nuestro horario de trabajo o reserva una cita online para tu comodidad.",
+    "monFri": "Lun – Vie",
+    "sat": "Sáb",
+    "sun": "Dom",
+    "closed": "Cerrado",
     "copyright": "Copyright © {year} Lash & Nails Santa Pola | Todos los Derechos Reservados"
   },
   "locationMap": {
@@ -113,5 +116,10 @@
     "previous": "Anterior",
     "viewDetails": "Ver detalles",
     "learnMore": "Más información"
+  },
+  "error": {
+    "notFound": "La página que buscas no existe.",
+    "generic": "Algo salió mal.",
+    "backHome": "Volver al inicio"
   }
 }

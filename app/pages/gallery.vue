@@ -4,7 +4,8 @@
 
     <section class="container mx-auto px-4 py-12">
       <!-- Header -->
-      <div class="mb-8">
+      <div class="relative mb-8">
+        <DecorCircle color="cream" size="xl" top="-1.5rem" left="-2rem" />
         <h2
           class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4"
         >
@@ -75,7 +76,9 @@
       </div>
 
       <!-- Gallery Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <DecorCircle color="gold" size="lg" bottom="-1rem" right="-1rem" />
+        <DecorCircle color="brown" size="md" top="3rem" left="-1rem" />
         <div
           v-for="(image, index) in filteredImages"
           :key="image.id"
@@ -142,7 +145,7 @@ const activeFilter = ref<string>("all");
 const lightboxRef = ref<InstanceType<typeof Lightbox> | null>(null);
 
 // Fetch gallery images from Sanity
-const { data: sanityImages } = useFetchGalleryImages();
+const { data: sanityImages } = await useFetchGalleryImages();
 
 interface NormalizedImage {
   id: string;
@@ -202,8 +205,7 @@ useSeoMeta({
   ogTitle: () => t("gallery.seoTitle"),
   ogDescription: () => t("gallery.seoDescription"),
   ogType: "website",
-  ogLocale: () =>
-    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+  ogLocale: useOgLocale(),
 });
 
 useSchemaOrg([

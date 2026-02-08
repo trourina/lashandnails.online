@@ -16,6 +16,24 @@ export default defineType({
       type: "localizedString",
     },
     {
+      name: "ownerImage",
+      title: "Фото владелицы",
+      type: "image",
+      options: { hotspot: true },
+    },
+    {
+      name: "teamImage1",
+      title: "Фото команды 1",
+      type: "image",
+      options: { hotspot: true },
+    },
+    {
+      name: "teamImage2",
+      title: "Фото команды 2",
+      type: "image",
+      options: { hotspot: true },
+    },
+    {
       name: "storyHeading",
       title: "Заголовок истории",
       type: "localizedString",

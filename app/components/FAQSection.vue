@@ -3,7 +3,8 @@
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
         <!-- Left Side - Heading and Description -->
-        <div class="lg:pr-8">
+        <div class="lg:pr-8 relative">
+          <DecorCircle color="gold" size="xl" top="-1.5rem" left="-2rem" />
           <h2 id="faq-heading" class="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             {{ heading || s(homePage?.faqHeading) }}
           </h2>
@@ -13,7 +14,8 @@
         </div>
 
         <!-- Right Side - FAQ Items -->
-        <div class="space-y-4">
+        <div class="relative space-y-4">
+          <DecorCircle color="cream" size="lg" bottom="-1rem" right="-1rem" />
           <details
             v-for="(faq, index) in faqs"
             :key="index"

@@ -37,8 +37,7 @@ const handlePricingClick = () => {
           {{ title || t("home.title") }}
         </h1>
         <p
-          v-if="subtitle || t('home.subtitle')"
-          class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto text-balance"
+          class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto text-balance min-h-[3.5rem] md:min-h-[4rem]"
         >
           {{ subtitle || t("home.subtitle") }}
         </p>

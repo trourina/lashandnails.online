@@ -3,7 +3,9 @@
     <Hero :title="title" :subtitle="subtitle" />
 
     <div class="container mx-auto max-w-4xl px-4 py-12">
-      <div class="bg-white rounded-2xl p-8 shadow-sm space-y-8">
+      <div class="relative bg-white rounded-2xl p-8 shadow-sm space-y-8">
+        <DecorCircle color="cream" size="lg" top="-1rem" right="-1rem" />
+        <DecorCircle color="gold" size="md" bottom="-0.75rem" left="-0.75rem" />
         <section v-for="(section, idx) in sections" :key="idx">
           <h2 class="font-display text-2xl font-bold text-gray-900 mb-4">
             {{ section.title }}
@@ -26,7 +28,7 @@
 <script setup lang="ts">
 const { locale } = useI18n();
 
-const { data: pageData } = useFetchLegalPage("cookie-policy");
+const { data: pageData } = await useFetchLegalPage("cookie-policy");
 const s = (field: any) => getLocalized(field, locale.value);
 
 const title = computed(() => s(pageData.value?.title));
@@ -47,7 +49,6 @@ useSeoMeta({
   ogTitle: () => s(pageData.value?.seo?.title),
   ogDescription: () => s(pageData.value?.seo?.description),
   ogType: "website",
-  ogLocale: () =>
-    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+  ogLocale: useOgLocale(),
 });
 </script>

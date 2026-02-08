@@ -6,6 +6,8 @@
     "about": "About Us",
     "contact": "Contact Us",
     "booking": "Book Now",
+    "bookNow": "Book Now",
+    "bookMessage": "Hello, I would like to book an appointment.",
     "pricing": "Pricing",
     "language": "Language"
   },
@@ -66,8 +68,8 @@
   },
   "footer": {
     "brandDescription": "Premium beauty salon in Santa Pola offering professional lash extensions, nail design, and beauty treatments with personalized care.",
-    "servicesTitle": "Services",
-    "lashExtensions": "Lash Extensions",
+    "categoriesTitle": "Categories",
+    "lashExtensions": "Lashes",
     "manicure": "Manicure",
     "pedicure": "Pedicure",
     "brows": "Brows",
@@ -81,9 +83,10 @@
     "privacyPolicy": "Privacy Policy",
     "cookiePolicy": "Cookie Policy",
     "hoursTitle": "Work Hours",
-    "weekdays": "Mon - Fri: 09:30 - 20:00",
-    "saturday": "Sat: 10:00 - 14:00",
-    "hoursDescription": "Visit us during our working hours or book an appointment online for your convenience.",
+    "monFri": "Mon – Fri",
+    "sat": "Sat",
+    "sun": "Sun",
+    "closed": "Closed",
     "copyright": "Copyright © {year} Lash & Nails Santa Pola | All Rights Reserved"
   },
   "locationMap": {
@@ -113,5 +116,10 @@
     "previous": "Previous",
     "viewDetails": "View details",
     "learnMore": "Learn more"
+  },
+  "error": {
+    "notFound": "The page you're looking for doesn't exist.",
+    "generic": "Something went wrong.",
+    "backHome": "Back to Home"
   }
 }

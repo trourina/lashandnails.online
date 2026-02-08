@@ -19,7 +19,9 @@ const services = computed(() => {
 
 <template>
   <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 relative">
+      <DecorCircle color="gold" size="xl" top="-1.5rem" right="-2rem" />
+      <DecorCircle color="cream" size="lg" bottom="2rem" left="-1.5rem" />
       <!-- Section Header -->
       <div class="flex items-center justify-between mb-8">
         <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900">

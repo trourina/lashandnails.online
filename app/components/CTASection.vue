@@ -1,5 +1,7 @@
 <template>
-  <section class="py-16 px-4 bg-gradient-to-br from-[#6B5B52] to-[#8B7565]">
+  <section class="py-16 px-4 bg-gradient-to-br from-[#6B5B52] to-[#8B7565] relative">
+    <DecorCircle color="cream" size="xl" top="-1.5rem" right="-1.5rem" />
+    <DecorCircle color="gold" size="lg" bottom="-1rem" left="-2rem" />
     <div class="container mx-auto max-w-4xl text-center">
       <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
         {{ heading }}
@@ -17,7 +19,9 @@
         </Button>
         <Button
           v-if="showSecondaryButton"
-          :to="resolvedSecondaryLink"
+          :to="isExternalSecondary ? undefined : resolvedSecondaryLink"
+          :href="isExternalSecondary ? resolvedSecondaryLink : undefined"
+          :nofollow="false"
           class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#6B5B52] px-8 py-3 rounded-full font-semibold transition-all"
           @click="handleSecondaryClick"
         >
@@ -53,8 +57,12 @@ const localePath = useLocalePath()
 const settings = useSiteSettings()
 const { trackWhatsAppClick, trackPhoneClick } = useAnalytics()
 
-const resolvedSecondaryLink = computed(() =>
+const isExternalSecondary = computed(() =>
   props.secondaryButtonLink.startsWith('tel:') || props.secondaryButtonLink.startsWith('http')
+)
+
+const resolvedSecondaryLink = computed(() =>
+  isExternalSecondary.value
     ? props.secondaryButtonLink
     : localePath(props.secondaryButtonLink)
 )

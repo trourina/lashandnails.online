@@ -10,6 +10,7 @@
       :message="s(pageData?.ctaMessage)"
       :primary-button="s(pageData?.ctaButton)"
       :secondary-button="s(pageData?.ctaSecondary)"
+      :secondary-button-link="`tel:${settings.phone}`"
     />
   </section>
 </template>
@@ -18,8 +19,9 @@
 const { locale } = useI18n();
 const config = useRuntimeConfig();
 const business = config.public.business;
+const settings = useSiteSettings();
 
-const { data: pageData } = useFetchHomePage();
+const { data: pageData } = await useFetchHomePage();
 const s = (field: any) => getLocalized(field, locale.value);
 
 useSeoMeta({
@@ -28,8 +30,7 @@ useSeoMeta({
   ogTitle: () => s(pageData.value?.seo?.title),
   ogDescription: () => s(pageData.value?.seo?.description),
   ogType: "website",
-  ogLocale: () =>
-    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+  ogLocale: useOgLocale(),
 });
 
 useSchemaOrg([

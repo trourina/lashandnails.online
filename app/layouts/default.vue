@@ -17,7 +17,7 @@ const head = useLocaleHead();
         <Meta :id="meta.id" :property="meta.property" :content="meta.content" />
       </template>
     </Head>
-    <Body class="mx-auto max-w-[2048px]">
+    <Body class="mx-auto max-w-[2048px] overflow-x-hidden">
       <Header />
 
       <main>

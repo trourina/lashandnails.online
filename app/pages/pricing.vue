@@ -3,7 +3,11 @@
     <Hero :title="title" :subtitle="subtitle" />
 
     <section class="container mx-auto px-4 py-12">
-      <PricingTable :title="pricingTitle" :categories="pricingData" />
+      <div class="relative">
+        <DecorCircle color="gold" size="xl" top="-1rem" right="-2rem" />
+        <DecorCircle color="cream" size="lg" bottom="2rem" left="-1.5rem" />
+        <PricingTable :title="pricingTitle" :categories="pricingData" />
+      </div>
     </section>
   </div>
 </template>
@@ -14,7 +18,7 @@ const config = useRuntimeConfig();
 const business = config.public.business;
 const localePath = useLocalePath();
 
-const { data: pageData } = useFetchPricingPage();
+const { data: pageData } = await useFetchPricingPage();
 const s = (field: any) => getLocalized(field, locale.value);
 
 const title = computed(() => s(pageData.value?.title));
@@ -41,8 +45,7 @@ useSeoMeta({
   ogTitle: () => s(pageData.value?.seo?.title),
   ogDescription: () => s(pageData.value?.seo?.description),
   ogType: "website",
-  ogLocale: () =>
-    locale.value === "es" ? "es_ES" : locale.value === "ru" ? "ru_RU" : "en_US",
+  ogLocale: useOgLocale(),
 });
 
 useSchemaOrg([
