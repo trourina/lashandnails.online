@@ -18,22 +18,14 @@
         </div>
         <div class="relative">
           <NuxtImg
-            v-if="pageData?.ownerImage?.asset?._ref"
             provider="sanity"
-            :src="pageData.ownerImage.asset._ref"
+            :src="pageData?.ownerImage?.asset?._ref"
             alt="Lash & Nails Room salon"
             class="rounded-3xl shadow-xl w-full object-cover aspect-[3/4]"
             loading="lazy"
             width="600"
             height="800"
           />
-          <img
-            v-else
-            src="/images/about-owner.jpg"
-            alt="Lash & Nails Room salon"
-            class="rounded-3xl shadow-xl w-full object-cover aspect-[3/4]"
-            loading="lazy"
-          >
           <DecorCircle color="gold" size="lg" bottom="-1rem" left="-1rem" />
           <DecorCircle color="brown" size="md" top="-1rem" right="-1rem" />
         </div>
@@ -47,43 +39,27 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="relative">
               <NuxtImg
-                v-if="pageData?.teamImage1?.asset?._ref"
                 provider="sanity"
-                :src="pageData.teamImage1.asset._ref"
+                :src="pageData?.teamImage1?.asset?._ref"
                 alt="Lash & Nails Room team"
                 class="rounded-3xl shadow-lg w-full object-cover aspect-[4/5]"
                 loading="lazy"
                 width="600"
                 height="750"
               />
-              <img
-                v-else
-                src="/images/about-team.jpg"
-                alt="Lash & Nails Room team"
-                class="rounded-3xl shadow-lg w-full object-cover aspect-[4/5]"
-                loading="lazy"
-              >
               <DecorCircle color="cream" size="lg" top="-0.75rem" left="-0.75rem" />
               <DecorCircle color="gold" size="xl" bottom="-1.25rem" right="-1.25rem" />
             </div>
             <div class="relative">
               <NuxtImg
-                v-if="pageData?.teamImage2?.asset?._ref"
                 provider="sanity"
-                :src="pageData.teamImage2.asset._ref"
+                :src="pageData?.teamImage2?.asset?._ref"
                 alt="Lash & Nails Room team"
                 class="rounded-3xl shadow-lg w-full object-cover aspect-[4/5]"
                 loading="lazy"
                 width="600"
                 height="750"
               />
-              <img
-                v-else
-                src="/images/about-team-2.jpg"
-                alt="Lash & Nails Room team"
-                class="rounded-3xl shadow-lg w-full object-cover aspect-[4/5]"
-                loading="lazy"
-              >
               <DecorCircle color="brown" size="md" bottom="-0.75rem" left="-0.75rem" />
               <DecorCircle color="cream" size="lg" top="-1.25rem" right="-1.25rem" />
             </div>
