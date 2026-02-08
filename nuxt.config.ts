@@ -40,10 +40,26 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/eslint",
     "@nuxt/fonts",
+    "@nuxt/image",
     "@nuxt/scripts",
+    "@nuxtjs/sanity",
     "@nuxtjs/seo",
     "@nuxtjs/i18n",
   ],
+
+  sanity: {
+    projectId: process.env.NUXT_PUBLIC_SANITY_PROJECT_ID || "",
+    dataset: process.env.NUXT_PUBLIC_SANITY_DATASET || "production",
+    apiVersion: process.env.NUXT_PUBLIC_SANITY_API_VERSION || "2024-01-01",
+    useCdn: true,
+  },
+
+  image: {
+    sanity: {
+      projectId: process.env.NUXT_PUBLIC_SANITY_PROJECT_ID || "",
+      dataset: process.env.NUXT_PUBLIC_SANITY_DATASET || "production",
+    },
+  },
 
   $production: {
     scripts: {
@@ -61,12 +77,13 @@ export default defineNuxtConfig({
 
   i18n: {
     baseUrl: BUSINESS.url,
+    langDir: "locales",
     locales: [
-      { code: "en", language: "en", name: "English" },
-      { code: "es", language: "es", name: "Español" },
-      { code: "ru", language: "ru", name: "Русский" },
+      { code: "en", language: "en", name: "English", file: "en.json" },
+      { code: "es", language: "es", name: "Español", file: "es.json" },
+      { code: "ru", language: "ru", name: "Русский", file: "ru.json" },
     ],
-    defaultLocale: "en",
+    defaultLocale: "es",
     strategy: "prefix",
     detectBrowserLanguage: {
       useCookie: true,
@@ -80,7 +97,7 @@ export default defineNuxtConfig({
     url: BUSINESS.url,
     name: BUSINESS.name,
     description: BUSINESS.description,
-    defaultLocale: "en",
+    defaultLocale: "es",
   },
 
   schemaOrg: {
