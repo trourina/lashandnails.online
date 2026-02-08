@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, locale, locales } = useI18n({ useScope: "local" });
+const { t, locale, locales } = useI18n();
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 const route = useRoute();
@@ -33,7 +33,7 @@ const allLocales = computed(() => {
 
 <template>
   <header
-    class="container mx-auto w-full relative z-10 p-4 h-24 flex items-center justify-between"
+    class="container mx-auto w-full relative z-50 p-4 h-24 flex items-center justify-between"
   >
     <!-- Logo -->
     <NuxtLink :to="localePath('/')" class="flex items-center gap-3 group">
@@ -312,44 +312,3 @@ const allLocales = computed(() => {
     </div>
   </Transition>
 </template>
-
-<i18n lang="json">
-{
-  "en": {
-    "brandName": "Lash & Nails",
-    "nav": {
-      "home": "Home",
-      "about": "About Us",
-      "services": "Services",
-      "pricing": "Pricing",
-      "gallery": "Gallery",
-      "contact": "Contact Us",
-      "language": "Language"
-    }
-  },
-  "es": {
-    "brandName": "Lash & Nails",
-    "nav": {
-      "home": "Inicio",
-      "about": "Nosotros",
-      "services": "Servicios",
-      "pricing": "Precios",
-      "gallery": "Galería",
-      "contact": "Contacto",
-      "language": "Idioma"
-    }
-  },
-  "ru": {
-    "brandName": "Lash & Nails",
-    "nav": {
-      "home": "Главная",
-      "about": "О нас",
-      "services": "Услуги",
-      "pricing": "Цены",
-      "gallery": "Галерея",
-      "contact": "Контакты",
-      "language": "Язык"
-    }
-  }
-}
-</i18n>
