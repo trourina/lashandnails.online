@@ -44,10 +44,10 @@ const sections = computed(() =>
 );
 
 useSeoMeta({
-  title: () => s(pageData.value?.seo?.title),
-  description: () => s(pageData.value?.seo?.description),
-  ogTitle: () => s(pageData.value?.seo?.title),
-  ogDescription: () => s(pageData.value?.seo?.description),
+  title: () => stegaClean(s(pageData.value?.seo?.title)),
+  description: () => stegaClean(s(pageData.value?.seo?.description)),
+  ogTitle: () => stegaClean(s(pageData.value?.seo?.title)),
+  ogDescription: () => stegaClean(s(pageData.value?.seo?.description)),
   ogType: "website",
   ogLocale: useOgLocale(),
 });

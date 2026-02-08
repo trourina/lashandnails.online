@@ -34,8 +34,8 @@ const gridImages = computed(() => {
     return sanityHeroImages.value.slice(0, 4).map((img, index) => ({
       id: index + 1,
       image: img.image?.asset?._ref || "",
-      alt: getLocalized(img.alt, locale.value) || img.category,
-      category: img.category,
+      alt: getLocalized(img.alt, locale.value) || stegaClean(img.category),
+      category: stegaClean(img.category),
     }));
   }
   return [];

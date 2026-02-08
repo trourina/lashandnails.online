@@ -205,10 +205,10 @@ const ctaServices = computed(() => s(pageData.value?.cta?.services));
 const ctaMessage = computed(() => s(pageData.value?.cta?.message));
 
 useSeoMeta({
-  title: () => s(pageData.value?.seo?.title),
-  description: () => s(pageData.value?.seo?.description),
-  ogTitle: () => s(pageData.value?.seo?.title),
-  ogDescription: () => s(pageData.value?.seo?.description),
+  title: () => stegaClean(s(pageData.value?.seo?.title)),
+  description: () => stegaClean(s(pageData.value?.seo?.description)),
+  ogTitle: () => stegaClean(s(pageData.value?.seo?.title)),
+  ogDescription: () => stegaClean(s(pageData.value?.seo?.description)),
   ogType: "website",
   ogLocale: useOgLocale(),
 });
@@ -226,14 +226,14 @@ useSchemaOrg([
       {
         "@type": "ListItem",
         position: 2,
-        name: () => title.value,
+        name: () => stegaClean(title.value),
       },
     ],
   },
   {
     "@type": "AboutPage",
-    name: () => s(pageData.value?.seo?.title),
-    description: () => s(pageData.value?.seo?.description),
+    name: () => stegaClean(s(pageData.value?.seo?.title)),
+    description: () => stegaClean(s(pageData.value?.seo?.description)),
   },
 ]);
 </script>

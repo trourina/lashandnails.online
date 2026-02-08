@@ -104,7 +104,7 @@ const infoHeading = computed(() => s(pageData.value?.infoHeading));
 const methods = computed(() => {
   if (!pageData.value?.methods?.length) return [];
   return pageData.value.methods.map((m) => ({
-    key: m.key,
+    key: stegaClean(m.key),
     title: s(m.title),
     description: s(m.description),
     cta: s(m.cta),
@@ -115,19 +115,19 @@ const methods = computed(() => {
 const infoItems = computed(() => {
   if (!pageData.value?.infoItems?.length) return [];
   return pageData.value.infoItems.map((item) => ({
-    key: item.key,
+    key: stegaClean(item.key),
     label: s(item.label),
     value: s(item.value),
     linkText: s(item.linkText) || "",
-    linkUrl: item.linkUrl || "",
+    linkUrl: stegaClean(item.linkUrl || ""),
   }));
 });
 
 useSeoMeta({
-  title: () => s(pageData.value?.seo?.title),
-  description: () => s(pageData.value?.seo?.description),
-  ogTitle: () => s(pageData.value?.seo?.title),
-  ogDescription: () => s(pageData.value?.seo?.description),
+  title: () => stegaClean(s(pageData.value?.seo?.title)),
+  description: () => stegaClean(s(pageData.value?.seo?.description)),
+  ogTitle: () => stegaClean(s(pageData.value?.seo?.title)),
+  ogDescription: () => stegaClean(s(pageData.value?.seo?.description)),
   ogType: "website",
   ogLocale: useOgLocale(),
 });
@@ -145,14 +145,14 @@ useSchemaOrg([
       {
         "@type": "ListItem",
         position: 2,
-        name: () => title.value,
+        name: () => stegaClean(title.value),
       },
     ],
   },
   {
     "@type": "WebPage",
-    name: () => s(pageData.value?.seo?.title),
-    description: () => s(pageData.value?.seo?.description),
+    name: () => stegaClean(s(pageData.value?.seo?.title)),
+    description: () => stegaClean(s(pageData.value?.seo?.description)),
   },
 ]);
 </script>

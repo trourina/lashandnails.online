@@ -83,12 +83,12 @@ const title = computed(() => s(pageData.value?.title));
 const subtitle = computed(() => s(pageData.value?.subtitle));
 
 function contactCardTitle(key: string): string {
-  const card = pageData.value?.contactCards?.find((c) => c.key === key);
+  const card = pageData.value?.contactCards?.find((c) => stegaClean(c.key) === key);
   return card ? s(card.title) : "";
 }
 
 function contactCardValue(key: string): string {
-  const card = pageData.value?.contactCards?.find((c) => c.key === key);
+  const card = pageData.value?.contactCards?.find((c) => stegaClean(c.key) === key);
   return card ? s(card.value) : "";
 }
 
@@ -100,10 +100,10 @@ const faqItems = computed(() =>
 );
 
 useSeoMeta({
-  title: () => s(pageData.value?.seo?.title),
-  description: () => s(pageData.value?.seo?.description),
-  ogTitle: () => s(pageData.value?.seo?.title),
-  ogDescription: () => s(pageData.value?.seo?.description),
+  title: () => stegaClean(s(pageData.value?.seo?.title)),
+  description: () => stegaClean(s(pageData.value?.seo?.description)),
+  ogTitle: () => stegaClean(s(pageData.value?.seo?.title)),
+  ogDescription: () => stegaClean(s(pageData.value?.seo?.description)),
   ogType: "website",
   ogLocale: useOgLocale(),
 });
@@ -121,24 +121,24 @@ useSchemaOrg([
       {
         "@type": "ListItem",
         position: 2,
-        name: () => title.value,
+        name: () => stegaClean(title.value),
       },
     ],
   },
   {
     "@type": "ContactPage",
-    name: () => s(pageData.value?.seo?.title),
-    description: () => s(pageData.value?.seo?.description),
+    name: () => stegaClean(s(pageData.value?.seo?.title)),
+    description: () => stegaClean(s(pageData.value?.seo?.description)),
   },
   {
     "@type": "FAQPage",
     mainEntity: () =>
       faqItems.value.map((faq) => ({
         "@type": "Question",
-        name: faq.question,
+        name: stegaClean(faq.question),
         acceptedAnswer: {
           "@type": "Answer",
-          text: faq.answer,
+          text: stegaClean(faq.answer),
         },
       })),
   },

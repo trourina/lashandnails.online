@@ -1,41 +1,44 @@
 /**
  * Unified site settings composable.
  * Fetches from Sanity siteSettings, falls back to business.config.ts via runtimeConfig.
+ * All values are stegaClean'd — they're used in hrefs, tel:, mailto:, etc.
  */
 export function useSiteSettings() {
   const { data: sanity } = useFetchSiteSettings();
   const config = useRuntimeConfig();
   const business = config.public.business as Record<string, any>;
 
+  const c = (val: string | undefined) => val ? stegaClean(val) : undefined;
+
   return computed(() => {
     const s = sanity.value;
     return {
-      phone: s?.phone || business.phone,
-      email: s?.email || "info@lashandnails.online",
-      telegram: s?.telegram || business.telegram,
+      phone: c(s?.phone) || business.phone,
+      email: c(s?.email) || "info@lashandnails.online",
+      telegram: c(s?.telegram) || business.telegram,
       address: {
-        street: s?.street || business.address.street,
-        city: s?.city || business.address.city,
-        region: s?.region || business.address.region,
-        postalCode: s?.postalCode || business.address.postalCode,
-        country: s?.country || business.address.country,
+        street: c(s?.street) || business.address.street,
+        city: c(s?.city) || business.address.city,
+        region: c(s?.region) || business.address.region,
+        postalCode: c(s?.postalCode) || business.address.postalCode,
+        country: c(s?.country) || business.address.country,
       },
       hours: {
         weekdays: {
-          opens: s?.weekdayOpen || business.hours.weekdays.opens,
-          closes: s?.weekdayClose || business.hours.weekdays.closes,
+          opens: c(s?.weekdayOpen) || business.hours.weekdays.opens,
+          closes: c(s?.weekdayClose) || business.hours.weekdays.closes,
         },
         saturday: {
-          opens: s?.saturdayOpen || business.hours.saturday.opens,
-          closes: s?.saturdayClose || business.hours.saturday.closes,
+          opens: c(s?.saturdayOpen) || business.hours.saturday.opens,
+          closes: c(s?.saturdayClose) || business.hours.saturday.closes,
         },
       },
       social: {
-        facebook: s?.facebook || business.social.facebook,
-        instagram: s?.instagram || business.social.instagram,
+        facebook: c(s?.facebook) || business.social.facebook,
+        instagram: c(s?.instagram) || business.social.instagram,
       },
-      googleReviewUrl: s?.googleReviewUrl || 'https://g.page/r/CSnzBqO8436ZEAE/review',
-      yelp: s?.yelp || '',
+      googleReviewUrl: c(s?.googleReviewUrl) || 'https://g.page/r/CSnzBqO8436ZEAE/review',
+      yelp: c(s?.yelp) || '',
     };
   });
 }

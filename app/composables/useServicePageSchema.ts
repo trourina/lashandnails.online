@@ -1,3 +1,4 @@
+import { stegaClean } from "@sanity/client/stega";
 import { BUSINESS } from "../../config/business.config";
 
 interface ServiceOffer {
@@ -79,13 +80,13 @@ export function useServicePageSchema(options: ServiceSchemaOptions) {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: offer.name,
-              ...(offer.description && { description: offer.description }),
+              name: stegaClean(offer.name),
+              ...(offer.description && { description: stegaClean(offer.description) }),
             },
             priceSpecification: {
               "@type": "PriceSpecification",
               priceCurrency: "EUR",
-              price: offer.price,
+              price: stegaClean(offer.price),
             },
             availability: "http://schema.org/InStock",
           })),

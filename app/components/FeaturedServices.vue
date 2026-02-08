@@ -12,7 +12,7 @@ const services = computed(() => {
     name: getLocalized(item.name, locale.value),
     price: item.price,
     imageRef: item.image?.asset?._ref || null,
-    link: item.link,
+    link: stegaClean(item.link),
   }));
 });
 </script>

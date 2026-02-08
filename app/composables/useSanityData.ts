@@ -1,11 +1,11 @@
 /**
  * Sanity CMS data layer — GROQ queries with locale-aware field extraction.
  *
- * Uses useAsyncData + useSanity().client.fetch() directly instead of
- * useSanityQuery to avoid hydration mismatches. The module's useSanityQuery
- * wraps data in a custom ref that starts as null on the client before the
- * payload resolves, causing components to briefly render fallback content.
+ * Uses useSanityQuery() from @nuxtjs/sanity for visual editing support
+ * (stega encoding, live updates, click-to-edit overlays).
  */
+
+export { stegaClean } from "@sanity/client/stega";
 
 type LocalizedField = { en?: string; es?: string; ru?: string };
 
@@ -22,15 +22,6 @@ export function getLocalized(
   );
 }
 
-/**
- * Thin wrapper around useAsyncData + Sanity client.fetch().
- * Avoids useSanityQuery's hydration issue with its custom data ref.
- */
-function useSanityFetch<T>(key: string, query: string, params?: Record<string, unknown>) {
-  const { client } = useSanity();
-  return useAsyncData(key, () => client.fetch<T>(query, params || {}));
-}
-
 // ─── Gallery ────────────────────────────────────────────────────────
 
 const GALLERY_QUERY = `*[_type == "galleryImage"] | order(order asc) {
@@ -42,7 +33,7 @@ const GALLERY_QUERY = `*[_type == "galleryImage"] | order(order asc) {
 }`;
 
 export function useFetchGalleryImages() {
-  return useSanityFetch<
+  return useSanityQuery<
     {
       _id: string;
       image: { asset: { _ref: string }; hotspot?: unknown };
@@ -50,7 +41,7 @@ export function useFetchGalleryImages() {
       caption: LocalizedField;
       category: string;
     }[]
-  >('sanity-gallery', GALLERY_QUERY);
+  >(GALLERY_QUERY);
 }
 
 // ─── Hero images ────────────────────────────────────────────────────
@@ -63,14 +54,14 @@ const HERO_QUERY = `*[_type == "heroImage"] | order(order asc) {
 }`;
 
 export function useFetchHeroImages() {
-  return useSanityFetch<
+  return useSanityQuery<
     {
       _id: string;
       image: { asset: { _ref: string }; hotspot?: unknown };
       alt: LocalizedField;
       category: string;
     }[]
-  >('sanity-hero-images', HERO_QUERY);
+  >(HERO_QUERY);
 }
 
 // ─── Services ───────────────────────────────────────────────────────
@@ -154,7 +145,7 @@ export interface SanityService {
 }
 
 export function useFetchService(slug: string) {
-  return useSanityFetch<SanityService | null>(`sanity-service-${slug}`, SERVICE_BY_SLUG_QUERY, { slug });
+  return useSanityQuery<SanityService | null>(SERVICE_BY_SLUG_QUERY, { slug });
 }
 
 const ALL_SERVICES_QUERY = `*[_type == "service"] | order(order asc) {
@@ -172,7 +163,7 @@ const ALL_SERVICES_QUERY = `*[_type == "service"] | order(order asc) {
 }`;
 
 export function useFetchAllServices() {
-  return useSanityFetch<SanityService[]>('sanity-all-services', ALL_SERVICES_QUERY);
+  return useSanityQuery<SanityService[]>(ALL_SERVICES_QUERY);
 }
 
 // ─── Testimonials ───────────────────────────────────────────────────
@@ -187,7 +178,7 @@ const TESTIMONIALS_QUERY = `*[_type == "testimonial"] | order(order asc) {
 }`;
 
 export function useFetchTestimonials() {
-  return useSanityFetch<
+  return useSanityQuery<
     {
       _id: string;
       clientName: string;
@@ -196,7 +187,7 @@ export function useFetchTestimonials() {
       quote: LocalizedField;
       rating: number;
     }[]
-  >('sanity-testimonials', TESTIMONIALS_QUERY);
+  >(TESTIMONIALS_QUERY);
 }
 
 // ─── FAQ ────────────────────────────────────────────────────────────
@@ -208,13 +199,13 @@ const FAQ_QUERY = `*[_type == "faqItem"] | order(order asc) {
 }`;
 
 export function useFetchFAQs() {
-  return useSanityFetch<
+  return useSanityQuery<
     {
       _id: string;
       question: LocalizedField;
       answer: LocalizedField;
     }[]
-  >('sanity-faqs', FAQ_QUERY);
+  >(FAQ_QUERY);
 }
 
 // ─── Site Settings ─────────────────────────────────────────────────
@@ -262,7 +253,7 @@ export interface SanitySiteSettings {
 }
 
 export function useFetchSiteSettings() {
-  return useSanityFetch<SanitySiteSettings | null>('sanity-site-settings', SITE_SETTINGS_QUERY);
+  return useSanityQuery<SanitySiteSettings | null>(SITE_SETTINGS_QUERY);
 }
 
 // ─── Home Page ─────────────────────────────────────────────────────
@@ -339,7 +330,7 @@ export interface SanityHomePage {
 }
 
 export function useFetchHomePage() {
-  return useSanityFetch<SanityHomePage | null>('sanity-home-page', HOME_PAGE_QUERY);
+  return useSanityQuery<SanityHomePage | null>(HOME_PAGE_QUERY);
 }
 
 // ─── About Page ────────────────────────────────────────────────────
@@ -389,7 +380,7 @@ export interface SanityAboutPage {
 }
 
 export function useFetchAboutPage() {
-  return useSanityFetch<SanityAboutPage | null>('sanity-about-page', ABOUT_PAGE_QUERY);
+  return useSanityQuery<SanityAboutPage | null>(ABOUT_PAGE_QUERY);
 }
 
 // ─── Services Overview Page ────────────────────────────────────────
@@ -423,7 +414,7 @@ export interface SanityServicesOverviewPage {
 }
 
 export function useFetchServicesOverview() {
-  return useSanityFetch<SanityServicesOverviewPage | null>('sanity-services-overview', SERVICES_OVERVIEW_QUERY);
+  return useSanityQuery<SanityServicesOverviewPage | null>(SERVICES_OVERVIEW_QUERY);
 }
 
 // ─── Pricing Page ──────────────────────────────────────────────────
@@ -465,7 +456,7 @@ export interface SanityPricingPage {
 }
 
 export function useFetchPricingPage() {
-  return useSanityFetch<SanityPricingPage | null>('sanity-pricing-page', PRICING_PAGE_QUERY);
+  return useSanityQuery<SanityPricingPage | null>(PRICING_PAGE_QUERY);
 }
 
 // ─── Booking Page ──────────────────────────────────────────────────
@@ -515,7 +506,7 @@ export interface SanityBookingPage {
 }
 
 export function useFetchBookingPage() {
-  return useSanityFetch<SanityBookingPage | null>('sanity-booking-page', BOOKING_PAGE_QUERY);
+  return useSanityQuery<SanityBookingPage | null>(BOOKING_PAGE_QUERY);
 }
 
 // ─── Contact Page ──────────────────────────────────────────────────
@@ -551,7 +542,7 @@ export interface SanityContactPage {
 }
 
 export function useFetchContactPage() {
-  return useSanityFetch<SanityContactPage | null>('sanity-contact-page', CONTACT_PAGE_QUERY);
+  return useSanityQuery<SanityContactPage | null>(CONTACT_PAGE_QUERY);
 }
 
 // ─── Legal Page ────────────────────────────────────────────────────
@@ -583,5 +574,5 @@ export interface SanityLegalPage {
 }
 
 export function useFetchLegalPage(slug: string) {
-  return useSanityFetch<SanityLegalPage | null>(`sanity-legal-${slug}`, LEGAL_PAGE_QUERY, { slug });
+  return useSanityQuery<SanityLegalPage | null>(LEGAL_PAGE_QUERY, { slug });
 }

@@ -121,8 +121,8 @@ const benefits = computed(() => sanityService.value?.benefits?.map((b) => s(b.te
 const processSteps = computed(() => sanityService.value?.processSteps?.map((p) => ({ title: s(p.title), description: s(p.description) })) ?? []);
 const aftercareTips = computed(() => sanityService.value?.aftercareTips?.map((a) => s(a.text)) ?? []);
 
-const seoTitle = computed(() => s(sanityService.value?.seo?.title));
-const seoDescription = computed(() => s(sanityService.value?.seo?.description));
+const seoTitle = computed(() => stegaClean(s(sanityService.value?.seo?.title)));
+const seoDescription = computed(() => stegaClean(s(sanityService.value?.seo?.description)));
 
 useSeoMeta({
   title: () => seoTitle.value,

@@ -161,7 +161,7 @@ const galleryImages = computed<NormalizedImage[]>(() =>
     sanityRef: img.image?.asset?._ref || null,
     alt: getLocalized(img.alt, locale.value) || t("gallery.placeholder"),
     caption: getLocalized(img.caption, locale.value),
-    category: img.category,
+    category: stegaClean(img.category),
   })) ?? []
 );
 

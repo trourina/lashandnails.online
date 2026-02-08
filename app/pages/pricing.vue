@@ -29,7 +29,7 @@ const pricingData = computed(() => {
   if (!pageData.value?.categories?.length) return [];
   return pageData.value.categories.map((cat) => ({
     name: s(cat.name),
-    ...(cat.slug ? { link: localePath(`/services/${cat.slug}`), linkText: t("common.learnMore") } : {}),
+    ...(cat.slug ? { link: localePath(`/services/${stegaClean(cat.slug)}`), linkText: t("common.learnMore") } : {}),
     ...(cat.cta ? { cta: s(cat.cta) } : {}),
     services: cat.services.map((svc) => ({
       name: s(svc.name),
@@ -40,10 +40,10 @@ const pricingData = computed(() => {
 });
 
 useSeoMeta({
-  title: () => s(pageData.value?.seo?.title),
-  description: () => s(pageData.value?.seo?.description),
-  ogTitle: () => s(pageData.value?.seo?.title),
-  ogDescription: () => s(pageData.value?.seo?.description),
+  title: () => stegaClean(s(pageData.value?.seo?.title)),
+  description: () => stegaClean(s(pageData.value?.seo?.description)),
+  ogTitle: () => stegaClean(s(pageData.value?.seo?.title)),
+  ogDescription: () => stegaClean(s(pageData.value?.seo?.description)),
   ogType: "website",
   ogLocale: useOgLocale(),
 });
@@ -61,14 +61,14 @@ useSchemaOrg([
       {
         "@type": "ListItem",
         position: 2,
-        name: () => title.value,
+        name: () => stegaClean(title.value),
       },
     ],
   },
   {
     "@type": "WebPage",
-    name: () => s(pageData.value?.seo?.title),
-    description: () => s(pageData.value?.seo?.description),
+    name: () => stegaClean(s(pageData.value?.seo?.title)),
+    description: () => stegaClean(s(pageData.value?.seo?.description)),
   },
 ]);
 </script>

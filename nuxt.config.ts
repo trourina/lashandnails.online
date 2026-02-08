@@ -52,6 +52,11 @@ export default defineNuxtConfig({
     dataset: process.env.NUXT_PUBLIC_SANITY_DATASET || "production",
     apiVersion: process.env.NUXT_PUBLIC_SANITY_API_VERSION || "2024-01-01",
     useCdn: true,
+    visualEditing: {
+      token: process.env.NUXT_SANITY_VISUAL_EDITING_TOKEN,
+      studioUrl: process.env.NUXT_SANITY_VISUAL_EDITING_STUDIO_URL,
+      stega: true,
+    },
   },
 
   image: {

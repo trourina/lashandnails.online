@@ -1,5 +1,6 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
+import { presentationTool, defineLocations } from "sanity/presentation";
 import { visionTool } from "@sanity/vision";
 import { ruKZLocale } from "@sanity/locale-ru-kz";
 import { schemaTypes, singletonTypes } from "./schemas";
@@ -85,6 +86,100 @@ export default defineConfig({
 
   plugins: [
     structureTool({ structure }),
+    presentationTool({
+      previewUrl: {
+        previewMode: {
+          enable: "/api/sanity/preview/enable",
+        },
+      },
+      resolve: {
+        locations: {
+          // Singleton pages
+          homePage: defineLocations({
+            message: "Главная страница",
+            tone: "primary",
+            locations: [{ title: "Главная", href: "/es" }],
+          }),
+          aboutPage: defineLocations({
+            message: "Страница «О нас»",
+            tone: "primary",
+            locations: [{ title: "О нас", href: "/es/about" }],
+          }),
+          servicesOverviewPage: defineLocations({
+            message: "Обзор услуг",
+            tone: "primary",
+            locations: [{ title: "Услуги", href: "/es/services" }],
+          }),
+          pricingPage: defineLocations({
+            message: "Страница цен",
+            tone: "primary",
+            locations: [{ title: "Цены", href: "/es/pricing" }],
+          }),
+          bookingPage: defineLocations({
+            message: "Страница записи",
+            tone: "primary",
+            locations: [{ title: "Запись", href: "/es/booking" }],
+          }),
+          contactPage: defineLocations({
+            message: "Страница контактов",
+            tone: "primary",
+            locations: [{ title: "Контакты", href: "/es/contact" }],
+          }),
+          siteSettings: defineLocations({
+            message: "Настройки используются на всех страницах",
+            tone: "caution",
+            locations: [{ title: "Главная", href: "/es" }],
+          }),
+          // List documents with dynamic slugs
+          service: defineLocations({
+            select: { title: "title.es", slug: "slug.current" },
+            resolve: (doc) => ({
+              locations: [
+                {
+                  title: doc?.title || "Услуга",
+                  href: `/es/services/${doc?.slug}`,
+                },
+                { title: "Все услуги", href: "/es/services" },
+              ],
+            }),
+          }),
+          legalPage: defineLocations({
+            select: { title: "title.es", slug: "slug.current" },
+            resolve: (doc) => ({
+              locations: [
+                {
+                  title: doc?.title || "Юридическая страница",
+                  href: `/es/${doc?.slug}`,
+                },
+              ],
+            }),
+          }),
+          galleryImage: defineLocations({
+            message: "Изображения галереи",
+            tone: "primary",
+            locations: [{ title: "Галерея", href: "/es/gallery" }],
+          }),
+          heroImage: defineLocations({
+            message: "Герой-изображения отображаются на главной",
+            tone: "primary",
+            locations: [{ title: "Главная", href: "/es" }],
+          }),
+          testimonial: defineLocations({
+            message: "Отзывы отображаются на главной",
+            tone: "primary",
+            locations: [{ title: "Главная", href: "/es" }],
+          }),
+          faqItem: defineLocations({
+            message: "FAQ отображаются на главной и контактах",
+            tone: "primary",
+            locations: [
+              { title: "Главная", href: "/es" },
+              { title: "Контакты", href: "/es/contact" },
+            ],
+          }),
+        },
+      },
+    }),
     visionTool(),
     ruKZLocale(),
   ],
