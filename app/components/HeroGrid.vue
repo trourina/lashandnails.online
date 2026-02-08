@@ -8,7 +8,7 @@ const handleWhatsAppClick = () => {
 };
 
 // Fetch hero images from Sanity
-const { data: sanityHeroImages } = useFetchHeroImages();
+const { data: sanityHeroImages, encodeDataAttribute } = useFetchHeroImages();
 
 // Fetch homepage labels from Sanity
 const { data: homePage } = useFetchHomePage();
@@ -36,6 +36,7 @@ const gridImages = computed(() => {
       image: img.image?.asset?._ref || "",
       alt: getLocalized(img.alt, locale.value) || stegaClean(img.category),
       category: stegaClean(img.category),
+      origIdx: index,
     }));
   }
   return [];
@@ -156,6 +157,7 @@ onUnmounted(() => {
                 height="600"
                 fit="crop"
                 class="absolute inset-0 object-cover h-full w-full"
+                :data-sanity="encodeDataAttribute?.([item.origIdx, 'image'])"
               />
             </div>
 

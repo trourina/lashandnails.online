@@ -25,6 +25,7 @@
             loading="lazy"
             width="600"
             height="800"
+            :data-sanity="encodeDataAttribute?.('ownerImage')"
           />
           <DecorCircle color="gold" size="lg" bottom="-1rem" left="-1rem" />
           <DecorCircle color="brown" size="md" top="-1rem" right="-1rem" />
@@ -46,6 +47,7 @@
                 loading="lazy"
                 width="600"
                 height="750"
+                :data-sanity="encodeDataAttribute?.('teamImage1')"
               />
               <DecorCircle color="cream" size="lg" top="-0.75rem" left="-0.75rem" />
               <DecorCircle color="gold" size="xl" bottom="-1.25rem" right="-1.25rem" />
@@ -59,6 +61,7 @@
                 loading="lazy"
                 width="600"
                 height="750"
+                :data-sanity="encodeDataAttribute?.('teamImage2')"
               />
               <DecorCircle color="brown" size="md" bottom="-0.75rem" left="-0.75rem" />
               <DecorCircle color="cream" size="lg" top="-1.25rem" right="-1.25rem" />
@@ -168,7 +171,7 @@ const { t, locale } = useI18n();
 const config = useRuntimeConfig();
 const business = config.public.business;
 
-const { data: pageData } = await useFetchAboutPage();
+const { data: pageData, encodeDataAttribute } = await useFetchAboutPage();
 const s = (field: any) => getLocalized(field, locale.value);
 
 const title = computed(() => s(pageData.value?.title));

@@ -2,7 +2,7 @@
 const { locale } = useI18n();
 const localePath = useLocalePath();
 
-const { data: homePage } = useFetchHomePage();
+const { data: homePage, encodeDataAttribute } = useFetchHomePage();
 const s = (field: Parameters<typeof getLocalized>[0]) => getLocalized(field, locale.value);
 
 const services = computed(() => {
@@ -57,6 +57,7 @@ const services = computed(() => {
               fit="crop"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
+              :data-sanity="encodeDataAttribute?.(['featuredServices', service.id, 'image'])"
             />
 
             <!-- Rating Badge -->

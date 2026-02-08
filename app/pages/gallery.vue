@@ -95,6 +95,7 @@
             fit="crop"
             class="w-full h-full object-cover"
             loading="lazy"
+            :data-sanity="encodeDataAttribute?.([image.origIdx, 'image'])"
           />
 
           <!-- Hover overlay -->
@@ -145,7 +146,7 @@ const activeFilter = ref<string>("all");
 const lightboxRef = ref<InstanceType<typeof Lightbox> | null>(null);
 
 // Fetch gallery images from Sanity
-const { data: sanityImages } = await useFetchGalleryImages();
+const { data: sanityImages, encodeDataAttribute } = await useFetchGalleryImages();
 
 interface NormalizedImage {
   id: string;
@@ -153,15 +154,17 @@ interface NormalizedImage {
   alt: string;
   caption?: string;
   category: string;
+  origIdx: number;
 }
 
 const galleryImages = computed<NormalizedImage[]>(() =>
-  sanityImages.value?.map((img) => ({
+  sanityImages.value?.map((img, index) => ({
     id: img._id,
     sanityRef: img.image?.asset?._ref || null,
     alt: getLocalized(img.alt, locale.value) || t("gallery.placeholder"),
     caption: getLocalized(img.caption, locale.value),
     category: stegaClean(img.category),
+    origIdx: index,
   })) ?? []
 );
 

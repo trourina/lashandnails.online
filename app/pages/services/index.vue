@@ -26,6 +26,7 @@
                 height="450"
                 fit="crop"
                 class="absolute inset-0 object-cover h-full w-full"
+                :data-sanity="encodeDataAttribute?.(['serviceCards', service.origIdx, 'image'])"
               />
               <div
                 class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"
@@ -106,7 +107,7 @@ const config = useRuntimeConfig();
 const business = config.public.business;
 const localePath = useLocalePath();
 
-const { data: pageData } = await useFetchServicesOverview();
+const { data: pageData, encodeDataAttribute } = await useFetchServicesOverview();
 const s = (field: any) => getLocalized(field, locale.value);
 
 const title = computed(() => s(pageData.value?.title));
@@ -114,12 +115,13 @@ const subtitle = computed(() => s(pageData.value?.subtitle));
 
 const services = computed(() => {
   if (!pageData.value?.serviceCards?.length) return [];
-  return pageData.value.serviceCards.map((card) => ({
+  return pageData.value.serviceCards.map((card, index) => ({
     slug: stegaClean(card.slug),
     title: s(card.title),
     description: s(card.description),
     sanityImage: card.image?.asset?._ref || "",
     features: card.features?.map((f) => s(f.text)).filter(Boolean) || [],
+    origIdx: index,
   }));
 });
 
