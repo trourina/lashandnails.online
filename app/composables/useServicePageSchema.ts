@@ -1,39 +1,42 @@
-import { getServiceSchemaBySlug } from "../../config/services.config";
+import { BUSINESS } from "../../config/business.config";
+
+interface ServiceOffer {
+  name: string;
+  description?: string;
+  price: string;
+}
+
+interface ServiceSchemaOptions {
+  slug: string;
+  title: () => string;
+  description: () => string;
+  offers: () => ServiceOffer[];
+}
 
 /**
- * Composable to add consistent Schema.org markup to service pages
- * Automatically integrates with Nuxt I18n for language support
- *
- * @param serviceSlug - The slug of the service (e.g., "/services/lash-extensions")
- * @param pageTitle - Reactive function that returns the page title
- * @param seoDescription - Reactive function that returns the SEO description
+ * Composable to add consistent Schema.org markup to service pages.
+ * Builds WebPage, BreadcrumbList, and Service schemas from Sanity data.
  */
-export function useServicePageSchema(
-  serviceSlug: string,
-  pageTitle: () => string,
-  seoDescription: () => string
-) {
+export function useServicePageSchema(options: ServiceSchemaOptions) {
   const config = useRuntimeConfig();
   const business = config.public.business;
   const { t } = useI18n();
 
-  // Get service schema from centralized config
-  const serviceSchema = getServiceSchemaBySlug(serviceSlug);
+  const serviceUrl = `${business.url}${options.slug}`;
 
   useSchemaOrg([
     {
       "@type": "WebPage",
-      "@id": `${business.url}${serviceSlug}#webpage`,
-      name: pageTitle,
-      description: seoDescription,
-      // inLanguage is automatically set by Nuxt I18n integration
+      "@id": `${serviceUrl}#webpage`,
+      name: options.title,
+      description: options.description,
       breadcrumb: {
-        "@id": `${business.url}${serviceSlug}#breadcrumb`,
+        "@id": `${serviceUrl}#breadcrumb`,
       },
     },
     {
       "@type": "BreadcrumbList",
-      "@id": `${business.url}${serviceSlug}#breadcrumb`,
+      "@id": `${serviceUrl}#breadcrumb`,
       itemListElement: [
         {
           "@type": "ListItem",
@@ -50,11 +53,43 @@ export function useServicePageSchema(
         {
           "@type": "ListItem",
           position: 3,
-          name: pageTitle,
+          name: options.title,
         },
       ],
     },
-    // Add service schema from config if available
-    ...(serviceSchema ? [serviceSchema] : []),
+    {
+      "@type": "Service",
+      "@id": `${serviceUrl}#service`,
+      serviceType: options.title,
+      name: options.title,
+      description: options.description,
+      category: "BeautyService",
+      provider: {
+        "@id": `${BUSINESS.url}/#localbusiness`,
+      },
+      areaServed: {
+        "@type": "City",
+        name: "Santa Pola",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: options.title,
+        itemListElement: () =>
+          options.offers().map((offer) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: offer.name,
+              ...(offer.description && { description: offer.description }),
+            },
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              priceCurrency: "EUR",
+              price: offer.price,
+            },
+            availability: "http://schema.org/InStock",
+          })),
+      },
+    },
   ]);
 }

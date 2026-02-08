@@ -71,7 +71,7 @@
 </template>
 
 <script setup lang="ts">
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 const config = useRuntimeConfig();
 const business = config.public.business;
 
@@ -115,7 +115,7 @@ useSchemaOrg([
       {
         "@type": "ListItem",
         position: 1,
-        name: "Home",
+        name: () => t("breadcrumb.home"),
         item: business.url,
       },
       {

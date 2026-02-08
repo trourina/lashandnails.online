@@ -145,7 +145,7 @@ useSchemaOrg([
       {
         "@type": "ListItem",
         position: 1,
-        name: "Home",
+        name: () => t("breadcrumb.home"),
         item: business.url,
       },
       {

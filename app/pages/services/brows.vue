@@ -133,5 +133,10 @@ useSeoMeta({
   ogLocale: useOgLocale(),
 });
 
-useServicePageSchema("/services/brows", () => seoTitle.value, () => seoDescription.value);
+useServicePageSchema({
+  slug: "/services/brows",
+  title: () => seoTitle.value,
+  description: () => seoDescription.value,
+  offers: () => translatedOffers.value,
+});
 </script>

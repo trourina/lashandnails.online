@@ -158,5 +158,10 @@ useSeoMeta({
   ogLocale: useOgLocale(),
 });
 
-useServicePageSchema("/services/lash-extensions", () => seoTitle.value, () => seoDescription.value);
+useServicePageSchema({
+  slug: "/services/lash-extensions",
+  title: () => seoTitle.value,
+  description: () => seoDescription.value,
+  offers: () => translatedOffers.value,
+});
 </script>

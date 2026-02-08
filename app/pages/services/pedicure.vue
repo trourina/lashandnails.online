@@ -133,5 +133,10 @@ useSeoMeta({
   ogLocale: useOgLocale(),
 });
 
-useServicePageSchema("/services/pedicure", () => seoTitle.value, () => seoDescription.value);
+useServicePageSchema({
+  slug: "/services/pedicure",
+  title: () => seoTitle.value,
+  description: () => seoDescription.value,
+  offers: () => translatedOffers.value,
+});
 </script>
