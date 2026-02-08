@@ -11,9 +11,9 @@ withDefaults(defineProps<Props>(), {
   showCta: false,
 });
 
-const { t } = useI18n({ useScope: "local" });
-const config = useRuntimeConfig();
-const business = config.public.business;
+const { t } = useI18n();
+const localePath = useLocalePath();
+const settings = useSiteSettings();
 const { trackWhatsAppClick, trackNavigation } = useAnalytics();
 
 const handleWhatsAppClick = () => {
@@ -32,15 +32,15 @@ const handlePricingClick = () => {
     <div class="container mx-auto max-w-4xl">
       <div class="text-center">
         <h1
-          class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-pretty"
+          class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-balance"
         >
-          {{ title || t("title") }}
+          {{ title || t("home.title") }}
         </h1>
         <p
-          v-if="subtitle || t('subtitle')"
-          class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto"
+          v-if="subtitle || t('home.subtitle')"
+          class="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto text-balance"
         >
-          {{ subtitle || t("subtitle") }}
+          {{ subtitle || t("home.subtitle") }}
         </p>
 
         <!-- CTA Buttons (optional) -->
@@ -49,50 +49,24 @@ const handlePricingClick = () => {
           class="flex flex-col sm:flex-row gap-4 mt-8 justify-center"
         >
           <Button
-            :href="`https://wa.me/${business.phone.replace(
+            :href="`https://wa.me/${settings.phone.replace(
               /\+/g,
               ''
-            )}?text=${encodeURIComponent(t('ctaMessage'))}`"
+            )}?text=${encodeURIComponent(t('hero.ctaMessage'))}`"
             class="bg-[#FFC107] text-[#4A3A32] hover:bg-[#FFB300] px-8 py-3 rounded-full font-semibold shadow-lg transition-all"
             @click="handleWhatsAppClick"
           >
-            {{ t("ctaPrimary") }}
+            {{ t("hero.ctaPrimary") }}
           </Button>
           <Button
-            to="/pricing"
+            :to="localePath('/pricing')"
             class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#6B5B52] px-8 py-3 rounded-full font-semibold transition-all"
             @click="handlePricingClick"
           >
-            {{ t("ctaSecondary") }}
+            {{ t("hero.ctaSecondary") }}
           </Button>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<i18n lang="json">
-{
-  "es": {
-    "title": "Salón de Belleza en Santa Pola",
-    "subtitle": "Extensiones de pestañas, diseño de uñas y tratamientos de belleza profesionales",
-    "ctaPrimary": "Reservar por WhatsApp",
-    "ctaSecondary": "Ver Precios",
-    "ctaMessage": "Hola, me gustaría reservar una cita."
-  },
-  "en": {
-    "title": "Beauty Salon in Santa Pola",
-    "subtitle": "Professional lash extensions, nail design and beauty treatments",
-    "ctaPrimary": "Book via WhatsApp",
-    "ctaSecondary": "View Pricing",
-    "ctaMessage": "Hello, I would like to book an appointment."
-  },
-  "ru": {
-    "title": "Салон красоты в Санта-Пола",
-    "subtitle": "Профессиональное наращивание ресниц, дизайн ногтей и косметические процедуры",
-    "ctaPrimary": "Записаться через WhatsApp",
-    "ctaSecondary": "Посмотреть цены",
-    "ctaMessage": "Здравствуйте, я хочу записаться на прием."
-  }
-}
-</i18n>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t } = useI18n({ useScope: "local" });
+const { t } = useI18n();
 const localePath = useLocalePath();
 </script>
 
@@ -15,14 +15,14 @@ const localePath = useLocalePath();
          
           </div>
           <p class="text-sm leading-relaxed opacity-90">
-            {{ t("brandDescription") }}
+            {{ t("footer.brandDescription") }}
           </p>
         </div>
 
         <!-- Services Section -->
         <div>
           <h3 class="text-lg font-semibold text-white mb-4">
-            {{ t("services.title") }}
+            {{ t("footer.servicesTitle") }}
           </h3>
           <ul class="space-y-2">
             <li>
@@ -30,7 +30,7 @@ const localePath = useLocalePath();
                 :to="localePath('/services/lash-extensions')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("services.lashExtensions") }}
+                {{ t("footer.lashExtensions") }}
               </NuxtLink>
             </li>
             <li>
@@ -38,7 +38,7 @@ const localePath = useLocalePath();
                 :to="localePath('/services/manicure')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("services.manicure") }}
+                {{ t("footer.manicure") }}
               </NuxtLink>
             </li>
             <li>
@@ -46,7 +46,7 @@ const localePath = useLocalePath();
                 :to="localePath('/services/pedicure')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("services.pedicure") }}
+                {{ t("footer.pedicure") }}
               </NuxtLink>
             </li>
             <li>
@@ -54,7 +54,7 @@ const localePath = useLocalePath();
                 :to="localePath('/services/brows')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("services.brows") }}
+                {{ t("footer.brows") }}
               </NuxtLink>
             </li>
           </ul>
@@ -63,7 +63,7 @@ const localePath = useLocalePath();
         <!-- Help Center Section -->
         <div>
           <h3 class="text-lg font-semibold text-white mb-4">
-            {{ t("help.title") }}
+            {{ t("footer.quickLinksTitle") }}
           </h3>
           <ul class="space-y-2">
             <li>
@@ -71,7 +71,7 @@ const localePath = useLocalePath();
                 :to="localePath('/about')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("help.about") }}
+                {{ t("footer.aboutUs") }}
               </NuxtLink>
             </li>
             <li>
@@ -79,7 +79,7 @@ const localePath = useLocalePath();
                 :to="localePath('/gallery')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("help.gallery") }}
+                {{ t("footer.gallery") }}
               </NuxtLink>
             </li>
             <li>
@@ -87,7 +87,7 @@ const localePath = useLocalePath();
                 :to="localePath('/contact')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("help.contact") }}
+                {{ t("footer.contactUs") }}
               </NuxtLink>
             </li>
             <li>
@@ -95,7 +95,7 @@ const localePath = useLocalePath();
                 :to="localePath('/booking')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("help.booking") }}
+                {{ t("footer.bookAppointment") }}
               </NuxtLink>
             </li>
           </ul>
@@ -104,7 +104,7 @@ const localePath = useLocalePath();
         <!-- Legal Section -->
         <div>
           <h3 class="text-lg font-semibold text-white mb-4">
-            {{ t("legal.title") }}
+            {{ t("footer.legalTitle") }}
           </h3>
           <ul class="space-y-2">
             <li>
@@ -112,7 +112,7 @@ const localePath = useLocalePath();
                 :to="localePath('/legal-notice')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("legal.legalNotice") }}
+                {{ t("footer.legalNotice") }}
               </NuxtLink>
             </li>
             <li>
@@ -120,7 +120,7 @@ const localePath = useLocalePath();
                 :to="localePath('/privacy-policy')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("legal.privacyPolicy") }}
+                {{ t("footer.privacyPolicy") }}
               </NuxtLink>
             </li>
             <li>
@@ -128,7 +128,7 @@ const localePath = useLocalePath();
                 :to="localePath('/cookie-policy')"
                 class="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity"
               >
-                {{ t("legal.cookiePolicy") }}
+                {{ t("footer.cookiePolicy") }}
               </NuxtLink>
             </li>
           </ul>
@@ -137,7 +137,7 @@ const localePath = useLocalePath();
         <!-- Work Hours Section -->
         <div>
           <h3 class="text-lg font-semibold text-white mb-4">
-            {{ t("hours.title") }}
+            {{ t("footer.hoursTitle") }}
           </h3>
           <div class="flex items-start gap-2 mb-3">
             <svg
@@ -152,12 +152,12 @@ const localePath = useLocalePath();
               />
             </svg>
             <div class="text-sm">
-              <p class="font-medium text-white">{{ t("hours.weekdays") }}</p>
-              <p class="font-medium text-white"">{{ t("hours.saturday") }}</p>
+              <p class="font-medium text-white">{{ t("footer.weekdays") }}</p>
+              <p class="font-medium text-white">{{ t("footer.saturday") }}</p>
             </div>
           </div>
           <p class="text-sm leading-relaxed opacity-90">
-            {{ t("hours.description") }}
+            {{ t("footer.hoursDescription") }}
           </p>
 
           <!-- Social Media Icons -->
@@ -198,7 +198,7 @@ const localePath = useLocalePath();
     <div class="border-t border-[#8B7B72] bg-[#5A4A42] py-4">
       <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
         <p class="text-sm opacity-75">
-          {{ t("copyright", { year: new Date().getFullYear() }) }}
+          {{ t("footer.copyright", { year: new Date().getFullYear() }) }}
         </p>
         <p class="text-sm opacity-75">
           Made by <a href="https://dix.consulting/" target="_blank" rel="noopener noreferrer" class="hover:opacity-100 hover:underline transition-opacity">Dix Consulting</a>
@@ -207,101 +207,3 @@ const localePath = useLocalePath();
     </div>
   </footer>
 </template>
-
-<i18n lang="json">
-{
-  "en": {
-    "brandName": "Lash & Nails",
-    "brandDescription": "Premium beauty salon in Santa Pola offering professional lash extensions, nail design, and beauty treatments with personalized care.",
-    "services": {
-      "title": "Services",
-      "lashExtensions": "Lash Extensions",
-      "manicure": "Manicure",
-      "pedicure": "Pedicure",
-      "brows": "Brows"
-    },
-    "help": {
-      "title": "Quick Links",
-      "about": "About Us",
-      "gallery": "Gallery",
-      "contact": "Contact Us",
-      "booking": "Book Appointment"
-    },
-    "legal": {
-      "title": "Legal",
-      "legalNotice": "Legal Notice",
-      "privacyPolicy": "Privacy Policy",
-      "cookiePolicy": "Cookie Policy"
-    },
-    "hours": {
-      "title": "Work Hours",
-      "weekdays": "Mon - Fri: 09:30 - 20:00",
-      "saturday": "Sat: 10:00 - 14:00",
-      "description": "Visit us during our working hours or book an appointment online for your convenience."
-    },
-    "copyright": "Copyright © {year} Lash & Nails Santa Pola | All Rights Reserved"
-  },
-  "es": {
-    "brandName": "Lash & Nails",
-    "brandDescription": "Salón de belleza premium en Santa Pola que ofrece extensiones de pestañas profesionales, diseño de uñas y tratamientos de belleza con atención personalizada.",
-    "services": {
-      "title": "Servicios",
-      "lashExtensions": "Extensiones de Pestañas",
-      "manicure": "Manicura",
-      "pedicure": "Pedicura",
-      "brows": "Cejas"
-    },
-    "help": {
-      "title": "Enlaces Rápidos",
-      "about": "Sobre Nosotros",
-      "gallery": "Galería",
-      "contact": "Contacto",
-      "booking": "Reservar Cita"
-    },
-    "legal": {
-      "title": "Legal",
-      "legalNotice": "Aviso Legal",
-      "privacyPolicy": "Política de Privacidad",
-      "cookiePolicy": "Política de Cookies"
-    },
-    "hours": {
-      "title": "Horario",
-      "weekdays": "Lun - Vie: 09:30 - 20:00",
-      "saturday": "Sáb: 10:00 - 14:00",
-      "description": "Visítanos durante nuestro horario de trabajo o reserva una cita online para tu comodidad."
-    },
-    "copyright": "Copyright © {year} Lash & Nails Santa Pola | Todos los Derechos Reservados"
-  },
-  "ru": {
-    "brandName": "Lash & Nails",
-    "brandDescription": "Премиальный салон красоты в Санта-Поле, предлагающий профессиональное наращивание ресниц, дизайн ногтей и косметические процедуры с персональным подходом.",
-    "services": {
-      "title": "Услуги",
-      "lashExtensions": "Наращивание Ресниц",
-      "manicure": "Маникюр",
-      "pedicure": "Педикюр",
-      "brows": "Брови"
-    },
-    "help": {
-      "title": "Быстрые Ссылки",
-      "about": "О Нас",
-      "gallery": "Галерея",
-      "contact": "Контакты",
-      "booking": "Записаться"
-    },
-    "legal": {
-      "title": "Юридическая информация",
-      "legalNotice": "Правовая информация",
-      "privacyPolicy": "Политика конфиденциальности",
-      "cookiePolicy": "Политика использования файлов cookie"
-    },
-    "hours": {
-      "title": "Часы Работы",
-      "weekdays": "Пн - Пт: 09:30 - 20:00",
-      "saturday": "Сб: 10:00 - 14:00",
-      "description": "Посетите нас в рабочее время или забронируйте встречу онлайн для вашего удобства."
-    },
-    "copyright": "Copyright © {year} Lash & Nails Santa Pola | Все Права Защищены"
-  }
-}
-</i18n>

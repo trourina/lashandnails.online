@@ -1,6 +1,6 @@
 <template>
   <section aria-labelledby="location-map">
-    <h2 id="location-map">{{ t("heading") }}</h2>
+    <h2 id="location-map">{{ t("locationMap.heading") }}</h2>
 
     <div class="aspect-video w-full mx-auto mb-4">
       <iframe
@@ -11,7 +11,7 @@
         allowfullscreen="false"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        :title="t('mapTitle')"
+        :title="t('locationMap.mapTitle')"
       ></iframe>
     </div>
 
@@ -22,14 +22,14 @@
         rel="noopener noreferrer"
         class="inline-block px-8 py-3 bg-[#6B5B52] text-white rounded-full font-medium hover:bg-[#5A4A42] transition-all shadow-md"
       >
-        {{ t("getDirections") }}
+        {{ t("locationMap.getDirections") }}
       </a>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n({ useScope: "local" });
+const { t, locale } = useI18n();
 const config = useRuntimeConfig();
 const business = config.public.business;
 
@@ -37,23 +37,3 @@ const googleMapsDirectionsUrl = computed(() => {
   return `https://www.google.com/maps/dir//${business.geo.latitude},${business.geo.longitude}/@${business.geo.latitude},${business.geo.longitude},17z?hl=${locale.value}`;
 });
 </script>
-
-<i18n lang="json">
-{
-  "es": {
-    "heading": "Ubicación",
-    "getDirections": "Cómo llegar",
-    "mapTitle": "Ubicación de Lash & Nails Santa Pola en Google Maps"
-  },
-  "en": {
-    "heading": "Location",
-    "getDirections": "Get directions",
-    "mapTitle": "Location of Lash & Nails Santa Pola on Google Maps"
-  },
-  "ru": {
-    "heading": "Расположение",
-    "getDirections": "Как добраться",
-    "mapTitle": "Расположение Lash & Nails Santa Pola на Google Maps"
-  }
-}
-</i18n>

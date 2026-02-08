@@ -10,7 +10,7 @@
         <button
           class="absolute top-4 right-4 z-10 w-12 h-12 flex items-center justify-center text-white hover:text-gray-300 transition-colors"
           @click="close"
-          :aria-label="t('close')"
+          :aria-label="t('common.close')"
         >
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -22,7 +22,7 @@
           v-if="hasPrevious"
           class="absolute left-4 z-10 w-12 h-12 flex items-center justify-center text-white hover:text-gray-300 transition-colors"
           @click="previous"
-          :aria-label="t('previous')"
+          :aria-label="t('common.previous')"
         >
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -48,7 +48,7 @@
           v-if="hasNext"
           class="absolute right-4 z-10 w-12 h-12 flex items-center justify-center text-white hover:text-gray-300 transition-colors"
           @click="next"
-          :aria-label="t('next')"
+          :aria-label="t('common.next')"
         >
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -84,7 +84,7 @@ const emit = defineEmits<{
   close: []
 }>()
 
-const { t } = useI18n({ useScope: 'local' })
+const { t } = useI18n()
 
 const isOpen = ref(false)
 const currentIndex = ref(props.initialIndex)
@@ -164,23 +164,3 @@ defineExpose({
   opacity: 0;
 }
 </style>
-
-<i18n lang="json">
-{
-  "es": {
-    "close": "Cerrar",
-    "previous": "Anterior",
-    "next": "Siguiente"
-  },
-  "en": {
-    "close": "Close",
-    "previous": "Previous",
-    "next": "Next"
-  },
-  "ru": {
-    "close": "Закрыть",
-    "previous": "Предыдущее",
-    "next": "Следующее"
-  }
-}
-</i18n>

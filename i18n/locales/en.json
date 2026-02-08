@@ -3,9 +3,11 @@
     "home": "Home",
     "services": "Services",
     "gallery": "Gallery",
-    "about": "About",
-    "contact": "Contact",
-    "booking": "Book Now"
+    "about": "About Us",
+    "contact": "Contact Us",
+    "booking": "Book Now",
+    "pricing": "Pricing",
+    "language": "Language"
   },
   "home": {
     "title": "Beauty Salon in Santa Pola",
@@ -24,11 +26,92 @@
     "address": "Address",
     "hours": "Hours"
   },
+  "breadcrumb": {
+    "home": "Home",
+    "services": "Services"
+  },
+  "servicePage": {
+    "overview": "Overview",
+    "pricing": "Pricing & Services",
+    "techniques": "Available Techniques",
+    "benefits": "Benefits",
+    "process": "Service Process",
+    "aftercare": "Aftercare",
+    "viewPricing": "View Pricing"
+  },
+  "hero": {
+    "ctaPrimary": "Book via WhatsApp",
+    "ctaSecondary": "View Pricing",
+    "ctaMessage": "Hello, I would like to book an appointment."
+  },
+  "contactInfo": {
+    "heading": "How to contact us",
+    "addressLabel": "Address",
+    "country": "Spain",
+    "phoneLabel": "Phone",
+    "whatsappLabel": "WhatsApp",
+    "whatsappAction": "Send WhatsApp message",
+    "whatsappMessage": "Hello, I would like to make an appointment.",
+    "telegramLabel": "Telegram",
+    "telegramAction": "Send Telegram message",
+    "telegramMessage": "Hello, I would like to make an appointment."
+  },
+  "openingHours": {
+    "heading": "Opening hours",
+    "weekdays": "Monday to Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "closed": "Closed",
+    "holidayNote": "It might be closed due to local holidays."
+  },
+  "footer": {
+    "brandDescription": "Premium beauty salon in Santa Pola offering professional lash extensions, nail design, and beauty treatments with personalized care.",
+    "servicesTitle": "Services",
+    "lashExtensions": "Lash Extensions",
+    "manicure": "Manicure",
+    "pedicure": "Pedicure",
+    "brows": "Brows",
+    "quickLinksTitle": "Quick Links",
+    "aboutUs": "About Us",
+    "gallery": "Gallery",
+    "contactUs": "Contact Us",
+    "bookAppointment": "Book Appointment",
+    "legalTitle": "Legal",
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy",
+    "hoursTitle": "Work Hours",
+    "weekdays": "Mon - Fri: 09:30 - 20:00",
+    "saturday": "Sat: 10:00 - 14:00",
+    "hoursDescription": "Visit us during our working hours or book an appointment online for your convenience.",
+    "copyright": "Copyright © {year} Lash & Nails Santa Pola | All Rights Reserved"
+  },
+  "locationMap": {
+    "heading": "Location",
+    "getDirections": "Get directions",
+    "mapTitle": "Location of Lash & Nails Santa Pola on Google Maps"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Discover our work and transformations",
+    "headerTitle": "Let's Explore All The Collection",
+    "headerDescription": "Explore our collection of professional beauty work. Each image represents our commitment to quality and style.",
+    "seoTitle": "Gallery | Lash & Nails Santa Pola",
+    "seoDescription": "Discover our beauty work - Photos of lash extensions, nail designs and transformations",
+    "filterAll": "All",
+    "lashes": "Lashes",
+    "manicure": "Manicure",
+    "pedicure": "Pedicure",
+    "brows": "Brows",
+    "placeholder": "Coming Soon"
+  },
   "common": {
     "loading": "Loading...",
     "error": "Error",
     "close": "Close",
     "next": "Next",
-    "previous": "Previous"
+    "previous": "Previous",
+    "viewDetails": "View details",
+    "learnMore": "Learn more"
   }
 }

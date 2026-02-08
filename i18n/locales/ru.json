@@ -5,7 +5,9 @@
     "gallery": "Галерея",
     "about": "О нас",
     "contact": "Контакты",
-    "booking": "Записаться"
+    "booking": "Записаться",
+    "pricing": "Цены",
+    "language": "Язык"
   },
   "home": {
     "title": "Салон красоты в Санта-Пола",
@@ -24,11 +26,92 @@
     "address": "Адрес",
     "hours": "Часы работы"
   },
+  "breadcrumb": {
+    "home": "Главная",
+    "services": "Услуги"
+  },
+  "servicePage": {
+    "overview": "Обзор",
+    "pricing": "Цены и услуги",
+    "techniques": "Доступные техники",
+    "benefits": "Преимущества",
+    "process": "Процесс услуги",
+    "aftercare": "Последующий уход",
+    "viewPricing": "Посмотреть цены"
+  },
+  "hero": {
+    "ctaPrimary": "Записаться через WhatsApp",
+    "ctaSecondary": "Посмотреть цены",
+    "ctaMessage": "Здравствуйте, я хочу записаться на прием."
+  },
+  "contactInfo": {
+    "heading": "Как с нами связаться",
+    "addressLabel": "Адрес",
+    "country": "Испания",
+    "phoneLabel": "Телефон",
+    "whatsappLabel": "WhatsApp",
+    "whatsappAction": "Отправить сообщение в WhatsApp",
+    "whatsappMessage": "Здравствуйте, я хочу записаться на прием.",
+    "telegramLabel": "Telegram",
+    "telegramAction": "Отправить сообщение в Telegram",
+    "telegramMessage": "Здравствуйте, я хочу записаться на прием."
+  },
+  "openingHours": {
+    "heading": "Часы работы",
+    "weekdays": "Понедельник - Пятница",
+    "saturday": "Суббота",
+    "sunday": "Воскресенье",
+    "closed": "Закрыто",
+    "holidayNote": "Может быть закрыто в связи с местными праздниками."
+  },
+  "footer": {
+    "brandDescription": "Премиальный салон красоты в Санта-Поле, предлагающий профессиональное наращивание ресниц, дизайн ногтей и косметические процедуры с персональным подходом.",
+    "servicesTitle": "Услуги",
+    "lashExtensions": "Наращивание Ресниц",
+    "manicure": "Маникюр",
+    "pedicure": "Педикюр",
+    "brows": "Брови",
+    "quickLinksTitle": "Быстрые Ссылки",
+    "aboutUs": "О Нас",
+    "gallery": "Галерея",
+    "contactUs": "Контакты",
+    "bookAppointment": "Записаться",
+    "legalTitle": "Юридическая информация",
+    "legalNotice": "Правовая информация",
+    "privacyPolicy": "Политика конфиденциальности",
+    "cookiePolicy": "Политика использования файлов cookie",
+    "hoursTitle": "Часы Работы",
+    "weekdays": "Пн - Пт: 09:30 - 20:00",
+    "saturday": "Сб: 10:00 - 14:00",
+    "hoursDescription": "Посетите нас в рабочее время или забронируйте встречу онлайн для вашего удобства.",
+    "copyright": "Copyright © {year} Lash & Nails Santa Pola | Все Права Защищены"
+  },
+  "locationMap": {
+    "heading": "Расположение",
+    "getDirections": "Как добраться",
+    "mapTitle": "Расположение Lash & Nails Santa Pola на Google Maps"
+  },
+  "gallery": {
+    "title": "Галерея",
+    "subtitle": "Откройте для себя наши работы и преображения",
+    "headerTitle": "Давайте Изучим Всю Коллекцию",
+    "headerDescription": "Изучите нашу коллекцию профессиональных работ по красоте. Каждое изображение отражает наше стремление к качеству и стилю.",
+    "seoTitle": "Галерея | Lash & Nails Santa Pola",
+    "seoDescription": "Откройте для себя наши работы - Фото наращивания ресниц, дизайна ногтей и преображений",
+    "filterAll": "Все",
+    "lashes": "Ресницы",
+    "manicure": "Маникюр",
+    "pedicure": "Педикюр",
+    "brows": "Брови",
+    "placeholder": "Скоро"
+  },
   "common": {
     "loading": "Загрузка...",
     "error": "Ошибка",
     "close": "Закрыть",
     "next": "Далее",
-    "previous": "Назад"
+    "previous": "Назад",
+    "viewDetails": "Подробнее",
+    "learnMore": "Узнать больше"
   }
 }

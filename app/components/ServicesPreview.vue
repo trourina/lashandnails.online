@@ -1,7 +1,7 @@
 <template>
   <section aria-labelledby="services-preview">
-    <h2 id="services-preview">{{ t("heading") }}</h2>
-    <p class="section-subtitle">{{ t("subtitle") }}</p>
+    <h2 id="services-preview">{{ t("nav.services") }}</h2>
+    <p class="section-subtitle"></p>
 
     <div class="services-grid">
       <article
@@ -15,38 +15,38 @@
           :to="localePath(`/services/${service.slug}`)"
           class="service-link"
         >
-          {{ t("learnMore") }}
+          {{ t("common.learnMore") }}
         </NuxtLink>
       </article>
     </div>
 
     <div class="services-cta">
       <NuxtLink :to="localePath('/pricing')">
-        {{ t("viewAll") }}
+        {{ t("common.viewDetails") }}
       </NuxtLink>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n({ useScope: "local" });
+const { t } = useI18n();
 const localePath = useLocalePath();
 
 const services = computed(() => [
   {
     slug: "lash-extensions",
-    title: t("services.lashes.title"),
-    description: t("services.lashes.description"),
+    title: t("services.lashes"),
+    description: "",
   },
   {
-    slug: "nail-design",
-    title: t("services.nails.title"),
-    description: t("services.nails.description"),
+    slug: "manicure",
+    title: t("services.nails"),
+    description: "",
   },
   {
-    slug: "beauty-treatments",
-    title: t("services.treatments.title"),
-    description: t("services.treatments.description"),
+    slug: "brows",
+    title: t("services.beauty"),
+    description: "",
   },
 ]);
 </script>
@@ -125,68 +125,3 @@ h2 {
   text-align: center;
 }
 </style>
-
-<i18n lang="json">
-{
-  "es": {
-    "heading": "Nuestros Servicios",
-    "subtitle": "Tratamientos profesionales de belleza en Santa Pola",
-    "learnMore": "Más información",
-    "viewAll": "Ver todos los servicios",
-    "services": {
-      "lashes": {
-        "title": "Extensiones de Pestañas",
-        "description": "Mirada natural y voluminosa con técnicas avanzadas de extensión de pestañas"
-      },
-      "nails": {
-        "title": "Diseño de Uñas",
-        "description": "Manicura, pedicura y nail art personalizado para lucir unas uñas perfectas"
-      },
-      "treatments": {
-        "title": "Tratamientos de Belleza",
-        "description": "Cejas, micropigmentación y tratamientos faciales profesionales"
-      }
-    }
-  },
-  "en": {
-    "heading": "Our Services",
-    "subtitle": "Professional beauty treatments in Santa Pola",
-    "learnMore": "Learn more",
-    "viewAll": "View all services",
-    "services": {
-      "lashes": {
-        "title": "Lash Extensions",
-        "description": "Natural and voluminous look with advanced lash extension techniques"
-      },
-      "nails": {
-        "title": "Nail Design",
-        "description": "Manicure, pedicure and custom nail art for perfect nails"
-      },
-      "treatments": {
-        "title": "Beauty Treatments",
-        "description": "Brows, micropigmentation and professional facial treatments"
-      }
-    }
-  },
-  "ru": {
-    "heading": "Наши услуги",
-    "subtitle": "Профессиональные косметические процедуры в Санта-Пола",
-    "learnMore": "Подробнее",
-    "viewAll": "Посмотреть все услуги",
-    "services": {
-      "lashes": {
-        "title": "Наращивание ресниц",
-        "description": "Естественный и объемный взгляд с передовыми техниками наращивания ресниц"
-      },
-      "nails": {
-        "title": "Дизайн ногтей",
-        "description": "Маникюр, педикюр и индивидуальный нейл-арт для идеальных ногтей"
-      },
-      "treatments": {
-        "title": "Косметические процедуры",
-        "description": "Брови, микропигментация и профессиональные процедуры для лица"
-      }
-    }
-  }
-}
-</i18n>
