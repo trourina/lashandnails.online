@@ -45,11 +45,15 @@ const gridImages = computed(() => {
 const activeService = ref(1);
 
 // Rotate through services every 4 seconds
+let intervalId: ReturnType<typeof setInterval>;
 onMounted(() => {
-  setInterval(() => {
+  intervalId = setInterval(() => {
     activeService.value =
       activeService.value === 4 ? 1 : activeService.value + 1;
   }, 4000);
+});
+onUnmounted(() => {
+  clearInterval(intervalId);
 });
 </script>
 
