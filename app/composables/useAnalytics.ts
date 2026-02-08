@@ -7,15 +7,15 @@
  */
 
 export const useAnalytics = () => {
+  const { gtag } = useScriptGoogleAnalytics();
+
   /**
    * Track custom event in GA4
    * @param eventName - Name of the event (e.g., 'button_click', 'form_submit')
    * @param eventParams - Additional parameters for the event
    */
   const trackEvent = (eventName: string, eventParams?: Record<string, any>) => {
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', eventName, eventParams)
-    }
+    gtag('event', eventName, eventParams)
   }
 
   /**

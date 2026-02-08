@@ -13,6 +13,7 @@ const isActive = (path: string) => {
 
 const isDropdownOpen = ref(false);
 const isMobileMenuOpen = ref(false);
+const dropdownRef = ref<HTMLElement | null>(null);
 
 const localeNames: Record<string, string> = {
   en: "EN",
@@ -28,6 +29,20 @@ const availableLocales = computed(() => {
 
 const allLocales = computed(() => {
   return locales.value as Array<{ code: string }>;
+});
+
+const handleClickOutside = (event: MouseEvent) => {
+  if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node)) {
+    isDropdownOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("click", handleClickOutside);
 });
 </script>
 
@@ -115,7 +130,7 @@ const allLocales = computed(() => {
       </nav>
 
       <!-- Language Switcher Dropdown -->
-      <div class="relative">
+      <div ref="dropdownRef" class="relative">
       <button
         @click="isDropdownOpen = !isDropdownOpen"
         class="flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50 transition-all shadow-lg"

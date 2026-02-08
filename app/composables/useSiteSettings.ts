@@ -1,3 +1,11 @@
+interface BusinessConfig {
+  phone: string;
+  telegram: string;
+  address: { street: string; city: string; region: string; postalCode: string; country: string };
+  hours: { weekdays: { opens: string; closes: string }; saturday: { opens: string; closes: string } };
+  social: { facebook: string; instagram: string };
+}
+
 /**
  * Unified site settings composable.
  * Fetches from Sanity siteSettings, falls back to business.config.ts via runtimeConfig.
@@ -5,7 +13,7 @@
 export function useSiteSettings() {
   const { data: sanity } = useFetchSiteSettings();
   const config = useRuntimeConfig();
-  const business = config.public.business as Record<string, any>;
+  const business = config.public.business as BusinessConfig;
 
   return computed(() => {
     const s = sanity.value;

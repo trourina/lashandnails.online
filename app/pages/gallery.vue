@@ -174,9 +174,11 @@ const filteredImages = computed(() => {
 
 // Prepare images for lightbox
 const lightboxImages = computed(() => {
+  const projectId = config.public.sanity?.projectId;
+  const dataset = config.public.sanity?.dataset || "production";
   return filteredImages.value.map((img) => ({
-    src: img.sanityRef
-      ? `https://cdn.sanity.io/images/${config.public.sanity?.projectId || "4dsh8g5u"}/${config.public.sanity?.dataset || "production"}/${img.sanityRef.replace("image-", "").replace("-jpg", ".jpg").replace("-png", ".png").replace("-webp", ".webp")}`
+    src: img.sanityRef && projectId
+      ? `https://cdn.sanity.io/images/${projectId}/${dataset}/${img.sanityRef.replace("image-", "").replace("-jpg", ".jpg").replace("-png", ".png").replace("-webp", ".webp")}`
       : "",
     alt: img.alt,
     caption: img.caption,

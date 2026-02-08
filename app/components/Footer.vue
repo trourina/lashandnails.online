@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n();
 const localePath = useLocalePath();
+const settings = useSiteSettings();
 </script>
 
 <template>
@@ -163,7 +164,7 @@ const localePath = useLocalePath();
           <!-- Social Media Icons -->
           <div class="flex gap-3 mt-6">
             <a
-              href="https://www.facebook.com/profile.php?id=61576877656154"
+              :href="settings.social.facebook"
               target="_blank"
               rel="noopener noreferrer"
               class="w-9 h-9 bg-white rounded-full flex items-center justify-center text-[#6B5B52] hover:bg-opacity-90 transition-all"
@@ -177,7 +178,7 @@ const localePath = useLocalePath();
             </a>
 
             <a
-              href="https://www.instagram.com/lash_nails.santapola"
+              :href="settings.social.instagram"
               target="_blank"
               rel="noopener noreferrer"
               class="w-9 h-9 bg-white rounded-full flex items-center justify-center text-[#6B5B52] hover:bg-opacity-90 transition-all"
