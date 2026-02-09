@@ -7,12 +7,28 @@
       <!-- Overview -->
       <section aria-labelledby="overview" class="relative bg-white rounded-2xl p-8 shadow-sm">
         <DecorCircle color="cream" size="lg" top="-1rem" right="-1rem" />
-        <h2 id="overview" class="font-display text-3xl font-bold text-gray-900 mb-4">
-          {{ t("servicePage.overview") }}
-        </h2>
-        <p class="text-gray-700 text-lg leading-relaxed">
-          {{ s(sanityService?.description) }}
-        </p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 id="overview" class="font-display text-3xl font-bold text-gray-900 mb-4">
+              {{ t("servicePage.overview") }}
+            </h2>
+            <p class="text-gray-700 text-lg leading-relaxed">
+              {{ s(sanityService?.description) }}
+            </p>
+          </div>
+          <NuxtImg
+            v-if="sanityService?.image?.asset?._ref"
+            provider="sanity"
+            :src="sanityService.image.asset._ref"
+            :alt="s(sanityService?.title)"
+            width="600"
+            height="450"
+            fit="crop"
+            class="rounded-2xl shadow-md w-full object-cover aspect-[4/3]"
+            loading="lazy"
+            :data-sanity="encodeDataAttribute?.('image')"
+          />
+        </div>
       </section>
 
       <!-- Pricing Section -->
@@ -105,7 +121,7 @@
 const { t, locale } = useI18n();
 const s = (field: Parameters<typeof getLocalized>[0]) => getLocalized(field, locale.value);
 
-const { data: sanityService } = await useFetchService("manicure");
+const { data: sanityService, encodeDataAttribute } = await useFetchService("manicure");
 
 const translatedOffers = computed(() =>
   sanityService.value?.offers?.map((o) => ({ name: s(o.name), description: s(o.description), price: o.price })) ?? []
