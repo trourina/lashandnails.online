@@ -46,6 +46,14 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
   ],
 
+  sitemap: {
+    exclude: ["/admin", "/admin/**", "/preview/**"],
+  },
+
+  robots: {
+    disallow: ["/admin", "/preview"],
+  },
+
   sanity: {
     projectId: process.env.NUXT_PUBLIC_SANITY_PROJECT_ID || "",
     dataset: process.env.NUXT_PUBLIC_SANITY_DATASET || "production",
@@ -84,7 +92,7 @@ export default defineNuxtConfig({
     langDir: "locales",
     locales: [
       { code: "en", language: "en", name: "English", file: "en.json" },
-      { code: "es", language: "es", name: "Español", file: "es.json" },
+      { code: "es", language: "es-ES", name: "Español", file: "es.json" },
       { code: "ru", language: "ru", name: "Русский", file: "ru.json" },
     ],
     defaultLocale: "es",
@@ -102,11 +110,12 @@ export default defineNuxtConfig({
     name: BUSINESS.name,
     description: BUSINESS.description,
     defaultLocale: "es",
+    titleSeparator: "|",
   },
 
   schemaOrg: {
     identity: {
-      type: "LocalBusiness",
+      type: "BeautySalon",
       name: BUSINESS.name,
       url: BUSINESS.url,
       logo: `${BUSINESS.url}/logo.png`,

@@ -3,7 +3,12 @@ export const BUSINESS = {
   name: "Lash & Nails Santa Pola",
   description:
     "Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments",
-  url: "https://lashandnails.es",
+  localizedDescription: {
+    es: "Salón de belleza profesional en Santa Pola: extensiones de pestañas, diseño de uñas y tratamientos de belleza",
+    en: "Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments",
+    ru: "Профессиональный салон красоты в Санта-Пола: наращивание ресниц, дизайн ногтей и косметические процедуры",
+  },
+  url: "https://www.lashandnails.es",
   phone: "+34604316778",
   telegram: "Irina_STS",
   address: {
@@ -33,6 +38,11 @@ export const BUSINESS = {
   },
   // SEO & Schema.org enhancements
   slogan: "Your beauty destination in Santa Pola",
+  localizedSlogan: {
+    es: "Tu destino de belleza en Santa Pola",
+    en: "Your beauty destination in Santa Pola",
+    ru: "Ваш салон красоты в Санта-Пола",
+  },
   foundingDate: "2023",
   knowsLanguage: ["es", "en", "ru"],
   image: [] as string[], // Will be populated when images are available

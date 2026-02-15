@@ -80,4 +80,20 @@ const faqs = computed(() => {
     answer: getLocalized(item.answer, locale.value),
   }));
 });
+
+// FAQ structured data for rich snippets in search results
+useSchemaOrg([
+  {
+    "@type": "FAQPage",
+    mainEntity: () =>
+      faqs.value.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+  },
+]);
 </script>
