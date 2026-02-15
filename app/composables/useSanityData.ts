@@ -223,6 +223,8 @@ const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0] {
   facebook,
   instagram,
   googleReviewUrl,
+  googleRating,
+  googleReviewCount,
   yelp
 }`;
 
@@ -244,6 +246,8 @@ export interface SanitySiteSettings {
   facebook: string;
   instagram: string;
   googleReviewUrl: string;
+  googleRating: number | null;
+  googleReviewCount: number | null;
   yelp: string;
 }
 

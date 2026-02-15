@@ -122,7 +122,7 @@ onUnmounted(() => {
                 />
               </svg>
               <div class="flex items-center gap-1">
-                <span class="font-semibold">5.0</span>
+                <span class="font-semibold">{{ settings.googleRating }}</span>
                 <div class="flex">
                   <svg
                     v-for="i in 5"
@@ -135,7 +135,7 @@ onUnmounted(() => {
                     />
                   </svg>
                 </div>
-                <span class="text-sm text-white/70">14 Google Reviews</span>
+                <span class="text-sm text-white/70">{{ settings.googleReviewCount }} Google Reviews</span>
               </div>
             </a>
           </div>

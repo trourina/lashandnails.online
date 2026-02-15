@@ -56,7 +56,7 @@ export const BUSINESS = {
   aggregateRating: {
     "@type": "AggregateRating" as const,
     ratingValue: "5.0",
-    reviewCount: "14",
+    reviewCount: "28",
     bestRating: "5",
     worstRating: "1",
   },

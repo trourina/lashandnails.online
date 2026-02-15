@@ -124,6 +124,22 @@ export default defineType({
       group: "social",
     },
     {
+      name: "googleRating",
+      title: "Рейтинг Google",
+      type: "number",
+      description: "Средний рейтинг (1–5)",
+      validation: (rule: any) => rule.min(1).max(5).precision(1),
+      group: "social",
+    },
+    {
+      name: "googleReviewCount",
+      title: "Количество отзывов Google",
+      type: "number",
+      description: "Общее количество отзывов в Google",
+      validation: (rule: any) => rule.min(0).integer(),
+      group: "social",
+    },
+    {
       name: "yelp",
       title: "Yelp URL",
       type: "url",
