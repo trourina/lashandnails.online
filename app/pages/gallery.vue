@@ -143,7 +143,7 @@ const business = config.public.business;
 const { trackGalleryInteraction } = useAnalytics();
 
 const activeFilter = ref<string>("all");
-const lightboxRef = ref<InstanceType<typeof Lightbox> | null>(null);
+const lightboxRef = ref<{ open: (index: number) => void; close: () => void } | null>(null);
 
 // Fetch gallery images from Sanity
 const { data: sanityImages, encodeDataAttribute } = await useFetchGalleryImages();

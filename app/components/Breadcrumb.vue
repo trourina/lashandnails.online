@@ -37,7 +37,7 @@ interface Props {
   items: Breadcrumb[];
 }
 
-defineProps<Props>();
+const { items: breadcrumbs } = defineProps<Props>();
 
 const localePath = useLocalePath();
 </script>

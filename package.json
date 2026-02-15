@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "oxlint"
+    "lint": "oxlint",
+    "typecheck": "nuxi typecheck"
   },
   "dependencies": {
     "@googlemaps/markerclusterer": "^2.6.2",
