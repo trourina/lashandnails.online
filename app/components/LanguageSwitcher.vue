@@ -3,7 +3,7 @@
     <NuxtLink
       v-for="locale in availableLocales"
       :key="locale.code"
-      :to="switchLocalePath(locale.code)"
+      :to="switchLocalePath(locale.code as 'en' | 'es' | 'ru')"
     >
       {{ locale.name }}
     </NuxtLink>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-const { locale, locales } = useI18n()
+const { locale, locales } = useI18n<unknown, 'en' | 'es' | 'ru'>()
 const switchLocalePath = useSwitchLocalePath()
 
 const availableLocales = computed(() => {

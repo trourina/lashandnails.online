@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, locale, locales } = useI18n();
+const { t, locale, locales } = useI18n<unknown, 'en' | 'es' | 'ru'>();
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 const route = useRoute();
@@ -31,14 +31,16 @@ const localeNames: Record<string, string> = {
   ru: "RU",
 };
 
+type LocaleCode = 'en' | 'es' | 'ru';
+
 const availableLocales = computed(() => {
-  return (locales.value as Array<{ code: string }>).filter(
+  return (locales.value as Array<{ code: LocaleCode }>).filter(
     (i) => i.code !== locale.value
   );
 });
 
 const allLocales = computed(() => {
-  return locales.value as Array<{ code: string }>;
+  return locales.value as Array<{ code: LocaleCode }>;
 });
 </script>
 
