@@ -13,6 +13,9 @@ node_modules
 logs
 *.log
 
+# Sanity Studio
+.sanity
+
 # Misc
 .DS_Store
 .fleet
