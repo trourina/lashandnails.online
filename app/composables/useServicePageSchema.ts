@@ -21,35 +21,35 @@ interface ServiceSchemaOptions {
 export function useServicePageSchema(options: ServiceSchemaOptions) {
   const config = useRuntimeConfig();
   const business = config.public.business;
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
 
-  const serviceUrl = `${business.url}${options.slug}`;
+  const serviceUrl = computed(() => `${business.url}/${locale.value}${options.slug}`);
 
   useSchemaOrg([
     {
       "@type": "WebPage",
-      "@id": `${serviceUrl}#webpage`,
+      "@id": () => `${serviceUrl.value}#webpage`,
       name: options.title,
       description: options.description,
       breadcrumb: {
-        "@id": `${serviceUrl}#breadcrumb`,
+        "@id": () => `${serviceUrl.value}#breadcrumb`,
       },
     },
     {
       "@type": "BreadcrumbList",
-      "@id": `${serviceUrl}#breadcrumb`,
+      "@id": () => `${serviceUrl.value}#breadcrumb`,
       itemListElement: [
         {
           "@type": "ListItem",
           position: 1,
           name: () => t("breadcrumb.home"),
-          item: business.url,
+          item: () => `${business.url}/${locale.value}`,
         },
         {
           "@type": "ListItem",
           position: 2,
           name: () => t("breadcrumb.services"),
-          item: `${business.url}/services`,
+          item: () => `${business.url}/${locale.value}/services`,
         },
         {
           "@type": "ListItem",
@@ -60,7 +60,7 @@ export function useServicePageSchema(options: ServiceSchemaOptions) {
     },
     {
       "@type": "Service",
-      "@id": `${serviceUrl}#service`,
+      "@id": () => `${serviceUrl.value}#service`,
       serviceType: options.title,
       name: options.title,
       description: options.description,

@@ -46,6 +46,10 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
   ],
 
+  sitemap: {
+    exclude: ["/admin", "/admin/**"],
+  },
+
   sanity: {
     projectId: process.env.NUXT_PUBLIC_SANITY_PROJECT_ID || "",
     dataset: process.env.NUXT_PUBLIC_SANITY_DATASET || "production",
@@ -93,6 +97,7 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: "i18n_redirected",
       redirectOn: "root",
+      redirectStatusCode: 301,
     },
     vueI18n: "./i18n.config.ts",
   },
@@ -102,11 +107,12 @@ export default defineNuxtConfig({
     name: BUSINESS.name,
     description: BUSINESS.description,
     defaultLocale: "es",
+    titleSeparator: "|",
   },
 
   schemaOrg: {
     identity: {
-      type: "LocalBusiness",
+      type: "BeautySalon",
       name: BUSINESS.name,
       url: BUSINESS.url,
       logo: `${BUSINESS.url}/logo.png`,
