@@ -4,11 +4,15 @@ import { BUSINESS } from "../../config/business.config";
 const { locale } = useI18n();
 const head = useLocaleHead();
 
-// Override the auto-generated title template from @nuxtjs/seo.
-// Sanity SEO titles already include the brand name, so we don't
-// want the module to append "| Lash & Nails Santa Pola" again.
+// Normalise page titles: strip any trailing "| Lash & Nails …" that
+// Sanity SEO fields or @nuxtjs/seo may have added, then re-append the
+// brand once so we never get a duplicated suffix in the <title> tag.
 useHead({
-  titleTemplate: (title) => title || "Lash & Nails Santa Pola",
+  titleTemplate: (title) => {
+    if (!title) return "Lash & Nails Santa Pola";
+    const pageTitle = title.replace(/\s*\|\s*Lash\s*&\s*Nails.*$/i, "").trim();
+    return pageTitle ? `${pageTitle} | Lash & Nails Santa Pola` : "Lash & Nails Santa Pola";
+  },
 });
 
 // Global Twitter Card meta for social sharing previews
