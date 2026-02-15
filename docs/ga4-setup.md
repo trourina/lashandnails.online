@@ -2,7 +2,7 @@
 
 ## Overview
 
-Google Analytics 4 (GA4) has been fully integrated into the lashandnails.online website using Nuxt Scripts module. This document covers the setup, tracked events, and testing procedures.
+Google Analytics 4 (GA4) has been fully integrated into the lashandnails.es website using Nuxt Scripts module. This document covers the setup, tracked events, and testing procedures.
 
 ## Configuration
 
@@ -310,7 +310,7 @@ In GA4, mark these events as conversions:
 When deploying to Vercel, add environment variable:
 
 1. Go to Vercel Dashboard
-2. Select project: lashandnails.online
+2. Select project: lashandnails.es
 3. Go to Settings → Environment Variables
 4. Add:
    - Name: `NUXT_PUBLIC_GOOGLE_ANALYTICS_ID`

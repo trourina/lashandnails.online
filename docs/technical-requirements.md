@@ -1,4 +1,4 @@
-# Technical Requirements - lashandnails.online
+# Technical Requirements - lashandnails.es
 
 ## Technology Stack
 
@@ -69,7 +69,7 @@
     "latitude": "...",
     "longitude": "..."
   },
-  "url": "https://lashandnails.online",
+  "url": "https://lashandnails.es",
   "telephone": "+34...",
   "priceRange": "$$",
   "openingHoursSpecification": [...],
@@ -101,14 +101,14 @@
 #### Implementation Strategy
 ```
 Option A: Path-based
-- lashandnails.online/ (es - default)
-- lashandnails.online/en/
-- lashandnails.online/pl/
+- lashandnails.es/ (es - default)
+- lashandnails.es/en/
+- lashandnails.es/pl/
 
 Option B: Subdomain (if multiple languages)
-- lashandnails.online (es)
-- en.lashandnails.online
-- pl.lashandnails.online
+- lashandnails.es (es)
+- en.lashandnails.es
+- pl.lashandnails.es
 ```
 
 #### i18n Module
@@ -432,7 +432,7 @@ NUXT_PUBLIC_INSTAGRAM_TOKEN=...
 NUXT_PUBLIC_WHATSAPP_NUMBER=34XXXXXXXXX
 
 # Private (server-side only)
-CONTACT_EMAIL_TO=info@lashandnails.online
+CONTACT_EMAIL_TO=info@lashandnails.es
 SENDGRID_API_KEY=...
 ```
 
@@ -471,7 +471,7 @@ SENDGRID_API_KEY=...
    - Free SSL
 
 ### Deployment Strategy
-- **Main branch** → Production (lashandnails.online)
+- **Main branch** → Production (lashandnails.es)
 - **Preview deployments** for PRs
 - Auto-deploy on push to main
 - Environment variables in platform settings

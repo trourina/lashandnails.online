@@ -3,7 +3,7 @@ export const BUSINESS = {
   name: "Lash & Nails Santa Pola",
   description:
     "Professional beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments",
-  url: "https://lashandnails.online",
+  url: "https://lashandnails.es",
   phone: "+34604316778",
   telegram: "Irina_STS",
   address: {

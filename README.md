@@ -4,7 +4,7 @@ Beauty salon website built with Nuxt 4, Vue 3, and TypeScript. SEO-optimized wit
 
 ## 🌐 Live Site
 
-**URL**: [https://lashandnails.online](https://lashandnails.online)
+**URL**: [https://lashandnails.es](https://lashandnails.es)
 
 **Business Location**: Carrer Major, 8, 03130 Santa Pola, Alicante, Spain
 **Phone**: +34 604 31 67 78

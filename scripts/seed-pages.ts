@@ -41,7 +41,7 @@ async function seedSiteSettings() {
       ru: "Профессиональный салон красоты в Санта-Пола - наращивание ресниц, дизайн ногтей и косметические процедуры",
     },
     phone: "+34604316778",
-    email: "info@lashandnails.online",
+    email: "info@lashandnails.es",
     telegram: "Irina_STS",
     street: "Carrer Major, 8",
     city: "Santa Pola",
@@ -837,9 +837,9 @@ async function seedLegalPages() {
       sec(
         { es: "Responsable del Tratamiento", en: "Data Controller", ru: "Контролер данных" },
         {
-          es: "Titular: Staigis Iryna\nNIE: Y7526337S\nTipo de Actividad: Autónomo\nDirección: Carrer Major, 8, 03130 Santa Pola, Alicante, España\nEmail de contacto: info@lashandnails.online",
-          en: "Owner: Staigis Iryna\nNIE: Y7526337S\nBusiness Type: Self-Employed (Autónomo)\nAddress: Carrer Major, 8, 03130 Santa Pola, Alicante, Spain\nContact Email: info@lashandnails.online",
-          ru: "Владелец: Staigis Iryna\nNIE: Y7526337S\nТип деятельности: Индивидуальный предприниматель (Autónomo)\nАдрес: Carrer Major, 8, 03130 Santa Pola, Alicante, Испания\nКонтактный Email: info@lashandnails.online",
+          es: "Titular: Staigis Iryna\nNIE: Y7526337S\nTipo de Actividad: Autónomo\nDirección: Carrer Major, 8, 03130 Santa Pola, Alicante, España\nEmail de contacto: info@lashandnails.es",
+          en: "Owner: Staigis Iryna\nNIE: Y7526337S\nBusiness Type: Self-Employed (Autónomo)\nAddress: Carrer Major, 8, 03130 Santa Pola, Alicante, Spain\nContact Email: info@lashandnails.es",
+          ru: "Владелец: Staigis Iryna\nNIE: Y7526337S\nТип деятельности: Индивидуальный предприниматель (Autónomo)\nАдрес: Carrer Major, 8, 03130 Santa Pola, Alicante, Испания\nКонтактный Email: info@lashandnails.es",
         }
       ),
       sec(
@@ -902,9 +902,9 @@ async function seedLegalPages() {
           { es: "Portabilidad de tus datos", en: "Data portability", ru: "Переносимость данных" },
         ],
         {
-          es: "Para ejercer estos derechos, contacta con nosotros en info@lashandnails.online",
-          en: "To exercise these rights, contact us at info@lashandnails.online",
-          ru: "Для осуществления этих прав свяжитесь с нами по адресу info@lashandnails.online",
+          es: "Para ejercer estos derechos, contacta con nosotros en info@lashandnails.es",
+          en: "To exercise these rights, contact us at info@lashandnails.es",
+          ru: "Для осуществления этих прав свяжитесь с нами по адресу info@lashandnails.es",
         }
       ),
       sec(
@@ -1031,9 +1031,9 @@ async function seedLegalPages() {
       sec(
         { es: "Contacto", en: "Contact", ru: "Контакт" },
         {
-          es: "Si tienes preguntas sobre nuestra Política de Cookies, contáctanos en info@lashandnails.online",
-          en: "If you have questions about our Cookie Policy, contact us at info@lashandnails.online",
-          ru: "Если у вас есть вопросы о нашей Политике использования файлов cookie, свяжитесь с нами по адресу info@lashandnails.online",
+          es: "Si tienes preguntas sobre nuestra Política de Cookies, contáctanos en info@lashandnails.es",
+          en: "If you have questions about our Cookie Policy, contact us at info@lashandnails.es",
+          ru: "Если у вас есть вопросы о нашей Политике использования файлов cookie, свяжитесь с нами по адресу info@lashandnails.es",
         }
       ),
     ],
@@ -1071,9 +1071,9 @@ async function seedLegalPages() {
       sec(
         { es: "Información de la Empresa", en: "Company Information", ru: "Информация о компании" },
         {
-          es: "Titular: Staigis Iryna\nNIE: Y7526337S\nTipo de Actividad: Autónomo\nDirección: Carrer Major, 8, 03130 Santa Pola, Alicante, España\nTeléfono: +34 604 31 67 78\nEmail: info@lashandnails.online",
-          en: "Owner: Staigis Iryna\nNIE: Y7526337S\nBusiness Type: Self-Employed (Autónomo)\nAddress: Carrer Major, 8, 03130 Santa Pola, Alicante, Spain\nPhone: +34 604 31 67 78\nEmail: info@lashandnails.online",
-          ru: "Владелец: Staigis Iryna\nNIE: Y7526337S\nТип деятельности: Индивидуальный предприниматель (Autónomo)\nАдрес: Carrer Major, 8, 03130 Santa Pola, Alicante, Испания\nТелефон: +34 604 31 67 78\nEmail: info@lashandnails.online",
+          es: "Titular: Staigis Iryna\nNIE: Y7526337S\nTipo de Actividad: Autónomo\nDirección: Carrer Major, 8, 03130 Santa Pola, Alicante, España\nTeléfono: +34 604 31 67 78\nEmail: info@lashandnails.es",
+          en: "Owner: Staigis Iryna\nNIE: Y7526337S\nBusiness Type: Self-Employed (Autónomo)\nAddress: Carrer Major, 8, 03130 Santa Pola, Alicante, Spain\nPhone: +34 604 31 67 78\nEmail: info@lashandnails.es",
+          ru: "Владелец: Staigis Iryna\nNIE: Y7526337S\nТип деятельности: Индивидуальный предприниматель (Autónomo)\nАдрес: Carrer Major, 8, 03130 Santa Pola, Alicante, Испания\nТелефон: +34 604 31 67 78\nEmail: info@lashandnails.es",
         }
       ),
       sec(
