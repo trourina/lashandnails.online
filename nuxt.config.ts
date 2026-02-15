@@ -101,7 +101,6 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: "i18n_redirected",
       redirectOn: "root",
-      redirectStatusCode: 301,
     },
     vueI18n: "./i18n.config.ts",
   },

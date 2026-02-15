@@ -135,7 +135,9 @@ onUnmounted(() => {
                     />
                   </svg>
                 </div>
-                <span class="text-sm text-white/70">{{ settings.googleReviewCount }} Google Reviews</span>
+                <span class="text-sm text-white/70"
+                  >{{ settings.googleReviewCount }} Google Reviews</span
+                >
               </div>
             </a>
           </div>
