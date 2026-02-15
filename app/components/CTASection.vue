@@ -53,31 +53,31 @@ const props = withDefaults(defineProps<Props>(), {
   showSecondaryButton: true,
 });
 
-const localePath = useLocalePath()
-const settings = useSiteSettings()
-const { trackWhatsAppClick, trackPhoneClick } = useAnalytics()
+const localePath = useLocalePath();
+const settings = useSiteSettings();
+const { trackWhatsAppClick, trackPhoneClick } = useAnalytics();
 
-const isExternalSecondary = computed(() =>
-  props.secondaryButtonLink.startsWith('tel:') || props.secondaryButtonLink.startsWith('http')
-)
+const isExternalSecondary = computed(
+  () =>
+    props.secondaryButtonLink.startsWith("tel:") || props.secondaryButtonLink.startsWith("http"),
+);
 
 const resolvedSecondaryLink = computed(() =>
-  isExternalSecondary.value
-    ? props.secondaryButtonLink
-    : localePath(props.secondaryButtonLink)
-)
+  isExternalSecondary.value ? props.secondaryButtonLink : localePath(props.secondaryButtonLink),
+);
 
-const whatsappLink = computed(() =>
-  `https://wa.me/${settings.value.phone.replace(/\+/g, '')}?text=${encodeURIComponent(props.message)}`
-)
+const whatsappLink = computed(
+  () =>
+    `https://wa.me/${settings.value.phone.replace(/\+/g, "")}?text=${encodeURIComponent(props.message)}`,
+);
 
 const handleWhatsAppClick = () => {
-  trackWhatsAppClick('cta_section')
-}
+  trackWhatsAppClick("cta_section");
+};
 
 const handleSecondaryClick = () => {
-  if (props.secondaryButtonLink.startsWith('tel:')) {
-    trackPhoneClick('cta_section')
+  if (props.secondaryButtonLink.startsWith("tel:")) {
+    trackPhoneClick("cta_section");
   }
-}
+};
 </script>

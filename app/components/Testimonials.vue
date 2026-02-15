@@ -8,12 +8,8 @@ const testimonials: { id: number; quote: string; title: string; name: string }[]
     <div class="container mx-auto px-4">
       <!-- Section Header -->
       <div class="text-center mb-12">
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          Reviews
-        </h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">
-
-        </p>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">Reviews</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto"></p>
       </div>
 
       <!-- Testimonials Grid -->

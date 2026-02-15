@@ -112,9 +112,7 @@ export default defineType({
         defineArrayMember({
           type: "object",
           name: "benefit",
-          fields: [
-            { name: "text", title: "Текст", type: "localizedString" },
-          ],
+          fields: [{ name: "text", title: "Текст", type: "localizedString" }],
           preview: {
             select: { title: "text.ru" },
           },
@@ -147,9 +145,7 @@ export default defineType({
         defineArrayMember({
           type: "object",
           name: "aftercareTip",
-          fields: [
-            { name: "text", title: "Текст", type: "localizedString" },
-          ],
+          fields: [{ name: "text", title: "Текст", type: "localizedString" }],
           preview: {
             select: { title: "text.ru" },
           },

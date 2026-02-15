@@ -13,7 +13,12 @@
           :aria-label="t('common.close')"
         >
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
 
@@ -25,7 +30,12 @@
           :aria-label="t('common.previous')"
         >
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
 
@@ -38,7 +48,10 @@
           />
 
           <!-- Image caption -->
-          <div v-if="currentImage?.caption" class="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-4 text-center">
+          <div
+            v-if="currentImage?.caption"
+            class="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-4 text-center"
+          >
             <p class="text-lg">{{ currentImage.caption }}</p>
           </div>
         </div>
@@ -51,12 +64,19 @@
           :aria-label="t('common.next')"
         >
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
 
         <!-- Image counter -->
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm bg-black/50 px-4 py-2 rounded-full">
+        <div
+          class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm bg-black/50 px-4 py-2 rounded-full"
+        >
           {{ currentIndex + 1 }} / {{ images.length }}
         </div>
       </div>
@@ -66,91 +86,91 @@
 
 <script setup lang="ts">
 interface Image {
-  src: string
-  alt: string
-  caption?: string
+  src: string;
+  alt: string;
+  caption?: string;
 }
 
 interface Props {
-  images: Image[]
-  initialIndex?: number
+  images: Image[];
+  initialIndex?: number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   initialIndex: 0,
-})
+});
 
 const emit = defineEmits<{
-  close: []
-}>()
+  close: [];
+}>();
 
-const { t } = useI18n()
+const { t } = useI18n();
 
-const isOpen = ref(false)
-const currentIndex = ref(props.initialIndex)
+const isOpen = ref(false);
+const currentIndex = ref(props.initialIndex);
 
-const currentImage = computed(() => props.images[currentIndex.value])
-const hasPrevious = computed(() => currentIndex.value > 0)
-const hasNext = computed(() => currentIndex.value < props.images.length - 1)
+const currentImage = computed(() => props.images[currentIndex.value]);
+const hasPrevious = computed(() => currentIndex.value > 0);
+const hasNext = computed(() => currentIndex.value < props.images.length - 1);
 
 const open = (index: number = 0) => {
-  currentIndex.value = index
-  isOpen.value = true
+  currentIndex.value = index;
+  isOpen.value = true;
   // Prevent body scroll when lightbox is open
-  document.body.style.overflow = 'hidden'
-}
+  document.body.style.overflow = "hidden";
+};
 
 const close = () => {
-  isOpen.value = false
-  emit('close')
+  isOpen.value = false;
+  emit("close");
   // Restore body scroll
-  document.body.style.overflow = ''
-}
+  document.body.style.overflow = "";
+};
 
 const previous = () => {
   if (hasPrevious.value) {
-    currentIndex.value--
+    currentIndex.value--;
   }
-}
+};
 
 const next = () => {
   if (hasNext.value) {
-    currentIndex.value++
+    currentIndex.value++;
   }
-}
+};
 
 // Keyboard navigation
 const handleKeydown = (event: KeyboardEvent) => {
-  if (!isOpen.value) return
+  if (!isOpen.value) return;
 
   switch (event.key) {
-    case 'Escape':
-      close()
-      break
-    case 'ArrowLeft':
-      previous()
-      break
-    case 'ArrowRight':
-      next()
-      break
+    case "Escape":
+      close();
+      break;
+    case "ArrowLeft":
+      previous();
+      break;
+    case "ArrowRight":
+      next();
+      break;
   }
-}
+};
 
 onMounted(() => {
-  window.addEventListener('keydown', handleKeydown)
-})
+  window.addEventListener("keydown", handleKeydown);
+});
 
 onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener("keydown", handleKeydown);
   // Ensure body scroll is restored
-  document.body.style.overflow = ''
-})
+  document.body.style.overflow = "";
+});
 
 // Expose methods to parent component
 defineExpose({
   open,
   close,
-})
+});
 </script>
 
 <style scoped>

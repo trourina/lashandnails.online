@@ -15,6 +15,7 @@ NUXT_PUBLIC_GOOGLE_ANALYTICS_ID=G-0SKWWBRJC4
 ```
 
 **Files:**
+
 - `.env.example` - Template with variable structure
 - `nuxt.config.ts` - Configuration that reads from environment
 
@@ -34,6 +35,7 @@ scripts: {
 ```
 
 **Benefits:**
+
 - Works in both development and production
 - Auto-loads GA4 script with optimal performance
 - Supports consent mode and privacy features
@@ -47,15 +49,15 @@ Created a reusable composable at `app/composables/useAnalytics.ts` for consisten
 
 ```typescript
 const {
-  trackEvent,              // Generic event tracking
-  trackWhatsAppClick,      // WhatsApp button clicks
-  trackPhoneClick,         // Phone call clicks
-  trackServiceView,        // Service page views
-  trackBookingIntent,      // Booking CTA clicks
-  trackFormSubmit,         // Form submissions
+  trackEvent, // Generic event tracking
+  trackWhatsAppClick, // WhatsApp button clicks
+  trackPhoneClick, // Phone call clicks
+  trackServiceView, // Service page views
+  trackBookingIntent, // Booking CTA clicks
+  trackFormSubmit, // Form submissions
   trackGalleryInteraction, // Gallery filters & lightbox
-  trackNavigation          // Internal navigation
-} = useAnalytics()
+  trackNavigation, // Internal navigation
+} = useAnalytics();
 ```
 
 ## Tracked Events
@@ -65,12 +67,14 @@ const {
 **Event Name:** `whatsapp_click`
 
 **Locations:**
+
 - Hero section (homepage)
 - CTA sections (all pages)
 - Service pages
 - Contact page
 
 **Parameters:**
+
 ```javascript
 {
   button_location: 'hero' | 'cta_section' | 'service_page',
@@ -83,11 +87,13 @@ const {
 **Event Name:** `phone_click`
 
 **Locations:**
+
 - CTA sections with phone CTAs
 - Contact page
 - Booking page
 
 **Parameters:**
+
 ```javascript
 {
   button_location: 'cta_section' | 'contact_page',
@@ -100,11 +106,13 @@ const {
 **Event Name:** `navigation`
 
 **Locations:**
+
 - Hero section (View Pricing button)
 - Service cards
 - Navigation menu
 
 **Parameters:**
+
 ```javascript
 {
   destination: '/pricing' | '/services/...',
@@ -117,10 +125,12 @@ const {
 **Event Name:** `gallery_interaction`
 
 **Locations:**
+
 - Gallery page filter buttons
 - Lightbox open/close
 
 **Parameters:**
+
 ```javascript
 {
   interaction_type: 'filter_change' | 'open_lightbox',
@@ -133,6 +143,7 @@ const {
 **Event Name:** `view_service`
 
 **Parameters:**
+
 ```javascript
 {
   service_name: 'Lash Extensions' | 'Nail Design' | 'Beauty Treatments',
@@ -145,6 +156,7 @@ const {
 **Event Name:** `form_submit`
 
 **Parameters:**
+
 ```javascript
 {
   form_name: 'contact_form',
@@ -159,15 +171,15 @@ const {
 
 ```vue
 <script setup>
-const { trackWhatsAppClick, trackNavigation } = useAnalytics()
+const { trackWhatsAppClick, trackNavigation } = useAnalytics();
 
 const handleWhatsAppClick = () => {
-  trackWhatsAppClick('hero')
-}
+  trackWhatsAppClick("hero");
+};
 
 const handlePricingClick = () => {
-  trackNavigation('/pricing', 'hero')
-}
+  trackNavigation("/pricing", "hero");
+};
 </script>
 
 <template>
@@ -180,17 +192,17 @@ const handlePricingClick = () => {
 
 ```vue
 <script setup>
-const { trackWhatsAppClick, trackPhoneClick } = useAnalytics()
+const { trackWhatsAppClick, trackPhoneClick } = useAnalytics();
 
 const handleWhatsAppClick = () => {
-  trackWhatsAppClick('cta_section')
-}
+  trackWhatsAppClick("cta_section");
+};
 
 const handleSecondaryClick = () => {
-  if (props.secondaryButtonLink.startsWith('tel:')) {
-    trackPhoneClick('cta_section')
+  if (props.secondaryButtonLink.startsWith("tel:")) {
+    trackPhoneClick("cta_section");
   }
-}
+};
 </script>
 ```
 
@@ -223,17 +235,19 @@ const handleFilterChange = (filter: string) => {
 4. Click any tracked button (WhatsApp, pricing, etc.)
 5. Type in console:
    ```javascript
-   window.gtag
+   window.gtag;
    ```
    If it shows a function, GA4 is loaded
 
 ### Method 2: GA4 DebugView (Real-time)
 
 **Setup:**
+
 1. Install Google Analytics Debugger Chrome extension
 2. Or add `?debug_mode=true` to URL
 
 **Steps:**
+
 1. Go to [Google Analytics](https://analytics.google.com)
 2. Select your property (G-0SKWWBRJC4)
 3. Navigate to: **Reports → Realtime → DebugView**
@@ -283,6 +297,7 @@ These events represent user actions that indicate booking intent:
 ### 1. Conversions Setup
 
 In GA4, mark these events as conversions:
+
 - `whatsapp_click`
 - `phone_click`
 - `form_submit` (when implemented)
@@ -290,15 +305,18 @@ In GA4, mark these events as conversions:
 ### 2. Custom Reports
 
 **Lead Sources Report:**
+
 - Dimension: `button_location`
 - Metric: Event count
 - Filter: `whatsapp_click` OR `phone_click`
 
 **Service Interest Report:**
+
 - Dimension: `service_name`
 - Metric: Page views + `view_service` events
 
 **Gallery Engagement Report:**
+
 - Dimension: `category`
 - Metric: `gallery_interaction` count
 - Secondary dimension: `interaction_type`
@@ -328,9 +346,11 @@ When deploying to Vercel, add environment variable:
 ### GDPR Considerations
 
 Currently implemented:
+
 - GA4 script loads by default (standard practice)
 
 **Future enhancements needed:**
+
 - [ ] Add cookie consent banner
 - [ ] Implement consent mode v2
 - [ ] Add opt-out functionality
@@ -339,6 +359,7 @@ Currently implemented:
 ### Data Retention
 
 Default GA4 settings:
+
 - Event data retention: 2 months (free tier)
 - Can be extended to 14 months
 
@@ -349,6 +370,7 @@ Default GA4 settings:
 **Issue:** `window.gtag is not a function`
 
 **Solution:**
+
 1. Check `nuxt.config.ts` scripts configuration
 2. Verify environment variable is set
 3. Clear browser cache
@@ -359,6 +381,7 @@ Default GA4 settings:
 **Issue:** Clicks don't show in DebugView
 
 **Solution:**
+
 1. Verify GA4 measurement ID is correct
 2. Check browser console for errors
 3. Ensure `@nuxt/scripts` module is installed
@@ -369,6 +392,7 @@ Default GA4 settings:
 **Issue:** Event shows but parameters are missing/wrong
 
 **Solution:**
+
 1. Check composable function calls
 2. Verify parameter names match GA4 naming conventions
 3. Test with DebugView to see actual payload

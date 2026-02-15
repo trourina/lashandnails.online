@@ -63,7 +63,7 @@ thesalonmarketing.com
 thesalonmarketing.com
 . Personalisiertes Storytelling schafft Bindung. Betonen Sie besondere Fähigkeiten (z.B. zertifizierte Lash-Stylistin, mehrsprachig – falls z.B. Russisch/Polnisch gesprochen wird, erwähnen!). Laut Studien ist die About-Seite oft die erste Seite, die Besucher ansehen
 thesalonmarketing.com
- – Authentizität und Sympathie hier können ausschlaggebend sein.
+– Authentizität und Sympathie hier können ausschlaggebend sein.
 Kontakt & Anfahrt: Eine eigene Kontaktseite mit allen Infos darf nicht fehlen. Listen Sie deutlich auf: Adresse (mit Stadtteil), Telefonnummer, E-Mail, WhatsApp-Nummer (falls für Termine genutzt) und Öffnungszeiten. Binden Sie eine interaktive Google Maps Karte ein, damit Besucher den Standort einfach finden
 thesalonmarketing.com
 . Da 44% der Nutzer eine Website verlassen, wenn keine Kontaktinfos schnell auffindbar sind

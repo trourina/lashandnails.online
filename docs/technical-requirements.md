@@ -3,6 +3,7 @@
 ## Technology Stack
 
 ### Core Framework
+
 - **Nuxt 4.1.3** (Vue 3.5.22)
   - SSR/SSG for SEO optimization
   - File-based routing
@@ -20,6 +21,7 @@
 ## Must-Have Technical Features
 
 ### 1. Performance
+
 - **Target Metrics**:
   - First Contentful Paint: < 1.5s
   - Largest Contentful Paint: < 2.5s
@@ -39,6 +41,7 @@
 ### 2. SEO & Discoverability
 
 #### Meta Tags & Schema
+
 ```typescript
 // Each page needs:
 - Unique <title> (50-60 chars)
@@ -50,6 +53,7 @@
 ```
 
 #### Structured Data (Schema.org)
+
 ```json
 {
   "@context": "https://schema.org",
@@ -82,6 +86,7 @@
 ```
 
 #### Technical SEO
+
 - Sitemap.xml generation
 - Robots.txt configuration
 - Clean URL structure
@@ -93,12 +98,14 @@
 ### 3. Internationalization (i18n)
 
 #### Languages
+
 1. **Spanish (es)** - Default
 2. **English (en)**
 3. **Polish (pl)** - Optional
 4. **Russian (ru)** - Optional
 
 #### Implementation Strategy
+
 ```
 Option A: Path-based
 - lashandnails.es/ (es - default)
@@ -112,6 +119,7 @@ Option B: Subdomain (if multiple languages)
 ```
 
 #### i18n Module
+
 - Use `@nuxtjs/i18n` module
 - Language switcher in header/footer
 - Browser language detection
@@ -135,6 +143,7 @@ i18n: {
 ### 4. Mobile-First Design
 
 #### Responsive Breakpoints (Tailwind CSS v4)
+
 ```css
 /* Mobile-first approach - Tailwind default breakpoints */
 - sm: 640px   (large mobile)
@@ -147,6 +156,7 @@ i18n: {
 ```
 
 #### Mobile Features
+
 - Touch-friendly UI (min 44px tap targets)
 - Swipeable image galleries
 - Sticky mobile header
@@ -159,6 +169,7 @@ i18n: {
 ### 5. Third-Party Integrations
 
 #### Google Services
+
 ```typescript
 // Google Maps
 - Embedded map on contact page
@@ -180,6 +191,7 @@ i18n: {
 ```
 
 #### Social Media
+
 ```typescript
 // Instagram
 - Feed integration (@nuxt/scripts or API)
@@ -197,13 +209,16 @@ i18n: {
 ```
 
 #### Booking System Integration
+
 **Options to evaluate**:
+
 1. **Fresha** - Free for salons, commission on new customers
 2. **Treatwell** - Largest EU beauty marketplace
 3. **Booksy** - Popular for nail salons
 4. **Custom form** - Fallback with WhatsApp/email notifications
 
 **Requirements**:
+
 - Embed booking widget
 - Service selection
 - Date/time picker
@@ -214,6 +229,7 @@ i18n: {
 ### 6. Analytics & Tracking
 
 #### Core Metrics
+
 ```typescript
 // Page tracking
 - Page views by URL
@@ -240,6 +256,7 @@ i18n: {
 ```
 
 #### Tools
+
 - Google Analytics 4
 - Google Search Console
 - Facebook Pixel (for ads)
@@ -248,6 +265,7 @@ i18n: {
 ### 7. Security & Privacy
 
 #### Security
+
 - SSL/TLS certificate (HTTPS)
 - Security headers:
   ```
@@ -262,6 +280,7 @@ i18n: {
 - Secure headers via Nuxt config
 
 #### Privacy (GDPR Compliance)
+
 - Cookie consent banner
 - Privacy Policy page
 - Terms & Conditions page
@@ -270,6 +289,7 @@ i18n: {
 - Google Analytics anonymization
 
 **Required**:
+
 ```typescript
 // Cookie consent module
 - @nuxtjs/google-analytics with consent mode
@@ -280,6 +300,7 @@ i18n: {
 ### 8. Forms & Contact
 
 #### Contact Form
+
 ```typescript
 // Fields
 - Name (required)
@@ -299,6 +320,7 @@ i18n: {
 ```
 
 #### Newsletter Subscription
+
 - Email input
 - GDPR consent checkbox
 - Integration with email service (Mailchimp, ConvertKit, etc.)
@@ -306,6 +328,7 @@ i18n: {
 ### 9. Image Management
 
 #### Strategy
+
 - Store optimized JPEGs in `/public/images/`
 - Manual optimization using tools (ImageOptim, TinyJPG, etc.)
 - Lazy loading with native browser support or simple Vue directive
@@ -314,6 +337,7 @@ i18n: {
 - Proper alt text for accessibility
 
 #### Organization
+
 ```
 /public/images/
   /gallery/
@@ -335,6 +359,7 @@ i18n: {
 ```
 
 #### Optimization
+
 - Max original size: 2000px width
 - Compression: 80-85% quality (JPEG)
 - Progressive JPEG encoding
@@ -345,6 +370,7 @@ i18n: {
 ### 10. Accessibility (WCAG 2.1 AA)
 
 #### Requirements
+
 - Semantic HTML (headings hierarchy)
 - Alt text for all images
 - ARIA labels for interactive elements
@@ -356,6 +382,7 @@ i18n: {
 - Language declaration in HTML
 
 #### Tools
+
 - Lighthouse accessibility audit
 - axe DevTools
 - WAVE browser extension
@@ -367,25 +394,28 @@ i18n: {
 ### Tailwind CSS v4 Configuration
 
 #### Installation
+
 ```bash
 npm install -D @nuxtjs/tailwindcss tailwindcss@next @tailwindcss/postcss@next
 ```
 
 #### Nuxt Config
+
 ```typescript
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ["@nuxtjs/tailwindcss"],
   tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',
-    configPath: 'tailwind.config.ts',
+    cssPath: "~/assets/css/tailwind.css",
+    configPath: "tailwind.config.ts",
     exposeConfig: false,
-    viewer: true // Dev-time viewer at /_tailwind/
-  }
-})
+    viewer: true, // Dev-time viewer at /_tailwind/
+  },
+});
 ```
 
 #### CSS Entry Point (Tailwind v4)
+
 ```css
 /* assets/css/main.css */
 @import "tailwindcss";
@@ -398,8 +428,8 @@ export default defineNuxtConfig({
   --color-accent: #...; /* For CTAs */
 
   /* Font families */
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Playfair Display', serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Playfair Display", serif;
 }
 
 /* Custom styles */
@@ -407,7 +437,12 @@ export default defineNuxtConfig({
   font-family: var(--font-sans);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
 }
 
@@ -424,6 +459,7 @@ h1, h2, h3, h4, h5, h6 {
 **Note**: Tailwind v4 uses CSS-based configuration via `@theme` directive instead of `tailwind.config.ts`.
 
 ### Environment Variables
+
 ```bash
 # .env
 NUXT_PUBLIC_GOOGLE_MAPS_API_KEY=...
@@ -437,6 +473,7 @@ SENDGRID_API_KEY=...
 ```
 
 ### Scripts Required
+
 ```json
 {
   "scripts": {
@@ -456,6 +493,7 @@ SENDGRID_API_KEY=...
 ## Hosting & Deployment
 
 ### Recommended Platforms
+
 1. **Vercel** (current .vercel folder exists)
    - Automatic deployments from Git
    - Edge functions
@@ -471,21 +509,23 @@ SENDGRID_API_KEY=...
    - Free SSL
 
 ### Deployment Strategy
+
 - **Main branch** → Production (lashandnails.es)
 - **Preview deployments** for PRs
 - Auto-deploy on push to main
 - Environment variables in platform settings
 
 ### Build Configuration
+
 ```typescript
 // nuxt.config.ts
 export default defineNuxtConfig({
   ssr: true, // or generate: true for static
   nitro: {
-    preset: 'vercel', // or 'netlify', 'cloudflare-pages'
-    compressPublicAssets: true
-  }
-})
+    preset: "vercel", // or 'netlify', 'cloudflare-pages'
+    compressPublicAssets: true,
+  },
+});
 ```
 
 ---
@@ -495,12 +535,14 @@ export default defineNuxtConfig({
 ### Options
 
 #### Option 1: Hardcoded (Simple)
+
 - Content in Vue components
 - Translation files for i18n
 - Fast, no external dependencies
 - Changes require redeployment
 
 #### Option 2: Headless CMS (Flexible)
+
 **Recommended for non-technical content updates**:
 
 1. **Sanity.io**
@@ -520,6 +562,7 @@ export default defineNuxtConfig({
    - Free tier available
 
 **Use cases for CMS**:
+
 - Gallery images (easy to add new work)
 - Service descriptions & pricing
 - Blog posts
@@ -531,6 +574,7 @@ export default defineNuxtConfig({
 ## Testing Requirements
 
 ### Manual Testing Checklist
+
 - [ ] Test on real devices (iOS Safari, Android Chrome)
 - [ ] Test all forms
 - [ ] Test booking flow
@@ -542,6 +586,7 @@ export default defineNuxtConfig({
 - [ ] Check accessibility with screen reader
 
 ### Automated Testing
+
 ```typescript
 // Optional but recommended
 - Lighthouse CI (performance/SEO/accessibility)
@@ -554,6 +599,7 @@ export default defineNuxtConfig({
 ## Browser Support
 
 ### Target Browsers
+
 - Chrome/Edge (last 2 versions)
 - Firefox (last 2 versions)
 - Safari iOS (last 2 versions)
@@ -561,6 +607,7 @@ export default defineNuxtConfig({
 - Samsung Internet (last 2 versions)
 
 ### Polyfills
+
 - Not needed for modern browsers
 - Nuxt handles most automatically
 
@@ -569,6 +616,7 @@ export default defineNuxtConfig({
 ## Monitoring & Maintenance
 
 ### Tools
+
 1. **Google Search Console**
    - SEO health
    - Indexing status
@@ -589,6 +637,7 @@ export default defineNuxtConfig({
    - LogRocket
 
 ### Regular Tasks
+
 - Monitor Google Business reviews → respond within 24h
 - Update gallery with new work (weekly)
 - Check analytics (weekly)
@@ -602,6 +651,7 @@ export default defineNuxtConfig({
 ## Phase 1 MVP (Minimum Viable Product)
 
 ### Core Pages (Spanish + English only)
+
 - Home
 - Services (3 subpages)
 - Gallery
@@ -609,6 +659,7 @@ export default defineNuxtConfig({
 - Contact
 
 ### Core Features
+
 - Mobile responsive
 - Google Maps integration
 - WhatsApp click-to-chat
@@ -619,6 +670,7 @@ export default defineNuxtConfig({
 - Fast performance
 
 ### Launch Checklist
+
 - [ ] Domain configured
 - [ ] SSL certificate active
 - [ ] Google Business Profile created & linked
@@ -636,6 +688,7 @@ export default defineNuxtConfig({
 ## Phase 2 Enhancements (Post-Launch)
 
 ### Additional Features
+
 - Online booking system integration
 - Blog/tips section
 - Newsletter subscription
@@ -648,6 +701,7 @@ export default defineNuxtConfig({
 - Live chat widget
 
 ### Marketing Integrations
+
 - Facebook Pixel
 - TikTok Pixel (if doing TikTok ads)
 - Google Ads conversion tracking
@@ -658,6 +712,7 @@ export default defineNuxtConfig({
 ## Budget Estimates
 
 ### Free/Included
+
 - Nuxt framework
 - Vercel hosting (free tier likely sufficient)
 - Google Analytics
@@ -666,6 +721,7 @@ export default defineNuxtConfig({
 - WhatsApp Business
 
 ### Paid (Optional)
+
 - Domain: ~€10-15/year
 - Booking system: €0-50/month (depends on platform)
 - Email service: €0-15/month (SendGrid, Resend)
@@ -682,6 +738,7 @@ export default defineNuxtConfig({
 ## Performance Budget
 
 ### Max File Sizes
+
 - HTML: < 50KB (gzipped)
 - CSS: < 50KB (gzipped)
 - JS (total): < 200KB (gzipped)
@@ -689,10 +746,12 @@ export default defineNuxtConfig({
 - Fonts: < 100KB total
 
 ### Max Requests
+
 - Initial page load: < 30 requests
 - Full page load: < 50 requests
 
 ### Lighthouse Targets
+
 - Performance: > 90
 - Accessibility: > 95
 - Best Practices: > 95

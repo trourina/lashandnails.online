@@ -100,7 +100,6 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 const { t, locale } = useI18n();
 const config = useRuntimeConfig();

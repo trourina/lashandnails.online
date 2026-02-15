@@ -81,11 +81,11 @@ npm run dev
 
 ```vue
 <template>
-  <h1>{{ t('title') }}</h1>
+  <h1>{{ t("title") }}</h1>
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n({ useScope: 'local' })
+const { t } = useI18n({ useScope: "local" });
 </script>
 
 <i18n lang="json">
@@ -98,6 +98,7 @@ const { t } = useI18n({ useScope: 'local' })
 ```
 
 **Global translations** (`i18n/locales/`) are used for:
+
 - Navigation menus
 - Common UI elements
 - Shared content
@@ -107,6 +108,7 @@ const { t } = useI18n({ useScope: 'local' })
 ### LocalBusiness Schema
 
 Configured in `nuxt.config.ts` with:
+
 - Business name and description
 - Full address and geo coordinates
 - Phone number
@@ -116,6 +118,7 @@ Configured in `nuxt.config.ts` with:
 ### Per-Page SEO
 
 Each page has localized SEO meta tags:
+
 - `title` - Page title
 - `description` - Meta description
 - `ogTitle` - Open Graph title

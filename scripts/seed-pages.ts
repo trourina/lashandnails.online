@@ -14,11 +14,9 @@ const client = createClient({
 
 if (!process.env.SANITY_TOKEN) {
   console.error(
-    "Missing SANITY_TOKEN. Create one at https://www.sanity.io/manage/project/4dsh8g5u/api#tokens"
+    "Missing SANITY_TOKEN. Create one at https://www.sanity.io/manage/project/4dsh8g5u/api#tokens",
   );
-  console.error(
-    'Then run: SANITY_TOKEN="skXXXX..." npx tsx scripts/seed-pages.ts'
-  );
+  console.error('Then run: SANITY_TOKEN="skXXXX..." npx tsx scripts/seed-pages.ts');
   process.exit(1);
 }
 
@@ -250,22 +248,38 @@ async function seedAboutPage() {
         _type: "expertiseItem",
         _key: key(),
         icon: "🎓",
-        title: { es: "Profesionales Certificados", en: "Certified Professionals", ru: "Сертифицированные специалисты" },
-        description: { es: "Formación continua en las últimas técnicas y tendencias de belleza", en: "Continuous training in the latest beauty techniques and trends", ru: "Постоянное обучение новейшим техникам и трендам красоты" },
+        title: {
+          es: "Profesionales Certificados",
+          en: "Certified Professionals",
+          ru: "Сертифицированные специалисты",
+        },
+        description: {
+          es: "Formación continua en las últimas técnicas y tendencias de belleza",
+          en: "Continuous training in the latest beauty techniques and trends",
+          ru: "Постоянное обучение новейшим техникам и трендам красоты",
+        },
       },
       {
         _type: "expertiseItem",
         _key: key(),
         icon: "⏰",
         title: { es: "Años de Experiencia", en: "Years of Experience", ru: "Годы опыта" },
-        description: { es: "Miles de clientes satisfechas que confían en nuestros servicios", en: "Thousands of satisfied clients who trust our services", ru: "Тысячи довольных клиентов, которые доверяют нашим услугам" },
+        description: {
+          es: "Miles de clientes satisfechas que confían en nuestros servicios",
+          en: "Thousands of satisfied clients who trust our services",
+          ru: "Тысячи довольных клиентов, которые доверяют нашим услугам",
+        },
       },
       {
         _type: "expertiseItem",
         _key: key(),
         icon: "🌟",
         title: { es: "Productos Premium", en: "Premium Products", ru: "Премиальные продукты" },
-        description: { es: "Solo utilizamos productos de alta calidad, seguros y duraderos", en: "We only use high-quality, safe, and long-lasting products", ru: "Мы используем только высококачественные, безопасные и долговечные продукты" },
+        description: {
+          es: "Solo utilizamos productos de alta calidad, seguros y duraderos",
+          en: "We only use high-quality, safe, and long-lasting products",
+          ru: "Мы используем только высококачественные, безопасные и долговечные продукты",
+        },
       },
     ],
     valuesHeading: {
@@ -278,33 +292,73 @@ async function seedAboutPage() {
         _type: "valueItem",
         _key: key(),
         title: { es: "Excelencia", en: "Excellence", ru: "Превосходство" },
-        description: { es: "Nos esforzamos por superar tus expectativas en cada visita, ofreciendo resultados impecables.", en: "We strive to exceed your expectations on every visit, delivering impeccable results.", ru: "Мы стремимся превзойти ваши ожидания при каждом посещении, обеспечивая безупречные результаты." },
+        description: {
+          es: "Nos esforzamos por superar tus expectativas en cada visita, ofreciendo resultados impecables.",
+          en: "We strive to exceed your expectations on every visit, delivering impeccable results.",
+          ru: "Мы стремимся превзойти ваши ожидания при каждом посещении, обеспечивая безупречные результаты.",
+        },
       },
       {
         _type: "valueItem",
         _key: key(),
-        title: { es: "Atención Personalizada", en: "Personalized Attention", ru: "Индивидуальный подход" },
-        description: { es: "Cada cliente recibe un trato único y cuidadoso, adaptado a sus necesidades específicas.", en: "Every client receives unique and careful treatment, tailored to their specific needs.", ru: "Каждый клиент получает уникальное и внимательное обслуживание, адаптированное к его конкретным потребностям." },
+        title: {
+          es: "Atención Personalizada",
+          en: "Personalized Attention",
+          ru: "Индивидуальный подход",
+        },
+        description: {
+          es: "Cada cliente recibe un trato único y cuidadoso, adaptado a sus necesidades específicas.",
+          en: "Every client receives unique and careful treatment, tailored to their specific needs.",
+          ru: "Каждый клиент получает уникальное и внимательное обслуживание, адаптированное к его конкретным потребностям.",
+        },
       },
       {
         _type: "valueItem",
         _key: key(),
         title: { es: "Ambiente Acogedor", en: "Welcoming Environment", ru: "Уютная атмосфера" },
-        description: { es: "Hemos creado un espacio relajante donde puedes desconectar y disfrutar de tu momento de belleza.", en: "We've created a relaxing space where you can disconnect and enjoy your beauty moment.", ru: "Мы создали расслабляющее пространство, где вы можете отключиться и насладиться моментом красоты." },
+        description: {
+          es: "Hemos creado un espacio relajante donde puedes desconectar y disfrutar de tu momento de belleza.",
+          en: "We've created a relaxing space where you can disconnect and enjoy your beauty moment.",
+          ru: "Мы создали расслабляющее пространство, где вы можете отключиться и насладиться моментом красоты.",
+        },
       },
       {
         _type: "valueItem",
         _key: key(),
-        title: { es: "Confianza y Transparencia", en: "Trust and Transparency", ru: "Доверие и прозрачность" },
-        description: { es: "Te asesoramos honestamente sobre los mejores tratamientos para ti, sin sorpresas.", en: "We honestly advise you on the best treatments for you, with no surprises.", ru: "Мы честно консультируем вас о лучших процедурах для вас, без сюрпризов." },
+        title: {
+          es: "Confianza y Transparencia",
+          en: "Trust and Transparency",
+          ru: "Доверие и прозрачность",
+        },
+        description: {
+          es: "Te asesoramos honestamente sobre los mejores tratamientos para ti, sin sorpresas.",
+          en: "We honestly advise you on the best treatments for you, with no surprises.",
+          ru: "Мы честно консультируем вас о лучших процедурах для вас, без сюрпризов.",
+        },
       },
     ],
     cta: {
-      heading: { es: "¿Lista para conocernos?", en: "Ready to meet us?", ru: "Готовы познакомиться с нами?" },
-      subtitle: { es: "Reserva tu primera cita y descubre la diferencia", en: "Book your first appointment and discover the difference", ru: "Запишитесь на первый прием и почувствуйте разницу" },
-      button: { es: "Reservar por WhatsApp", en: "Book via WhatsApp", ru: "Записаться через WhatsApp" },
+      heading: {
+        es: "¿Lista para conocernos?",
+        en: "Ready to meet us?",
+        ru: "Готовы познакомиться с нами?",
+      },
+      subtitle: {
+        es: "Reserva tu primera cita y descubre la diferencia",
+        en: "Book your first appointment and discover the difference",
+        ru: "Запишитесь на первый прием и почувствуйте разницу",
+      },
+      button: {
+        es: "Reservar por WhatsApp",
+        en: "Book via WhatsApp",
+        ru: "Записаться через WhatsApp",
+      },
       services: { es: "Ver Servicios", en: "View Services", ru: "Посмотреть услуги" },
-      message: { es: "Hola, me gustaría reservar una cita.", en: "Hello, I would like to book an appointment.", ru: "Здравствуйте, я хочу записаться на прием." },
+      message: {
+        es: "Hola, me gustaría reservar una cita.",
+        en: "Hello, I would like to book an appointment.",
+        ru: "Здравствуйте, я хочу записаться на прием.",
+      },
     },
     seo: {
       title: {
@@ -347,10 +401,38 @@ async function seedServicesOverviewPage() {
           ru: "Подчеркните свой взгляд профессиональным наращиванием ресниц. Передовые техники для естественного и долговечного результата.",
         },
         features: [
-          { _type: "feature", _key: key(), text: { es: "Efecto volumen o natural", en: "Volume or natural effect", ru: "Объемный или натуральный эффект" } },
-          { _type: "feature", _key: key(), text: { es: "Pestañas de alta calidad", en: "High-quality lashes", ru: "Высококачественные ресницы" } },
-          { _type: "feature", _key: key(), text: { es: "Aplicación personalizada", en: "Personalized application", ru: "Индивидуальное нанесение" } },
-          { _type: "feature", _key: key(), text: { es: "Duración 3-4 semanas", en: "Lasts 3-4 weeks", ru: "Держится 3-4 недели" } },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Efecto volumen o natural",
+              en: "Volume or natural effect",
+              ru: "Объемный или натуральный эффект",
+            },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Pestañas de alta calidad",
+              en: "High-quality lashes",
+              ru: "Высококачественные ресницы",
+            },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Aplicación personalizada",
+              en: "Personalized application",
+              ru: "Индивидуальное нанесение",
+            },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: { es: "Duración 3-4 semanas", en: "Lasts 3-4 weeks", ru: "Держится 3-4 недели" },
+          },
         ],
       },
       {
@@ -364,10 +446,42 @@ async function seedServicesOverviewPage() {
           ru: "Профессиональные услуги маникюра с премиальными продуктами для красивых и здоровых ногтей.",
         },
         features: [
-          { _type: "feature", _key: key(), text: { es: "Manicura higiénica y con gel", en: "Hygienic and gel manicure", ru: "Гигиенический и гель-маникюр" } },
-          { _type: "feature", _key: key(), text: { es: "Diseño único personalizado - flores, geometría, brillos y más", en: "Unique custom design - flowers, geometry, glitter and more", ru: "Уникальный персональный дизайн - цветы, геометрия, блестки и многое другое" } },
-          { _type: "feature", _key: key(), text: { es: "Fortalecimiento y extensión de uñas con gel", en: "Gel nail strengthening and extension", ru: "Укрепление и наращивание ногтей гелем" } },
-          { _type: "feature", _key: key(), text: { es: "Cosméticos alemanes Baehr e instrumentos esterilizados", en: "German Baehr cosmetics and sterilized instruments", ru: "Немецкая косметика Baehr и стерилизованные инструменты" } },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Manicura higiénica y con gel",
+              en: "Hygienic and gel manicure",
+              ru: "Гигиенический и гель-маникюр",
+            },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Diseño único personalizado - flores, geometría, brillos y más",
+              en: "Unique custom design - flowers, geometry, glitter and more",
+              ru: "Уникальный персональный дизайн - цветы, геометрия, блестки и многое другое",
+            },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Fortalecimiento y extensión de uñas con gel",
+              en: "Gel nail strengthening and extension",
+              ru: "Укрепление и наращивание ногтей гелем",
+            },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Cosméticos alemanes Baehr e instrumentos esterilizados",
+              en: "German Baehr cosmetics and sterilized instruments",
+              ru: "Немецкая косметика Baehr и стерилизованные инструменты",
+            },
+          },
         ],
       },
       {
@@ -381,10 +495,42 @@ async function seedServicesOverviewPage() {
           ru: "Профессиональные услуги педикюра для здоровых и красивых ног.",
         },
         features: [
-          { _type: "feature", _key: key(), text: { es: "Tratamiento completo de dedos y planta del pie", en: "Complete toe and foot sole treatment", ru: "Полная обработка пальцев и стопы" } },
-          { _type: "feature", _key: key(), text: { es: "Pedicura con esmaltado gel", en: "Pedicure with gel polish", ru: "Педикюр с гель-лаком" } },
-          { _type: "feature", _key: key(), text: { es: "Cosméticos alemanes Pedibaehr", en: "German Pedibaehr cosmetics", ru: "Немецкая косметика Pedibaehr" } },
-          { _type: "feature", _key: key(), text: { es: "Todos los instrumentos esterilizados", en: "All instruments sterilized", ru: "Все инструменты стерилизованы" } },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Tratamiento completo de dedos y planta del pie",
+              en: "Complete toe and foot sole treatment",
+              ru: "Полная обработка пальцев и стопы",
+            },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Pedicura con esmaltado gel",
+              en: "Pedicure with gel polish",
+              ru: "Педикюр с гель-лаком",
+            },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Cosméticos alemanes Pedibaehr",
+              en: "German Pedibaehr cosmetics",
+              ru: "Немецкая косметика Pedibaehr",
+            },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Todos los instrumentos esterilizados",
+              en: "All instruments sterilized",
+              ru: "Все инструменты стерилизованы",
+            },
+          },
         ],
       },
       {
@@ -398,18 +544,50 @@ async function seedServicesOverviewPage() {
           ru: "Профессиональный дизайн бровей, окрашивание и ламинирование для идеальных бровей.",
         },
         features: [
-          { _type: "feature", _key: key(), text: { es: "Tinte de cejas", en: "Brow tinting", ru: "Окрашивание бровей" } },
-          { _type: "feature", _key: key(), text: { es: "Tinte + corrección", en: "Tinting + correction", ru: "Окрашивание + коррекция" } },
-          { _type: "feature", _key: key(), text: { es: "Laminación de cejas", en: "Brow lamination", ru: "Ламинирование бровей" } },
-          { _type: "feature", _key: key(), text: { es: "Micropigmentación", en: "Micropigmentation", ru: "Микропигментирование" } },
+          {
+            _type: "feature",
+            _key: key(),
+            text: { es: "Tinte de cejas", en: "Brow tinting", ru: "Окрашивание бровей" },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: {
+              es: "Tinte + corrección",
+              en: "Tinting + correction",
+              ru: "Окрашивание + коррекция",
+            },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: { es: "Laminación de cejas", en: "Brow lamination", ru: "Ламинирование бровей" },
+          },
+          {
+            _type: "feature",
+            _key: key(),
+            text: { es: "Micropigmentación", en: "Micropigmentation", ru: "Микропигментирование" },
+          },
         ],
       },
     ],
     cta: {
       heading: { es: "¿Lista para reservar?", en: "Ready to book?", ru: "Готовы записаться?" },
-      subtitle: { es: "Reserva tu cita hoy y déjanos cuidar de tu belleza", en: "Book your appointment today and let us take care of your beauty", ru: "Запишитесь сегодня и позвольте нам позаботиться о вашей красоте" },
-      button: { es: "Reservar por WhatsApp", en: "Book via WhatsApp", ru: "Записаться через WhatsApp" },
-      message: { es: "Hola, me gustaría reservar una cita para un servicio.", en: "Hello, I would like to book an appointment for a service.", ru: "Здравствуйте, я хочу записаться на процедуру." },
+      subtitle: {
+        es: "Reserva tu cita hoy y déjanos cuidar de tu belleza",
+        en: "Book your appointment today and let us take care of your beauty",
+        ru: "Запишитесь сегодня и позвольте нам позаботиться о вашей красоте",
+      },
+      button: {
+        es: "Reservar por WhatsApp",
+        en: "Book via WhatsApp",
+        ru: "Записаться через WhatsApp",
+      },
+      message: {
+        es: "Hola, me gustaría reservar una cita para un servicio.",
+        en: "Hello, I would like to book an appointment for a service.",
+        ru: "Здравствуйте, я хочу записаться на процедуру.",
+      },
     },
     seo: {
       title: {
@@ -432,11 +610,7 @@ async function seedServicesOverviewPage() {
 async function seedPricingPage() {
   console.log("\n💰 Seeding pricingPage...");
 
-  const svc = (
-    name: Record<string, string>,
-    price: string,
-    note?: Record<string, string>
-  ) => ({
+  const svc = (name: Record<string, string>, price: string, note?: Record<string, string>) => ({
     _type: "pricingService" as const,
     _key: key(),
     name,
@@ -468,12 +642,24 @@ async function seedPricingPage() {
           svc(
             { es: "Laminación de pestañas", en: "Lash lamination", ru: "Ламинирование ресниц" },
             "35€",
-            { es: "(laminación + tinte)", en: "(lamination + tinting)", ru: "(ламинирование + окрашивание)" }
+            {
+              es: "(laminación + tinte)",
+              en: "(lamination + tinting)",
+              ru: "(ламинирование + окрашивание)",
+            },
           ),
           svc(
-            { es: "Combo: laminación de pestañas + laminación de cejas", en: "Combo: lash lamination + brow lamination", ru: "Комбо: ламинирование ресниц + ламинирование бровей" },
+            {
+              es: "Combo: laminación de pestañas + laminación de cejas",
+              en: "Combo: lash lamination + brow lamination",
+              ru: "Комбо: ламинирование ресниц + ламинирование бровей",
+            },
             "60€",
-            { es: "(corrección + tinte + laminación)", en: "(correction + tinting + lamination)", ru: "(коррекция + окрашивание + ламинирование)" }
+            {
+              es: "(corrección + tinte + laminación)",
+              en: "(correction + tinting + lamination)",
+              ru: "(коррекция + окрашивание + ламинирование)",
+            },
           ),
         ],
       },
@@ -488,19 +674,23 @@ async function seedPricingPage() {
           ru: "Профессиональное наращивание ресниц от 35€. Узнайте больше о наших услугах наращивания.",
         },
         services: [
-          svc({ es: "Clásica", en: "Classic", ru: "Классика" }, "35€", { es: "(1.5-2 horas)", en: "(1.5-2 hours)", ru: "(1,5-2 часа)" }),
+          svc({ es: "Clásica", en: "Classic", ru: "Классика" }, "35€", {
+            es: "(1.5-2 horas)",
+            en: "(1.5-2 hours)",
+            ru: "(1,5-2 часа)",
+          }),
           svc({ es: "2D", en: "2D", ru: "2D" }, "40€"),
           svc({ es: "3D", en: "3D", ru: "3D" }, "45€"),
-          svc(
-            { es: "Efectos", en: "Effects", ru: "Эффекты" },
-            "+5€",
-            { es: "(efecto mojado, rayos, efecto L, pestañas de colores)", en: "(wet effect, rays, L-effect, colored lashes)", ru: "(мокрый эффект, лучики, L-изгиб, цветные ресницы)" }
-          ),
-          svc(
-            { es: "Retirada de pestañas", en: "Lash removal", ru: "Снятие ресниц" },
-            "+5€",
-            { es: "(si no se hace nueva extensión)", en: "(if new extension is not done)", ru: "(если не делается новое наращивание)" }
-          ),
+          svc({ es: "Efectos", en: "Effects", ru: "Эффекты" }, "+5€", {
+            es: "(efecto mojado, rayos, efecto L, pestañas de colores)",
+            en: "(wet effect, rays, L-effect, colored lashes)",
+            ru: "(мокрый эффект, лучики, L-изгиб, цветные ресницы)",
+          }),
+          svc({ es: "Retirada de pestañas", en: "Lash removal", ru: "Снятие ресниц" }, "+5€", {
+            es: "(si no se hace nueva extensión)",
+            en: "(if new extension is not done)",
+            ru: "(если не делается новое наращивание)",
+          }),
         ],
       },
       {
@@ -515,11 +705,22 @@ async function seedPricingPage() {
         },
         services: [
           svc({ es: "Tinte de cejas", en: "Brow tinting", ru: "Окрашивание бровей" }, "10€"),
-          svc({ es: "Tinte + corrección de cejas", en: "Tinting + brow correction", ru: "Окрашивание + коррекция бровей" }, "15€"),
+          svc(
+            {
+              es: "Tinte + corrección de cejas",
+              en: "Tinting + brow correction",
+              ru: "Окрашивание + коррекция бровей",
+            },
+            "15€",
+          ),
           svc(
             { es: "Laminación de cejas", en: "Brow lamination", ru: "Ламинирование бровей" },
             "35€",
-            { es: "(corrección + tinte)", en: "(correction + tinting)", ru: "(коррекция + окрашивание)" }
+            {
+              es: "(corrección + tinte)",
+              en: "(correction + tinting)",
+              ru: "(коррекция + окрашивание)",
+            },
           ),
         ],
       },
@@ -528,8 +729,22 @@ async function seedPricingPage() {
         _key: key(),
         name: { es: "Micropigmentación", en: "Micropigmentation", ru: "Микропигментация" },
         services: [
-          svc({ es: "Micropigmentación de cejas", en: "Brow micropigmentation", ru: "Микропигментация бровей" }, "120€"),
-          svc({ es: "Micropigmentación de labios", en: "Lip micropigmentation", ru: "Микропигментация губ" }, "120€"),
+          svc(
+            {
+              es: "Micropigmentación de cejas",
+              en: "Brow micropigmentation",
+              ru: "Микропигментация бровей",
+            },
+            "120€",
+          ),
+          svc(
+            {
+              es: "Micropigmentación de labios",
+              en: "Lip micropigmentation",
+              ru: "Микропигментация губ",
+            },
+            "120€",
+          ),
           svc({ es: "Entrelíneas", en: "Interlash line", ru: "Межресничка" }, "100€"),
         ],
       },
@@ -544,13 +759,40 @@ async function seedPricingPage() {
           ru: "Профессиональный маникюр от 20€. Гель, наращивание и индивидуальные дизайны с немецкой косметикой Baehr.",
         },
         services: [
-          svc({ es: "Manicura higiénica mujer", en: "Hygienic manicure (women)", ru: "Гигиенический маникюр женский" }, "20€"),
+          svc(
+            {
+              es: "Manicura higiénica mujer",
+              en: "Hygienic manicure (women)",
+              ru: "Гигиенический маникюр женский",
+            },
+            "20€",
+          ),
           svc({ es: "Manicura masculina", en: "Men's manicure", ru: "Мужской маникюр" }, "25€"),
-          svc({ es: "Manicura con esmaltado", en: "Manicure with coating", ru: "Маникюр с покрытием" }, "35€"),
+          svc(
+            {
+              es: "Manicura con esmaltado",
+              en: "Manicure with coating",
+              ru: "Маникюр с покрытием",
+            },
+            "35€",
+          ),
           svc({ es: "Manicura francesa", en: "French manicure", ru: "Французский маникюр" }, "45€"),
-          svc({ es: "Reparación de uña rota", en: "Broken nail repair", ru: "Ремонт сломанного ногтя" }, "2€"),
-          svc({ es: "Extensión con gel", en: "Gel extension", ru: "Наращивание гелевыми типсами" }, "60€"),
-          svc({ es: "Retirada de acrílico", en: "Acrylic removal", ru: "Снятие акрилового покрытия" }, "5€"),
+          svc(
+            {
+              es: "Reparación de uña rota",
+              en: "Broken nail repair",
+              ru: "Ремонт сломанного ногтя",
+            },
+            "2€",
+          ),
+          svc(
+            { es: "Extensión con gel", en: "Gel extension", ru: "Наращивание гелевыми типсами" },
+            "60€",
+          ),
+          svc(
+            { es: "Retirada de acrílico", en: "Acrylic removal", ru: "Снятие акрилового покрытия" },
+            "5€",
+          ),
           svc({ es: "Spa cuidado de manos", en: "Spa hand care", ru: "Спа уход за руками" }, "15€"),
         ],
       },
@@ -565,8 +807,22 @@ async function seedPricingPage() {
           ru: "Профессиональный педикюр от 45€. Полный уход с немецкой косметикой Pedibaehr.",
         },
         services: [
-          svc({ es: "Pedicura higiénica mujer", en: "Hygienic pedicure (women)", ru: "Гигиенический педикюр женский" }, "45€"),
-          svc({ es: "Pedicura con esmaltado", en: "Pedicure with coating", ru: "Педикюр с покрытием" }, "55€"),
+          svc(
+            {
+              es: "Pedicura higiénica mujer",
+              en: "Hygienic pedicure (women)",
+              ru: "Гигиенический педикюр женский",
+            },
+            "45€",
+          ),
+          svc(
+            {
+              es: "Pedicura con esmaltado",
+              en: "Pedicure with coating",
+              ru: "Педикюр с покрытием",
+            },
+            "55€",
+          ),
           svc({ es: "Pedicura masculina", en: "Men's pedicure", ru: "Мужской педикюр" }, "50€"),
           svc({ es: "Spa cuidado de pies", en: "Spa foot care", ru: "Спа уход за ногами" }, "20€"),
         ],
@@ -576,14 +832,62 @@ async function seedPricingPage() {
         _key: key(),
         name: { es: "Podología", en: "Podology", ru: "Подология" },
         services: [
-          svc({ es: "Eliminación de uña encarnada", en: "Ingrown nail removal", ru: "Удаление вросшего ногтя" }, "desde 10€"),
-          svc({ es: "Tratamiento de hiperqueratosis", en: "Hyperkeratosis treatment", ru: "Обработка гиперкератоза" }, "desde 10€"),
-          svc({ es: "Tratamiento de onicomicosis", en: "Onychomycosis treatment", ru: "Обработка онихомикоза" }, "desde 10€"),
-          svc({ es: "Tratamiento de callos", en: "Callus treatment", ru: "Обработка омозолелостей" }, "desde 5€"),
-          svc({ es: "Eliminación de callo plantar", en: "Plantar callus removal", ru: "Удаление стержневой мозоли" }, "10€"),
-          svc({ es: "Prótesis de uña", en: "Nail prosthesis", ru: "Протезирование ногтевой пластины" }, "desde 5€"),
-          svc({ es: "Tratamiento de grietas", en: "Crack treatment", ru: "Обработка трещин" }, "10€"),
-          svc({ es: "Instalación de hilo de titanio", en: "Titanium thread installation", ru: "Установка титановой нити" }, "35€"),
+          svc(
+            {
+              es: "Eliminación de uña encarnada",
+              en: "Ingrown nail removal",
+              ru: "Удаление вросшего ногтя",
+            },
+            "desde 10€",
+          ),
+          svc(
+            {
+              es: "Tratamiento de hiperqueratosis",
+              en: "Hyperkeratosis treatment",
+              ru: "Обработка гиперкератоза",
+            },
+            "desde 10€",
+          ),
+          svc(
+            {
+              es: "Tratamiento de onicomicosis",
+              en: "Onychomycosis treatment",
+              ru: "Обработка онихомикоза",
+            },
+            "desde 10€",
+          ),
+          svc(
+            { es: "Tratamiento de callos", en: "Callus treatment", ru: "Обработка омозолелостей" },
+            "desde 5€",
+          ),
+          svc(
+            {
+              es: "Eliminación de callo plantar",
+              en: "Plantar callus removal",
+              ru: "Удаление стержневой мозоли",
+            },
+            "10€",
+          ),
+          svc(
+            {
+              es: "Prótesis de uña",
+              en: "Nail prosthesis",
+              ru: "Протезирование ногтевой пластины",
+            },
+            "desde 5€",
+          ),
+          svc(
+            { es: "Tratamiento de grietas", en: "Crack treatment", ru: "Обработка трещин" },
+            "10€",
+          ),
+          svc(
+            {
+              es: "Instalación de hilo de titanio",
+              en: "Titanium thread installation",
+              ru: "Установка титановой нити",
+            },
+            "35€",
+          ),
         ],
       },
     ],
@@ -632,7 +936,11 @@ async function seedBookingPage() {
           en: "Send us a message and we'll get back to you as soon as possible",
           ru: "Отправьте нам сообщение, и мы ответим как можно скорее",
         },
-        cta: { es: "Reservar por WhatsApp", en: "Book via WhatsApp", ru: "Записаться через WhatsApp" },
+        cta: {
+          es: "Reservar por WhatsApp",
+          en: "Book via WhatsApp",
+          ru: "Записаться через WhatsApp",
+        },
         message: {
           es: "Hola, me gustaría reservar una cita.",
           en: "Hello, I would like to book an appointment.",
@@ -674,7 +982,11 @@ async function seedBookingPage() {
         _key: key(),
         key: "services",
         label: { es: "Servicios y precios", en: "Services and pricing", ru: "Услуги и цены" },
-        linkText: { es: "Ver todos los servicios", en: "View all services", ru: "Посмотреть все услуги" },
+        linkText: {
+          es: "Ver todos los servicios",
+          en: "View all services",
+          ru: "Посмотреть все услуги",
+        },
         linkUrl: "/pricing",
       },
       {
@@ -753,26 +1065,58 @@ async function seedContactPage() {
       {
         _type: "contactFaq",
         _key: key(),
-        question: { es: "¿Dónde está ubicado Lash & Nails Santa Pola?", en: "Where is Lash & Nails Santa Pola located?", ru: "Где находится Lash & Nails Santa Pola?" },
-        answer: { es: "Estamos ubicados en Carrer Major, 8, 03130 Santa Pola, Alicante, España.", en: "We are located at Carrer Major, 8, 03130 Santa Pola, Alicante, Spain.", ru: "Мы находимся по адресу Carrer Major, 8, 03130 Santa Pola, Alicante, Испания." },
+        question: {
+          es: "¿Dónde está ubicado Lash & Nails Santa Pola?",
+          en: "Where is Lash & Nails Santa Pola located?",
+          ru: "Где находится Lash & Nails Santa Pola?",
+        },
+        answer: {
+          es: "Estamos ubicados en Carrer Major, 8, 03130 Santa Pola, Alicante, España.",
+          en: "We are located at Carrer Major, 8, 03130 Santa Pola, Alicante, Spain.",
+          ru: "Мы находимся по адресу Carrer Major, 8, 03130 Santa Pola, Alicante, Испания.",
+        },
       },
       {
         _type: "contactFaq",
         _key: key(),
-        question: { es: "¿Cuál es el horario de atención?", en: "What are your opening hours?", ru: "Какие у вас часы работы?" },
-        answer: { es: "Estamos abiertos de lunes a viernes de 09:30 a 20:00 y los sábados de 10:00 a 14:00. Cerramos los domingos.", en: "We are open Monday to Friday from 09:30 to 20:00 and Saturday from 10:00 to 14:00. We are closed on Sundays.", ru: "Мы работаем с понедельника по пятницу с 09:30 до 20:00 и в субботу с 10:00 до 14:00. Воскресенье - выходной." },
+        question: {
+          es: "¿Cuál es el horario de atención?",
+          en: "What are your opening hours?",
+          ru: "Какие у вас часы работы?",
+        },
+        answer: {
+          es: "Estamos abiertos de lunes a viernes de 09:30 a 20:00 y los sábados de 10:00 a 14:00. Cerramos los domingos.",
+          en: "We are open Monday to Friday from 09:30 to 20:00 and Saturday from 10:00 to 14:00. We are closed on Sundays.",
+          ru: "Мы работаем с понедельника по пятницу с 09:30 до 20:00 и в субботу с 10:00 до 14:00. Воскресенье - выходной.",
+        },
       },
       {
         _type: "contactFaq",
         _key: key(),
-        question: { es: "¿Cómo puedo hacer una cita?", en: "How can I make an appointment?", ru: "Как записаться на прием?" },
-        answer: { es: "Puedes llamarnos al +34604316778, enviarnos un mensaje por WhatsApp o contactarnos por Telegram (Irina_STS).", en: "You can call us at +34604316778, send us a WhatsApp message, or contact us on Telegram (Irina_STS).", ru: "Вы можете позвонить нам по телефону +34604316778, отправить сообщение в WhatsApp или связаться через Telegram (Irina_STS)." },
+        question: {
+          es: "¿Cómo puedo hacer una cita?",
+          en: "How can I make an appointment?",
+          ru: "Как записаться на прием?",
+        },
+        answer: {
+          es: "Puedes llamarnos al +34604316778, enviarnos un mensaje por WhatsApp o contactarnos por Telegram (Irina_STS).",
+          en: "You can call us at +34604316778, send us a WhatsApp message, or contact us on Telegram (Irina_STS).",
+          ru: "Вы можете позвонить нам по телефону +34604316778, отправить сообщение в WhatsApp или связаться через Telegram (Irina_STS).",
+        },
       },
       {
         _type: "contactFaq",
         _key: key(),
-        question: { es: "¿A qué zonas dan servicio?", en: "What areas do you serve?", ru: "Какие районы вы обслуживаете?" },
-        answer: { es: "Damos servicio a Santa Pola, Elche, Guardamar del Segura, Alicante y zonas cercanas.", en: "We serve Santa Pola, Elche, Guardamar del Segura, Alicante, and surrounding areas.", ru: "Мы обслуживаем Santa Pola, Elche, Guardamar del Segura, Alicante и прилегающие районы." },
+        question: {
+          es: "¿A qué zonas dan servicio?",
+          en: "What areas do you serve?",
+          ru: "Какие районы вы обслуживаете?",
+        },
+        answer: {
+          es: "Damos servicio a Santa Pola, Elche, Guardamar del Segura, Alicante y zonas cercanas.",
+          en: "We serve Santa Pola, Elche, Guardamar del Segura, Alicante, and surrounding areas.",
+          ru: "Мы обслуживаем Santa Pola, Elche, Guardamar del Segura, Alicante и прилегающие районы.",
+        },
       },
     ],
     seo: {
@@ -800,7 +1144,7 @@ async function seedLegalPages() {
     title: Record<string, string>,
     content?: Record<string, string>,
     listItems?: Record<string, string>[],
-    footer?: Record<string, string>
+    footer?: Record<string, string>,
   ) => ({
     _type: "legalSection" as const,
     _key: key(),
@@ -840,10 +1184,14 @@ async function seedLegalPages() {
           es: "Titular: Staigis Iryna\nNIE: Y7526337S\nTipo de Actividad: Autónomo\nDirección: Carrer Major, 8, 03130 Santa Pola, Alicante, España\nEmail de contacto: info@lashandnails.es",
           en: "Owner: Staigis Iryna\nNIE: Y7526337S\nBusiness Type: Self-Employed (Autónomo)\nAddress: Carrer Major, 8, 03130 Santa Pola, Alicante, Spain\nContact Email: info@lashandnails.es",
           ru: "Владелец: Staigis Iryna\nNIE: Y7526337S\nТип деятельности: Индивидуальный предприниматель (Autónomo)\nАдрес: Carrer Major, 8, 03130 Santa Pola, Alicante, Испания\nКонтактный Email: info@lashandnails.es",
-        }
+        },
       ),
       sec(
-        { es: "Información que Recopilamos", en: "Information We Collect", ru: "Информация, которую мы собираем" },
+        {
+          es: "Información que Recopilamos",
+          en: "Information We Collect",
+          ru: "Информация, которую мы собираем",
+        },
         {
           es: "Recopilamos la siguiente información cuando utilizas nuestros servicios:",
           en: "We collect the following information when you use our services:",
@@ -852,9 +1200,17 @@ async function seedLegalPages() {
         [
           { es: "Nombre y apellidos", en: "Name and surname", ru: "Имя и фамилия" },
           { es: "Número de teléfono", en: "Phone number", ru: "Номер телефона" },
-          { es: "Dirección de correo electrónico", en: "Email address", ru: "Адрес электронной почты" },
-          { es: "Información de navegación (a través de cookies)", en: "Browsing information (through cookies)", ru: "Информация о просмотре (через cookies)" },
-        ]
+          {
+            es: "Dirección de correo electrónico",
+            en: "Email address",
+            ru: "Адрес электронной почты",
+          },
+          {
+            es: "Información de navegación (a través de cookies)",
+            en: "Browsing information (through cookies)",
+            ru: "Информация о просмотре (через cookies)",
+          },
+        ],
       ),
       sec(
         { es: "Finalidad del Tratamiento", en: "Purpose of Processing", ru: "Цель обработки" },
@@ -864,11 +1220,27 @@ async function seedLegalPages() {
           ru: "Мы используем вашу личную информацию для:",
         },
         [
-          { es: "Gestionar reservas de citas y servicios", en: "Manage appointment and service bookings", ru: "Управления записями на прием и услугами" },
-          { es: "Comunicarnos contigo sobre tus citas", en: "Communicate with you about your appointments", ru: "Связи с вами по поводу ваших записей" },
-          { es: "Enviarte información sobre nuestros servicios (con tu consentimiento)", en: "Send you information about our services (with your consent)", ru: "Отправки информации о наших услугах (с вашего согласия)" },
-          { es: "Mejorar nuestros servicios y la experiencia del usuario", en: "Improve our services and user experience", ru: "Улучшения наших услуг и пользовательского опыта" },
-        ]
+          {
+            es: "Gestionar reservas de citas y servicios",
+            en: "Manage appointment and service bookings",
+            ru: "Управления записями на прием и услугами",
+          },
+          {
+            es: "Comunicarnos contigo sobre tus citas",
+            en: "Communicate with you about your appointments",
+            ru: "Связи с вами по поводу ваших записей",
+          },
+          {
+            es: "Enviarte información sobre nuestros servicios (con tu consentimiento)",
+            en: "Send you information about our services (with your consent)",
+            ru: "Отправки информации о наших услугах (с вашего согласия)",
+          },
+          {
+            es: "Mejorar nuestros servicios y la experiencia del usuario",
+            en: "Improve our services and user experience",
+            ru: "Улучшения наших услуг и пользовательского опыта",
+          },
+        ],
       ),
       sec(
         { es: "Base Legal", en: "Legal Basis", ru: "Правовая основа" },
@@ -876,7 +1248,7 @@ async function seedLegalPages() {
           es: "El tratamiento de tus datos se basa en tu consentimiento explícito al solicitar nuestros servicios y en la ejecución del contrato de prestación de servicios. También procesamos datos para cumplir con obligaciones legales.",
           en: "The processing of your data is based on your explicit consent when requesting our services and on the execution of the service provision contract. We also process data to comply with legal obligations.",
           ru: "Обработка ваших данных основана на вашем явном согласии при запросе наших услуг и на исполнении договора о предоставлении услуг. Мы также обрабатываем данные для выполнения юридических обязательств.",
-        }
+        },
       ),
       sec(
         { es: "Conservación de Datos", en: "Data Retention", ru: "Хранение данных" },
@@ -884,7 +1256,7 @@ async function seedLegalPages() {
           es: "Conservaremos tus datos personales durante el tiempo necesario para cumplir con las finalidades para las que fueron recopilados, incluyendo cualquier obligación legal, contable o de información. Los datos de clientes se conservan durante el período de prestación de servicios y posteriormente durante los plazos legales establecidos.",
           en: "We will retain your personal data for as long as necessary to fulfill the purposes for which it was collected, including any legal, accounting, or reporting obligations. Customer data is retained during the service provision period and subsequently for legally established periods.",
           ru: "Мы будем хранить ваши личные данные в течение времени, необходимого для выполнения целей, для которых они были собраны, включая любые юридические, бухгалтерские или отчетные обязательства. Данные клиентов хранятся в течение периода предоставления услуг и впоследствии в течение законодательно установленных сроков.",
-        }
+        },
       ),
       sec(
         { es: "Tus Derechos", en: "Your Rights", ru: "Ваши права" },
@@ -894,18 +1266,38 @@ async function seedLegalPages() {
           ru: "В соответствии с GDPR, вы имеете право на:",
         },
         [
-          { es: "Acceder a tus datos personales", en: "Access your personal data", ru: "Доступ к вашим личным данным" },
-          { es: "Rectificar datos inexactos o incompletos", en: "Rectify inaccurate or incomplete data", ru: "Исправление неточных или неполных данных" },
-          { es: "Solicitar la supresión de tus datos", en: "Request deletion of your data", ru: "Запрос на удаление ваших данных" },
-          { es: "Oponerte al tratamiento de tus datos", en: "Object to the processing of your data", ru: "Возражение против обработки ваших данных" },
-          { es: "Solicitar la limitación del tratamiento", en: "Request limitation of processing", ru: "Запрос на ограничение обработки" },
+          {
+            es: "Acceder a tus datos personales",
+            en: "Access your personal data",
+            ru: "Доступ к вашим личным данным",
+          },
+          {
+            es: "Rectificar datos inexactos o incompletos",
+            en: "Rectify inaccurate or incomplete data",
+            ru: "Исправление неточных или неполных данных",
+          },
+          {
+            es: "Solicitar la supresión de tus datos",
+            en: "Request deletion of your data",
+            ru: "Запрос на удаление ваших данных",
+          },
+          {
+            es: "Oponerte al tratamiento de tus datos",
+            en: "Object to the processing of your data",
+            ru: "Возражение против обработки ваших данных",
+          },
+          {
+            es: "Solicitar la limitación del tratamiento",
+            en: "Request limitation of processing",
+            ru: "Запрос на ограничение обработки",
+          },
           { es: "Portabilidad de tus datos", en: "Data portability", ru: "Переносимость данных" },
         ],
         {
           es: "Para ejercer estos derechos, contacta con nosotros en info@lashandnails.es",
           en: "To exercise these rights, contact us at info@lashandnails.es",
           ru: "Для осуществления этих прав свяжитесь с нами по адресу info@lashandnails.es",
-        }
+        },
       ),
       sec(
         { es: "Seguridad de los Datos", en: "Data Security", ru: "Безопасность данных" },
@@ -913,23 +1305,31 @@ async function seedLegalPages() {
           es: "Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos personales contra acceso no autorizado, alteración, divulgación o destrucción. Todos nuestros instrumentos están esterilizados y mantenemos estrictos protocolos de higiene y seguridad.",
           en: "We implement technical and organizational security measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. All our instruments are sterilized and we maintain strict hygiene and safety protocols.",
           ru: "Мы применяем технические и организационные меры безопасности для защиты ваших личных данных от несанкционированного доступа, изменения, раскрытия или уничтожения. Все наши инструменты стерилизованы, и мы соблюдаем строгие протоколы гигиены и безопасности.",
-        }
+        },
       ),
       sec(
-        { es: "Comunicación a Terceros", en: "Third Party Disclosure", ru: "Раскрытие третьим лицам" },
+        {
+          es: "Comunicación a Terceros",
+          en: "Third Party Disclosure",
+          ru: "Раскрытие третьим лицам",
+        },
         {
           es: "No compartimos tu información personal con terceros, excepto cuando sea necesario para la prestación del servicio o por obligación legal. Utilizamos los siguientes servicios de terceros:\n\nGoogle Analytics: Para análisis web y mejora de la experiencia del usuario",
           en: "We do not share your personal information with third parties, except when necessary for service provision or legal obligation. We use the following third-party services:\n\nGoogle Analytics: For web analytics and user experience improvement",
           ru: "Мы не передаем вашу личную информацию третьим лицам, за исключением случаев, когда это необходимо для предоставления услуги или по юридическому обязательству. Мы используем следующие сторонние сервисы:\n\nGoogle Analytics: Для веб-аналитики и улучшения пользовательского опыта",
-        }
+        },
       ),
       sec(
-        { es: "Actualizaciones de esta Política", en: "Updates to this Policy", ru: "Обновления этой политики" },
+        {
+          es: "Actualizaciones de esta Política",
+          en: "Updates to this Policy",
+          ru: "Обновления этой политики",
+        },
         {
           es: "Podemos actualizar esta Política de Privacidad ocasionalmente. Te notificaremos sobre cambios significativos publicando la nueva política en nuestro sitio web. Te recomendamos revisar esta página periódicamente.",
           en: "We may update this Privacy Policy occasionally. We will notify you of significant changes by posting the new policy on our website. We recommend reviewing this page periodically.",
           ru: "Мы можем время от времени обновлять эту Политику конфиденциальности. Мы уведомим вас о значительных изменениях, опубликовав новую политику на нашем сайте. Рекомендуем периодически проверять эту страницу.",
-        }
+        },
       ),
     ],
     seo: {
@@ -969,29 +1369,53 @@ async function seedLegalPages() {
           es: "Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Se utilizan ampliamente para hacer que los sitios web funcionen de manera más eficiente y proporcionen información a los propietarios del sitio.",
           en: "Cookies are small text files that are stored on your device when you visit a website. They are widely used to make websites work more efficiently and provide information to site owners.",
           ru: "Файлы cookie - это небольшие текстовые файлы, которые сохраняются на вашем устройстве при посещении веб-сайта. Они широко используются для того, чтобы веб-сайты работали более эффективно и предоставляли информацию владельцам сайта.",
-        }
+        },
       ),
       sec(
-        { es: "Cookies que Utilizamos", en: "Cookies We Use", ru: "Используемые нами файлы cookie" },
+        {
+          es: "Cookies que Utilizamos",
+          en: "Cookies We Use",
+          ru: "Используемые нами файлы cookie",
+        },
         {
           es: "Cookies Analíticas: Estas cookies nos permiten reconocer y contar el número de visitantes y ver cómo se mueven por nuestro sitio web.\n\nCookies Esenciales: Estas cookies son necesarias para el funcionamiento del sitio web y no pueden ser desactivadas en nuestros sistemas.",
           en: "Analytics Cookies: These cookies allow us to recognize and count the number of visitors and see how they move around our website.\n\nEssential Cookies: These cookies are necessary for the website to function and cannot be disabled in our systems.",
           ru: "Аналитические файлы cookie: Эти файлы cookie позволяют нам распознавать и подсчитывать количество посетителей и видеть, как они перемещаются по нашему сайту.\n\nНеобходимые файлы cookie: Эти файлы cookie необходимы для работы веб-сайта и не могут быть отключены в наших системах.",
-        }
+        },
       ),
       sec(
-        { es: "Finalidad de las Cookies", en: "Purpose of Cookies", ru: "Цель использования файлов cookie" },
+        {
+          es: "Finalidad de las Cookies",
+          en: "Purpose of Cookies",
+          ru: "Цель использования файлов cookie",
+        },
         {
           es: "Utilizamos cookies para:",
           en: "We use cookies to:",
           ru: "Мы используем файлы cookie для:",
         },
         [
-          { es: "Recordar tus preferencias de idioma", en: "Remember your language preferences", ru: "Запоминания ваших языковых предпочтений" },
-          { es: "Analizar cómo se utiliza nuestro sitio web", en: "Analyze how our website is used", ru: "Анализа использования нашего веб-сайта" },
-          { es: "Mejorar la experiencia del usuario", en: "Improve user experience", ru: "Улучшения пользовательского опыта" },
-          { es: "Proporcionar contenido relevante", en: "Provide relevant content", ru: "Предоставления релевантного контента" },
-        ]
+          {
+            es: "Recordar tus preferencias de idioma",
+            en: "Remember your language preferences",
+            ru: "Запоминания ваших языковых предпочтений",
+          },
+          {
+            es: "Analizar cómo se utiliza nuestro sitio web",
+            en: "Analyze how our website is used",
+            ru: "Анализа использования нашего веб-сайта",
+          },
+          {
+            es: "Mejorar la experiencia del usuario",
+            en: "Improve user experience",
+            ru: "Улучшения пользовательского опыта",
+          },
+          {
+            es: "Proporcionar contenido relevante",
+            en: "Provide relevant content",
+            ru: "Предоставления релевантного контента",
+          },
+        ],
       ),
       sec(
         { es: "Cookies de Terceros", en: "Third-Party Cookies", ru: "Сторонние файлы cookie" },
@@ -999,34 +1423,58 @@ async function seedLegalPages() {
           es: "Algunos servicios externos que utilizamos también pueden establecer cookies en tu dispositivo. Estos servicios de terceros tienen sus propias políticas de privacidad.\n\nGoogle Analytics: https://policies.google.com/privacy",
           en: "Some external services we use may also set cookies on your device. These third-party services have their own privacy policies.\n\nGoogle Analytics: https://policies.google.com/privacy",
           ru: "Некоторые внешние сервисы, которые мы используем, также могут устанавливать файлы cookie на вашем устройстве. Эти сторонние сервисы имеют свои собственные политики конфиденциальности.\n\nGoogle Analytics: https://policies.google.com/privacy",
-        }
+        },
       ),
       sec(
-        { es: "Cómo Gestionar las Cookies", en: "How to Manage Cookies", ru: "Как управлять файлами cookie" },
+        {
+          es: "Cómo Gestionar las Cookies",
+          en: "How to Manage Cookies",
+          ru: "Как управлять файлами cookie",
+        },
         {
           es: "Puedes controlar y/o eliminar las cookies como desees. Puedes eliminar todas las cookies que ya están en tu ordenador y puedes configurar la mayoría de los navegadores para evitar que se coloquen.",
           en: "You can control and/or delete cookies as you wish. You can delete all cookies that are already on your computer and you can set most browsers to prevent them from being placed.",
           ru: "Вы можете контролировать и/или удалять файлы cookie по своему усмотрению. Вы можете удалить все файлы cookie, которые уже есть на вашем компьютере, и настроить большинство браузеров для предотвращения их размещения.",
         },
         [
-          { es: "Chrome: Configuración > Privacidad y seguridad > Cookies", en: "Chrome: Settings > Privacy and security > Cookies", ru: "Chrome: Настройки > Конфиденциальность и безопасность > Файлы cookie" },
-          { es: "Firefox: Opciones > Privacidad y seguridad > Cookies", en: "Firefox: Options > Privacy and security > Cookies", ru: "Firefox: Настройки > Приватность и защита > Файлы cookie" },
-          { es: "Safari: Preferencias > Privacidad > Cookies", en: "Safari: Preferences > Privacy > Cookies", ru: "Safari: Настройки > Конфиденциальность > Файлы cookie" },
-          { es: "Edge: Configuración > Cookies y permisos del sitio", en: "Edge: Settings > Cookies and site permissions", ru: "Edge: Настройки > Файлы cookie и разрешения сайта" },
+          {
+            es: "Chrome: Configuración > Privacidad y seguridad > Cookies",
+            en: "Chrome: Settings > Privacy and security > Cookies",
+            ru: "Chrome: Настройки > Конфиденциальность и безопасность > Файлы cookie",
+          },
+          {
+            es: "Firefox: Opciones > Privacidad y seguridad > Cookies",
+            en: "Firefox: Options > Privacy and security > Cookies",
+            ru: "Firefox: Настройки > Приватность и защита > Файлы cookie",
+          },
+          {
+            es: "Safari: Preferencias > Privacidad > Cookies",
+            en: "Safari: Preferences > Privacy > Cookies",
+            ru: "Safari: Настройки > Конфиденциальность > Файлы cookie",
+          },
+          {
+            es: "Edge: Configuración > Cookies y permisos del sitio",
+            en: "Edge: Settings > Cookies and site permissions",
+            ru: "Edge: Настройки > Файлы cookie и разрешения сайта",
+          },
         ],
         {
           es: "Ten en cuenta que deshabilitar las cookies puede afectar la funcionalidad de este y muchos otros sitios web.",
           en: "Please note that disabling cookies may affect the functionality of this and many other websites.",
           ru: "Обратите внимание, что отключение файлов cookie может повлиять на функциональность этого и многих других веб-сайтов.",
-        }
+        },
       ),
       sec(
-        { es: "Actualizaciones de esta Política", en: "Updates to this Policy", ru: "Обновления этой политики" },
+        {
+          es: "Actualizaciones de esta Política",
+          en: "Updates to this Policy",
+          ru: "Обновления этой политики",
+        },
         {
           es: "Podemos actualizar esta Política de Cookies ocasionalmente para reflejar cambios en las cookies que utilizamos o por otros motivos operativos, legales o reglamentarios. Te recomendamos revisar esta página periódicamente.",
           en: "We may update this Cookie Policy occasionally to reflect changes in the cookies we use or for other operational, legal, or regulatory reasons. We recommend reviewing this page periodically.",
           ru: "Мы можем время от времени обновлять эту Политику использования файлов cookie, чтобы отразить изменения в используемых нами файлах cookie или по другим операционным, юридическим или нормативным причинам. Рекомендуем периодически проверять эту страницу.",
-        }
+        },
       ),
       sec(
         { es: "Contacto", en: "Contact", ru: "Контакт" },
@@ -1034,7 +1482,7 @@ async function seedLegalPages() {
           es: "Si tienes preguntas sobre nuestra Política de Cookies, contáctanos en info@lashandnails.es",
           en: "If you have questions about our Cookie Policy, contact us at info@lashandnails.es",
           ru: "Если у вас есть вопросы о нашей Политике использования файлов cookie, свяжитесь с нами по адресу info@lashandnails.es",
-        }
+        },
       ),
     ],
     seo: {
@@ -1074,7 +1522,7 @@ async function seedLegalPages() {
           es: "Titular: Staigis Iryna\nNIE: Y7526337S\nTipo de Actividad: Autónomo\nDirección: Carrer Major, 8, 03130 Santa Pola, Alicante, España\nTeléfono: +34 604 31 67 78\nEmail: info@lashandnails.es",
           en: "Owner: Staigis Iryna\nNIE: Y7526337S\nBusiness Type: Self-Employed (Autónomo)\nAddress: Carrer Major, 8, 03130 Santa Pola, Alicante, Spain\nPhone: +34 604 31 67 78\nEmail: info@lashandnails.es",
           ru: "Владелец: Staigis Iryna\nNIE: Y7526337S\nТип деятельности: Индивидуальный предприниматель (Autónomo)\nАдрес: Carrer Major, 8, 03130 Santa Pola, Alicante, Испания\nТелефон: +34 604 31 67 78\nEmail: info@lashandnails.es",
-        }
+        },
       ),
       sec(
         { es: "Objeto", en: "Purpose", ru: "Цель" },
@@ -1082,23 +1530,31 @@ async function seedLegalPages() {
           es: "Este sitio web tiene como objetivo proporcionar información sobre los servicios de belleza ofrecidos por Lash & Nails Santa Pola, incluyendo extensiones de pestañas, manicura, pedicura y diseño de cejas. El acceso y uso de este sitio web implica la aceptación de estos términos y condiciones.",
           en: "This website aims to provide information about the beauty services offered by Lash & Nails Santa Pola, including lash extensions, manicure, pedicure, and brow design. Access and use of this website implies acceptance of these terms and conditions.",
           ru: "Этот веб-сайт предназначен для предоставления информации об услугах красоты, предлагаемых Lash & Nails Santa Pola, включая наращивание ресниц, маникюр, педикюр и дизайн бровей. Доступ и использование этого веб-сайта подразумевают принятие этих условий.",
-        }
+        },
       ),
       sec(
-        { es: "Propiedad Intelectual", en: "Intellectual Property", ru: "Интеллектуальная собственность" },
+        {
+          es: "Propiedad Intelectual",
+          en: "Intellectual Property",
+          ru: "Интеллектуальная собственность",
+        },
         {
           es: "Todos los contenidos de este sitio web, incluyendo textos, imágenes, diseños, logotipos y código fuente, son propiedad de Lash & Nails Santa Pola o de sus proveedores de contenido y están protegidos por las leyes de propiedad intelectual. Queda prohibida su reproducción, distribución o modificación sin autorización expresa.",
           en: "All contents of this website, including texts, images, designs, logos, and source code, are property of Lash & Nails Santa Pola or its content providers and are protected by intellectual property laws. Reproduction, distribution, or modification without express authorization is prohibited.",
           ru: "Все содержимое этого веб-сайта, включая тексты, изображения, дизайн, логотипы и исходный код, являются собственностью Lash & Nails Santa Pola или его поставщиков контента и защищены законами об интеллектуальной собственности. Воспроизведение, распространение или модификация без явного разрешения запрещены.",
-        }
+        },
       ),
       sec(
-        { es: "Limitación de Responsabilidad", en: "Limitation of Liability", ru: "Ограничение ответственности" },
+        {
+          es: "Limitación de Responsabilidad",
+          en: "Limitation of Liability",
+          ru: "Ограничение ответственности",
+        },
         {
           es: "Lash & Nails Santa Pola no se hace responsable de los daños o perjuicios que puedan derivarse del uso de este sitio web, interrupciones del servicio, o errores en el contenido. Nos esforzamos por mantener la información actualizada, pero no garantizamos la exactitud absoluta de todos los contenidos.",
           en: "Lash & Nails Santa Pola is not responsible for damages or losses that may arise from the use of this website, service interruptions, or errors in content. We strive to keep information up to date, but do not guarantee the absolute accuracy of all contents.",
           ru: "Lash & Nails Santa Pola не несет ответственности за ущерб или убытки, которые могут возникнуть в результате использования этого веб-сайта, перерывов в обслуживании или ошибок в содержании. Мы стремимся поддерживать информацию в актуальном состоянии, но не гарантируем абсолютную точность всего содержания.",
-        }
+        },
       ),
       sec(
         { es: "Legislación Aplicable", en: "Applicable Law", ru: "Применимое законодательство" },
@@ -1106,7 +1562,7 @@ async function seedLegalPages() {
           es: "Estas condiciones se rigen por la legislación española. Para cualquier controversia derivada del uso de este sitio web, las partes se someten a los juzgados y tribunales de Santa Pola, Alicante, España.",
           en: "These conditions are governed by Spanish legislation. For any dispute arising from the use of this website, the parties submit to the courts and tribunals of Santa Pola, Alicante, Spain.",
           ru: "Эти условия регулируются испанским законодательством. В случае любого спора, возникающего в связи с использованием этого веб-сайта, стороны подчиняются судам и трибуналам Санта-Пола, Аликанте, Испания.",
-        }
+        },
       ),
     ],
     seo: {

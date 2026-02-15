@@ -15,19 +15,74 @@ export default defineType({
   fields: [
     // Hero section
     defineField({ name: "heroTitle", title: "Заголовок", type: "localizedString", group: "hero" }),
-    defineField({ name: "heroSubtitle", title: "Подзаголовок", type: "localizedString", group: "hero" }),
-    defineField({ name: "heroDescription", title: "Описание", type: "localizedText", group: "hero" }),
-    defineField({ name: "heroCtaPrimary", title: "Кнопка WhatsApp", type: "localizedString", group: "hero" }),
-    defineField({ name: "heroCtaMessage", title: "Сообщение WhatsApp", type: "localizedString", group: "hero" }),
-    defineField({ name: "heroCategoryLashes", title: "Категория: Ресницы", type: "localizedString", group: "hero" }),
-    defineField({ name: "heroCategoryManicure", title: "Категория: Маникюр", type: "localizedString", group: "hero" }),
-    defineField({ name: "heroCategoryPedicure", title: "Категория: Педикюр", type: "localizedString", group: "hero" }),
-    defineField({ name: "heroCategoryBrows", title: "Категория: Брови", type: "localizedString", group: "hero" }),
+    defineField({
+      name: "heroSubtitle",
+      title: "Подзаголовок",
+      type: "localizedString",
+      group: "hero",
+    }),
+    defineField({
+      name: "heroDescription",
+      title: "Описание",
+      type: "localizedText",
+      group: "hero",
+    }),
+    defineField({
+      name: "heroCtaPrimary",
+      title: "Кнопка WhatsApp",
+      type: "localizedString",
+      group: "hero",
+    }),
+    defineField({
+      name: "heroCtaMessage",
+      title: "Сообщение WhatsApp",
+      type: "localizedString",
+      group: "hero",
+    }),
+    defineField({
+      name: "heroCategoryLashes",
+      title: "Категория: Ресницы",
+      type: "localizedString",
+      group: "hero",
+    }),
+    defineField({
+      name: "heroCategoryManicure",
+      title: "Категория: Маникюр",
+      type: "localizedString",
+      group: "hero",
+    }),
+    defineField({
+      name: "heroCategoryPedicure",
+      title: "Категория: Педикюр",
+      type: "localizedString",
+      group: "hero",
+    }),
+    defineField({
+      name: "heroCategoryBrows",
+      title: "Категория: Брови",
+      type: "localizedString",
+      group: "hero",
+    }),
 
     // Featured services section
-    defineField({ name: "featuredTitle", title: "Заголовок секции", type: "localizedString", group: "featured" }),
-    defineField({ name: "featuredSeeMore", title: "Кнопка 'Показать ещё'", type: "localizedString", group: "featured" }),
-    defineField({ name: "featuredFromLabel", title: "Метка 'от' (для цен)", type: "localizedString", group: "featured" }),
+    defineField({
+      name: "featuredTitle",
+      title: "Заголовок секции",
+      type: "localizedString",
+      group: "featured",
+    }),
+    defineField({
+      name: "featuredSeeMore",
+      title: "Кнопка 'Показать ещё'",
+      type: "localizedString",
+      group: "featured",
+    }),
+    defineField({
+      name: "featuredFromLabel",
+      title: "Метка 'от' (для цен)",
+      type: "localizedString",
+      group: "featured",
+    }),
     defineField({
       name: "featuredServices",
       title: "Популярные услуги (карточки)",
@@ -55,21 +110,71 @@ export default defineType({
     }),
 
     // Reviews section
-    defineField({ name: "reviewsTitle", title: "Заголовок секции", type: "localizedString", group: "reviews" }),
-    defineField({ name: "reviewsDescription", title: "Описание секции", type: "localizedText", group: "reviews" }),
-    defineField({ name: "reviewsClientLabel", title: "Метка 'Наш клиент'", type: "localizedString", group: "reviews" }),
-    defineField({ name: "reviewsCtaButton", title: "Кнопка 'Оставить отзыв'", type: "localizedString", group: "reviews" }),
+    defineField({
+      name: "reviewsTitle",
+      title: "Заголовок секции",
+      type: "localizedString",
+      group: "reviews",
+    }),
+    defineField({
+      name: "reviewsDescription",
+      title: "Описание секции",
+      type: "localizedText",
+      group: "reviews",
+    }),
+    defineField({
+      name: "reviewsClientLabel",
+      title: "Метка 'Наш клиент'",
+      type: "localizedString",
+      group: "reviews",
+    }),
+    defineField({
+      name: "reviewsCtaButton",
+      title: "Кнопка 'Оставить отзыв'",
+      type: "localizedString",
+      group: "reviews",
+    }),
 
     // FAQ section
-    defineField({ name: "faqHeading", title: "Заголовок секции", type: "localizedString", group: "faq" }),
-    defineField({ name: "faqDescription", title: "Описание секции", type: "localizedText", group: "faq" }),
+    defineField({
+      name: "faqHeading",
+      title: "Заголовок секции",
+      type: "localizedString",
+      group: "faq",
+    }),
+    defineField({
+      name: "faqDescription",
+      title: "Описание секции",
+      type: "localizedText",
+      group: "faq",
+    }),
 
     // CTA section
     defineField({ name: "ctaHeading", title: "Заголовок", type: "localizedString", group: "cta" }),
-    defineField({ name: "ctaSubtitle", title: "Подзаголовок", type: "localizedString", group: "cta" }),
-    defineField({ name: "ctaButton", title: "Кнопка WhatsApp", type: "localizedString", group: "cta" }),
-    defineField({ name: "ctaSecondary", title: "Вторая кнопка", type: "localizedString", group: "cta" }),
-    defineField({ name: "ctaMessage", title: "Сообщение WhatsApp", type: "localizedString", group: "cta" }),
+    defineField({
+      name: "ctaSubtitle",
+      title: "Подзаголовок",
+      type: "localizedString",
+      group: "cta",
+    }),
+    defineField({
+      name: "ctaButton",
+      title: "Кнопка WhatsApp",
+      type: "localizedString",
+      group: "cta",
+    }),
+    defineField({
+      name: "ctaSecondary",
+      title: "Вторая кнопка",
+      type: "localizedString",
+      group: "cta",
+    }),
+    defineField({
+      name: "ctaMessage",
+      title: "Сообщение WhatsApp",
+      type: "localizedString",
+      group: "cta",
+    }),
 
     // SEO
     defineField({ name: "seo", title: "SEO", type: "seoFields", group: "seo" }),

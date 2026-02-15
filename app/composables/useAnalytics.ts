@@ -7,48 +7,48 @@
  */
 
 export const useAnalytics = () => {
-  const { proxy } = useScriptGoogleAnalytics()
+  const { proxy } = useScriptGoogleAnalytics();
 
   /**
    * Track custom event in GA4
    * Events are queued automatically if the script hasn't loaded yet.
    */
   const trackEvent = (eventName: string, eventParams?: Record<string, any>) => {
-    proxy.gtag('event', eventName, eventParams)
-  }
+    proxy.gtag("event", eventName, eventParams);
+  };
 
   /**
    * Track WhatsApp button click
    * @param location - Where the button was clicked from
    */
   const trackWhatsAppClick = (location: string) => {
-    trackEvent('whatsapp_click', {
+    trackEvent("whatsapp_click", {
       button_location: location,
-      conversion_type: 'contact',
-    })
-  }
+      conversion_type: "contact",
+    });
+  };
 
   /**
    * Track phone call click
    * @param location - Where the button was clicked from
    */
   const trackPhoneClick = (location: string) => {
-    trackEvent('phone_click', {
+    trackEvent("phone_click", {
       button_location: location,
-      conversion_type: 'contact',
-    })
-  }
+      conversion_type: "contact",
+    });
+  };
 
   /**
    * Track service view
    * @param serviceName - Name of the service viewed
    */
   const trackServiceView = (serviceName: string) => {
-    trackEvent('view_service', {
+    trackEvent("view_service", {
       service_name: serviceName,
-      content_type: 'service',
-    })
-  }
+      content_type: "service",
+    });
+  };
 
   /**
    * Track booking intent (CTA clicks)
@@ -56,12 +56,12 @@ export const useAnalytics = () => {
    * @param location - Where the CTA was clicked from
    */
   const trackBookingIntent = (method: string, location: string) => {
-    trackEvent('booking_intent', {
+    trackEvent("booking_intent", {
       booking_method: method,
       button_location: location,
-      conversion_type: 'lead',
-    })
-  }
+      conversion_type: "lead",
+    });
+  };
 
   /**
    * Track form submission
@@ -69,12 +69,12 @@ export const useAnalytics = () => {
    * @param success - Whether the submission was successful
    */
   const trackFormSubmit = (formName: string, success: boolean = true) => {
-    trackEvent('form_submit', {
+    trackEvent("form_submit", {
       form_name: formName,
       success: success,
-      conversion_type: 'lead',
-    })
-  }
+      conversion_type: "lead",
+    });
+  };
 
   /**
    * Track gallery interaction
@@ -82,11 +82,11 @@ export const useAnalytics = () => {
    * @param category - Gallery category if applicable
    */
   const trackGalleryInteraction = (action: string, category?: string) => {
-    trackEvent('gallery_interaction', {
+    trackEvent("gallery_interaction", {
       interaction_type: action,
       category: category,
-    })
-  }
+    });
+  };
 
   /**
    * Track navigation
@@ -94,11 +94,11 @@ export const useAnalytics = () => {
    * @param from - Where they came from
    */
   const trackNavigation = (destination: string, from: string) => {
-    trackEvent('navigation', {
+    trackEvent("navigation", {
       destination: destination,
       from: from,
-    })
-  }
+    });
+  };
 
   return {
     trackEvent,
@@ -109,5 +109,5 @@ export const useAnalytics = () => {
     trackFormSubmit,
     trackGalleryInteraction,
     trackNavigation,
-  }
-}
+  };
+};
