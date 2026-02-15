@@ -4,17 +4,10 @@
     <p class="section-subtitle"></p>
 
     <div class="services-grid">
-      <article
-        v-for="service in services"
-        :key="service.slug"
-        class="service-card"
-      >
+      <article v-for="service in services" :key="service.slug" class="service-card">
         <h3>{{ service.title }}</h3>
         <p>{{ service.description }}</p>
-        <NuxtLink
-          :to="localePath(`/services/${service.slug}`)"
-          class="service-link"
-        >
+        <NuxtLink :to="localePath(`/services/${service.slug}`)" class="service-link">
           {{ t("common.learnMore") }}
         </NuxtLink>
       </article>
@@ -83,7 +76,9 @@ h2 {
   padding: 2rem;
   border: 1px solid #333;
   border-radius: 12px;
-  transition: transform 0.2s, border-color 0.2s;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
 }
 
 .service-card:hover {

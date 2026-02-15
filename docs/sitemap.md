@@ -3,15 +3,18 @@
 Beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments.
 
 ## Target Audience
+
 - **Locals**: Spanish-speaking residents + Slavic community (Polish/Russian speakers)
 - **Tourists**: International visitors to Costa Blanca
 
 ## Site Structure
 
 ### 1. Home (`/`)
+
 **Purpose**: First impression, showcase work, drive bookings
 
 **Content**:
+
 - Hero section with stunning before/after carousel
 - Services overview (3 cards: Lashes, Nails, Beauty)
 - CTA: "Book Your Appointment" (WhatsApp/Phone/Online)
@@ -28,7 +31,9 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 ### 2. Services (`/services`)
 
 #### 2.1 Lash Extensions (`/services/lash-extensions`)
+
 **Content**:
+
 - Service description (techniques: classic, volume, mega volume)
 - Benefits and quality promise
 - Products used (high-quality materials)
@@ -41,7 +46,9 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 **SEO**: Lash extensions Santa Pola, eyelash extensions Costa Blanca
 
 #### 2.2 Nail Design (`/services/nail-design`)
+
 **Content**:
+
 - Services offered (gel, acrylics, nail art, manicure, pedicure)
 - Design inspiration gallery
 - Products and hygiene standards
@@ -53,7 +60,9 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 **SEO**: Nail design Santa Pola, manicure Santa Pola, nail art Costa Blanca
 
 #### 2.3 Beauty Treatments (`/services/beauty-treatments`)
+
 **Content**:
+
 - Facial treatments
 - Skincare consultations
 - Other cosmetic services
@@ -66,7 +75,9 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 ---
 
 ### 3. Gallery (`/gallery`)
+
 **Content**:
+
 - Categorized photo galleries (filterable):
   - Lash Extensions
   - Nail Art & Designs
@@ -80,7 +91,9 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 ---
 
 ### 4. About Us (`/about`)
+
 **Content**:
+
 - Studio story and mission
 - Team introduction:
   - Photos of staff
@@ -94,7 +107,9 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 ---
 
 ### 5. Contact & Location (`/contact`)
+
 **Content**:
+
 - Contact form
 - Direct contact info:
   - Phone number (clickable)
@@ -110,7 +125,9 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 ---
 
 ### 6. Booking (`/booking`)
+
 **Content**:
+
 - Online booking system integration (Fresha/Treatwell/Booksy)
 - OR contact options:
   - WhatsApp Business
@@ -123,7 +140,9 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 ---
 
 ### 7. Reviews (`/reviews`)
+
 **Content**:
+
 - Google reviews widget (embedded)
 - Curated testimonials with photos
 - Star ratings
@@ -133,7 +152,9 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 ---
 
 ### 8. Special Offers (`/offers`)
+
 **Content**:
+
 - Current promotions
 - First-time client discount
 - Seasonal specials
@@ -144,8 +165,10 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 
 ---
 
-### 9. Blog/Tips (`/blog`) - *Optional*
+### 9. Blog/Tips (`/blog`) - _Optional_
+
 **Content**:
+
 - Aftercare guides (lash care, nail care)
 - Beauty trends and seasonal looks
 - Product recommendations
@@ -157,6 +180,7 @@ Beauty salon in Santa Pola offering lash extensions, nail design, and beauty tre
 ## Navigation Structure
 
 ### Main Menu (Desktop)
+
 ```
 Home | Services ▼ | Gallery | About | Contact | Book Now
          |
@@ -166,12 +190,15 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 ```
 
 ### Mobile Menu
+
 - Hamburger menu
 - Sticky "Book Now" button
 - WhatsApp floating action button
 
 ### Footer
+
 **Column 1**: Quick Links
+
 - Home
 - Services
 - Gallery
@@ -179,12 +206,14 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 - Contact
 
 **Column 2**: Services
+
 - Lash Extensions
 - Nail Design
 - Beauty Treatments
 - Special Offers
 
 **Column 3**: Contact
+
 - Address
 - Phone
 - Email
@@ -192,12 +221,14 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 - Opening Hours
 
 **Column 4**: Follow Us
+
 - Instagram
 - Facebook
 - Google Business
 - TripAdvisor (if applicable)
 
 **Bottom Bar**:
+
 - © lashandnails.es
 - Privacy Policy
 - Terms & Conditions
@@ -208,11 +239,13 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 ## Multilingual Setup
 
 ### Primary Languages
+
 1. **Spanish (ES)** - Default for locals
 2. **English (EN)** - For tourists
 3. **Polish (PL)** / **Russian (RU)** - For Slavic community
 
 ### Implementation
+
 - Language selector in header/footer
 - URL structure: `lashandnails.es/en/services` or subdomain
 - Hreflang tags for SEO
@@ -223,6 +256,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 ## Key Technical Features
 
 ### Must-Have
+
 - ✅ Mobile-first responsive design
 - ✅ Fast loading (<3 seconds)
 - ✅ SSL certificate (HTTPS)
@@ -236,6 +270,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 - ✅ Cookie consent (GDPR compliant)
 
 ### Nice-to-Have
+
 - Online booking system
 - Blog functionality
 - Newsletter signup
@@ -249,6 +284,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 ## SEO Strategy
 
 ### Local Keywords
+
 - "Beauty salon Santa Pola"
 - "Wimpernverlängerung Santa Pola"
 - "Nageldesign Santa Pola"
@@ -257,6 +293,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 - "Best beauty salon near me"
 
 ### Content Optimization
+
 - Unique meta descriptions per page
 - H1 tags with location keywords
 - Alt text for all images
@@ -265,6 +302,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 - NAP consistency (Name, Address, Phone)
 
 ### Off-Page SEO
+
 - Google Business Profile
 - Directory listings (Yelp, TripAdvisor, Apple Maps)
 - Social media presence
@@ -276,6 +314,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 ## Conversion Optimization
 
 ### Primary CTAs
+
 1. "Book Now" (every page)
 2. "Call Us" (click-to-call)
 3. "WhatsApp Us" (direct chat)
@@ -283,6 +322,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 5. "Special Offers"
 
 ### Trust Signals
+
 - Customer reviews (5-star ratings)
 - Team credentials
 - Hygiene certifications
@@ -295,6 +335,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 ## Analytics & Tracking
 
 ### Track
+
 - Page views by language
 - Booking button clicks
 - WhatsApp/Phone clicks
@@ -305,6 +346,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 - Traffic sources (Google, Instagram, Direct)
 
 ### Goals
+
 - Booking completions
 - Contact form submissions
 - Phone calls

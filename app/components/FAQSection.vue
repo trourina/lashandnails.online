@@ -5,7 +5,10 @@
         <!-- Left Side - Heading and Description -->
         <div class="lg:pr-8 relative">
           <DecorCircle color="gold" size="xl" top="-1.5rem" left="-2rem" />
-          <h2 id="faq-heading" class="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2
+            id="faq-heading"
+            class="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+          >
             {{ heading || s(homePage?.faqHeading) }}
           </h2>
           <p class="text-gray-600 text-lg leading-relaxed mb-6">
@@ -21,15 +24,24 @@
             :key="index"
             class="group bg-[#F5F1EC] rounded-3xl overflow-hidden transition-all"
           >
-            <summary class="flex items-center gap-4 cursor-pointer px-6 py-5 font-display text-gray-800 text-lg list-none">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#6B5B52] flex items-center justify-center">
+            <summary
+              class="flex items-center gap-4 cursor-pointer px-6 py-5 font-display text-gray-800 text-lg list-none"
+            >
+              <div
+                class="flex-shrink-0 w-8 h-8 rounded-full bg-[#6B5B52] flex items-center justify-center"
+              >
                 <svg
                   class="w-4 h-4 text-white transition-transform group-open:rotate-45"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  />
                 </svg>
               </div>
               <span class="flex-1">{{ faq.question }}</span>
@@ -67,5 +79,5 @@ const faqs = computed(() => {
     question: getLocalized(item.question, locale.value),
     answer: getLocalized(item.answer, locale.value),
   }));
-})
+});
 </script>

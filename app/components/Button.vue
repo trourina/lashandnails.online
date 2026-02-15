@@ -28,7 +28,7 @@ const component = computed(() => {
 });
 
 const linkRel = computed(() =>
-  props.nofollow ? 'noopener noreferrer nofollow' : 'noopener noreferrer'
+  props.nofollow ? "noopener noreferrer nofollow" : "noopener noreferrer",
 );
 </script>
 

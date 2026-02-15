@@ -26,14 +26,10 @@ const handlePricingClick = () => {
 </script>
 
 <template>
-  <section
-    class="bg-gradient-to-br from-[#6B5B52] to-[#8B7565] text-white -mt-24 py-60 px-4"
-  >
+  <section class="bg-gradient-to-br from-[#6B5B52] to-[#8B7565] text-white -mt-24 py-60 px-4">
     <div class="container mx-auto max-w-4xl">
       <div class="text-center">
-        <h1
-          class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-balance"
-        >
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-balance">
           {{ title || t("home.title") }}
         </h1>
         <p
@@ -43,14 +39,11 @@ const handlePricingClick = () => {
         </p>
 
         <!-- CTA Buttons (optional) -->
-        <div
-          v-if="showCta"
-          class="flex flex-col sm:flex-row gap-4 mt-8 justify-center"
-        >
+        <div v-if="showCta" class="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
           <Button
             :href="`https://wa.me/${settings.phone.replace(
               /\+/g,
-              ''
+              '',
             )}?text=${encodeURIComponent(t('hero.ctaMessage'))}`"
             class="bg-[#FFC107] text-[#4A3A32] hover:bg-[#FFB300] px-8 py-3 rounded-full font-semibold shadow-lg transition-all"
             @click="handleWhatsAppClick"

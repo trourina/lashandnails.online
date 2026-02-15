@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, locale, locales } = useI18n<unknown, 'en' | 'es' | 'ru'>();
+const { t, locale, locales } = useI18n<unknown, "en" | "es" | "ru">();
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 const route = useRoute();
@@ -22,8 +22,8 @@ function onClickOutside(e: MouseEvent) {
   }
 }
 
-onMounted(() => document.addEventListener('click', onClickOutside));
-onUnmounted(() => document.removeEventListener('click', onClickOutside));
+onMounted(() => document.addEventListener("click", onClickOutside));
+onUnmounted(() => document.removeEventListener("click", onClickOutside));
 
 const localeNames: Record<string, string> = {
   en: "EN",
@@ -31,12 +31,10 @@ const localeNames: Record<string, string> = {
   ru: "RU",
 };
 
-type LocaleCode = 'en' | 'es' | 'ru';
+type LocaleCode = "en" | "es" | "ru";
 
 const availableLocales = computed(() => {
-  return (locales.value as Array<{ code: LocaleCode }>).filter(
-    (i) => i.code !== locale.value
-  );
+  return (locales.value as Array<{ code: LocaleCode }>).filter((i) => i.code !== locale.value);
 });
 
 const allLocales = computed(() => {
@@ -45,9 +43,7 @@ const allLocales = computed(() => {
 </script>
 
 <template>
-  <header
-    class="container mx-auto w-full relative z-50 p-4 h-24 flex items-center justify-between"
-  >
+  <header class="container mx-auto w-full relative z-50 p-4 h-24 flex items-center justify-between">
     <!-- Logo -->
     <NuxtLink :to="localePath('/')" class="flex items-center gap-3 group">
       <Logo class="w-[180px]" />
@@ -59,118 +55,123 @@ const allLocales = computed(() => {
       <nav
         class="flex items-center gap-1 bg-white/95 backdrop-blur-sm rounded-full px-2 py-2 shadow-lg"
       >
-      <NuxtLink
-        :to="localePath('/')"
-        :class="[
-          'px-5 py-2 rounded-full text-sm font-medium transition-all',
-          isActive('/')
-            ? 'bg-[#6B5B52] text-white'
-            : 'text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50',
-        ]"
-      >
-        {{ t("nav.home") }}
-      </NuxtLink>
+        <NuxtLink
+          :to="localePath('/')"
+          :class="[
+            'px-5 py-2 rounded-full text-sm font-medium transition-all',
+            isActive('/')
+              ? 'bg-[#6B5B52] text-white'
+              : 'text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50',
+          ]"
+        >
+          {{ t("nav.home") }}
+        </NuxtLink>
 
-      <NuxtLink
-        :to="localePath('/about')"
-        :class="[
-          'px-5 py-2 rounded-full text-sm font-medium transition-all',
-          isActive('/about')
-            ? 'bg-[#6B5B52] text-white'
-            : 'text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50',
-        ]"
-      >
-        {{ t("nav.about") }}
-      </NuxtLink>
+        <NuxtLink
+          :to="localePath('/about')"
+          :class="[
+            'px-5 py-2 rounded-full text-sm font-medium transition-all',
+            isActive('/about')
+              ? 'bg-[#6B5B52] text-white'
+              : 'text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50',
+          ]"
+        >
+          {{ t("nav.about") }}
+        </NuxtLink>
 
-      <NuxtLink
-        :to="localePath('/services')"
-        :class="[
-          'px-5 py-2 rounded-full text-sm font-medium transition-all',
-          isActive('/services')
-            ? 'bg-[#6B5B52] text-white'
-            : 'text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50',
-        ]"
-      >
-        {{ t("nav.services") }}
-      </NuxtLink>
+        <NuxtLink
+          :to="localePath('/services')"
+          :class="[
+            'px-5 py-2 rounded-full text-sm font-medium transition-all',
+            isActive('/services')
+              ? 'bg-[#6B5B52] text-white'
+              : 'text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50',
+          ]"
+        >
+          {{ t("nav.services") }}
+        </NuxtLink>
 
-      <NuxtLink
-        :to="localePath('/pricing')"
-        :class="[
-          'px-5 py-2 rounded-full text-sm font-medium transition-all',
-          isActive('/pricing')
-            ? 'bg-[#6B5B52] text-white'
-            : 'text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50',
-        ]"
-      >
-        {{ t("nav.pricing") }}
-      </NuxtLink>
+        <NuxtLink
+          :to="localePath('/pricing')"
+          :class="[
+            'px-5 py-2 rounded-full text-sm font-medium transition-all',
+            isActive('/pricing')
+              ? 'bg-[#6B5B52] text-white'
+              : 'text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50',
+          ]"
+        >
+          {{ t("nav.pricing") }}
+        </NuxtLink>
 
-      <NuxtLink
-        :to="localePath('/gallery')"
-        :class="[
-          'px-5 py-2 rounded-full text-sm font-medium transition-all',
-          isActive('/gallery')
-            ? 'bg-[#6B5B52] text-white'
-            : 'text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50',
-        ]"
-      >
-        {{ t("nav.gallery") }}
-      </NuxtLink>
+        <NuxtLink
+          :to="localePath('/gallery')"
+          :class="[
+            'px-5 py-2 rounded-full text-sm font-medium transition-all',
+            isActive('/gallery')
+              ? 'bg-[#6B5B52] text-white'
+              : 'text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50',
+          ]"
+        >
+          {{ t("nav.gallery") }}
+        </NuxtLink>
 
-      <a
-        :href="`https://wa.me/${settings.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('nav.bookMessage'))}`"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="ml-1 px-6 py-2 bg-[#FFC107] text-[#4A3A32] rounded-full text-sm font-semibold hover:bg-[#FFB300] transition-all shadow-md"
-      >
-        {{ t("nav.bookNow") }}
-      </a>
+        <a
+          :href="`https://wa.me/${settings.phone.replace(/\+/g, '')}?text=${encodeURIComponent(t('nav.bookMessage'))}`"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-1 px-6 py-2 bg-[#FFC107] text-[#4A3A32] rounded-full text-sm font-semibold hover:bg-[#FFB300] transition-all shadow-md"
+        >
+          {{ t("nav.bookNow") }}
+        </a>
       </nav>
 
       <!-- Language Switcher Dropdown -->
       <div ref="dropdownRef" class="relative">
-      <button
-        @click="isDropdownOpen = !isDropdownOpen"
-        class="flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50 transition-all shadow-lg"
-        aria-label="Language switcher"
-      >
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-          />
-        </svg>
-        <span>{{ localeNames[locale] }}</span>
-        <svg
-          class="w-4 h-4 transition-transform"
-          :class="{ 'rotate-180': isDropdownOpen }"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+        <button
+          @click="isDropdownOpen = !isDropdownOpen"
+          class="flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700 hover:text-[#6B5B52] hover:bg-gray-50 transition-all shadow-lg"
+          aria-label="Language switcher"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+            />
+          </svg>
+          <span>{{ localeNames[locale] }}</span>
+          <svg
+            class="w-4 h-4 transition-transform"
+            :class="{ 'rotate-180': isDropdownOpen }"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
 
-      <!-- Dropdown Menu -->
-      <div
-        v-show="isDropdownOpen"
-        class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg py-1 z-[100]"
-      >
-        <NuxtLink
-          v-for="loc in availableLocales"
-          :key="loc.code"
-          :to="switchLocalePath(loc.code)"
-          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#6B5B52] transition-colors"
-          @click="isDropdownOpen = false"
+        <!-- Dropdown Menu -->
+        <div
+          v-show="isDropdownOpen"
+          class="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-lg py-1 z-[100]"
         >
-          {{ localeNames[loc.code] }}
-        </NuxtLink>
-      </div>
+          <NuxtLink
+            v-for="loc in availableLocales"
+            :key="loc.code"
+            :to="switchLocalePath(loc.code)"
+            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-[#6B5B52] transition-colors"
+            @click="isDropdownOpen = false"
+          >
+            {{ localeNames[loc.code] }}
+          </NuxtLink>
+        </div>
       </div>
     </div>
 

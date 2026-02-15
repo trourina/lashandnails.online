@@ -8,7 +8,7 @@ export function useSiteSettings() {
   const config = useRuntimeConfig();
   const business = config.public.business as Record<string, any>;
 
-  const c = (val: string | undefined) => val ? stegaClean(val) : undefined;
+  const c = (val: string | undefined) => (val ? stegaClean(val) : undefined);
 
   return computed(() => {
     const s = sanity.value;
@@ -37,8 +37,8 @@ export function useSiteSettings() {
         facebook: c(s?.facebook) || business.social.facebook,
         instagram: c(s?.instagram) || business.social.instagram,
       },
-      googleReviewUrl: c(s?.googleReviewUrl) || 'https://g.page/r/CSnzBqO8436ZEAE/review',
-      yelp: c(s?.yelp) || 'https://yelp.es/biz/xnvJCVsuqRKFVajEYXZk-w',
+      googleReviewUrl: c(s?.googleReviewUrl) || "https://g.page/r/CSnzBqO8436ZEAE/review",
+      yelp: c(s?.yelp) || "https://yelp.es/biz/xnvJCVsuqRKFVajEYXZk-w",
     };
   });
 }

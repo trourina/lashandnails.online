@@ -10,10 +10,17 @@
           <h2 class="font-display text-2xl font-bold text-gray-900 mb-4">
             {{ section.title }}
           </h2>
-          <p v-if="section.content" class="text-gray-700 leading-relaxed whitespace-pre-line" :class="{ 'mb-4': section.listItems?.length }">
+          <p
+            v-if="section.content"
+            class="text-gray-700 leading-relaxed whitespace-pre-line"
+            :class="{ 'mb-4': section.listItems?.length }"
+          >
             {{ section.content }}
           </p>
-          <ul v-if="section.listItems?.length" class="list-disc list-inside space-y-2 text-gray-700">
+          <ul
+            v-if="section.listItems?.length"
+            class="list-disc list-inside space-y-2 text-gray-700"
+          >
             <li v-for="(item, i) in section.listItems" :key="i">{{ item }}</li>
           </ul>
           <p v-if="section.footer" class="text-gray-700 leading-relaxed mt-4">
@@ -34,13 +41,14 @@ const s = (field: any) => getLocalized(field, locale.value);
 const title = computed(() => s(pageData.value?.title));
 const subtitle = computed(() => s(pageData.value?.subtitle));
 
-const sections = computed(() =>
-  pageData.value?.sections?.map((sec) => ({
-    title: s(sec.title),
-    content: s(sec.content) || undefined,
-    listItems: sec.listItems?.map((li) => s(li.text)).filter(Boolean),
-    footer: s(sec.footer) || undefined,
-  })) || []
+const sections = computed(
+  () =>
+    pageData.value?.sections?.map((sec) => ({
+      title: s(sec.title),
+      content: s(sec.content) || undefined,
+      listItems: sec.listItems?.map((li) => s(li.text)).filter(Boolean),
+      footer: s(sec.footer) || undefined,
+    })) || [],
 );
 
 useSeoMeta({

@@ -64,8 +64,16 @@
         </h2>
         <ul class="space-y-3">
           <li v-for="(benefit, index) in benefits" :key="index" class="flex items-start">
-            <svg class="w-6 h-6 text-[#6B5B52] flex-shrink-0 mr-3 mt-1" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            <svg
+              class="w-6 h-6 text-[#6B5B52] flex-shrink-0 mr-3 mt-1"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"
+              />
             </svg>
             <span class="text-gray-700 text-lg">{{ benefit }}</span>
           </li>
@@ -79,11 +87,15 @@
         </h2>
         <ol class="space-y-6">
           <li v-for="(step, index) in processSteps" :key="index" class="flex gap-4">
-            <div class="flex-shrink-0 w-10 h-10 bg-[#6B5B52] text-white rounded-full flex items-center justify-center font-bold">
+            <div
+              class="flex-shrink-0 w-10 h-10 bg-[#6B5B52] text-white rounded-full flex items-center justify-center font-bold"
+            >
               {{ index + 1 }}
             </div>
             <div class="flex-1 bg-white rounded-xl p-6 shadow-sm">
-              <strong class="font-display text-xl text-gray-900 block mb-2">{{ step.title }}</strong>
+              <strong class="font-display text-xl text-gray-900 block mb-2">{{
+                step.title
+              }}</strong>
               <p class="text-gray-600">{{ step.description }}</p>
             </div>
           </li>
@@ -98,8 +110,18 @@
         </h2>
         <ul class="space-y-3">
           <li v-for="(tip, index) in aftercareTips" :key="index" class="flex items-start">
-            <svg class="w-6 h-6 text-[#6B5B52] flex-shrink-0 mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg
+              class="w-6 h-6 text-[#6B5B52] flex-shrink-0 mr-3 mt-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
             </svg>
             <span class="text-gray-700">{{ tip }}</span>
           </li>
@@ -123,8 +145,13 @@ const s = (field: Parameters<typeof getLocalized>[0]) => getLocalized(field, loc
 
 const { data: sanityService, encodeDataAttribute } = await useFetchService("brows");
 
-const translatedOffers = computed(() =>
-  sanityService.value?.offers?.map((o) => ({ name: s(o.name), description: s(o.description), price: o.price })) ?? []
+const translatedOffers = computed(
+  () =>
+    sanityService.value?.offers?.map((o) => ({
+      name: s(o.name),
+      description: s(o.description),
+      price: o.price,
+    })) ?? [],
 );
 
 const breadcrumbs = computed(() => [
@@ -134,8 +161,16 @@ const breadcrumbs = computed(() => [
 ]);
 
 const benefits = computed(() => sanityService.value?.benefits?.map((b) => s(b.text)) ?? []);
-const processSteps = computed(() => sanityService.value?.processSteps?.map((p) => ({ title: s(p.title), description: s(p.description) })) ?? []);
-const aftercareTips = computed(() => sanityService.value?.aftercareTips?.map((a) => s(a.text)) ?? []);
+const processSteps = computed(
+  () =>
+    sanityService.value?.processSteps?.map((p) => ({
+      title: s(p.title),
+      description: s(p.description),
+    })) ?? [],
+);
+const aftercareTips = computed(
+  () => sanityService.value?.aftercareTips?.map((a) => s(a.text)) ?? [],
+);
 
 const seoTitle = computed(() => stegaClean(s(sanityService.value?.seo?.title)));
 const seoDescription = computed(() => stegaClean(s(sanityService.value?.seo?.description)));

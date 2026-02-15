@@ -64,6 +64,7 @@ All service pages (`app/pages/services/*.vue`) follow this structure:
 Hero → Breadcrumb → Overview → Pricing → Techniques → Benefits → Process → Aftercare → CTA
 
 Each uses:
+
 - `useServicePageSchema()` composable for structured data
 - `useFetchService(slug)` for all content from Sanity (title, description, offers, techniques, benefits, process steps, aftercare, CTA)
 - `translatedOffers` — Sanity-first pricing, falls back to `services.config.ts`
@@ -72,6 +73,7 @@ Each uses:
 ### Styling
 
 Tailwind CSS v4 configured via Vite plugin (no standalone tailwind.config). Custom theme in `app/assets/css/main.css`:
+
 - Display font: "Noto Serif Display" (via `--font-display`)
 - Colors: Primary brown `#6B5B52`, accent gold `#FFC107`, cream `#E8D5C4`
 - "Prata" font from Google Fonts registered in `nuxt.config.ts`
@@ -96,6 +98,7 @@ Tailwind CSS v4 configured via Vite plugin (no standalone tailwind.config). Cust
 ## Business Info Update Checklist
 
 When changing business details, update via Sanity Studio (siteSettings document). Fallback values in:
+
 1. `config/business.config.ts` (build-time fallback for geo, Schema.org, URL)
 2. `public/site.webmanifest` (PWA app name)
 

@@ -6,9 +6,7 @@
       <!-- Header -->
       <div class="relative mb-8">
         <DecorCircle color="cream" size="xl" top="-1.5rem" left="-2rem" />
-        <h2
-          class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-        >
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           {{ t("gallery.headerTitle") }}
         </h2>
         <p class="text-gray-600 max-w-2xl">
@@ -128,11 +126,7 @@
     </section>
 
     <!-- Lightbox -->
-    <Lightbox
-      ref="lightboxRef"
-      :images="lightboxImages"
-      @close="onLightboxClose"
-    />
+    <Lightbox ref="lightboxRef" :images="lightboxImages" @close="onLightboxClose" />
   </div>
 </template>
 
@@ -157,15 +151,16 @@ interface NormalizedImage {
   origIdx: number;
 }
 
-const galleryImages = computed<NormalizedImage[]>(() =>
-  sanityImages.value?.map((img, index) => ({
-    id: img._id,
-    sanityRef: img.image?.asset?._ref || null,
-    alt: getLocalized(img.alt, locale.value) || t("gallery.placeholder"),
-    caption: getLocalized(img.caption, locale.value),
-    category: stegaClean(img.category),
-    origIdx: index,
-  })) ?? []
+const galleryImages = computed<NormalizedImage[]>(
+  () =>
+    sanityImages.value?.map((img, index) => ({
+      id: img._id,
+      sanityRef: img.image?.asset?._ref || null,
+      alt: getLocalized(img.alt, locale.value) || t("gallery.placeholder"),
+      caption: getLocalized(img.caption, locale.value),
+      category: stegaClean(img.category),
+      origIdx: index,
+    })) ?? [],
 );
 
 // Filter images based on active filter
@@ -173,9 +168,7 @@ const filteredImages = computed(() => {
   if (activeFilter.value === "all") {
     return galleryImages.value;
   }
-  return galleryImages.value.filter(
-    (img) => img.category === activeFilter.value
-  );
+  return galleryImages.value.filter((img) => img.category === activeFilter.value);
 });
 
 // Prepare images for lightbox

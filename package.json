@@ -9,7 +9,9 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "oxlint",
-    "typecheck": "nuxi typecheck"
+    "typecheck": "nuxi typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@googlemaps/markerclusterer": "^2.6.2",
@@ -33,6 +35,7 @@
   },
   "devDependencies": {
     "@nuxtjs/seo": "^3.2.2",
-    "oxlint": "^0.16.6"
+    "oxlint": "^0.16.6",
+    "prettier": "^3.8.1"
   }
 }

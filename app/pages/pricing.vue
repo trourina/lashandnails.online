@@ -29,7 +29,9 @@ const pricingData = computed(() => {
   if (!pageData.value?.categories?.length) return [];
   return pageData.value.categories.map((cat) => ({
     name: s(cat.name),
-    ...(cat.slug ? { link: localePath(`/services/${stegaClean(cat.slug)}`), linkText: t("common.learnMore") } : {}),
+    ...(cat.slug
+      ? { link: localePath(`/services/${stegaClean(cat.slug)}`), linkText: t("common.learnMore") }
+      : {}),
     ...(cat.cta ? { cta: s(cat.cta) } : {}),
     services: cat.services.map((svc) => ({
       name: s(svc.name),

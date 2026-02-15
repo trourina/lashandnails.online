@@ -15,14 +15,14 @@
 
 <script setup lang="ts">
 interface Props {
-  src?: string
-  alt: string
-  caption?: string
-  width?: number
-  height?: number
+  src?: string;
+  alt: string;
+  caption?: string;
+  width?: number;
+  height?: number;
 }
 
-defineProps<Props>()
+defineProps<Props>();
 </script>
 
 <style scoped>

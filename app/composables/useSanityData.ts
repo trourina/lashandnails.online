@@ -12,14 +12,9 @@ type LocalizedField = { en?: string; es?: string; ru?: string };
 /**
  * Extract the current locale's value from a localized field, with EN fallback.
  */
-export function getLocalized(
-  field: LocalizedField | undefined,
-  locale: string
-): string {
+export function getLocalized(field: LocalizedField | undefined, locale: string): string {
   if (!field) return "";
-  return (
-    (field as Record<string, string>)[locale] || field.en || ""
-  );
+  return (field as Record<string, string>)[locale] || field.en || "";
 }
 
 // ─── Gallery ────────────────────────────────────────────────────────
@@ -309,12 +304,14 @@ export interface SanityHomePage {
   featuredTitle: LocalizedField;
   featuredSeeMore: LocalizedField;
   featuredFromLabel: LocalizedField;
-  featuredServices: {
-    name: LocalizedField;
-    price: string;
-    image: { asset: { _ref: string }; hotspot?: unknown } | null;
-    link: string;
-  }[] | null;
+  featuredServices:
+    | {
+        name: LocalizedField;
+        price: string;
+        image: { asset: { _ref: string }; hotspot?: unknown } | null;
+        link: string;
+      }[]
+    | null;
   reviewsTitle: LocalizedField;
   reviewsDescription: LocalizedField;
   reviewsClientLabel: LocalizedField;
@@ -402,13 +399,15 @@ const SERVICES_OVERVIEW_QUERY = `*[_type == "servicesOverviewPage"][0] {
 export interface SanityServicesOverviewPage {
   title: LocalizedField;
   subtitle: LocalizedField;
-  serviceCards: {
-    slug: string;
-    title: LocalizedField;
-    description: LocalizedField;
-    image: { asset: { _ref: string }; hotspot?: unknown } | null;
-    features: { text: LocalizedField }[] | null;
-  }[] | null;
+  serviceCards:
+    | {
+        slug: string;
+        title: LocalizedField;
+        description: LocalizedField;
+        image: { asset: { _ref: string }; hotspot?: unknown } | null;
+        features: { text: LocalizedField }[] | null;
+      }[]
+    | null;
   cta: SanityCTA | null;
   seo: SanitySeoFields | null;
 }
@@ -487,21 +486,25 @@ export interface SanityBookingPage {
   title: LocalizedField;
   subtitle: LocalizedField;
   methodsHeading: LocalizedField;
-  methods: {
-    key: string;
-    title: LocalizedField;
-    description: LocalizedField;
-    cta: LocalizedField;
-    message: LocalizedField | null;
-  }[] | null;
+  methods:
+    | {
+        key: string;
+        title: LocalizedField;
+        description: LocalizedField;
+        cta: LocalizedField;
+        message: LocalizedField | null;
+      }[]
+    | null;
   infoHeading: LocalizedField;
-  infoItems: {
-    key: string;
-    label: LocalizedField;
-    value: LocalizedField;
-    linkText: LocalizedField | null;
-    linkUrl: string | null;
-  }[] | null;
+  infoItems:
+    | {
+        key: string;
+        label: LocalizedField;
+        value: LocalizedField;
+        linkText: LocalizedField | null;
+        linkUrl: string | null;
+      }[]
+    | null;
   seo: SanitySeoFields | null;
 }
 
@@ -529,15 +532,19 @@ const CONTACT_PAGE_QUERY = `*[_type == "contactPage"][0] {
 export interface SanityContactPage {
   title: LocalizedField;
   subtitle: LocalizedField;
-  contactCards: {
-    key: string;
-    title: LocalizedField;
-    value: LocalizedField | null;
-  }[] | null;
-  faqs: {
-    question: LocalizedField;
-    answer: LocalizedField;
-  }[] | null;
+  contactCards:
+    | {
+        key: string;
+        title: LocalizedField;
+        value: LocalizedField | null;
+      }[]
+    | null;
+  faqs:
+    | {
+        question: LocalizedField;
+        answer: LocalizedField;
+      }[]
+    | null;
   seo: SanitySeoFields | null;
 }
 
@@ -564,12 +571,14 @@ export interface SanityLegalPage {
   slug: { current: string };
   title: LocalizedField;
   subtitle: LocalizedField;
-  sections: {
-    title: LocalizedField;
-    content: LocalizedField | null;
-    listItems: { text: LocalizedField }[] | null;
-    footer: LocalizedField | null;
-  }[] | null;
+  sections:
+    | {
+        title: LocalizedField;
+        content: LocalizedField | null;
+        listItems: { text: LocalizedField }[] | null;
+        footer: LocalizedField | null;
+      }[]
+    | null;
   seo: SanitySeoFields | null;
 }
 

@@ -85,10 +85,7 @@ export const RESERVE_ACTION = {
     "@type": "EntryPoint" as const,
     urlTemplate: `${BUSINESS.url}/booking`,
     inLanguage: ["en", "es", "ru"],
-    actionPlatform: [
-      "http://schema.org/DesktopWebPlatform",
-      "http://schema.org/MobileWebPlatform",
-    ],
+    actionPlatform: ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"],
   },
   result: {
     "@type": "Reservation" as const,

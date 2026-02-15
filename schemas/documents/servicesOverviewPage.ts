@@ -46,9 +46,7 @@ export default defineType({
                 defineArrayMember({
                   type: "object",
                   name: "feature",
-                  fields: [
-                    { name: "text", title: "Текст", type: "localizedString" },
-                  ],
+                  fields: [{ name: "text", title: "Текст", type: "localizedString" }],
                   preview: {
                     select: { title: "text.ru" },
                   },

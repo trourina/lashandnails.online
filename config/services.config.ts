@@ -95,8 +95,7 @@ export const SERVICES_DATA: ServiceConfig[] = [
     id: "pedicure",
     slug: "/services/pedicure",
     name: "Pedicure",
-    description:
-      "Professional pedicure services for healthy, beautiful feet",
+    description: "Professional pedicure services for healthy, beautiful feet",
     category: "BeautyService",
     offers: [
       {
@@ -126,8 +125,7 @@ export const SERVICES_DATA: ServiceConfig[] = [
     id: "brows",
     slug: "/services/brows",
     name: "Brows",
-    description:
-      "Professional brow shaping, tinting and lamination services for perfect brows",
+    description: "Professional brow shaping, tinting and lamination services for perfect brows",
     category: "BeautyService",
     offers: [
       {
