@@ -38,6 +38,8 @@ export function useSiteSettings() {
         instagram: c(s?.instagram) || business.social.instagram,
       },
       googleReviewUrl: c(s?.googleReviewUrl) || "https://g.page/r/CSnzBqO8436ZEAE/review",
+      googleRating: s?.googleRating ?? 5.0,
+      googleReviewCount: s?.googleReviewCount ?? 28,
       yelp: c(s?.yelp) || "https://yelp.es/biz/xnvJCVsuqRKFVajEYXZk-w",
     };
   });
