@@ -1,4 +1,4 @@
-# Implementation Checklist - lashandnails.online
+# Implementation Checklist - lashandnails.es
 
 A systematic, step-by-step implementation plan for the beauty salon website.
 
@@ -762,7 +762,7 @@ The homepage has been fully implemented with professional, production-ready comp
 ## Phase 9: Deployment & Launch
 
 ### 9.1 Pre-Launch Setup
-- [ ] Configure domain (lashandnails.online)
+- [ ] Configure domain (lashandnails.es)
 - [ ] Point domain to Vercel
 - [ ] Verify SSL certificate active
 - [ ] Set up environment variables in Vercel
@@ -797,7 +797,7 @@ The homepage has been fully implemented with professional, production-ready comp
 
 ### 9.5 Go Live
 - [ ] Deploy to production
-- [ ] Verify site loads at lashandnails.online
+- [ ] Verify site loads at lashandnails.es
 - [ ] Test from multiple devices
 - [ ] Monitor for errors (first 24 hours)
 - [ ] Announce launch on social media

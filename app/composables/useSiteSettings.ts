@@ -14,7 +14,7 @@ export function useSiteSettings() {
     const s = sanity.value;
     return {
       phone: c(s?.phone) || business.phone,
-      email: c(s?.email) || "info@lashandnails.online",
+      email: c(s?.email) || "info@lashandnails.es",
       telegram: c(s?.telegram) || business.telegram,
       address: {
         street: c(s?.street) || business.address.street,

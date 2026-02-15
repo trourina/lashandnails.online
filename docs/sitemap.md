@@ -1,4 +1,4 @@
-# Website Sitemap - lashandnails.online
+# Website Sitemap - lashandnails.es
 
 Beauty salon in Santa Pola offering lash extensions, nail design, and beauty treatments.
 
@@ -198,7 +198,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 - TripAdvisor (if applicable)
 
 **Bottom Bar**:
-- © lashandnails.online
+- © lashandnails.es
 - Privacy Policy
 - Terms & Conditions
 - Language selector
@@ -214,7 +214,7 @@ Home | Services ▼ | Gallery | About | Contact | Book Now
 
 ### Implementation
 - Language selector in header/footer
-- URL structure: `lashandnails.online/en/services` or subdomain
+- URL structure: `lashandnails.es/en/services` or subdomain
 - Hreflang tags for SEO
 - Localized content (not just translation - adapt for cultural relevance)
 
