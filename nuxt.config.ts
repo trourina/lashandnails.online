@@ -38,7 +38,6 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   modules: [
-    "@nuxt/eslint",
     "@nuxt/fonts",
     "@nuxt/image",
     "@nuxt/scripts",
