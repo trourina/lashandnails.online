@@ -11,6 +11,11 @@ useHead({
   titleTemplate: (title) => title || "Lash & Nails Santa Pola",
 });
 
+// Global Twitter Card meta for social sharing previews
+useSeoMeta({
+  twitterCard: "summary_large_image",
+});
+
 // Localize Schema.org identity description and slogan per locale.
 // The global identity in nuxt.config.ts is build-time English only.
 const localizedDesc = BUSINESS.localizedDescription as Record<string, string>;

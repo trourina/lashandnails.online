@@ -18,6 +18,10 @@ definePageMeta({
   layout: false,
 });
 
+useSeoMeta({
+  robots: "noindex, nofollow",
+});
+
 const studioUrl = "https://lashandnails.sanity.studio";
 
 if (import.meta.client) {

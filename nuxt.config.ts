@@ -47,7 +47,11 @@ export default defineNuxtConfig({
   ],
 
   sitemap: {
-    exclude: ["/admin", "/admin/**"],
+    exclude: ["/admin", "/admin/**", "/preview/**"],
+  },
+
+  robots: {
+    disallow: ["/admin", "/preview"],
   },
 
   sanity: {
