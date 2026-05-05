@@ -69,11 +69,6 @@ const SERVICE_BY_SLUG_QUERY = `*[_type == "service" && slug.current == $slug][0]
   description,
   image,
   category,
-  offers[] {
-    name,
-    description,
-    price
-  },
   techniques[] {
     name,
     description
@@ -91,12 +86,6 @@ const SERVICE_BY_SLUG_QUERY = `*[_type == "service" && slug.current == $slug][0]
   cta,
   seo
 }`;
-
-export interface SanityOffer {
-  name: LocalizedField;
-  description: LocalizedField;
-  price: string;
-}
 
 export interface SanityTechnique {
   name: LocalizedField;
@@ -127,7 +116,6 @@ export interface SanityService {
   description: LocalizedField;
   image: { asset: { _ref: string }; hotspot?: unknown } | null;
   category: string;
-  offers: SanityOffer[];
   techniques: SanityTechnique[] | null;
   benefits: SanityBenefit[] | null;
   processSteps: SanityProcessStep[] | null;
@@ -149,12 +137,7 @@ const ALL_SERVICES_QUERY = `*[_type == "service"] | order(order asc) {
   title,
   subtitle,
   image,
-  category,
-  offers[] {
-    name,
-    description,
-    price
-  }
+  category
 }`;
 
 export function useFetchAllServices() {
@@ -460,6 +443,39 @@ export interface SanityPricingPage {
 
 export function useFetchPricingPage() {
   return useSanityQuery<SanityPricingPage | null>(PRICING_PAGE_QUERY);
+}
+
+const PRICING_BY_CATEGORY_QUERY = `*[_type == "pricingPage"][0].categories[slug == $slug] {
+  name,
+  slug,
+  cta,
+  services[] {
+    name,
+    note,
+    price
+  }
+}`;
+
+/**
+ * Fetch pricing categories from the pricingPage singleton matching a given slug.
+ * Returns an array — multiple categories may share a slug to merge their services
+ * onto a single service page (e.g. "Lashes" + "Extensions" both tagged "lash-extensions").
+ */
+export function useFetchPricingForCategory(slug: string) {
+  return useSanityQuery<SanityPricingCategory[] | null>(PRICING_BY_CATEGORY_QUERY, { slug });
+}
+
+/**
+ * Normalize a pricingPage price string to a numeric value for Schema.org Offer markup.
+ * Returns null for variable prices ("+5€", "10€+", "от 10€") so consumers can omit them
+ * — Schema.org Offer expects a fixed price.
+ */
+export function parsePrice(price: string | null | undefined): string | null {
+  if (!price) return null;
+  const cleaned = String(price).replace(/€/g, "").replace(/\s+/g, "");
+  if (!cleaned) return null;
+  if (cleaned.startsWith("+") || cleaned.endsWith("+")) return null;
+  return /^\d+(\.\d+)?$/.test(cleaned) ? cleaned : null;
 }
 
 // ─── Booking Page ──────────────────────────────────────────────────
