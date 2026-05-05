@@ -48,45 +48,6 @@ export default defineType({
       },
     },
     {
-      name: "offers",
-      title: "Прайс-лист",
-      type: "array",
-      of: [
-        defineArrayMember({
-          type: "object",
-          name: "offer",
-          fields: [
-            {
-              name: "name",
-              title: "Название",
-              type: "localizedString",
-              validation: (rule) => rule.required(),
-            },
-            {
-              name: "description",
-              title: "Описание",
-              type: "localizedString",
-            },
-            {
-              name: "price",
-              title: "Цена (€)",
-              type: "string",
-              validation: (rule) => rule.required(),
-            },
-          ],
-          preview: {
-            select: {
-              title: "name.ru",
-              subtitle: "price",
-            },
-            prepare({ title, subtitle }) {
-              return { title, subtitle: `€${subtitle}` };
-            },
-          },
-        }),
-      ],
-    },
-    {
       name: "techniques",
       title: "Техники",
       type: "array",

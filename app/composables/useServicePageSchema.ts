@@ -76,20 +76,27 @@ export function useServicePageSchema(options: ServiceSchemaOptions) {
         "@type": "OfferCatalog",
         name: options.title,
         itemListElement: () =>
-          options.offers().map((offer) => ({
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: stegaClean(offer.name),
-              ...(offer.description && { description: stegaClean(offer.description) }),
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              priceCurrency: "EUR",
-              price: stegaClean(offer.price),
-            },
-            availability: "http://schema.org/InStock",
-          })),
+          options
+            .offers()
+            .map((offer) => {
+              const numericPrice = parsePrice(stegaClean(offer.price));
+              if (!numericPrice) return null;
+              return {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: stegaClean(offer.name),
+                  ...(offer.description && { description: stegaClean(offer.description) }),
+                },
+                priceSpecification: {
+                  "@type": "PriceSpecification",
+                  priceCurrency: "EUR",
+                  price: numericPrice,
+                },
+                availability: "http://schema.org/InStock",
+              };
+            })
+            .filter((o): o is NonNullable<typeof o> => o !== null),
       },
     },
   ]);

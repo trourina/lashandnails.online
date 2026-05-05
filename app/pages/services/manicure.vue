@@ -50,7 +50,7 @@
               {{ offer.description }}
             </p>
             <div class="flex items-baseline">
-              <span class="text-3xl font-bold text-[#6B5B52]">€{{ offer.price }}</span>
+              <span class="text-3xl font-bold text-[#6B5B52]">{{ offer.price }}</span>
             </div>
           </div>
         </div>
@@ -144,14 +144,17 @@ const { t, locale } = useI18n();
 const s = (field: Parameters<typeof getLocalized>[0]) => getLocalized(field, locale.value);
 
 const { data: sanityService, encodeDataAttribute } = await useFetchService("manicure");
+const { data: pricingCategories } = await useFetchPricingForCategory("manicure");
 
-const translatedOffers = computed(
-  () =>
-    sanityService.value?.offers?.map((o) => ({
-      name: s(o.name),
-      description: s(o.description),
-      price: o.price,
-    })) ?? [],
+const translatedOffers = computed(() =>
+  (pricingCategories.value ?? []).flatMap(
+    (cat) =>
+      cat.services?.map((svc) => ({
+        name: s(svc.name),
+        description: svc.note ? s(svc.note) : "",
+        price: svc.price,
+      })) ?? [],
+  ),
 );
 
 const breadcrumbs = computed(() => [
